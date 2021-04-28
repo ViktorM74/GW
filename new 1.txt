@@ -1,0 +1,12 @@
+IDCust
+Name_Tender
+IDStadia
+Data_End
+Status
+GIP
+Comments
+Zakazchik
+Sostav
+VMark
+Path
+Project_id

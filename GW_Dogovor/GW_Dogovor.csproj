@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2AE28D11-CA68-4E07-BB61-3978E3685F12}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>GW_Dogovor</RootNamespace>
+    <AssemblyName>GW_Dogovor</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DBClass, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DBClass\bin\Debug\DBClass.dll</HintPath>
+    </Reference>
+    <Reference Include="DocTYPELibrary">
+      <HintPath>..\DocTYPELibrary\bin\Debug\DocTYPELibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="FileAction">
+      <HintPath>..\FileAction\bin\Debug\FileAction.dll</HintPath>
+    </Reference>
+    <Reference Include="InputBox">
+      <HintPath>..\..\InputBox\InputBox\bin\Debug\InputBox.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TreeFoldersClass">
+      <HintPath>..\TreeFoldersClass\bin\Debug\TreeFoldersClass.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DDFile_Class.cs" />
+    <Compile Include="Form_editCalendarPlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_editCalendarPlan.Designer.cs">
+      <DependentUpon>Form_editCalendarPlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_editDocument.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_editDocument.Designer.cs">
+      <DependentUpon>Form_editDocument.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_editDDogovor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_editDDogovor.Designer.cs">
+      <DependentUpon>Form_editDDogovor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_editDogovor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_editDogovor.Designer.cs">
+      <DependentUpon>Form_editDogovor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_editObject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_editObject.Designer.cs">
+      <DependentUpon>Form_editObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_editProject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_editProject.Designer.cs">
+      <DependentUpon>Form_editProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Folders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Folders.Designer.cs">
+      <DependentUpon>Form_Folders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_main.Designer.cs">
+      <DependentUpon>Form_main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_editTender.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_editTender.Designer.cs">
+      <DependentUpon>Form_editTender.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Message.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Message.Designer.cs">
+      <DependentUpon>Form_Message.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_SelectSave.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_SelectSave.Designer.cs">
+      <DependentUpon>Form_SelectSave.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewPath.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="ProjectClass.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form_editCalendarPlan.resx">
+      <DependentUpon>Form_editCalendarPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_editDocument.resx">
+      <DependentUpon>Form_editDocument.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_editDDogovor.resx">
+      <DependentUpon>Form_editDDogovor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_editDogovor.resx">
+      <DependentUpon>Form_editDogovor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_editObject.resx">
+      <DependentUpon>Form_editObject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_editProject.resx">
+      <DependentUpon>Form_editProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Folders.resx">
+      <DependentUpon>Form_Folders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_main.resx">
+      <DependentUpon>Form_main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_editTender.resx">
+      <DependentUpon>Form_editTender.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Message.resx">
+      <DependentUpon>Form_Message.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_SelectSave.resx">
+      <DependentUpon>Form_SelectSave.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Modify.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Turn off.bmp" />
+    <None Include="Resources\Add.bmp" />
+    <None Include="Resources\Add.png" />
+    <None Include="Resources\Delete.png" />
+    <None Include="Resources\Folder.png" />
+    <None Include="Resources\icons8-дерево-папок-128.png" />
+    <None Include="Resources\icons8-дерево-папок-30.png" />
+    <None Include="Resources\Modify.bmp" />
+    <Content Include="Resources\return.png" />
+    <None Include="Resources\return1.png" />
+    <None Include="Resources\Save.bmp" />
+    <Content Include="Resources\seo-and-web.png" />
+    <None Include="Resources\seo-and-web1.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
