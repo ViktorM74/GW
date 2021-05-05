@@ -34,12 +34,75 @@ namespace DBClass
         public static Users_GIPTableAdapter adpGIP = new Users_GIPTableAdapter();
 
         public static BindingSource bndProject = new BindingSource();
+        public static BindingSource bndAreaStroy = new BindingSource();
+        public static BindingSource bndDocument = new BindingSource();
+        public static BindingSource bndTypeDoc = new BindingSource();
+        public static BindingSource bndTender = new BindingSource();
+        public static BindingSource bndStadia = new BindingSource();
+        public static BindingSource bndGip = new BindingSource();
+        public static BindingSource bndDogovor = new BindingSource();
+        public static BindingSource bndCalendarPlan = new BindingSource();
+        public static BindingSource bndDopDogovor = new BindingSource();
+        public static BindingSource bndObject = new BindingSource();
+        public static BindingSource bndAct = new BindingSource();
+        public static BindingSource bndSostavObj = new BindingSource();
+        public static BindingSource bndZadania = new BindingSource();
 
 
+        /// <summary>
+        /// Загрузка данных в DataSet
+        /// Связывание TableAdapters
+        /// </summary>
         public static void DBLoad()
         {
             GreateTableManager_1();
+            DBFills();
+            InitializeBindingSources();
+        }
 
+        private static void InitializeBindingSources()
+        {
+
+            //Project
+            bndProject.DataSource = DB_Cmd.dsDB;
+            bndProject.DataMember = "Project";
+            bndAreaStroy.DataSource = DB_Cmd.dsDB;
+            bndAreaStroy.DataMember = "Customers";
+            //Ish Documents
+            bndDocument.DataSource = bndProject; //привязка по связи к Проекту
+            bndDocument.DataMember = "ProjectDocuments";
+            bndTypeDoc.DataSource = DB_Cmd.dsDB;
+            bndTypeDoc.DataMember = "Documets_type";
+            //Tender
+            bndTender.DataSource = bndProject;
+            bndTender.DataMember = "ProjectTender";
+            bndStadia.DataSource = DB_Cmd.dsDB;
+            bndStadia.DataMember = "Stady_project";
+            bndGip.DataSource = DB_Cmd.dsDB;
+            bndGip.DataMember = "Users GIP";
+            //Dogovor
+            bndDogovor.DataSource = bndProject;
+            bndDogovor.DataMember = "ProjectDogovor";
+            bndCalendarPlan.DataSource = bndDogovor;
+            bndCalendarPlan.DataMember = "DogovorCalendarPlan";
+            bndAct.DataSource = bndCalendarPlan;
+            bndAct.DataMember = "CalendarPlanAct";
+
+            //DopDogovor
+            bndDopDogovor.DataSource = bndDogovor;
+            bndDopDogovor.DataMember = "DogovorDopSoglashenia";
+
+            //Object
+            bndObject.DataSource = bndDogovor;
+            bndObject.DataMember = "DogovorOBJECTS";
+            bndSostavObj.DataSource = bndObject;
+            bndSostavObj.DataMember = "OBJECTSSostavDoc";
+            bndZadania.DataSource = bndObject;
+            bndZadania.DataMember = "OBJECTSZadania";
+        }
+
+        private static void DBFills()
+        {
             adpProject.Fill(dsDB.Project);
             adpCustomer.Fill(dsDB.Customers);
             adpDocument.Fill(dsDB.Documents);
@@ -74,6 +137,9 @@ namespace DBClass
             adpGIP.Fill(dsDB.Users_GIP);
         }
 
+        /// <summary>
+        /// Создание Менеджера таблиц
+        /// </summary>
         public static void GreateTableManager_1()
         {
             tableManager.ProjectTableAdapter = adpProject;
@@ -95,11 +161,12 @@ namespace DBClass
             tableManager.UpdateOrder = TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
         }
 
-        
+      
         #region Project
         public static bool SaveProject(BindingSource bnd)
         {
             int position = bnd.Position;
+            string tableName = bnd.DataMember;
             try
             {
                 bnd.EndEdit();

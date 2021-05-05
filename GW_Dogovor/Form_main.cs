@@ -27,20 +27,20 @@ namespace GW_Dogovor
         bool R = false;
 
         #region BindingSource
-        public static BindingSource bndProject = new BindingSource();
-        BindingSource bndAreaStroy = new BindingSource();
-        BindingSource bndDocument = new BindingSource();
-        BindingSource bndTypeDoc = new BindingSource();
-        BindingSource bndTender = new BindingSource();
-        BindingSource bndStadia = new BindingSource();
-        BindingSource bndGip = new BindingSource();
-        BindingSource bndDogovor = new BindingSource();
-        BindingSource bndCalendarPlan = new BindingSource();
-        BindingSource bndDopDogovor = new BindingSource();
-        BindingSource bndObject = new BindingSource();
-        BindingSource bndAct = new BindingSource();
-        BindingSource bndSostavObj = new BindingSource();
-        BindingSource bndZadania = new BindingSource();
+        //public static BindingSource bndProject = new BindingSource();
+        //BindingSource bndAreaStroy = new BindingSource();
+        //BindingSource bndDocument = new BindingSource();
+        //BindingSource bndTypeDoc = new BindingSource();
+        //BindingSource bndTender = new BindingSource();
+        //BindingSource bndStadia = new BindingSource();
+        //BindingSource bndGip = new BindingSource();
+        //BindingSource bndDogovor = new BindingSource();
+        //BindingSource bndCalendarPlan = new BindingSource();
+        //BindingSource bndDopDogovor = new BindingSource();
+        //BindingSource bndObject = new BindingSource();
+        //BindingSource bndAct = new BindingSource();
+        //BindingSource bndSostavObj = new BindingSource();
+        //BindingSource bndZadania = new BindingSource();
       
         #endregion
         public Form_main()
@@ -83,93 +83,93 @@ namespace GW_Dogovor
         public void ConnectDB()
         {
             DB_Cmd.DBLoad();
+            #region InitializationBnd
+            ////Project
+            //bndProject.DataSource = DB_Cmd.dsDB;
+            //bndProject.DataMember = "Project";
+            //bndAreaStroy.DataSource = DB_Cmd.dsDB;
+            //bndAreaStroy.DataMember = "Customers";
+            ////Ish Documents
+            //bndDocument.DataSource = bndProject; //привязка по связи к Проекту
+            //bndDocument.DataMember = "ProjectDocuments";
+            //bndTypeDoc.DataSource = DB_Cmd.dsDB;
+            //bndTypeDoc.DataMember = "Documets_type";
+            ////Tender
+            //bndTender.DataSource = bndProject;
+            //bndTender.DataMember = "ProjectTender";
+            //bndStadia.DataSource = DB_Cmd.dsDB;
+            //bndStadia.DataMember = "Stady_project";
+            //bndGip.DataSource = DB_Cmd.dsDB;
+            //bndGip.DataMember = "Users GIP";
+            ////Dogovor
+            //bndDogovor.DataSource = bndProject;
+            //bndDogovor.DataMember = "ProjectDogovor";
+            //bndCalendarPlan.DataSource = bndDogovor;
+            //bndCalendarPlan.DataMember = "DogovorCalendarPlan";
+            //bndAct.DataSource = bndCalendarPlan;
+            //bndAct.DataMember = "CalendarPlanAct";
 
-            //Project
-            bndProject.DataSource = DB_Cmd.dsDB;
-            bndProject.DataMember = "Project";
-            bndAreaStroy.DataSource = DB_Cmd.dsDB;
-            bndAreaStroy.DataMember = "Customers";
-            //Ish Documents
-            bndDocument.DataSource = bndProject; //привязка по связи к Проекту
-            bndDocument.DataMember = "ProjectDocuments";
-            bndTypeDoc.DataSource = DB_Cmd.dsDB;
-            bndTypeDoc.DataMember = "Documets_type";
-            //Tender
-            bndTender.DataSource = bndProject;
-            bndTender.DataMember = "ProjectTender";
-            bndStadia.DataSource = DB_Cmd.dsDB;
-            bndStadia.DataMember = "Stady_project";
-            bndGip.DataSource = DB_Cmd.dsDB;
-            bndGip.DataMember = "Users GIP";
-            //Dogovor
-            bndDogovor.DataSource = bndProject;
-            bndDogovor.DataMember = "ProjectDogovor";
-            bndCalendarPlan.DataSource = bndDogovor;
-            bndCalendarPlan.DataMember = "DogovorCalendarPlan";
-            bndAct.DataSource = bndCalendarPlan;
-            bndAct.DataMember = "CalendarPlanAct";
+            ////DopDogovor
+            //bndDopDogovor.DataSource = bndDogovor;
+            //bndDopDogovor.DataMember = "DogovorDopSoglashenia";
 
-            //DopDogovor
-            bndDopDogovor.DataSource = bndDogovor;
-            bndDopDogovor.DataMember = "DogovorDopSoglashenia";
+            ////Object
+            //bndObject.DataSource = bndDogovor;
+            //bndObject.DataMember = "DogovorOBJECTS";
+            //bndSostavObj.DataSource = bndObject;
+            //bndSostavObj.DataMember = "OBJECTSSostavDoc";
+            //bndZadania.DataSource = bndObject;
+            //bndZadania.DataMember = "OBJECTSZadania";
+            #endregion
 
-            //Object
-            bndObject.DataSource = bndDogovor;
-            bndObject.DataMember = "DogovorOBJECTS";
-            bndSostavObj.DataSource = bndObject;
-            bndSostavObj.DataMember = "OBJECTSSostavDoc";
-            bndZadania.DataSource = bndObject;
-            bndZadania.DataMember = "OBJECTSZadania";
- 
-           
         }
 
         #region ViewForms 
         // Установка связей контролов с базой
         private void SetViewDataProject()
         {
-            tbNameProject.DataBindings.Add("Text", bndProject, "Name");
-            tb_Code_object.DataBindings.Add("Text", bndProject, "Code_object");
-            tb_pName.DataBindings.Add("Text", bndProject, "Name");
-            tb_pNotes.DataBindings.Add("Text", bndProject, "Notes");
-            tb_AreaStroy.DataBindings.Add("Text", bndProject, "AreaStroy"); // Parent([CustomersProject]).[NameCust]
-            tb_Status.DataBindings.Add("Text", bndProject, "Status");
-            link_LocalFld.DataBindings.Add("Text", bndProject, "Path_folder");
-            link_ServetFld.DataBindings.Add("Text", bndProject, "Path_server");
+            tbNameProject.DataBindings.Add("Text", DB_Cmd.bndProject, "Name");
+            tb_Code_object.DataBindings.Add("Text", DB_Cmd.bndProject, "Code_object");
+            tb_pName.DataBindings.Add("Text", DB_Cmd.bndProject, "Name");
+            tb_pNotes.DataBindings.Add("Text", DB_Cmd.bndProject, "Notes");
+            tb_AreaStroy.DataBindings.Add("Text", DB_Cmd.bndProject, "AreaStroy"); // Parent([CustomersProject]).[NameCust]
+            tb_Status.DataBindings.Add("Text", DB_Cmd.bndProject, "Status");
+            link_LocalFld.DataBindings.Add("Text", DB_Cmd.bndProject, "Path_folder");
+            link_ServetFld.DataBindings.Add("Text", DB_Cmd.bndProject, "Path_server");
 
             grid_ProjectCode.AutoGenerateColumns = false;
-            grid_ProjectCode.DataSource = bndProject;
+            grid_ProjectCode.DataSource = DB_Cmd.bndProject;
             grid_ProjectCode.Columns["Code_object"].DataPropertyName = "Code_object";
         }
         private void SetViewDataDocument()
         {
             // Parent([Documets_typeDocuments]).[Name_doc]
             gridDocument.AutoGenerateColumns = false;
-            gridDocument.DataSource = bndDocument;
+            gridDocument.DataSource = DB_Cmd.bndDocument;
             gridDocument.Columns["NameDoc"].DataPropertyName = "NameDoc";
             gridDocument.Columns["Nambe_Doc"].DataPropertyName = "Nambe_Doc";
             gridDocument.Columns["DataDoc"].DataPropertyName = "DataDoc";
             gridDocument.Columns["Status"].DataPropertyName = "Status";
             gridDocument.Columns["PathDoc"].DataPropertyName = "PathDoc";
 
-            bndNvg_IshDoc.BindingSource = bndDocument;
+            bndNvg_IshDoc.BindingSource = DB_Cmd.bndDocument;
          
         }
         private void SetViewTender()
         {
-            bndNavigatorTender.BindingSource = bndTender;
+            bndNavigatorTender.BindingSource = DB_Cmd.bndTender;
             
-            tb_TndCustomer.DataBindings.Add("Text", bndTender, "Customer");
-            tb_TndName.DataBindings.Add("Text", bndTender, "Name_Tender");
-            tb_TndStadia.DataBindings.Add("Text", bndTender, "Stadia");
-            dtp_TenderData.DataBindings.Add("Text", bndTender, "Data_End");
-            tb_TndStatus.DataBindings.Add("Text", bndTender, "Status");
-            tb_TndGIP.DataBindings.Add("Text", bndTender, "NameGip");
-            tb_TndSostav.DataBindings.Add("Text", bndTender, "Sostav");
-            tb_TndComents.DataBindings.Add("Text", bndTender, "Comments");
+            tb_TndCustomer.DataBindings.Add("Text", DB_Cmd.bndTender, "Customer");
+            tb_TndName.DataBindings.Add("Text", DB_Cmd.bndTender, "Name_Tender");
+            tb_TndStadia.DataBindings.Add("Text", DB_Cmd.bndTender, "Stadia");
+            dtp_TenderData.DataBindings.Add("Text", DB_Cmd.bndTender, "Data_End");
+            tb_TndStatus.DataBindings.Add("Text", DB_Cmd.bndTender, "Status");
+            tb_TndGIP.DataBindings.Add("Text", DB_Cmd.bndTender, "NameGip");
+            tb_TndSostav.DataBindings.Add("Text", DB_Cmd.bndTender, "Sostav");
+            tb_TndComents.DataBindings.Add("Text", DB_Cmd.bndTender, "Comments");
 
             grid_TenderDoc.AutoGenerateColumns = false;
-            grid_TenderDoc.DataSource = bndDocument;
+            grid_TenderDoc.DataSource = DB_Cmd.bndDocument;
             grid_TenderDoc.Columns["NameTDoc"].DataPropertyName = "NameDoc";
             grid_TenderDoc.Columns["StatudTDoc"].DataPropertyName = "Status";
             grid_TenderDoc.Columns["PathTDoc"].DataPropertyName = "PathDoc";
@@ -178,35 +178,35 @@ namespace GW_Dogovor
         }
         private void SetViewDogovor()
         {
-            bndNavigatorDogovor.BindingSource = bndDogovor;
-            bndNavigator_KP_Dog.BindingSource = bndCalendarPlan;
+            bndNavigatorDogovor.BindingSource = DB_Cmd.bndDogovor;
+            bndNavigator_KP_Dog.BindingSource = DB_Cmd.bndCalendarPlan;
             //bndCalendarPlan.RemoveFilter();
 
 
-            tb_NumDog.DataBindings.Add("Text", bndDogovor, "Nambe_Dog");
-            dtp_DateDog.DataBindings.Add("Text", bndDogovor, "DataOt");
-            tb_StatusDog.DataBindings.Add("Text", bndDogovor, "Status");
-            dtp_ToDateDog.DataBindings.Add("Text", bndDogovor, "Data_Konec");
-            tb_NameDog.DataBindings.Add("Text", bndDogovor, "Name_Dog");
+            tb_NumDog.DataBindings.Add("Text", DB_Cmd.bndDogovor, "Nambe_Dog");
+            dtp_DateDog.DataBindings.Add("Text", DB_Cmd.bndDogovor, "DataOt");
+            tb_StatusDog.DataBindings.Add("Text", DB_Cmd.bndDogovor, "Status");
+            dtp_ToDateDog.DataBindings.Add("Text", DB_Cmd.bndDogovor, "Data_Konec");
+            tb_NameDog.DataBindings.Add("Text", DB_Cmd.bndDogovor, "Name_Dog");
             // tb_AllSummDog
             // tb_spentSummDog
             // tb_remainedSummDog
-            tb_CommentDog.DataBindings.Add("Text", bndDogovor, "Comments");
+            tb_CommentDog.DataBindings.Add("Text", DB_Cmd.bndDogovor, "Comments");
             
             // grid Dogovor
             grid_Dogovor.AutoGenerateColumns = false;
-            grid_Dogovor.DataSource = bndDogovor;
+            grid_Dogovor.DataSource = DB_Cmd.bndDogovor;
             grid_Dogovor.Columns["NumDogovor"].DataPropertyName = "Nambe_Dog";
 
             // grid Documents
             grid_DogovorDoc.AutoGenerateColumns = false;
-            grid_DogovorDoc.DataSource = bndDocument;
+            grid_DogovorDoc.DataSource = DB_Cmd.bndDocument;
             grid_DogovorDoc.Columns["dogNameDoc"].DataPropertyName = "NameDoc";
             //grid_DogovorDoc.Columns["dRunDoc"].DataPropertyName = "PathDoc";
 
             // grid CPlan
             grid_CPlan.AutoGenerateColumns = false;
-            grid_CPlan.DataSource = bndCalendarPlan;
+            grid_CPlan.DataSource = DB_Cmd.bndCalendarPlan;
             grid_CPlan.Columns["Num_Etap"].DataPropertyName = "Num_Etap";
             grid_CPlan.Columns["Name_Etap"].DataPropertyName = "Name_Etap";
             grid_CPlan.Columns["Nachalo_Data"].DataPropertyName = "Nachalo_Data";
@@ -221,40 +221,40 @@ namespace GW_Dogovor
         }
         private void SetViewDDog()
         {
-            tb_NumDD.DataBindings.Add("Text", bndDopDogovor, "Nambe_DS");
-            tb_DateDD.DataBindings.Add("Text", bndDopDogovor, "DataPodp");
-            tb_StatusDD.DataBindings.Add("Text", bndDopDogovor, "Status");
-            tb_ToDateDD.DataBindings.Add("Text", bndDopDogovor, "Data_Konec");
-            tb_NotesDD.DataBindings.Add("Text", bndDopDogovor, "Comments");
+            tb_NumDD.DataBindings.Add("Text", DB_Cmd.bndDopDogovor, "Nambe_DS");
+            tb_DateDD.DataBindings.Add("Text", DB_Cmd.bndDopDogovor, "DataPodp");
+            tb_StatusDD.DataBindings.Add("Text", DB_Cmd.bndDopDogovor, "Status");
+            tb_ToDateDD.DataBindings.Add("Text", DB_Cmd.bndDopDogovor, "Data_Konec");
+            tb_NotesDD.DataBindings.Add("Text", DB_Cmd.bndDopDogovor, "Comments");
 
             grid_DD.AutoGenerateColumns = false;
-            grid_DD.DataSource = bndDopDogovor;
+            grid_DD.DataSource = DB_Cmd.bndDopDogovor;
             grid_DD.Columns["NumDD"].DataPropertyName = "Nambe_DS";
 
-            bndNavigatorDDog.BindingSource = bndDopDogovor;
-            bndNavigator_KP_Dop.BindingSource = bndCalendarPlan;
+            bndNavigatorDDog.BindingSource = DB_Cmd.bndDopDogovor;
+            bndNavigator_KP_Dop.BindingSource = DB_Cmd.bndCalendarPlan;
             //bndCalendarPlan.Filter = "";
             
         }
         private void SetViewObject()
         {
-            tb_NameUObject.DataBindings.Add("Text", bndObject, "Name_Ustanovka");
-            tb_NameObject.DataBindings.Add("Text", bndObject, "Name_object");
-            tb_CodeObject.DataBindings.Add("Text", bndObject, "Nambe_Object");
-            tb_TitleObject.DataBindings.Add("Text", bndObject, "Titul");
-            tb_BlockObject.DataBindings.Add("Text", bndObject, "Block");
+            tb_NameUObject.DataBindings.Add("Text", DB_Cmd.bndObject, "Name_Ustanovka");
+            tb_NameObject.DataBindings.Add("Text", DB_Cmd.bndObject, "Name_object");
+            tb_CodeObject.DataBindings.Add("Text", DB_Cmd.bndObject, "Nambe_Object");
+            tb_TitleObject.DataBindings.Add("Text", DB_Cmd.bndObject, "Titul");
+            tb_BlockObject.DataBindings.Add("Text", DB_Cmd.bndObject, "Block");
           
             //GIP
-            tb_GIPObject.DataBindings.Add("Text", bndObject, "NameGIP");
+            tb_GIPObject.DataBindings.Add("Text", DB_Cmd.bndObject, "NameGIP");
 
             grid_Object.AutoGenerateColumns = false;
-            grid_Object.DataSource = bndObject;
+            grid_Object.DataSource = DB_Cmd.bndObject;
             grid_Object.Columns["CodeObj"].DataPropertyName = "CodeOBJ";
 
-            bndNavigatorObject.BindingSource = bndObject;
-            bndNavigator_Graph_Mark.BindingSource = bndSostavObj;
-            bndNavigator_Graph_Z.BindingSource = bndZadania;
-            bndNavigator_Z.BindingSource = bndZadania;
+            bndNavigatorObject.BindingSource = DB_Cmd.bndObject;
+            bndNavigator_Graph_Mark.BindingSource = DB_Cmd.bndSostavObj;
+            bndNavigator_Graph_Z.BindingSource = DB_Cmd.bndZadania;
+            bndNavigator_Z.BindingSource = DB_Cmd.bndZadania;
 
         }
         //
@@ -266,7 +266,7 @@ namespace GW_Dogovor
             tf.CreateTree(tree);
             tree.ExpandAll();
         }
-        private void SetViewTabControl()
+        private void SetViewTabControl() /// логика - вынести из UI
         {
             //0-ИД; 1-Письма; 2-Задания; 3-Тендер; 4-Договор; 5-График; 6- Объект; 7- Изыскания; 8- Штамп; 9- Разное; 10- Основные положения; 11- Входящие; 12- Исходящие
             switch (tabControlMain.SelectedIndex)
@@ -275,10 +275,10 @@ namespace GW_Dogovor
                     SelectedTypeDocuments();
                     break;
                 case 1: // Тендер
-                    bndDocument.Filter = "(Project_id Not Is Null) AND (Tender_id Not Is Null) AND (Object_id Is Null) AND (Event_id Is Null) AND (Act_id Is Null)";
+                    DB_Cmd.bndDocument.Filter = "(Project_id Not Is Null) AND (Tender_id Not Is Null) AND (Object_id Is Null) AND (Event_id Is Null) AND (Act_id Is Null)";
                     break;
                 case 2: // Договор * добавить поле id_Dogovor
-                    bndDocument.Filter = "(Project_id Not Is Null) AND (Tender_id Not Is Null) AND (Object_id Is Null) AND (Event_id Is Null) AND (Act_id Is Null)";
+                    DB_Cmd.bndDocument.Filter = "(Project_id Not Is Null) AND (Tender_id Not Is Null) AND (Object_id Is Null) AND (Event_id Is Null) AND (Act_id Is Null)";
                     break;
                 case 3:
 
@@ -295,7 +295,7 @@ namespace GW_Dogovor
 
                     break;
                 default:
-                    bndDocument.RemoveFilter();
+                    DB_Cmd.bndDocument.RemoveFilter();
                     break;
 
                     
@@ -312,23 +312,23 @@ namespace GW_Dogovor
                 switch (tabDocuments.SelectedIndex)
                 {
                     case 0: /// Исходные данные
-                       
-                        bndDocument.Filter = "(Project_id Not Is Null) AND (Tender_id Is Null) AND (Object_id Is Null) " +
+
+                        DB_Cmd.bndDocument.Filter = "(Project_id Not Is Null) AND (Tender_id Is Null) AND (Object_id Is Null) " +
                             "AND (Event_id Is Null) AND (Act_id Is Null) AND (Control = false)";
                         break;
                     case 1: /// Письма на контроле
-                       
-                        bndDocument.Filter = "(Project_id Not Is Null) AND (Tender_id Is Null) AND (Object_id Is Null) " +
+
+                        DB_Cmd.bndDocument.Filter = "(Project_id Not Is Null) AND (Tender_id Is Null) AND (Object_id Is Null) " +
                             "AND (Event_id Is Null) AND (Act_id Is Null) AND (Control = true)";
                         break;
                     case 2: /// Задания
-                       
-                        bndDocument.Filter = "(Project_id Not Is Null) AND (Tender_id Not Is Null) AND (Object_id Not Is Null) " +
+
+                        DB_Cmd.bndDocument.Filter = "(Project_id Not Is Null) AND (Tender_id Not Is Null) AND (Object_id Not Is Null) " +
                            "AND (Event_id Is Null) AND (Act_id Is Null) AND (Control = false)";
                         break;
                     default: // Исходные данные
-                       
-                        bndDocument.Filter = "(Project_id Not Is Null) AND (Tender_id Is Null) AND (Object_id Is Null) " +
+
+                        DB_Cmd.bndDocument.Filter = "(Project_id Not Is Null) AND (Tender_id Is Null) AND (Object_id Is Null) " +
                            "AND (Event_id Is Null) AND (Act_id Is Null) AND (Control = false)";
                         break;
                 }
@@ -337,14 +337,14 @@ namespace GW_Dogovor
         } // Фильтры для Документов вкладка Документы
         private void SetViewBindNavigators()
         {
-            if (bndProject.Count != 0)
+            if (DB_Cmd.bndProject.Count != 0)
             { 
               bndNvg_IshDoc.Enabled = true;
                 bndNavigatorTender.Enabled = true;
-                if (bndTender.Count != 0)
+                if (DB_Cmd.bndTender.Count != 0)
                 {
                     bndNavigatorDogovor.Enabled = true;
-                    if (bndDogovor.Count != 0)
+                    if (DB_Cmd.bndDogovor.Count != 0)
                     {
                         bndNavigatorDDog.Enabled = true;
                         bndNavigatorObject.Enabled = true;
@@ -537,22 +537,22 @@ namespace GW_Dogovor
 
             tb_TndComents.DoubleClick += (s, a) =>
             {
-                dbEditText(bndTender, "Comments");
+                dbEditText(DB_Cmd.bndTender, "Comments");
             };
 
             tb_pNotes.DoubleClick += (s, a) =>
             {
-                dbEditText(bndProject, "Notes");
+                dbEditText(DB_Cmd.bndProject, "Notes");
             };
 
             tb_CommentDog.DoubleClick += (s, a) =>
             {
-                dbEditText(bndDogovor, "Comments");
+                dbEditText(DB_Cmd.bndDogovor, "Comments");
             };
 
             tb_NotesDD.DoubleClick += (s, a) =>
             {
-                dbEditText(bndDopDogovor, "Comments");
+                dbEditText(DB_Cmd.bndDopDogovor, "Comments");
             };
 
             tbtn_EditDog.Click += (s, a) =>
@@ -619,26 +619,26 @@ namespace GW_Dogovor
         #region Project
         public static void AddProject()
         {
-            DB_Cmd.AddProject(bndProject);
+            DB_Cmd.AddProject(DB_Cmd.bndProject);
         }
 
         public static void DeleteProject()
         {
-            DB_Cmd.DeleteProject(bndProject);
+            DB_Cmd.DeleteProject(DB_Cmd.bndProject);
         }
 
         private void EditProject()
         {
-            Form_editProject fed = new Form_editProject(bndProject, bndAreaStroy);
+            Form_editProject fed = new Form_editProject(DB_Cmd.bndProject, DB_Cmd.bndAreaStroy);
             if (fed.ShowDialog() == DialogResult.OK)
             {
                 fed.Validate();
-                DB_Cmd.SaveProject(bndProject);
+                DB_Cmd.SaveProject(DB_Cmd.bndProject);
             }
             else
             {
                 fed.Validate();
-                DB_Cmd.CancelProject(bndProject);
+                DB_Cmd.CancelProject(DB_Cmd.bndProject);
             }
         }
 
@@ -660,31 +660,31 @@ namespace GW_Dogovor
         #region Dogovor
         private void EditDogovor()
         {
-            Form_editDogovor fе = new Form_editDogovor(bndDogovor, bndAreaStroy, bndStadia, bndGip);
+            Form_editDogovor fе = new Form_editDogovor(DB_Cmd.bndDogovor, DB_Cmd.bndAreaStroy, DB_Cmd.bndStadia, DB_Cmd.bndGip);
 
             if (fе.ShowDialog() == DialogResult.OK)
             {
                 fе.Validate();
-                DB_Cmd.SaveDogovor(bndDogovor);
+                DB_Cmd.SaveDogovor(DB_Cmd.bndDogovor);
             }
             else
             {
                 fе.Validate();
-                DB_Cmd.CancelDogovor(bndDogovor);
+                DB_Cmd.CancelDogovor(DB_Cmd.bndDogovor);
             }
         }
         private void AddDogovor()
         {
-            if (bndTender.Count != 0)
+            if (DB_Cmd.bndTender.Count != 0)
             {
-                DB_Cmd.AddDogovor(bndDogovor);
+                DB_Cmd.AddDogovor(DB_Cmd.bndDogovor);
 
-                ((DataRowView)bndDogovor.Current).Row["IDCust"] = ((DataRowView)bndTender.Current).Row["IDCust"];
-                ((DataRowView)bndDogovor.Current).Row["Name_Dog"] = ((DataRowView)bndTender.Current).Row["Name_Tender"];
-                ((DataRowView)bndDogovor.Current).Row["IDGip"] = ((DataRowView)bndTender.Current).Row["GIP"];
-                ((DataRowView)bndDogovor.Current).Row["id_Tender"] = ((DataRowView)bndTender.Current).Row["ID_Teder"];
-                ((DataRowView)bndDogovor.Current).Row["IDStady"] = ((DataRowView)bndTender.Current).Row["IDStadia"];
-                ((DataRowView)bndDogovor.Current).Row["Sostav"] = ((DataRowView)bndTender.Current).Row["Sostav"];
+                ((DataRowView)DB_Cmd.bndDogovor.Current).Row["IDCust"] = ((DataRowView)DB_Cmd.bndTender.Current).Row["IDCust"];
+                ((DataRowView)DB_Cmd.bndDogovor.Current).Row["Name_Dog"] = ((DataRowView)DB_Cmd.bndTender.Current).Row["Name_Tender"];
+                ((DataRowView)DB_Cmd.bndDogovor.Current).Row["IDGip"] = ((DataRowView)DB_Cmd.bndTender.Current).Row["GIP"];
+                ((DataRowView)DB_Cmd.bndDogovor.Current).Row["id_Tender"] = ((DataRowView)DB_Cmd.bndTender.Current).Row["ID_Teder"];
+                ((DataRowView)DB_Cmd.bndDogovor.Current).Row["IDStady"] = ((DataRowView)DB_Cmd.bndTender.Current).Row["IDStadia"];
+                ((DataRowView)DB_Cmd.bndDogovor.Current).Row["Sostav"] = ((DataRowView)DB_Cmd.bndTender.Current).Row["Sostav"];
                 EditDogovor();
             }
             else
@@ -694,34 +694,34 @@ namespace GW_Dogovor
         }
         private void DeleteDogovor()
         {
-            DB_Cmd.DeleteDogovor(bndDogovor);
-            DB_Cmd.SaveDogovor(bndDogovor);
+            DB_Cmd.DeleteDogovor(DB_Cmd.bndDogovor);
+            DB_Cmd.SaveDogovor(DB_Cmd.bndDogovor);
         }
         #endregion
 
         #region DopDogovor
         private void EditDopDogovor()
         {
-            Form_editDDogovor fе = new Form_editDDogovor(bndDopDogovor);
+            Form_editDDogovor fе = new Form_editDDogovor(DB_Cmd.bndDopDogovor);
 
             if (fе.ShowDialog() == DialogResult.OK)
             {
                 fе.Validate();
-                DB_Cmd.SaveDopSoglashenia(bndDopDogovor);
+                DB_Cmd.SaveDopSoglashenia(DB_Cmd.bndDopDogovor);
             }
             else
             {
                 fе.Validate();
-                DB_Cmd.CancelDopSoglashenia(bndDopDogovor);
+                DB_Cmd.CancelDopSoglashenia(DB_Cmd.bndDopDogovor);
             }
         }
         private void AddDopDogovor()
         {
-            if (bndDogovor.Count != 0)
+            if (DB_Cmd.bndDogovor.Count != 0)
             {
-                DB_Cmd.AddDopSoglashenia(bndDopDogovor);
+                DB_Cmd.AddDopSoglashenia(DB_Cmd.bndDopDogovor);
 
-                ((DataRowView)bndDopDogovor.Current).Row["DogID"] = ((DataRowView)bndDogovor.Current).Row["DogID"];
+                ((DataRowView)DB_Cmd.bndDopDogovor.Current).Row["DogID"] = ((DataRowView)DB_Cmd.bndDogovor.Current).Row["DogID"];
 
                 EditDopDogovor();
             }
@@ -732,29 +732,29 @@ namespace GW_Dogovor
         }
         private void DeleteDopDogovor()
         {
-            DB_Cmd.DeleteDopSoglashenia(bndDopDogovor);
-            DB_Cmd.SaveDopSoglashenia(bndDopDogovor);
+            DB_Cmd.DeleteDopSoglashenia(DB_Cmd.bndDopDogovor);
+            DB_Cmd.SaveDopSoglashenia(DB_Cmd.bndDopDogovor);
         }
         #endregion
 
         #region Document
         private void EditDoc()
         {
-            Form_editDocument fed = new Form_editDocument(bndDocument, bndTypeDoc);
+            Form_editDocument fed = new Form_editDocument(DB_Cmd.bndDocument, DB_Cmd.bndTypeDoc);
             if (fed.ShowDialog() == DialogResult.OK)
             {
                 fed.Validate();
-                DB_Cmd.SaveDoc(bndDocument);
+                DB_Cmd.SaveDoc(DB_Cmd.bndDocument);
             }
             else
             {
                 fed.Validate();
-                DB_Cmd.CancelDoc(bndDocument);
+                DB_Cmd.CancelDoc(DB_Cmd.bndDocument);
             }
         }
         private void AddDoc()
         {
-            DB_Cmd.AddDoc(bndDocument);
+            DB_Cmd.AddDoc(DB_Cmd.bndDocument);
             EditDoc();
         }
         private void DeleteDoc(string fld)
@@ -806,34 +806,34 @@ namespace GW_Dogovor
         #region Tender
         private void EditTender()
         {
-            Form_editTender fе = new Form_editTender(bndTender, bndAreaStroy, bndStadia, bndGip);
+            Form_editTender fе = new Form_editTender(DB_Cmd.bndTender, DB_Cmd.bndAreaStroy, DB_Cmd.bndStadia, DB_Cmd.bndGip);
 
             if (fе.ShowDialog() == DialogResult.OK)
             {
                 fе.Validate();
-                DB_Cmd.SaveTender(bndTender);
+                DB_Cmd.SaveTender(DB_Cmd.bndTender);
             }
             else
             {
                 fе.Validate();
-                DB_Cmd.CancelTender(bndTender);
+                DB_Cmd.CancelTender(DB_Cmd.bndTender);
             }
         }
 
         private void AddTender()
         {
-            DB_Cmd.AddTender(bndTender);
+            DB_Cmd.AddTender(DB_Cmd.bndTender);
 
-            ((DataRowView)bndTender.Current).Row["IDCust"] = ((DataRowView)bndProject.Current).Row["AreaStroy_ID"];
-            ((DataRowView)bndTender.Current).Row["Name_Tender"] = ((DataRowView)bndProject.Current).Row["Name"];
+            ((DataRowView)DB_Cmd.bndTender.Current).Row["IDCust"] = ((DataRowView)DB_Cmd.bndProject.Current).Row["AreaStroy_ID"];
+            ((DataRowView)DB_Cmd.bndTender.Current).Row["Name_Tender"] = ((DataRowView)DB_Cmd.bndProject.Current).Row["Name"];
 
             EditTender();
         }
 
         private void DeleteTender()
         {
-            DB_Cmd.DeleteTender(bndTender);
-            DB_Cmd.SaveTender(bndTender);
+            DB_Cmd.DeleteTender(DB_Cmd.bndTender);
+            DB_Cmd.SaveTender(DB_Cmd.bndTender);
         }
 
         #endregion
@@ -841,28 +841,28 @@ namespace GW_Dogovor
         #region Object
         private void EditObject()
         {
-            Form_editObject fе = new Form_editObject(bndObject, bndGip, bndStadia);
+            Form_editObject fе = new Form_editObject(DB_Cmd.bndObject, DB_Cmd.bndGip, DB_Cmd.bndStadia);
 
             if (fе.ShowDialog() == DialogResult.OK)
             {
                 fе.Validate();
-                DB_Cmd.SaveOBJECTS(bndObject);
+                DB_Cmd.SaveOBJECTS(DB_Cmd.bndObject);
             }
             else
             {
                 fе.Validate();
-                DB_Cmd.CancelOBJECTS(bndObject);
+                DB_Cmd.CancelOBJECTS(DB_Cmd.bndObject);
             }
         }
         private void AddObject()
         {
-            if (bndDogovor.Count != 0)
+            if (DB_Cmd.bndDogovor.Count != 0)
             {
-                DB_Cmd.AddOBJECTS(bndObject);
+                DB_Cmd.AddOBJECTS(DB_Cmd.bndObject);
 
-                ((DataRowView)bndObject.Current).Row["IDCust"] = ((DataRowView)bndDogovor.Current).Row["IDCust"];
-                ((DataRowView)bndObject.Current).Row["GIP"] = ((DataRowView)bndDogovor.Current).Row["IDGip"];
-                ((DataRowView)bndObject.Current).Row["Name_Ustanovka"] = ((DataRowView)bndDogovor.Current).Row["Name_Dog"];
+                ((DataRowView)DB_Cmd.bndObject.Current).Row["IDCust"] = ((DataRowView)DB_Cmd.bndDogovor.Current).Row["IDCust"];
+                ((DataRowView)DB_Cmd.bndObject.Current).Row["GIP"] = ((DataRowView)DB_Cmd.bndDogovor.Current).Row["IDGip"];
+                ((DataRowView)DB_Cmd.bndObject.Current).Row["Name_Ustanovka"] = ((DataRowView)DB_Cmd.bndDogovor.Current).Row["Name_Dog"];
 
 
                 EditObject();
@@ -874,8 +874,8 @@ namespace GW_Dogovor
         }
         private void DeleteObject()
         {
-            DB_Cmd.DeleteOBJECTS(bndObject);
-            DB_Cmd.SaveOBJECTS(bndObject);
+            DB_Cmd.DeleteOBJECTS(DB_Cmd.bndObject);
+            DB_Cmd.SaveOBJECTS(DB_Cmd.bndObject);
         }
 
         #endregion
@@ -884,7 +884,7 @@ namespace GW_Dogovor
         private void Edit_CPlan()
         {
             //Form_editObject fе = new Form_editObject(bndObject, bndGip, bndStadia);
-            Form_editCalendarPlan feCPlan = new Form_editCalendarPlan(bndCalendarPlan);
+            Form_editCalendarPlan feCPlan = new Form_editCalendarPlan(DB_Cmd.bndCalendarPlan);
             feCPlan.Show();
             //if (feCPlan.ShowDialog() == DialogResult.OK)
             //{
@@ -899,11 +899,11 @@ namespace GW_Dogovor
         }
         private void Add_CPlan()
         {
-            if (bndDogovor.Count != 0)
+            if (DB_Cmd.bndDogovor.Count != 0)
             {
                 //DB_Cmd.AddCalendarPlan(bndCalendarPlan);
 
-                Form_editCalendarPlan feCPlan = new Form_editCalendarPlan(bndCalendarPlan);
+                Form_editCalendarPlan feCPlan = new Form_editCalendarPlan(DB_Cmd.bndCalendarPlan);
                 feCPlan.Show();
 
             //   ((DataRowView)bndCalendarPlan.Current).Row["IDCust"] = ((DataRowView)bndDogovor.Current).Row["IDCust"];
@@ -920,8 +920,8 @@ namespace GW_Dogovor
         }
         private void Delete_CPlan()
         {
-            DB_Cmd.DeleteCalendarPlan(bndCalendarPlan);
-            DB_Cmd.SaveCalendarPlan(bndCalendarPlan);
+            DB_Cmd.DeleteCalendarPlan(DB_Cmd.bndCalendarPlan);
+            DB_Cmd.SaveCalendarPlan(DB_Cmd.bndCalendarPlan);
         }
 
         #endregion
@@ -1044,7 +1044,7 @@ namespace GW_Dogovor
             /// входные ListFiles (список файлов), ListNewFolderL (список локальных путей), GroupFile(группа документов) 
             foreach (string el in listFileDBPath)
             {
-                DB_Cmd.AddDocDragDrop(ListFiles, el, bndDocument, SubFolderIndex);
+                DB_Cmd.AddDocDragDrop(ListFiles, el, DB_Cmd.bndDocument, SubFolderIndex);
             }
             
             
@@ -1139,7 +1139,7 @@ namespace GW_Dogovor
                 }
                 /// Записать данные в базу
                 /// 
-                DB_Cmd.AddTenderDragDrop(newPathDoc, bndDocument, (int)((DataRowView)bndTender.Current).Row["ID_Teder"]);
+                DB_Cmd.AddTenderDragDrop(newPathDoc, DB_Cmd.bndDocument, (int)((DataRowView)DB_Cmd.bndTender.Current).Row["ID_Teder"]);
             }
         }
 
