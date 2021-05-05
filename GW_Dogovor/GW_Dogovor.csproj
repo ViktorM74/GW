@@ -33,19 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DBClass, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\DBClass\bin\Debug\DBClass.dll</HintPath>
-    </Reference>
-    <Reference Include="DocTYPELibrary">
-      <HintPath>..\DocTYPELibrary\bin\Debug\DocTYPELibrary.dll</HintPath>
-    </Reference>
-    <Reference Include="FileAction">
-      <HintPath>..\FileAction\bin\Debug\FileAction.dll</HintPath>
-    </Reference>
-    <Reference Include="InputBox">
-      <HintPath>..\..\InputBox\InputBox\bin\Debug\InputBox.dll</HintPath>
-    </Reference>
     <Reference Include="System">
       <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
     </Reference>
@@ -208,6 +195,20 @@
     <None Include="Resources\Save.bmp" />
     <Content Include="Resources\seo-and-web.png" />
     <None Include="Resources\seo-and-web1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DBClass\DBClass.csproj">
+      <Project>{bd48b48a-f061-4885-9137-0d4b8430225c}</Project>
+      <Name>DBClass</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DocTYPELibrary\DocTYPELibrary.csproj">
+      <Project>{29d2130f-4ca0-4b12-b71d-8025516fe00c}</Project>
+      <Name>DocTYPELibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FileAction\FileAction.csproj">
+      <Project>{85ebfd50-4585-49f5-b8fd-dd9235788d76}</Project>
+      <Name>FileAction</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

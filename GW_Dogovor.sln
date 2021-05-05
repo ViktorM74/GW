@@ -17,6 +17,23 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreeFoldersClass", "TreeFol
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileAction", "FileAction\FileAction.csproj", "{85EBFD50-4585-49F5-B8FD-DD9235788D76}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Zero", "Zero", "{125F2C6F-5675-4F9C-B937-2A1E959DE63F}"
+	ProjectSection(SolutionItems) = preProject
+		Reference.txt = Reference.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AppConfigs", "AppConfigs", "{787AF1D2-24CE-45A2-9FBF-094CB7899909}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DBClass", "DBClass", "{A93E4A6D-7186-445E-A038-C9489494F5AA}"
+	ProjectSection(SolutionItems) = preProject
+		DBClass\app.config = DBClass\app.config
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GW_Dogovor", "GW_Dogovor", "{C239FD0F-264F-4FF2-9E10-C67AB942D952}"
+	ProjectSection(SolutionItems) = preProject
+		GW_Dogovor\App.config = GW_Dogovor\App.config
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -54,6 +71,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{787AF1D2-24CE-45A2-9FBF-094CB7899909} = {125F2C6F-5675-4F9C-B937-2A1E959DE63F}
+		{A93E4A6D-7186-445E-A038-C9489494F5AA} = {787AF1D2-24CE-45A2-9FBF-094CB7899909}
+		{C239FD0F-264F-4FF2-9E10-C67AB942D952} = {787AF1D2-24CE-45A2-9FBF-094CB7899909}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {232BFA45-EA1D-4806-9AA3-07D9EAA97593}
