@@ -13,7 +13,7 @@ namespace DBClass
     {
         public static _bsp_snhpDataSet dsDB = new _bsp_snhpDataSet();
         public static TableAdapterManager tableManager = new TableAdapterManager();
-
+        #region TableAdapters
         public static ProjectTableAdapter adpProject = new ProjectTableAdapter();
         public static CustomersTableAdapter adpCustomer = new CustomersTableAdapter();
         public static DocumentsTableAdapter adpDocument = new DocumentsTableAdapter();
@@ -32,7 +32,8 @@ namespace DBClass
         public static HistoryTableAdapter adpHistory = new HistoryTableAdapter();
         public static OtdelTableAdapter adpOtdel = new OtdelTableAdapter();
         public static Users_GIPTableAdapter adpGIP = new Users_GIPTableAdapter();
-
+        #endregion TableAdapters
+        #region BindingSources
         public static BindingSource bndProject = new BindingSource();
         public static BindingSource bndAreaStroy = new BindingSource();
         public static BindingSource bndDocument = new BindingSource();
@@ -47,7 +48,7 @@ namespace DBClass
         public static BindingSource bndAct = new BindingSource();
         public static BindingSource bndSostavObj = new BindingSource();
         public static BindingSource bndZadania = new BindingSource();
-
+        #endregion BindingSources
 
         /// <summary>
         /// Загрузка данных в DataSet
@@ -161,62 +162,66 @@ namespace DBClass
             tableManager.UpdateOrder = TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
         }
 
-      
-        #region Project
-        public static bool SaveProject(BindingSource bnd)
+        public string GetCurrentValueField(BindingSource bnd, string Name)
         {
-            int position = bnd.Position;
-            string tableName = bnd.DataMember;
+            return ((DataRowView)bnd.Current).Row[Name].ToString();
+        }
+        
+       
+        #region Project
+
+        public static bool SaveProject()
+        {
+            int position = bndProject.Position;
+           
             try
             {
-                bnd.EndEdit();
-
+                bndProject.EndEdit();
+                adpProject.Update(dsDB.Project);
+                dsDB.Tables["Project"].AcceptChanges();
+                adpProject.Fill(dsDB.Project);
                 return true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Сохранение вызвало ошибку: " + ex.Message);
-                bnd.ResetBindings(false);
+                //bndProject.ResetBindings(false);
             }
             finally
             {
-                adpProject.Update(dsDB.Project);
-                dsDB.Tables["Project"].AcceptChanges();
-                adpProject.Fill(dsDB.Project);
-
-                bnd.Position = position;
+                bndProject.Position = position;
             }
 
             return false;
         }
 
-        public static void CancelProject(BindingSource bnd)
+        public static void CancelProject()
         {
-            int position = bnd.Position;
+            int position = bndProject.Position;
 
-            bnd.ResetBindings(false);
+            //bndProject.ResetBindings(false);
 
             adpProject.Update(dsDB.Project);
             dsDB.Tables["Project"].AcceptChanges();
             adpProject.Fill(dsDB.Project);
 
-            bnd.Position = position;
+            bndProject.Position = position;
         }
 
-        public static void AddProject(BindingSource bnd)
+        public static void AddProject()
         {
-            bnd.AddNew();
+            bndProject.AddNew();
         }
 
-        public static void DeleteProject(BindingSource bnd)
+        public static void DeleteProject()
         {
-            DataRowView rw = bnd.Current as DataRowView;
+            DataRowView rw = bndProject.Current as DataRowView;
             string NameDelete = rw.Row["Name"].ToString();
             if (MessageBox.Show("Вы действитель хотите удалить " + NameDelete + "? \r\n ДЕЙСТВИЕ НЕВОЗМОЖНО ОТМЕНИТЬ!", "Удаление записи", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 try
                 {
-                    bnd.RemoveCurrent();
+                    bndProject.RemoveCurrent();
                 }
                 catch (Exception ex)
                 {
@@ -226,7 +231,7 @@ namespace DBClass
 
             }
         }
-        #endregion
+        #endregion Project
 
         #region Document
 
@@ -416,17 +421,17 @@ namespace DBClass
         #endregion
 
         #region Tender
-        public static void SaveTender(BindingSource bnd)
+        public static void SaveTender()
         {
-            int position = bnd.Position;
+            int position = bndTender.Position;
             try
             {
-                bnd.EndEdit();
+                bndTender.EndEdit();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Сохранение вызвало ошибку: " + ex.Message);
-                bnd.ResetBindings(false);
+                //bndTender.ResetBindings(false);
             }
             finally
             {
@@ -434,37 +439,42 @@ namespace DBClass
                 dsDB.Tables["Tender"].AcceptChanges();
                 adpTender.Fill(dsDB.Tender);
 
-                bnd.Position = position;
+                bndTender.Position = position;
             }
         }
 
-        public static void CancelTender(BindingSource bnd)
+        public static void CancelTender()
         {
-            int position = bnd.Position;
+            int position = bndTender.Position;
 
-            bnd.ResetBindings(false);
+            //bndTender.ResetBindings(false);
 
             adpTender.Update(dsDB.Tender);
             dsDB.Tables["Tender"].AcceptChanges();
             adpTender.Fill(dsDB.Tender);
 
-            bnd.Position = position;
+            bndTender.Position = position;
+        }
+        
+        public static void AddTender()
+        {
+            bndTender.AddNew();
+            ((DataRowView)bndTender.Current).Row["IDCust"] = ((DataRowView)bndProject.Current).Row["AreaStroy_ID"];
+            ((DataRowView)bndTender.Current).Row["Name_Tender"] = ((DataRowView)bndProject.Current).Row["Name"];
+            
+
+            
         }
 
-        public static void AddTender(BindingSource bnd)
+        public static void DeleteTender()
         {
-            bnd.AddNew();
-        }
-
-        public static void DeleteTender(BindingSource bnd)
-        {
-            DataRowView rw = bnd.Current as DataRowView;
+            DataRowView rw = bndTender.Current as DataRowView;
             string NameDelete = rw.Row["Name_Tender"].ToString();
             if (MessageBox.Show("Вы действитель хотите удалить " + NameDelete + "? \r\n ДЕЙСТВИЕ НЕВОЗМОЖНО ОТМЕНИТЬ!", "Удаление записи", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 try
                 {
-                    bnd.RemoveCurrent();
+                    bndTender.RemoveCurrent();
                 }
                 catch (Exception ex)
                 {

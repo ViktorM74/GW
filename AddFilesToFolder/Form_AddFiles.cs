@@ -1,19 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using TreeFoldersClass;
 using FileAction;
 using System.IO;
+using TreeFoldersClass;
+using Distinary;
 
-namespace GW_Dogovor
+
+namespace AddFilesToFolder
 {
-    public partial class Form_SelectSave : Form
+    public partial class Form_AddFiles : Form
     {
         string pathL;
         string pathS;
@@ -23,7 +20,12 @@ namespace GW_Dogovor
         List<ListFile> listp = new List<ListFile>(); // список свойств (имя \ дата, путьЛок, путьСерв)
         List<string> listNPathFolders = new List<string>(); // список папок выбранных как путь сохранения
 
-        public Form_SelectSave(string pathLocal, string pathServer)
+        public Form_AddFiles()
+        {
+            InitializeComponent();
+        }
+
+        public Form_AddFiles(string pathLocal, string pathServer)
         {
             InitializeComponent();
 
@@ -40,7 +42,7 @@ namespace GW_Dogovor
         private void button1_Click(object sender, EventArgs e)
         {
             Close();
-            
+
         }
 
         private void MenuItemNewFolder_Click(object sender, EventArgs e)
@@ -72,15 +74,15 @@ namespace GW_Dogovor
                 default:
                     t = false;
                     break;
-            }             
-           if (t)
+            }
+            if (t)
             {
                 int inode = treeViewFolder.SelectedNode.Index;
                 TreeNode node = treeViewFolder.SelectedNode.Nodes.Insert(inode, tb_newNameFolder.Text);
                 treeViewFolder.SelectedNode.Expand();
                 treeViewFolder.SelectedNode = node;
                 treeViewFolder.Select();
-           }
+            }
         }
         private void MenuItemReName_Click(object sender, EventArgs e)
         {
@@ -146,11 +148,11 @@ namespace GW_Dogovor
             {
                 treeViewFolder.SelectedNode.Remove();
             }
-           
+
         }
         private void Form_SelectSave_Load(object sender, EventArgs e)
         {
-            Form_main.GetTreeDir(treeViewFolder, textBox1.Text);
+            TreeFolders.GetTreeDir(treeViewFolder, textBox1.Text);
             treeViewFolder.Nodes[0].Text = nameRoot;
             treeViewFolder.CheckBoxes = true;
         }
@@ -172,7 +174,7 @@ namespace GW_Dogovor
             listFileDBPath.Clear();
 
             CheckedNode(treeViewFolder.Nodes, listfolder);
-          
+
             foreach (TreeNode n in listfolder) // перебор папок
             {
                 string sp = (n.FullPath).Remove(0, nameRoot.Length + 1);
@@ -204,9 +206,9 @@ namespace GW_Dogovor
         {
             listp.Clear();
             listfolder.Clear();
-   
+
             CheckedNode(treeViewFolder.Nodes, listfolder);
-          
+
             foreach (string pfile in listfile) // перебор всех путей переданных по DargDrop
             {
                 if (FileA.GetAtributesPath(pfile))
@@ -222,7 +224,7 @@ namespace GW_Dogovor
                     string dfile = File.GetLastWriteTime(pfile).ToShortDateString(); //дата
                     string nfile = Path.GetFileName(pfile); // имя
                     listp.Add(new ListFile(pfile, nfile, dfile)); // создание списка файлов
-                    
+
                 }
             }
 
@@ -251,21 +253,21 @@ namespace GW_Dogovor
                                 lf.NewPathFile.pathLocal.Add(Path.Combine(pathL, sp));
                                 lf.NewPathFile.pathServer.Add(Path.Combine(pathS, sp));
                             }
-                           if (Napr == 1)
+                            if (Napr == 1)
                             {
                                 lf.NewPathFile.pathServer.Add(Path.Combine(pathS, sp));
                             }
-                           if (Napr == 0)
+                            if (Napr == 0)
                             {
                                 lf.NewPathFile.pathLocal.Add(Path.Combine(pathL, sp));
                             }
-                            
+
                         }
 
                         break;
                     case 1: // Письма
                         /// только локально
-                        lf.NewPathFile.pathLocal.Add(Path.Combine(pathL, Form_main.NameFld[6]));
+                        lf.NewPathFile.pathLocal.Add(Path.Combine(pathL, Libr.NameFld[6]));
                         lf.NewPathFile.pathServer.Add("");
                         /// выбор объекта
                         /// В имя папки добавить Название файла и дату 
@@ -315,7 +317,7 @@ namespace GW_Dogovor
         {
             treeViewFolder.SelectedNode = e.Node;
         }
-        
+
         #region test
         public void CreateListFolders()
         {
@@ -325,7 +327,7 @@ namespace GW_Dogovor
         }
         private void button1_Click_1(object sender, EventArgs e)
         {
-           
+
         }
         #endregion
 

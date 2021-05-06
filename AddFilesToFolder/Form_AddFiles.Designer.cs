@@ -1,6 +1,7 @@
-﻿namespace GW_Dogovor
+﻿
+namespace AddFilesToFolder
 {
-    partial class Form_SelectSave
+    partial class Form_AddFiles
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +30,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_SelectSave));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_AddFiles));
             this.treeViewFolder = new System.Windows.Forms.TreeView();
             this.contextMenuSave = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MenuItemNewFolder = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,6 +52,7 @@
             this.btnCreateFolder = new System.Windows.Forms.Button();
             this.btnRenameFolder = new System.Windows.Forms.Button();
             this.btnDeleteFolder = new System.Windows.Forms.Button();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.contextMenuSave.SuspendLayout();
             this.gb_Napravlenie.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -65,7 +67,7 @@
             this.treeViewFolder.Location = new System.Drawing.Point(0, 0);
             this.treeViewFolder.Name = "treeViewFolder";
             this.treeViewFolder.SelectedImageIndex = 3;
-            this.treeViewFolder.Size = new System.Drawing.Size(261, 372);
+            this.treeViewFolder.Size = new System.Drawing.Size(261, 363);
             this.treeViewFolder.TabIndex = 0;
             this.treeViewFolder.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeViewFolder_NodeMouseClick);
             // 
@@ -104,8 +106,8 @@
             // 
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "folder (1).png");
-            this.imageList1.Images.SetKeyName(1, "folder.png");
+            this.imageList1.Images.SetKeyName(0, "folder.png");
+            this.imageList1.Images.SetKeyName(1, "folder (1).png");
             this.imageList1.Images.SetKeyName(2, "icons8-folder-30.png");
             this.imageList1.Images.SetKeyName(3, "icons8-live-folder-30.png");
             // 
@@ -117,14 +119,15 @@
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(280, 13);
             this.textBox1.TabIndex = 1;
+            this.textBox1.Text = "путь к локальному каталогу";
             // 
             // btn_Close
             // 
             this.btn_Close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_Close.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btn_Close.Location = new System.Drawing.Point(413, 330);
+            this.btn_Close.Location = new System.Drawing.Point(421, 310);
             this.btn_Close.Name = "btn_Close";
-            this.btn_Close.Size = new System.Drawing.Size(122, 30);
+            this.btn_Close.Size = new System.Drawing.Size(122, 42);
             this.btn_Close.TabIndex = 2;
             this.btn_Close.Text = "Отменить";
             this.btn_Close.UseVisualStyleBackColor = true;
@@ -148,6 +151,7 @@
             this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(280, 13);
             this.textBox2.TabIndex = 1;
+            this.textBox2.Text = "путь к серверному каталогу";
             // 
             // label2
             // 
@@ -214,11 +218,11 @@
             // 
             this.btn_Accept.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_Accept.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btn_Accept.Location = new System.Drawing.Point(285, 330);
+            this.btn_Accept.Location = new System.Drawing.Point(293, 310);
             this.btn_Accept.Name = "btn_Accept";
-            this.btn_Accept.Size = new System.Drawing.Size(122, 30);
+            this.btn_Accept.Size = new System.Drawing.Size(122, 42);
             this.btn_Accept.TabIndex = 2;
-            this.btn_Accept.Text = "Подтвердить";
+            this.btn_Accept.Text = "Подтвердить копирование файлов";
             this.btn_Accept.UseVisualStyleBackColor = true;
             this.btn_Accept.Click += new System.EventHandler(this.btn_Accept_Click);
             // 
@@ -228,7 +232,7 @@
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox2.Location = new System.Drawing.Point(270, 203);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(273, 61);
+            this.groupBox2.Size = new System.Drawing.Size(273, 101);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Имя папки для создания либо переименования";
@@ -244,7 +248,7 @@
             // 
             // btnCreateFolder
             // 
-            this.btnCreateFolder.Location = new System.Drawing.Point(276, 264);
+            this.btnCreateFolder.Location = new System.Drawing.Point(276, 267);
             this.btnCreateFolder.Name = "btnCreateFolder";
             this.btnCreateFolder.Size = new System.Drawing.Size(75, 23);
             this.btnCreateFolder.TabIndex = 6;
@@ -254,7 +258,7 @@
             // 
             // btnRenameFolder
             // 
-            this.btnRenameFolder.Location = new System.Drawing.Point(357, 264);
+            this.btnRenameFolder.Location = new System.Drawing.Point(357, 267);
             this.btnRenameFolder.Name = "btnRenameFolder";
             this.btnRenameFolder.Size = new System.Drawing.Size(97, 23);
             this.btnRenameFolder.TabIndex = 6;
@@ -264,7 +268,7 @@
             // 
             // btnDeleteFolder
             // 
-            this.btnDeleteFolder.Location = new System.Drawing.Point(460, 264);
+            this.btnDeleteFolder.Location = new System.Drawing.Point(460, 267);
             this.btnDeleteFolder.Name = "btnDeleteFolder";
             this.btnDeleteFolder.Size = new System.Drawing.Size(75, 23);
             this.btnDeleteFolder.TabIndex = 6;
@@ -272,13 +276,23 @@
             this.btnDeleteFolder.UseVisualStyleBackColor = true;
             this.btnDeleteFolder.Click += new System.EventHandler(this.MenuItemDeleteFolder_Click);
             // 
-            // Form_SelectSave
+            // listBox1
+            // 
+            this.listBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(0, 363);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(547, 108);
+            this.listBox1.TabIndex = 7;
+            // 
+            // Form_AddFiles
             // 
             this.AcceptButton = this.btn_Accept;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.CancelButton = this.btn_Close;
-            this.ClientSize = new System.Drawing.Size(547, 372);
+            this.ClientSize = new System.Drawing.Size(547, 471);
             this.Controls.Add(this.btnDeleteFolder);
             this.Controls.Add(this.btnRenameFolder);
             this.Controls.Add(this.btnCreateFolder);
@@ -291,9 +305,10 @@
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.treeViewFolder);
+            this.Controls.Add(this.listBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.Name = "Form_SelectSave";
+            this.Name = "Form_AddFiles";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Параметры сохранения";
             this.TopMost = true;
@@ -331,5 +346,6 @@
         private System.Windows.Forms.Button btnCreateFolder;
         private System.Windows.Forms.Button btnRenameFolder;
         private System.Windows.Forms.Button btnDeleteFolder;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }

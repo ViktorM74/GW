@@ -12,6 +12,16 @@ namespace TreeFoldersClass
     {
         public String startPath { get; set; }
 
+
+        public static void GetTreeDir(TreeView tree, string root)
+        {
+            tree.Nodes.Clear();
+            TreeFolders tf = new TreeFolders();
+            tf.startPath = root;
+            tf.CreateTree(tree);
+            tree.ExpandAll();
+        }
+
         public void CreateTree(TreeView tree)
         {
             // Создаем корневой узел

@@ -13,36 +13,21 @@ using System.Windows.Forms;
 using FileAction;
 using TreeFoldersClass;
 using System.Collections;
+using ProjectClass;
+using TenderClass;
+using Distinary;
+using AddFilesToFolder;
 
 namespace GW_Dogovor
 {
     public partial class Form_main : Form
     {
-        //0-ИД; 1-Письма; 2-Задания; 3-Тендер; 4-Договор; 5-График; 6- Объект; 7- Изыскания; 8- Штамп; 9- Разное; 10- Основные положения; 11- Входящие; 12- Исходящие
-
-        public static string[] NameFld = { "Исходные данные", "Письма", "Задания", "Тендер", "Договор", "График", "Объект", "Изыскания", "Штамп",  "Разное", "Основные положения", "Входящие", "Исходящие" };
 
         string tPathDB;
 
         bool R = false;
 
-        #region BindingSource
-        //public static BindingSource bndProject = new BindingSource();
-        //BindingSource bndAreaStroy = new BindingSource();
-        //BindingSource bndDocument = new BindingSource();
-        //BindingSource bndTypeDoc = new BindingSource();
-        //BindingSource bndTender = new BindingSource();
-        //BindingSource bndStadia = new BindingSource();
-        //BindingSource bndGip = new BindingSource();
-        //BindingSource bndDogovor = new BindingSource();
-        //BindingSource bndCalendarPlan = new BindingSource();
-        //BindingSource bndDopDogovor = new BindingSource();
-        //BindingSource bndObject = new BindingSource();
-        //BindingSource bndAct = new BindingSource();
-        //BindingSource bndSostavObj = new BindingSource();
-        //BindingSource bndZadania = new BindingSource();
-      
-        #endregion
+     
         public Form_main()
         {
             InitializeComponent();
@@ -83,45 +68,6 @@ namespace GW_Dogovor
         public void ConnectDB()
         {
             DB_Cmd.DBLoad();
-            #region InitializationBnd
-            ////Project
-            //bndProject.DataSource = DB_Cmd.dsDB;
-            //bndProject.DataMember = "Project";
-            //bndAreaStroy.DataSource = DB_Cmd.dsDB;
-            //bndAreaStroy.DataMember = "Customers";
-            ////Ish Documents
-            //bndDocument.DataSource = bndProject; //привязка по связи к Проекту
-            //bndDocument.DataMember = "ProjectDocuments";
-            //bndTypeDoc.DataSource = DB_Cmd.dsDB;
-            //bndTypeDoc.DataMember = "Documets_type";
-            ////Tender
-            //bndTender.DataSource = bndProject;
-            //bndTender.DataMember = "ProjectTender";
-            //bndStadia.DataSource = DB_Cmd.dsDB;
-            //bndStadia.DataMember = "Stady_project";
-            //bndGip.DataSource = DB_Cmd.dsDB;
-            //bndGip.DataMember = "Users GIP";
-            ////Dogovor
-            //bndDogovor.DataSource = bndProject;
-            //bndDogovor.DataMember = "ProjectDogovor";
-            //bndCalendarPlan.DataSource = bndDogovor;
-            //bndCalendarPlan.DataMember = "DogovorCalendarPlan";
-            //bndAct.DataSource = bndCalendarPlan;
-            //bndAct.DataMember = "CalendarPlanAct";
-
-            ////DopDogovor
-            //bndDopDogovor.DataSource = bndDogovor;
-            //bndDopDogovor.DataMember = "DogovorDopSoglashenia";
-
-            ////Object
-            //bndObject.DataSource = bndDogovor;
-            //bndObject.DataMember = "DogovorOBJECTS";
-            //bndSostavObj.DataSource = bndObject;
-            //bndSostavObj.DataMember = "OBJECTSSostavDoc";
-            //bndZadania.DataSource = bndObject;
-            //bndZadania.DataMember = "OBJECTSZadania";
-            #endregion
-
         }
 
         #region ViewForms 
@@ -258,14 +204,7 @@ namespace GW_Dogovor
 
         }
         //
-        public static void GetTreeDir(TreeView tree, string root)
-        {
-            tree.Nodes.Clear();
-            TreeFolders tf = new TreeFolders();
-            tf.startPath = root;
-            tf.CreateTree(tree);
-            tree.ExpandAll();
-        }
+      
         private void SetViewTabControl() /// логика - вынести из UI
         {
             //0-ИД; 1-Письма; 2-Задания; 3-Тендер; 4-Договор; 5-График; 6- Объект; 7- Изыскания; 8- Штамп; 9- Разное; 10- Основные положения; 11- Входящие; 12- Исходящие
@@ -287,9 +226,9 @@ namespace GW_Dogovor
 
                     break;
                 case 5: // Архив
-                    tb_PathArh.Text = Settings.Default.PathArhive;
-                    if (Directory.Exists(tb_PathArh.Text))
-                                GetTreeDir(tree_Arh, tb_PathArh.Text);
+                    //tb_PathArh.Text = Settings.Default.PathArhive;
+                    //if (Directory.Exists(tb_PathArh.Text))
+                    //            GetTreeDir(tree_Arh, tb_PathArh.Text);
                     break;
                 case 6:
 
@@ -474,13 +413,15 @@ namespace GW_Dogovor
 
             tbtn_AddProject.Click += (s, a) =>
             {
-                AddProject();
+                DB_Cmd.AddProject();
+                
                 EditProject();
             };
 
             tbtn_DeleteProject.Click += (s, a) =>
             {
-                DeleteProject();
+                DB_Cmd.DeleteProject();
+                DB_Cmd.SaveProject();
             };
 
             tbtn_TndEdit.Click += (s, a) =>
@@ -490,12 +431,20 @@ namespace GW_Dogovor
 
             tbtn_TndAdd.Click += (s, a) =>
             {
-                AddTender();
+                DB_Cmd.AddTender();
+                FileA.CreateFolder("Тендер", link_LocalFld.Text);
+                string newPath = Path.Combine(Path.Combine(link_LocalFld.Text, "Тендер"), DateTime.Now.ToString("yyyy.MM.dd"));
+                FileA.CreateFolder(DateTime.Now.ToString("yyyy.MM.dd"), Path.Combine(link_LocalFld.Text, "Тендер"));
+                ((DataRowView)DB_Cmd.bndTender.Current).Row["Path"] = newPath;
+                EditTender();
+               
+                
             };
 
             tbtn_TndDelete.Click += (s, a) =>
             {
-                DeleteTender();
+                DB_Cmd.DeleteTender();
+                DB_Cmd.SaveTender();
             };
 
             tbtn_AddFolders.Click += (s, a) =>
@@ -617,29 +566,10 @@ namespace GW_Dogovor
 
         #region Add-Delete-Edit DB
         #region Project
-        public static void AddProject()
-        {
-            DB_Cmd.AddProject(DB_Cmd.bndProject);
-        }
-
-        public static void DeleteProject()
-        {
-            DB_Cmd.DeleteProject(DB_Cmd.bndProject);
-        }
-
         private void EditProject()
         {
-            Form_editProject fed = new Form_editProject(DB_Cmd.bndProject, DB_Cmd.bndAreaStroy);
-            if (fed.ShowDialog() == DialogResult.OK)
-            {
-                fed.Validate();
-                DB_Cmd.SaveProject(DB_Cmd.bndProject);
-            }
-            else
-            {
-                fed.Validate();
-                DB_Cmd.CancelProject(DB_Cmd.bndProject);
-            }
+            Form_Project fed = new Form_Project();
+            fed.ShowDialog();
         }
 
         #region DoubleClik_EditProject
@@ -654,6 +584,25 @@ namespace GW_Dogovor
             EditProject();
         }
         #endregion
+
+        #endregion
+
+        #region Tender
+        private void EditTender()
+        {
+            Form_Tender fe = new Form_Tender();
+  
+            if (fe.ShowDialog() == DialogResult.OK)
+            {
+                fe.Validate();
+                DB_Cmd.SaveTender();
+            }
+            else
+            {
+                fe.Validate();
+                DB_Cmd.CancelTender();
+            }
+        }
 
         #endregion
 
@@ -787,56 +736,23 @@ namespace GW_Dogovor
             switch (tabDocuments.SelectedIndex)
             {
                 case 0:
-                    DeleteDoc(NameFld[0]);
+                    DeleteDoc(Libr.NameFld[0]);
                     break;
                 case 1:
-                    DeleteDoc(NameFld[1]);
+                    DeleteDoc(Libr.NameFld[1]);
                     break;
                 case 2:
 
                     break;
 
                 default:
-                    DeleteDoc(NameFld[0]);
+                    DeleteDoc(Libr.NameFld[0]);
                     break;
             }
         }
         #endregion
 
-        #region Tender
-        private void EditTender()
-        {
-            Form_editTender fе = new Form_editTender(DB_Cmd.bndTender, DB_Cmd.bndAreaStroy, DB_Cmd.bndStadia, DB_Cmd.bndGip);
-
-            if (fе.ShowDialog() == DialogResult.OK)
-            {
-                fе.Validate();
-                DB_Cmd.SaveTender(DB_Cmd.bndTender);
-            }
-            else
-            {
-                fе.Validate();
-                DB_Cmd.CancelTender(DB_Cmd.bndTender);
-            }
-        }
-
-        private void AddTender()
-        {
-            DB_Cmd.AddTender(DB_Cmd.bndTender);
-
-            ((DataRowView)DB_Cmd.bndTender.Current).Row["IDCust"] = ((DataRowView)DB_Cmd.bndProject.Current).Row["AreaStroy_ID"];
-            ((DataRowView)DB_Cmd.bndTender.Current).Row["Name_Tender"] = ((DataRowView)DB_Cmd.bndProject.Current).Row["Name"];
-
-            EditTender();
-        }
-
-        private void DeleteTender()
-        {
-            DB_Cmd.DeleteTender(DB_Cmd.bndTender);
-            DB_Cmd.SaveTender(DB_Cmd.bndTender);
-        }
-
-        #endregion
+      
 
         #region Object
         private void EditObject()
@@ -933,12 +849,12 @@ namespace GW_Dogovor
             if (fe.ShowDialog() == DialogResult.OK)
             {
                 fe.Validate();
-                DB_Cmd.SaveProject(bnd);
+                DB_Cmd.SaveProject();
             }
             else
             {
                 fe.Validate();
-                DB_Cmd.CancelProject(bnd);
+                DB_Cmd.CancelProject();
             }
         }
         #endregion
@@ -1024,13 +940,13 @@ namespace GW_Dogovor
 
 
 
-            aPathWorkDir.Add(Path.Combine(link_LocalFld.Text, NameFld[SubFolderIndex]));
-            aPathWorkDir.Add(Path.Combine(link_ServetFld.Text, NameFld[SubFolderIndex]));
+            aPathWorkDir.Add(Path.Combine(link_LocalFld.Text, Libr.NameFld[SubFolderIndex]));
+            aPathWorkDir.Add(Path.Combine(link_ServetFld.Text, Libr.NameFld[SubFolderIndex]));
             //* Здесь определить Таб
 
             ListFiles = DDFile_Class.GetListFiles(e);
 
-           Form_SelectSave fs = new Form_SelectSave(aPathWorkDir[0], aPathWorkDir[1]);
+            Form_AddFiles fs = new Form_AddFiles(aPathWorkDir[0], aPathWorkDir[1]);
            if (fs.ShowDialog() == DialogResult.OK)
             {
                 fs.GetPathFolders(listNewFolder, listFileDBPath); // получаем список путей для сохранения
@@ -1161,7 +1077,7 @@ namespace GW_Dogovor
         }
         private void btn_ScanArh_Click(object sender, EventArgs e)
         {
-            GetTreeDir(tree_Arh, tb_PathArh.Text);
+            //GetTreeDir(tree_Arh, tb_PathArh.Text);
         }
         private void tree_Arh_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
@@ -1252,7 +1168,7 @@ namespace GW_Dogovor
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            Form_SelectSave fSel = new Form_SelectSave(link_LocalFld.Text, link_ServetFld.Text);
+            Form_AddFiles fSel = new Form_AddFiles(link_LocalFld.Text, link_ServetFld.Text);
             fSel.ShowDialog();
         }
 
