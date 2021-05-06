@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace GW_Dogovor
+namespace ObjectClass
 {
-    public partial class Form_editObject : Form
+    public partial class Form_Object : Form
     {
-        public Form_editObject(BindingSource bndObject, BindingSource bndGIP, BindingSource bndStadia)
+        public Form_Object(BindingSource bndObject, BindingSource bndGIP, BindingSource bndStadia)
         {
             InitializeComponent();
 
@@ -23,7 +23,7 @@ namespace GW_Dogovor
             tb_BlockObject.DataBindings.Add("Text", bndObject, "Block");
             tb_CommentsObj.DataBindings.Add("Text", bndObject, "Comments");
 
-             // Stadia
+            // Stadia
             cb_Stadia.DataSource = bndStadia;
             cb_Stadia.DisplayMember = "Обозначение";
             cb_Stadia.ValueMember = "StadyID";
@@ -34,7 +34,7 @@ namespace GW_Dogovor
             tb_GIPObject.DisplayMember = "Family";
             tb_GIPObject.ValueMember = "UsedID";
             tb_GIPObject.DataBindings.Add("SelectedValue", bndObject, "GIP");
- 
+
         }
     }
 }

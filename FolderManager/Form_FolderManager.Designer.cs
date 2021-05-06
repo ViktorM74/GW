@@ -1,6 +1,7 @@
-﻿namespace GW_Dogovor
+﻿
+namespace FolderManager
 {
-    partial class Form_Folders
+    partial class Form_FolderManager
     {
         /// <summary>
         /// Required designer variable.
@@ -73,6 +74,7 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel1.Controls.Add(this.bt_Close);
             this.panel1.Controls.Add(this.btn_DeleteFld);
             this.panel1.Controls.Add(this.bt_CreateFld);
@@ -117,6 +119,7 @@
             // 
             // gr_Folders
             // 
+            this.gr_Folders.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.gr_Folders.Controls.Add(this.tableLayoutPanel1);
             this.gr_Folders.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gr_Folders.Location = new System.Drawing.Point(0, 0);
@@ -128,6 +131,7 @@
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
@@ -484,6 +488,7 @@
             // 
             // gr_fldSorce
             // 
+            this.gr_fldSorce.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.gr_fldSorce.Controls.Add(this.ch_ServerFld);
             this.gr_fldSorce.Controls.Add(this.ch_WorkFld);
             this.gr_fldSorce.Dock = System.Windows.Forms.DockStyle.Right;
@@ -516,7 +521,7 @@
             this.ch_WorkFld.UseVisualStyleBackColor = true;
             this.ch_WorkFld.CheckedChanged += new System.EventHandler(this.ch_WorkFld_CheckedChanged);
             // 
-            // Form_Folders
+            // Form_FolderManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -525,7 +530,7 @@
             this.Controls.Add(this.gr_fldSorce);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "Form_Folders";
+            this.Name = "Form_FolderManager";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Управление папками";
             this.panel1.ResumeLayout(false);

@@ -17,6 +17,12 @@ using ProjectClass;
 using TenderClass;
 using Distinary;
 using AddFilesToFolder;
+using FolderManager;
+using ObjectClass;
+using DogovorClass;
+using DocumentsClass;
+using DopSoglClass;
+using CPlan;
 
 namespace GW_Dogovor
 {
@@ -449,7 +455,7 @@ namespace GW_Dogovor
 
             tbtn_AddFolders.Click += (s, a) =>
             {
-                Form_Folders ff = new Form_Folders(link_LocalFld.Text, link_ServetFld.Text, false);
+                Form_FolderManager ff = new Form_FolderManager(link_LocalFld.Text, link_ServetFld.Text, false);
                 ff.ShowDialog();
             };
 
@@ -609,7 +615,7 @@ namespace GW_Dogovor
         #region Dogovor
         private void EditDogovor()
         {
-            Form_editDogovor fе = new Form_editDogovor(DB_Cmd.bndDogovor, DB_Cmd.bndAreaStroy, DB_Cmd.bndStadia, DB_Cmd.bndGip);
+            Form_Dogovor fе = new Form_Dogovor(DB_Cmd.bndDogovor, DB_Cmd.bndAreaStroy, DB_Cmd.bndStadia, DB_Cmd.bndGip);
 
             if (fе.ShowDialog() == DialogResult.OK)
             {
@@ -651,7 +657,7 @@ namespace GW_Dogovor
         #region DopDogovor
         private void EditDopDogovor()
         {
-            Form_editDDogovor fе = new Form_editDDogovor(DB_Cmd.bndDopDogovor);
+            Form_DopSogl fе = new Form_DopSogl(DB_Cmd.bndDopDogovor);
 
             if (fе.ShowDialog() == DialogResult.OK)
             {
@@ -689,7 +695,7 @@ namespace GW_Dogovor
         #region Document
         private void EditDoc()
         {
-            Form_editDocument fed = new Form_editDocument(DB_Cmd.bndDocument, DB_Cmd.bndTypeDoc);
+            Form_Document fed = new Form_Document(DB_Cmd.bndDocument, DB_Cmd.bndTypeDoc);
             if (fed.ShowDialog() == DialogResult.OK)
             {
                 fed.Validate();
@@ -757,7 +763,7 @@ namespace GW_Dogovor
         #region Object
         private void EditObject()
         {
-            Form_editObject fе = new Form_editObject(DB_Cmd.bndObject, DB_Cmd.bndGip, DB_Cmd.bndStadia);
+            Form_Object fе = new Form_Object(DB_Cmd.bndObject, DB_Cmd.bndGip, DB_Cmd.bndStadia);
 
             if (fе.ShowDialog() == DialogResult.OK)
             {
@@ -800,7 +806,7 @@ namespace GW_Dogovor
         private void Edit_CPlan()
         {
             //Form_editObject fе = new Form_editObject(bndObject, bndGip, bndStadia);
-            Form_editCalendarPlan feCPlan = new Form_editCalendarPlan(DB_Cmd.bndCalendarPlan);
+            Form_CPlan feCPlan = new Form_CPlan();
             feCPlan.Show();
             //if (feCPlan.ShowDialog() == DialogResult.OK)
             //{
@@ -819,7 +825,7 @@ namespace GW_Dogovor
             {
                 //DB_Cmd.AddCalendarPlan(bndCalendarPlan);
 
-                Form_editCalendarPlan feCPlan = new Form_editCalendarPlan(DB_Cmd.bndCalendarPlan);
+                Form_CPlan feCPlan = new Form_CPlan();
                 feCPlan.Show();
 
             //   ((DataRowView)bndCalendarPlan.Current).Row["IDCust"] = ((DataRowView)bndDogovor.Current).Row["IDCust"];

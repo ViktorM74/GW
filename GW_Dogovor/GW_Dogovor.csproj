@@ -52,42 +52,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DDFile_Class.cs" />
-    <Compile Include="Form_editCalendarPlan.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form_editCalendarPlan.Designer.cs">
-      <DependentUpon>Form_editCalendarPlan.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Form_editDocument.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form_editDocument.Designer.cs">
-      <DependentUpon>Form_editDocument.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Form_editDDogovor.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form_editDDogovor.Designer.cs">
-      <DependentUpon>Form_editDDogovor.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Form_editDogovor.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form_editDogovor.Designer.cs">
-      <DependentUpon>Form_editDogovor.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Form_editObject.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form_editObject.Designer.cs">
-      <DependentUpon>Form_editObject.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Form_Folders.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form_Folders.Designer.cs">
-      <DependentUpon>Form_Folders.cs</DependentUpon>
-    </Compile>
     <Compile Include="Form_main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,27 +64,8 @@
     <Compile Include="Form_Message.Designer.cs">
       <DependentUpon>Form_Message.cs</DependentUpon>
     </Compile>
-    <Compile Include="NewPath.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form_editCalendarPlan.resx">
-      <DependentUpon>Form_editCalendarPlan.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form_editDocument.resx">
-      <DependentUpon>Form_editDocument.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form_editDDogovor.resx">
-      <DependentUpon>Form_editDDogovor.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form_editDogovor.resx">
-      <DependentUpon>Form_editDogovor.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form_editObject.resx">
-      <DependentUpon>Form_editObject.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form_Folders.resx">
-      <DependentUpon>Form_Folders.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Form_main.resx">
       <DependentUpon>Form_main.cs</DependentUpon>
     </EmbeddedResource>
@@ -173,6 +118,10 @@
       <Project>{c96ebd3e-48d3-4019-bfc9-1e53b1aa28f0}</Project>
       <Name>AddFilesToFolder</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CPlan\CPlan.csproj">
+      <Project>{0eac70be-b3d2-4239-a627-471ba03a1122}</Project>
+      <Name>CPlan</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DBClass\DBClass.csproj">
       <Project>{bd48b48a-f061-4885-9137-0d4b8430225c}</Project>
       <Name>DBClass</Name>
@@ -185,9 +134,29 @@
       <Project>{29d2130f-4ca0-4b12-b71d-8025516fe00c}</Project>
       <Name>DocTYPELibrary</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DocumentsClass\DocumentsClass.csproj">
+      <Project>{7b9c85b3-29d2-4d83-a62d-785d052c6247}</Project>
+      <Name>DocumentsClass</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DogovorClass\DogovorClass.csproj">
+      <Project>{8bf1d0d1-09a8-483e-889f-fce2fc965cb1}</Project>
+      <Name>DogovorClass</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DopSoglClass\DopSoglClass.csproj">
+      <Project>{4aba2d23-e044-4331-ab38-762a2495f3ee}</Project>
+      <Name>DopSoglClass</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FileAction\FileAction.csproj">
       <Project>{85ebfd50-4585-49f5-b8fd-dd9235788d76}</Project>
       <Name>FileAction</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FolderManager\FolderManager.csproj">
+      <Project>{efce0d9b-0faf-4cec-b1a4-db3f36f54733}</Project>
+      <Name>FolderManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ObjectClass\ObjectClass.csproj">
+      <Project>{d4fff505-5d3f-4f57-8b28-1df3746b2280}</Project>
+      <Name>ObjectClass</Name>
     </ProjectReference>
     <ProjectReference Include="..\ProjectClass\ProjectClass.csproj">
       <Project>{9ab45481-2bfa-4408-8be1-068aeffab986}</Project>

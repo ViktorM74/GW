@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace GW_Dogovor
+namespace DopSoglClass
 {
-    public partial class Form_editDDogovor : Form
+    public partial class Form_DopSogl : Form
     {
-        public Form_editDDogovor(BindingSource bndDDog)
+        public Form_DopSogl(BindingSource bndDDog)
         {
             InitializeComponent();
 
