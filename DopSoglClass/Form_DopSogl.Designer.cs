@@ -1,6 +1,7 @@
-﻿namespace GW_Dogovor
+﻿
+namespace DopSoglClass
 {
-    partial class Form_editDDogovor
+    partial class Form_DopSogl
     {
         /// <summary>
         /// Required designer variable.

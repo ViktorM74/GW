@@ -7,8 +7,8 @@ namespace DBClass
     {
         string tProvider;
         string tPathDB;
-        string tLogin;
-        string tPassword;
+        string tLogin = "Admin";
+        string tPassword = "";
 
         public ContactManager()
         {

@@ -1,10 +1,10 @@
 ﻿using System.Windows.Forms;
 
-namespace GW_Dogovor
+namespace DocumentsClass
 {
-    public partial class Form_editDocument : Form
+    public partial class Form_Document : Form
     {
-        public Form_editDocument(BindingSource bndDocument, BindingSource bndTypeDoc)
+        public Form_Document(BindingSource bndDocument, BindingSource bndTypeDoc)
         {
             InitializeComponent();
 
@@ -29,7 +29,7 @@ namespace GW_Dogovor
 
         private void Form_docEdit_Load(object sender, System.EventArgs e)
         {
-           
+
         }
 
         private void btn_PathDoc_Click(object sender, System.EventArgs e)
@@ -39,7 +39,7 @@ namespace GW_Dogovor
             {   // получаем выбранный файл
                 tb_PathDoc.Text = openDialog1.FileName;
             }
-            
+
         }
     }
 }

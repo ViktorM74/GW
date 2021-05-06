@@ -1,6 +1,7 @@
-﻿namespace GW_Dogovor
+﻿
+namespace ObjectClass
 {
-    partial class Form_editObject
+    partial class Form_Object
     {
         /// <summary>
         /// Required designer variable.

@@ -1,7 +1,7 @@
 ﻿
-namespace GW_Dogovor
+namespace CPlan
 {
-    partial class Form_editCalendarPlan
+    partial class Form_CPlan
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@ namespace GW_Dogovor
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_editCalendarPlan));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_CPlan));
             this.dgv_edit_CPlan = new System.Windows.Forms.DataGridView();
             this.Num_Etap = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Name_Etap = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,27 +60,26 @@ namespace GW_Dogovor
             this.lbl_Nachalo_Data = new System.Windows.Forms.Label();
             this.lbl_Name_Etap = new System.Windows.Forms.Label();
             this.lbl_Num_Etap = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.splitter_CPlan = new System.Windows.Forms.Splitter();
             this.bndNavigator_edit_CPlan = new System.Windows.Forms.BindingNavigator(this.components);
-            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
+            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.btn_Save = new System.Windows.Forms.ToolStripButton();
             this.btn_Add = new System.Windows.Forms.ToolStripButton();
             this.btn_Del = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.splitter_CPlan = new System.Windows.Forms.Splitter();
+            this.btn_Save = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_edit_CPlan)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bndNavigator_edit_CPlan)).BeginInit();
             this.bndNavigator_edit_CPlan.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgv_edit_CPlan
@@ -97,7 +96,7 @@ namespace GW_Dogovor
             this.dgv_edit_CPlan.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_edit_CPlan.Location = new System.Drawing.Point(3, 16);
             this.dgv_edit_CPlan.Name = "dgv_edit_CPlan";
-            this.dgv_edit_CPlan.Size = new System.Drawing.Size(1025, 329);
+            this.dgv_edit_CPlan.Size = new System.Drawing.Size(1025, 245);
             this.dgv_edit_CPlan.TabIndex = 0;
             // 
             // Num_Etap
@@ -182,7 +181,7 @@ namespace GW_Dogovor
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(0, 25);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1031, 128);
+            this.groupBox1.Size = new System.Drawing.Size(1031, 212);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Данные по этапу";
@@ -238,7 +237,7 @@ namespace GW_Dogovor
             this.tb_Comments.Location = new System.Drawing.Point(521, 71);
             this.tb_Comments.Multiline = true;
             this.tb_Comments.Name = "tb_Comments";
-            this.tb_Comments.Size = new System.Drawing.Size(362, 51);
+            this.tb_Comments.Size = new System.Drawing.Size(362, 135);
             this.tb_Comments.TabIndex = 4;
             // 
             // tb_Days
@@ -269,7 +268,7 @@ namespace GW_Dogovor
             this.tb_Name_Etap.Location = new System.Drawing.Point(12, 71);
             this.tb_Name_Etap.Multiline = true;
             this.tb_Name_Etap.Name = "tb_Name_Etap";
-            this.tb_Name_Etap.Size = new System.Drawing.Size(503, 51);
+            this.tb_Name_Etap.Size = new System.Drawing.Size(503, 135);
             this.tb_Name_Etap.TabIndex = 2;
             // 
             // tb_Num_Etap
@@ -360,6 +359,30 @@ namespace GW_Dogovor
             this.lbl_Num_Etap.TabIndex = 0;
             this.lbl_Num_Etap.Text = " № этапа";
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.dgv_edit_CPlan);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Location = new System.Drawing.Point(0, 237);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(1031, 264);
+            this.groupBox2.TabIndex = 4;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Календарный план";
+            // 
+            // splitter_CPlan
+            // 
+            this.splitter_CPlan.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.splitter_CPlan.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.splitter_CPlan.Cursor = System.Windows.Forms.Cursors.HSplit;
+            this.splitter_CPlan.Dock = System.Windows.Forms.DockStyle.Top;
+            this.splitter_CPlan.Location = new System.Drawing.Point(0, 237);
+            this.splitter_CPlan.Name = "splitter_CPlan";
+            this.splitter_CPlan.Padding = new System.Windows.Forms.Padding(1);
+            this.splitter_CPlan.Size = new System.Drawing.Size(1031, 3);
+            this.splitter_CPlan.TabIndex = 5;
+            this.splitter_CPlan.TabStop = false;
+            // 
             // bndNavigator_edit_CPlan
             // 
             this.bndNavigator_edit_CPlan.AddNewItem = null;
@@ -375,10 +398,9 @@ namespace GW_Dogovor
             this.bindingNavigatorMoveNextItem,
             this.bindingNavigatorMoveLastItem,
             this.bindingNavigatorSeparator2,
-            this.btn_Save,
             this.btn_Add,
             this.btn_Del,
-            this.toolStripButton1});
+            this.btn_Save});
             this.bndNavigator_edit_CPlan.Location = new System.Drawing.Point(0, 0);
             this.bndNavigator_edit_CPlan.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.bndNavigator_edit_CPlan.MoveLastItem = this.bindingNavigatorMoveLastItem;
@@ -387,15 +409,8 @@ namespace GW_Dogovor
             this.bndNavigator_edit_CPlan.Name = "bndNavigator_edit_CPlan";
             this.bndNavigator_edit_CPlan.PositionItem = this.bindingNavigatorPositionItem;
             this.bndNavigator_edit_CPlan.Size = new System.Drawing.Size(1031, 25);
-            this.bndNavigator_edit_CPlan.TabIndex = 3;
+            this.bndNavigator_edit_CPlan.TabIndex = 6;
             this.bndNavigator_edit_CPlan.Text = "bindingNavigator1";
-            // 
-            // bindingNavigatorCountItem
-            // 
-            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(43, 22);
-            this.bindingNavigatorCountItem.Text = "для {0}";
-            this.bindingNavigatorCountItem.ToolTipText = "Общее число элементов";
             // 
             // bindingNavigatorMoveFirstItem
             // 
@@ -430,9 +445,16 @@ namespace GW_Dogovor
             this.bindingNavigatorPositionItem.Text = "0";
             this.bindingNavigatorPositionItem.ToolTipText = "Текущее положение";
             // 
+            // bindingNavigatorCountItem
+            // 
+            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(43, 22);
+            this.bindingNavigatorCountItem.Text = "для {0}";
+            this.bindingNavigatorCountItem.ToolTipText = "Общее число элементов";
+            // 
             // bindingNavigatorSeparator1
             // 
-            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
+            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator";
             this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // bindingNavigatorMoveNextItem
@@ -455,94 +477,56 @@ namespace GW_Dogovor
             // 
             // bindingNavigatorSeparator2
             // 
-            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
+            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // btn_Save
-            // 
-            this.btn_Save.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btn_Save.Image = global::GW_Dogovor.Properties.Resources.Save;
-            this.btn_Save.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btn_Save.Name = "btn_Save";
-            this.btn_Save.Size = new System.Drawing.Size(23, 22);
-            this.btn_Save.Text = "toolStripButton2";
-            this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
             // 
             // btn_Add
             // 
             this.btn_Add.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.btn_Add.Image = ((System.Drawing.Image)(resources.GetObject("btn_Add.Image")));
-            this.btn_Add.Name = "btn_Add";
+            this.btn_Add.Name = "bindingNavigatorAddNewItem";
             this.btn_Add.RightToLeftAutoMirrorImage = true;
             this.btn_Add.Size = new System.Drawing.Size(23, 22);
             this.btn_Add.Text = "Добавить";
-            this.btn_Add.Click += new System.EventHandler(this.btn_Add_Click);
             // 
             // btn_Del
             // 
             this.btn_Del.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.btn_Del.Image = ((System.Drawing.Image)(resources.GetObject("btn_Del.Image")));
-            this.btn_Del.Name = "btn_Del";
+            this.btn_Del.Name = "bindingNavigatorDeleteItem";
             this.btn_Del.RightToLeftAutoMirrorImage = true;
             this.btn_Del.Size = new System.Drawing.Size(23, 22);
             this.btn_Del.Text = "Удалить";
-            this.btn_Del.Click += new System.EventHandler(this.btn_Del_Click);
             // 
-            // toolStripButton1
+            // btn_Save
             // 
-            this.toolStripButton1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = global::GW_Dogovor.Properties.Resources.Turn_off;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton1.Text = "toolStripButton1";
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            this.btn_Save.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btn_Save.Image = global::CPlan.Properties.Resources.Save;
+            this.btn_Save.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btn_Save.Name = "btn_Save";
+            this.btn_Save.Size = new System.Drawing.Size(23, 22);
+            this.btn_Save.Text = "toolStripButton1";
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.dgv_edit_CPlan);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Location = new System.Drawing.Point(0, 153);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1031, 348);
-            this.groupBox2.TabIndex = 4;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Календарный план";
-            // 
-            // splitter_CPlan
-            // 
-            this.splitter_CPlan.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.splitter_CPlan.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.splitter_CPlan.Cursor = System.Windows.Forms.Cursors.HSplit;
-            this.splitter_CPlan.Dock = System.Windows.Forms.DockStyle.Top;
-            this.splitter_CPlan.Location = new System.Drawing.Point(0, 153);
-            this.splitter_CPlan.Name = "splitter_CPlan";
-            this.splitter_CPlan.Padding = new System.Windows.Forms.Padding(1);
-            this.splitter_CPlan.Size = new System.Drawing.Size(1031, 3);
-            this.splitter_CPlan.TabIndex = 5;
-            this.splitter_CPlan.TabStop = false;
-            // 
-            // Form_editCalendarPlan
+            // Form_CPlan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1031, 523);
             this.Controls.Add(this.splitter_CPlan);
             this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.statusStrip_edit_CPlan);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.bndNavigator_edit_CPlan);
-            this.Controls.Add(this.statusStrip_edit_CPlan);
-            this.Name = "Form_editCalendarPlan";
+            this.Name = "Form_CPlan";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Редактор календарного плана";
             ((System.ComponentModel.ISupportInitialize)(this.dgv_edit_CPlan)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bndNavigator_edit_CPlan)).EndInit();
             this.bndNavigator_edit_CPlan.ResumeLayout(false);
             this.bndNavigator_edit_CPlan.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -553,18 +537,6 @@ namespace GW_Dogovor
         private System.Windows.Forms.DataGridView dgv_edit_CPlan;
         private System.Windows.Forms.StatusStrip statusStrip_edit_CPlan;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.BindingNavigator bndNavigator_edit_CPlan;
-        private System.Windows.Forms.ToolStripButton btn_Add;
-        private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
-        private System.Windows.Forms.ToolStripButton btn_Del;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
-        private System.Windows.Forms.ToolStripTextBox bindingNavigatorPositionItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator1;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label lbl_Num_Etap;
         private System.Windows.Forms.Label lbl_Status;
@@ -585,8 +557,6 @@ namespace GW_Dogovor
         private System.Windows.Forms.DateTimePicker dp_Nachalo_Data;
         private System.Windows.Forms.TextBox tb_Name_Etap;
         private System.Windows.Forms.TextBox tb_Num_Etap;
-        private System.Windows.Forms.ToolStripButton btn_Save;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.Splitter splitter_CPlan;
         private System.Windows.Forms.DataGridViewTextBoxColumn Num_Etap;
         private System.Windows.Forms.DataGridViewTextBoxColumn Name_Etap;
@@ -595,5 +565,18 @@ namespace GW_Dogovor
         private System.Windows.Forms.DataGridViewTextBoxColumn Summ;
         private System.Windows.Forms.DataGridViewComboBoxColumn Valute;
         private System.Windows.Forms.DataGridViewComboBoxColumn StatusCPlan;
+        private System.Windows.Forms.BindingNavigator bndNavigator_edit_CPlan;
+        private System.Windows.Forms.ToolStripButton btn_Add;
+        private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
+        private System.Windows.Forms.ToolStripButton btn_Del;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
+        private System.Windows.Forms.ToolStripTextBox bindingNavigatorPositionItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator1;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
+        private System.Windows.Forms.ToolStripButton btn_Save;
     }
 }

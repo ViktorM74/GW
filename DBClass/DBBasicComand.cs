@@ -461,9 +461,7 @@ namespace DBClass
             bndTender.AddNew();
             ((DataRowView)bndTender.Current).Row["IDCust"] = ((DataRowView)bndProject.Current).Row["AreaStroy_ID"];
             ((DataRowView)bndTender.Current).Row["Name_Tender"] = ((DataRowView)bndProject.Current).Row["Name"];
-            
 
-            
         }
 
         public static void DeleteTender()

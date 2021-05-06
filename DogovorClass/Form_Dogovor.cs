@@ -1,23 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
-namespace GW_Dogovor
+namespace DogovorClass
 {
-    public partial class Form_editDogovor : Form
+    public partial class Form_Dogovor : Form
     {
-        public Form_editDogovor()
+        public Form_Dogovor()
         {
             InitializeComponent();
         }
 
-        public Form_editDogovor(BindingSource bndDogovor, BindingSource bndCustomer, BindingSource bndStadia, BindingSource bndGIP)
+        public Form_Dogovor(BindingSource bndDogovor, BindingSource bndCustomer, BindingSource bndStadia, BindingSource bndGIP)
         {
             InitializeComponent();
 

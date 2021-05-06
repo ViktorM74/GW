@@ -1,18 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using FileAction;
 
-namespace GW_Dogovor
+namespace FolderManager
 {
-    public partial class Form_Folders : Form
+    public partial class Form_FolderManager : Form
     {
         private List<string> listLocalValue = new List<string>();
         private List<string> listServerValue = new List<string>();
@@ -35,8 +29,7 @@ namespace GW_Dogovor
         CheckBox[] ChckGroup;
 
         bool vCopy;
-
-        public Form_Folders(string pathLocal, string pathServer, bool viewCopy)
+        public Form_FolderManager(string pathLocal, string pathServer, bool viewCopy)
         {
             InitializeComponent();
 
@@ -48,7 +41,7 @@ namespace GW_Dogovor
             ChckGroup = new CheckBox[] { ch_DogovorFld, ch_GeoFld, ch_StampFld, ch_ZadaniaFld, ch_OtherFld, ch_OsnFld, ch_InFld, ch_OutFld, ch_FreeNameFld };
 
             if (!vCopy)
-              SetViewCreate(pathLocal, pathServer);
+                SetViewCreate(pathLocal, pathServer);
             else
                 SetViewCopy(pathLocal, pathServer);
         }
@@ -90,12 +83,12 @@ namespace GW_Dogovor
 
         private void bt_CreateFld_Click(object sender, EventArgs e)
         {
-            if (!vCopy) 
+            if (!vCopy)
             {
                 CreateFolders();
                 ExistFolders();
             }
-            
+
         }
 
         private void CreateFolders() // создание папок по списку
@@ -104,7 +97,7 @@ namespace GW_Dogovor
 
             if (pathLocal != "")
             {
-                foreach(string s in listLocalValue)
+                foreach (string s in listLocalValue)
                 {
                     FileA.CreateFolder(s, pathLocal);
                 }
@@ -182,19 +175,19 @@ namespace GW_Dogovor
                     ExistFolders();
                 }
             }
-            
-            
+
+
         }
 
         private void clkCheckers(CheckBox cb)
         {
-           if (cb.Checked)
+            if (cb.Checked)
             {
                 if (ch_WorkFld.Checked)
                     listLocalValue.Add(cb.Text);
                 if (ch_ServerFld.Checked)
                     listServerValue.Add(cb.Text);
-           }
+            }
         }
 
         private void CreateLists(CheckBox[] chg)
@@ -209,16 +202,16 @@ namespace GW_Dogovor
         }
 
         private void ActiveChck(CheckBox[] chg)
-        {            
+        {
             if (ch_WorkFld.Checked || ch_ServerFld.Checked)
             {
                 foreach (CheckBox cb in chg)
                 {
                     cb.Enabled = true;
-                    
+
                 }
-               ch_FreeNameFld.Enabled = true;
-                
+                ch_FreeNameFld.Enabled = true;
+
             }
             else
             {
@@ -243,6 +236,6 @@ namespace GW_Dogovor
         }
         #endregion
 
-      
+
     }
 }
