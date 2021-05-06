@@ -82,12 +82,6 @@
     <Compile Include="Form_editObject.Designer.cs">
       <DependentUpon>Form_editObject.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_editProject.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form_editProject.Designer.cs">
-      <DependentUpon>Form_editProject.cs</DependentUpon>
-    </Compile>
     <Compile Include="Form_Folders.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,27 +94,14 @@
     <Compile Include="Form_main.Designer.cs">
       <DependentUpon>Form_main.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_editTender.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form_editTender.Designer.cs">
-      <DependentUpon>Form_editTender.cs</DependentUpon>
-    </Compile>
     <Compile Include="Form_Message.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form_Message.Designer.cs">
       <DependentUpon>Form_Message.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_SelectSave.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form_SelectSave.Designer.cs">
-      <DependentUpon>Form_SelectSave.cs</DependentUpon>
-    </Compile>
     <Compile Include="NewPath.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="ProjectClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form_editCalendarPlan.resx">
       <DependentUpon>Form_editCalendarPlan.cs</DependentUpon>
@@ -137,23 +118,14 @@
     <EmbeddedResource Include="Form_editObject.resx">
       <DependentUpon>Form_editObject.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form_editProject.resx">
-      <DependentUpon>Form_editProject.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Form_Folders.resx">
       <DependentUpon>Form_Folders.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_main.resx">
       <DependentUpon>Form_main.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form_editTender.resx">
-      <DependentUpon>Form_editTender.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Form_Message.resx">
       <DependentUpon>Form_Message.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form_SelectSave.resx">
-      <DependentUpon>Form_SelectSave.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -197,9 +169,17 @@
     <None Include="Resources\seo-and-web1.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AddFilesToFolder\AddFilesToFolder.csproj">
+      <Project>{c96ebd3e-48d3-4019-bfc9-1e53b1aa28f0}</Project>
+      <Name>AddFilesToFolder</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DBClass\DBClass.csproj">
       <Project>{bd48b48a-f061-4885-9137-0d4b8430225c}</Project>
       <Name>DBClass</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Distinary\Distinary.csproj">
+      <Project>{97113185-9850-4937-8619-f7e47323260f}</Project>
+      <Name>Distinary</Name>
     </ProjectReference>
     <ProjectReference Include="..\DocTYPELibrary\DocTYPELibrary.csproj">
       <Project>{29d2130f-4ca0-4b12-b71d-8025516fe00c}</Project>
@@ -208,6 +188,14 @@
     <ProjectReference Include="..\FileAction\FileAction.csproj">
       <Project>{85ebfd50-4585-49f5-b8fd-dd9235788d76}</Project>
       <Name>FileAction</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProjectClass\ProjectClass.csproj">
+      <Project>{9ab45481-2bfa-4408-8be1-068aeffab986}</Project>
+      <Name>ProjectClass</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TenderClass\TenderClass.csproj">
+      <Project>{d57e014a-08a4-4b8b-a768-e9f8932483ea}</Project>
+      <Name>TenderClass</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

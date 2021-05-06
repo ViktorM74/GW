@@ -1,6 +1,7 @@
-﻿namespace GW_Dogovor
+﻿
+namespace TenderClass
 {
-    partial class Form_editTender
+    partial class Form_Tender
     {
         /// <summary>
         /// Required designer variable.
@@ -47,6 +48,9 @@
             this.cb_GIP = new System.Windows.Forms.ComboBox();
             this.panelNotes = new System.Windows.Forms.Panel();
             this.tb_Comment = new System.Windows.Forms.RichTextBox();
+            this.tb_pathTender = new System.Windows.Forms.TextBox();
+            this.btn_setPathTender = new System.Windows.Forms.Button();
+            this.btn_addFiles = new System.Windows.Forms.Button();
             this.panelNotes.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -227,13 +231,43 @@
             this.tb_Comment.TabIndex = 0;
             this.tb_Comment.Text = "";
             // 
-            // Form_editTender
+            // tb_pathTender
+            // 
+            this.tb_pathTender.Location = new System.Drawing.Point(12, 429);
+            this.tb_pathTender.Name = "tb_pathTender";
+            this.tb_pathTender.Size = new System.Drawing.Size(359, 20);
+            this.tb_pathTender.TabIndex = 26;
+            // 
+            // btn_setPathTender
+            // 
+            this.btn_setPathTender.Location = new System.Drawing.Point(373, 429);
+            this.btn_setPathTender.Name = "btn_setPathTender";
+            this.btn_setPathTender.Size = new System.Drawing.Size(25, 25);
+            this.btn_setPathTender.TabIndex = 27;
+            this.btn_setPathTender.Text = "...";
+            this.btn_setPathTender.UseVisualStyleBackColor = true;
+            this.btn_setPathTender.Click += new System.EventHandler(this.btn_setPathTender_Click);
+            // 
+            // btn_addFiles
+            // 
+            this.btn_addFiles.Location = new System.Drawing.Point(405, 421);
+            this.btn_addFiles.Name = "btn_addFiles";
+            this.btn_addFiles.Size = new System.Drawing.Size(78, 34);
+            this.btn_addFiles.TabIndex = 28;
+            this.btn_addFiles.Text = "Добавить файлы";
+            this.btn_addFiles.UseVisualStyleBackColor = true;
+            // 
+            // Form_Tender
             // 
             this.AcceptButton = this.btn_Save;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.CancelButton = this.btn_Close;
-            this.ClientSize = new System.Drawing.Size(492, 432);
+            this.ClientSize = new System.Drawing.Size(492, 461);
+            this.Controls.Add(this.btn_addFiles);
+            this.Controls.Add(this.btn_setPathTender);
+            this.Controls.Add(this.tb_pathTender);
             this.Controls.Add(this.panelNotes);
             this.Controls.Add(this.cb_GIP);
             this.Controls.Add(this.cb_Status);
@@ -254,7 +288,7 @@
             this.Controls.Add(this.lb_Customer);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
-            this.Name = "Form_editTender";
+            this.Name = "Form_Tender";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Редактор данных";
             this.panelNotes.ResumeLayout(false);
@@ -283,5 +317,8 @@
         private System.Windows.Forms.ComboBox cb_GIP;
         private System.Windows.Forms.Panel panelNotes;
         private System.Windows.Forms.RichTextBox tb_Comment;
+        private System.Windows.Forms.TextBox tb_pathTender;
+        private System.Windows.Forms.Button btn_setPathTender;
+        private System.Windows.Forms.Button btn_addFiles;
     }
 }

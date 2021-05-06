@@ -1,6 +1,7 @@
-﻿namespace GW_Dogovor
+﻿
+namespace ProjectClass
 {
-    partial class Form_editProject
+    partial class Form_Project
     {
         /// <summary>
         /// Required designer variable.
@@ -37,8 +38,6 @@
             this.lbl_pNotes = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.cbStroy = new System.Windows.Forms.ComboBox();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnDel = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.cb_Status = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -55,25 +54,25 @@
             // btnSave
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSave.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnSave.Location = new System.Drawing.Point(599, 104);
+            this.btnSave.Location = new System.Drawing.Point(599, 28);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(99, 29);
             this.btnSave.TabIndex = 23;
             this.btnSave.Text = "Сохранить";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(599, 139);
+            this.btnCancel.Location = new System.Drawing.Point(599, 63);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(99, 29);
             this.btnCancel.TabIndex = 24;
             this.btnCancel.Text = "Закрыть";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // lbl_Code_object
             // 
@@ -133,28 +132,6 @@
             this.cbStroy.Name = "cbStroy";
             this.cbStroy.Size = new System.Drawing.Size(381, 21);
             this.cbStroy.TabIndex = 33;
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAdd.Location = new System.Drawing.Point(599, 13);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(99, 30);
-            this.btnAdd.TabIndex = 34;
-            this.btnAdd.Text = "Добавить";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // btnDel
-            // 
-            this.btnDel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDel.Location = new System.Drawing.Point(599, 51);
-            this.btnDel.Name = "btnDel";
-            this.btnDel.Size = new System.Drawing.Size(99, 30);
-            this.btnDel.TabIndex = 35;
-            this.btnDel.Text = "Удалить";
-            this.btnDel.UseVisualStyleBackColor = true;
-            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
             // 
             // label2
             // 
@@ -253,12 +230,11 @@
             this.tb_pNotes.TabIndex = 44;
             this.tb_pNotes.Text = "";
             // 
-            // Form_editProject
+            // Form_Project
             // 
-            this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.btnCancel;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(711, 598);
             this.Controls.Add(this.panelNotes);
             this.Controls.Add(this.button2);
@@ -269,8 +245,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cb_Status);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.btnDel);
-            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.cbStroy);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lbl_Code_object);
@@ -283,10 +257,11 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(727, 465);
-            this.Name = "Form_editProject";
+            this.Name = "Form_Project";
             this.Padding = new System.Windows.Forms.Padding(10);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Редактор данных проекта";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form_Project_FormClosed);
             this.panelNotes.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -303,8 +278,6 @@
         private System.Windows.Forms.Label lbl_pNotes;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbStroy;
-        private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button btnDel;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cb_Status;
         private System.Windows.Forms.Label label3;
