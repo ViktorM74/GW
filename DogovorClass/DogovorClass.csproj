@@ -51,5 +51,16 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Form_Dogovor.resx">
+      <DependentUpon>Form_Dogovor.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DBClass\DBClass.csproj">
+      <Project>{bd48b48a-f061-4885-9137-0d4b8430225c}</Project>
+      <Name>DBClass</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

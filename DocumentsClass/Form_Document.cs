@@ -1,29 +1,30 @@
 ﻿using System.Windows.Forms;
+using DBClass;
 
 namespace DocumentsClass
 {
     public partial class Form_Document : Form
     {
-        public Form_Document(BindingSource bndDocument, BindingSource bndTypeDoc)
+        public Form_Document()
         {
             InitializeComponent();
 
-            SetViewForm(bndDocument, bndTypeDoc);
+            SetViewForm();
         }
 
-        private void SetViewForm(BindingSource bndDocument, BindingSource bndTypeDoc)
+        private void SetViewForm()
         {
-            cb_TypeDoc.DataSource = bndTypeDoc;
+            cb_TypeDoc.DataSource = DB_Cmd.bndTypeDoc;
             cb_TypeDoc.DisplayMember = "Name_doc";
             cb_TypeDoc.ValueMember = "DOCTypeID";
-            cb_TypeDoc.DataBindings.Add("SelectedValue", bndDocument, "Doc_Type");
+            cb_TypeDoc.DataBindings.Add("SelectedValue", DB_Cmd.bndDocument, "Doc_Type");
 
-            tb_NameDoc.DataBindings.Add("Text", bndDocument, "NameDoc");
-            tb_NumbeDoc.DataBindings.Add("Text", bndDocument, "Nambe_Doc");
-            dtp_DateDoc.DataBindings.Add("Text", bndDocument, "DataDoc");
-            cb_Status.DataBindings.Add("Text", bndDocument, "Status");
-            rtb_Notes.DataBindings.Add("Text", bndDocument, "Notes");
-            tb_PathDoc.DataBindings.Add("Text", bndDocument, "PathDoc");
+            tb_NameDoc.DataBindings.Add("Text", DB_Cmd.bndDocument, "NameDoc");
+            tb_NumbeDoc.DataBindings.Add("Text", DB_Cmd.bndDocument, "Nambe_Doc");
+            dtp_DateDoc.DataBindings.Add("Text", DB_Cmd.bndDocument, "DataDoc");
+            cb_Status.DataBindings.Add("Text", DB_Cmd.bndDocument, "Status");
+            rtb_Notes.DataBindings.Add("Text", DB_Cmd.bndDocument, "Notes");
+            tb_PathDoc.DataBindings.Add("Text", DB_Cmd.bndDocument, "PathDoc");
 
         }
 

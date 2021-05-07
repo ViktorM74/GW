@@ -269,11 +269,12 @@ namespace DogovorClass
             this.tb_CommentDog.TabIndex = 0;
             this.tb_CommentDog.Text = "";
             // 
-            // Form_editDogovor
+            // Form_Dogovor
             // 
             this.AcceptButton = this.btn_SaveDogovor;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.CancelButton = this.btn_CloseDogovor;
             this.ClientSize = new System.Drawing.Size(677, 377);
             this.Controls.Add(this.panelNotes);
@@ -298,7 +299,7 @@ namespace DogovorClass
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.label4);
-            this.Name = "Form_editDogovor";
+            this.Name = "Form_Dogovor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Редактор данных договора";
             this.panelNotes.ResumeLayout(false);

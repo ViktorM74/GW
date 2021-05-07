@@ -2105,6 +2105,7 @@
             this.tbtn_Edit_ItemCPlan.RightToLeftAutoMirrorImage = true;
             this.tbtn_Edit_ItemCPlan.Size = new System.Drawing.Size(23, 22);
             this.tbtn_Edit_ItemCPlan.Text = "Изменить";
+            this.tbtn_Edit_ItemCPlan.Click += new System.EventHandler(this.tbtn_Edit_ItemCPlan_Click);
             // 
             // bndNavigatorDogovor
             // 

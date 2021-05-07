@@ -170,11 +170,12 @@ namespace DopSoglClass
             this.tb_NotesDD.TabIndex = 20;
             this.tb_NotesDD.Text = "";
             // 
-            // Form_editDDogovor
+            // Form_DopSogl
             // 
             this.AcceptButton = this.btn_Save;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.CancelButton = this.btn_Close;
             this.ClientSize = new System.Drawing.Size(683, 300);
             this.Controls.Add(this.panelNotes);
@@ -189,7 +190,7 @@ namespace DopSoglClass
             this.Controls.Add(this.label19);
             this.Controls.Add(this.label23);
             this.Controls.Add(this.label24);
-            this.Name = "Form_editDDogovor";
+            this.Name = "Form_DopSogl";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Редактор данных дополнительного соглашения";
             this.panelNotes.ResumeLayout(false);
