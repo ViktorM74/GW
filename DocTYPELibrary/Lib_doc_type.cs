@@ -62,7 +62,7 @@ namespace DocTYPELibrary
         private void btnSave_Click(object sender, EventArgs e)
         {
             //SaveDocLib();
-            DB_Cmd.SaveTypeDoc(bndTypeDoc);
+            DB_Cmd.SaveTypeDoc();
             Close();
         }
 
@@ -71,19 +71,19 @@ namespace DocTYPELibrary
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
             //AddDocLib();
-            DB_Cmd.AddTypeDoc(bndTypeDoc);
+            DB_Cmd.AddTypeDoc();
         }
 
         private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
         {
             //DeleteDocLib();
-            DB_Cmd.DeleteTypeDoc(bndTypeDoc);
+            DB_Cmd.DeleteTypeDoc();
         }
 
         private void bindingNavigatorSave_Click(object sender, EventArgs e)
         {
             //SaveDocLib();
-            DB_Cmd.SaveTypeDoc(bndTypeDoc);
+            DB_Cmd.SaveTypeDoc();
         }
     }
 }

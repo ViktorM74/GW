@@ -43,19 +43,19 @@ namespace CPlan
 
         private void btn_Add_Click(object sender, EventArgs e)
         {
-            DB_Cmd.AddCalendarPlan(DB_Cmd.bndCalendarPlan);
-            DB_Cmd.SaveCalendarPlan(DB_Cmd.bndCalendarPlan);
+            DB_Cmd.AddCalendarPlan();
+            DB_Cmd.SaveCalendarPlan();
         }
 
         private void btn_Del_Click(object sender, EventArgs e)
         {
-            DB_Cmd.DeleteCalendarPlan(DB_Cmd.bndCalendarPlan);
-            DB_Cmd.SaveCalendarPlan(DB_Cmd.bndCalendarPlan);
+            DB_Cmd.DeleteCalendarPlan();
+            DB_Cmd.SaveCalendarPlan();
         }
 
         private void btn_Save_Click(object sender, EventArgs e)
         {
-            DB_Cmd.SaveCalendarPlan(DB_Cmd.bndCalendarPlan);
+            DB_Cmd.SaveCalendarPlan();
         }
     }
 }

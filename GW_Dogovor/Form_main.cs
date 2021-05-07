@@ -402,7 +402,8 @@ namespace GW_Dogovor
 
             bndNav_AddDoc.Click += (s, a) =>
             {
-                AddDoc();
+                DB_Cmd.AddDoc();
+                EditDoc();
             };
 
             bndNav_EditDoc.Click += (s, a) =>
@@ -517,12 +518,14 @@ namespace GW_Dogovor
 
             tbtn_AddDog.Click += (s, a) =>
             {
-                AddDogovor();
+                DB_Cmd.AddDogovor();
+                EditDogovor();
             };
 
             tbtn_DeleteDog.Click += (s, a) =>
             {
-                DeleteDogovor();
+                DB_Cmd.DeleteDogovor();
+                DB_Cmd.SaveDogovor();
             };
 
             tbtn_EditDDog.Click += (s, a) =>
@@ -532,12 +535,14 @@ namespace GW_Dogovor
 
             tbtn_AddDDog.Click += (s, a) =>
             {
-                AddDopDogovor();
+                DB_Cmd.AddDopSoglashenia();
+                EditDopDogovor();
             };
 
             tbtn_DeleteDDog.Click += (s, a) =>
             {
-                DeleteDopDogovor();
+                DB_Cmd.DeleteDopSoglashenia();
+                DB_Cmd.SaveDopSoglashenia();
             };
 
             tbtn_EditObj.Click += (s, a) =>
@@ -547,18 +552,17 @@ namespace GW_Dogovor
 
             tbtn_AddObj.Click += (s, a) =>
             {
-                AddObject();
+                DB_Cmd.AddOBJECTS();
+                EditObject();
             };
 
             tbtn_DeleteObj.Click += (s, a) =>
             {
-                DeleteObject();
+                DB_Cmd.DeleteOBJECTS();
+                DB_Cmd.SaveOBJECTS();
             };
 
-            tbtn_Edit_ItemCPlan.Click += (s, a) =>
-            {
-                Add_CPlan();
-            };
+            
         }
         #endregion
         private void Form_main_Load(object sender, EventArgs e)
@@ -570,7 +574,7 @@ namespace GW_Dogovor
         }
         #endregion
 
-        #region Add-Delete-Edit DB
+        #region Edit DB
         #region Project
         private void EditProject()
         {
@@ -615,125 +619,79 @@ namespace GW_Dogovor
         #region Dogovor
         private void EditDogovor()
         {
-            Form_Dogovor fе = new Form_Dogovor(DB_Cmd.bndDogovor, DB_Cmd.bndAreaStroy, DB_Cmd.bndStadia, DB_Cmd.bndGip);
+            Form_Dogovor fе = new Form_Dogovor();
 
             if (fе.ShowDialog() == DialogResult.OK)
             {
                 fе.Validate();
-                DB_Cmd.SaveDogovor(DB_Cmd.bndDogovor);
+                DB_Cmd.SaveDogovor();
             }
             else
             {
                 fе.Validate();
-                DB_Cmd.CancelDogovor(DB_Cmd.bndDogovor);
+                DB_Cmd.CancelDogovor();
             }
         }
-        private void AddDogovor()
-        {
-            if (DB_Cmd.bndTender.Count != 0)
-            {
-                DB_Cmd.AddDogovor(DB_Cmd.bndDogovor);
-
-                ((DataRowView)DB_Cmd.bndDogovor.Current).Row["IDCust"] = ((DataRowView)DB_Cmd.bndTender.Current).Row["IDCust"];
-                ((DataRowView)DB_Cmd.bndDogovor.Current).Row["Name_Dog"] = ((DataRowView)DB_Cmd.bndTender.Current).Row["Name_Tender"];
-                ((DataRowView)DB_Cmd.bndDogovor.Current).Row["IDGip"] = ((DataRowView)DB_Cmd.bndTender.Current).Row["GIP"];
-                ((DataRowView)DB_Cmd.bndDogovor.Current).Row["id_Tender"] = ((DataRowView)DB_Cmd.bndTender.Current).Row["ID_Teder"];
-                ((DataRowView)DB_Cmd.bndDogovor.Current).Row["IDStady"] = ((DataRowView)DB_Cmd.bndTender.Current).Row["IDStadia"];
-                ((DataRowView)DB_Cmd.bndDogovor.Current).Row["Sostav"] = ((DataRowView)DB_Cmd.bndTender.Current).Row["Sostav"];
-                EditDogovor();
-            }
-            else
-            {
-                MessageBox.Show("Для создания договора требуется активная запись 'Тендер'", "Внимание!", MessageBoxButtons.OK ,MessageBoxIcon.Warning);
-            }
-        }
-        private void DeleteDogovor()
-        {
-            DB_Cmd.DeleteDogovor(DB_Cmd.bndDogovor);
-            DB_Cmd.SaveDogovor(DB_Cmd.bndDogovor);
-        }
+ 
         #endregion
 
         #region DopDogovor
         private void EditDopDogovor()
         {
-            Form_DopSogl fе = new Form_DopSogl(DB_Cmd.bndDopDogovor);
+            Form_DopSogl fе = new Form_DopSogl();
 
             if (fе.ShowDialog() == DialogResult.OK)
             {
                 fе.Validate();
-                DB_Cmd.SaveDopSoglashenia(DB_Cmd.bndDopDogovor);
+                DB_Cmd.SaveDopSoglashenia();
             }
             else
             {
                 fе.Validate();
-                DB_Cmd.CancelDopSoglashenia(DB_Cmd.bndDopDogovor);
+                DB_Cmd.CancelDopSoglashenia();
             }
         }
-        private void AddDopDogovor()
-        {
-            if (DB_Cmd.bndDogovor.Count != 0)
-            {
-                DB_Cmd.AddDopSoglashenia(DB_Cmd.bndDopDogovor);
-
-                ((DataRowView)DB_Cmd.bndDopDogovor.Current).Row["DogID"] = ((DataRowView)DB_Cmd.bndDogovor.Current).Row["DogID"];
-
-                EditDopDogovor();
-            }
-            else
-            {
-                MessageBox.Show("Для создания допсоглашения требуется активная запись 'Договор'", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-        private void DeleteDopDogovor()
-        {
-            DB_Cmd.DeleteDopSoglashenia(DB_Cmd.bndDopDogovor);
-            DB_Cmd.SaveDopSoglashenia(DB_Cmd.bndDopDogovor);
-        }
+         
         #endregion
 
         #region Document
         private void EditDoc()
         {
-            Form_Document fed = new Form_Document(DB_Cmd.bndDocument, DB_Cmd.bndTypeDoc);
+            Form_Document fed = new Form_Document();
             if (fed.ShowDialog() == DialogResult.OK)
             {
                 fed.Validate();
-                DB_Cmd.SaveDoc(DB_Cmd.bndDocument);
+                DB_Cmd.SaveDoc();
             }
             else
             {
                 fed.Validate();
-                DB_Cmd.CancelDoc(DB_Cmd.bndDocument);
+                DB_Cmd.CancelDoc();
             }
         }
-        private void AddDoc()
-        {
-            DB_Cmd.AddDoc(DB_Cmd.bndDocument);
-            EditDoc();
-        }
+       
         private void DeleteDoc(string fld)
         {
-         //   string pathDoc = ((DataRowView)bndDocument.Current).Row["PathDoc"].ToString();
-         //   string pathSecond = pathDoc.Remove(0, (int)link_LocalFld.Text.Length-1);
-         //   //удаляем физически
-         //try
-         //   {
-         //       string name = Path.GetFileName(pathDoc);
-         //       string PLocal = Path.Combine(link_LocalFld.Text, pathSecond);
-         //       string PServer = Path.Combine(link_ServetFld.Text, pathSecond);
-         //       FileA.DeleteDocument(name, PLocal, PServer);
-         //   }
-         //   catch (Exception ex)
-         //  {
-         //       MessageBox.Show(ex.Message);
-         //  }
-            
+            //   string pathDoc = ((DataRowView)bndDocument.Current).Row["PathDoc"].ToString();
+            //   string pathSecond = pathDoc.Remove(0, (int)link_LocalFld.Text.Length-1);
+            //   //удаляем физически
+            //try
+            //   {
+            //       string name = Path.GetFileName(pathDoc);
+            //       string PLocal = Path.Combine(link_LocalFld.Text, pathSecond);
+            //       string PServer = Path.Combine(link_ServetFld.Text, pathSecond);
+            //       FileA.DeleteDocument(name, PLocal, PServer);
+            //   }
+            //   catch (Exception ex)
+            //  {
+            //       MessageBox.Show(ex.Message);
+            //  }
 
-         //   //удаляем из базы
-         //   DB_Cmd.DeleteDoc(bndDocument);
-         //   DB_Cmd.SaveDoc(bndDocument);
-           
+
+            //удаляем из базы
+            DB_Cmd.DeleteDoc();
+            DB_Cmd.SaveDoc();
+
         }
         private void deleteDocument(object sender, EventArgs e)
         {
@@ -742,23 +700,21 @@ namespace GW_Dogovor
             switch (tabDocuments.SelectedIndex)
             {
                 case 0:
-                    DeleteDoc(Libr.NameFld[0]);
+                    //DeleteDoc(Libr.NameFld[0]);
                     break;
                 case 1:
-                    DeleteDoc(Libr.NameFld[1]);
+                    //DeleteDoc(Libr.NameFld[1]);
                     break;
                 case 2:
 
                     break;
 
                 default:
-                    DeleteDoc(Libr.NameFld[0]);
+                    //DeleteDoc(Libr.NameFld[0]);
                     break;
             }
         }
         #endregion
-
-      
 
         #region Object
         private void EditObject()
@@ -768,84 +724,19 @@ namespace GW_Dogovor
             if (fе.ShowDialog() == DialogResult.OK)
             {
                 fе.Validate();
-                DB_Cmd.SaveOBJECTS(DB_Cmd.bndObject);
+                DB_Cmd.SaveOBJECTS();
             }
             else
             {
                 fе.Validate();
-                DB_Cmd.CancelOBJECTS(DB_Cmd.bndObject);
+                DB_Cmd.CancelOBJECTS();
             }
         }
-        private void AddObject()
-        {
-            if (DB_Cmd.bndDogovor.Count != 0)
-            {
-                DB_Cmd.AddOBJECTS(DB_Cmd.bndObject);
-
-                ((DataRowView)DB_Cmd.bndObject.Current).Row["IDCust"] = ((DataRowView)DB_Cmd.bndDogovor.Current).Row["IDCust"];
-                ((DataRowView)DB_Cmd.bndObject.Current).Row["GIP"] = ((DataRowView)DB_Cmd.bndDogovor.Current).Row["IDGip"];
-                ((DataRowView)DB_Cmd.bndObject.Current).Row["Name_Ustanovka"] = ((DataRowView)DB_Cmd.bndDogovor.Current).Row["Name_Dog"];
-
-
-                EditObject();
-            }
-            else
-            {
-                MessageBox.Show("Для создания объекта требуется активная запись 'Договор'", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-        private void DeleteObject()
-        {
-            DB_Cmd.DeleteOBJECTS(DB_Cmd.bndObject);
-            DB_Cmd.SaveOBJECTS(DB_Cmd.bndObject);
-        }
-
-        #endregion
+     
+       #endregion
 
         #region Calendar Plan
-        private void Edit_CPlan()
-        {
-            //Form_editObject fе = new Form_editObject(bndObject, bndGip, bndStadia);
-            Form_CPlan feCPlan = new Form_CPlan();
-            feCPlan.Show();
-            //if (feCPlan.ShowDialog() == DialogResult.OK)
-            //{
-            //feCPlan.Validate();
-            //DB_Cmd.SaveCalendarPlan(bndCalendarPlan);
-            //}
-            //else
-            //{
-            //    feCPlan.Validate();
-            //    DB_Cmd.CancelOBJECTS(bndObject);
-            //}
-        }
-        private void Add_CPlan()
-        {
-            if (DB_Cmd.bndDogovor.Count != 0)
-            {
-                //DB_Cmd.AddCalendarPlan(bndCalendarPlan);
-
-                Form_CPlan feCPlan = new Form_CPlan();
-                feCPlan.Show();
-
-            //   ((DataRowView)bndCalendarPlan.Current).Row["IDCust"] = ((DataRowView)bndDogovor.Current).Row["IDCust"];
-            //    ((DataRowView)bndObject.Current).Row["GIP"] = ((DataRowView)bndDogovor.Current).Row["IDGip"];
-            //    ((DataRowView)bndObject.Current).Row["Name_Ustanovka"] = ((DataRowView)bndDogovor.Current).Row["Name_Dog"];
-
-
-                //Edit_CPlan();
-            }
-            else
-            {
-                MessageBox.Show("Для создания объекта требуется активная запись 'Договор'", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-        private void Delete_CPlan()
-        {
-            DB_Cmd.DeleteCalendarPlan(DB_Cmd.bndCalendarPlan);
-            DB_Cmd.SaveCalendarPlan(DB_Cmd.bndCalendarPlan);
-        }
-
+       
         #endregion
 
         #region EditText
@@ -1195,6 +1086,12 @@ namespace GW_Dogovor
                     FileA.RunFolder(p);
 
             }
+        }
+
+        private void tbtn_Edit_ItemCPlan_Click(object sender, EventArgs e)
+        {
+            Form_CPlan feCPlan = new Form_CPlan();
+            feCPlan.Show();
         }
     }
 

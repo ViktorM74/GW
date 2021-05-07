@@ -1,4 +1,5 @@
 ﻿using System.Windows.Forms;
+using DBClass;
 
 namespace DogovorClass
 {
@@ -7,40 +8,35 @@ namespace DogovorClass
         public Form_Dogovor()
         {
             InitializeComponent();
+
+            SetView();
         }
 
-        public Form_Dogovor(BindingSource bndDogovor, BindingSource bndCustomer, BindingSource bndStadia, BindingSource bndGIP)
+        public void SetView()
         {
-            InitializeComponent();
+            tb_NumDog.DataBindings.Add("Text", DB_Cmd.bndDogovor, "Nambe_Dog");
+            dtp_DateDog.DataBindings.Add("Text", DB_Cmd.bndDogovor, "DataOt");
 
-            SetView(bndDogovor, bndCustomer, bndStadia, bndGIP);
-        }
+            cb_StatusDog.DataBindings.Add("Text", DB_Cmd.bndDogovor, "Status");
 
-        public void SetView(BindingSource bndDogovor, BindingSource bndCustomer, BindingSource bndStadia, BindingSource bndGIP)
-        {
-            tb_NumDog.DataBindings.Add("Text", bndDogovor, "Nambe_Dog");
-            dtp_DateDog.DataBindings.Add("Text", bndDogovor, "DataOt");
-
-            cb_StatusDog.DataBindings.Add("Text", bndDogovor, "Status");
-
-            dtp_ToDateDog.DataBindings.Add("Text", bndDogovor, "Data_Konec");
-            tb_NameDog.DataBindings.Add("Text", bndDogovor, "Name_Dog");
+            dtp_ToDateDog.DataBindings.Add("Text", DB_Cmd.bndDogovor, "Data_Konec");
+            tb_NameDog.DataBindings.Add("Text", DB_Cmd.bndDogovor, "Name_Dog");
 
             // cb_StadiaDog
-            cb_StadiaDog.DataSource = bndStadia;
+            cb_StadiaDog.DataSource = DB_Cmd.bndStadia;
             cb_StadiaDog.DisplayMember = "Обозначение";
             cb_StadiaDog.ValueMember = "StadyID";
-            cb_StadiaDog.DataBindings.Add("SelectedValue", bndDogovor, "IDStady");
+            cb_StadiaDog.DataBindings.Add("SelectedValue", DB_Cmd.bndDogovor, "IDStady");
 
             //cb_GIPDog
-            cb_GIPDog.DataSource = bndGIP;
+            cb_GIPDog.DataSource = DB_Cmd.bndGip;
             cb_GIPDog.DisplayMember = "Family";
             cb_GIPDog.ValueMember = "UsedID";
-            cb_GIPDog.DataBindings.Add("SelectedValue", bndDogovor, "IDGip");
+            cb_GIPDog.DataBindings.Add("SelectedValue", DB_Cmd.bndDogovor, "IDGip");
 
-            cb_Valute.DataBindings.Add("Text", bndDogovor, "V");
-            tb_SostavDog.DataBindings.Add("Text", bndDogovor, "Sostav");
-            tb_CommentDog.DataBindings.Add("Text", bndDogovor, "Comments");
+            cb_Valute.DataBindings.Add("Text", DB_Cmd.bndDogovor, "V");
+            tb_SostavDog.DataBindings.Add("Text", DB_Cmd.bndDogovor, "Sostav");
+            tb_CommentDog.DataBindings.Add("Text", DB_Cmd.bndDogovor, "Comments");
 
         }
 

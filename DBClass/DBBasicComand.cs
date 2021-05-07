@@ -48,6 +48,10 @@ namespace DBClass
         public static BindingSource bndAct = new BindingSource();
         public static BindingSource bndSostavObj = new BindingSource();
         public static BindingSource bndZadania = new BindingSource();
+        public static BindingSource bndEvents = new BindingSource();
+        public static BindingSource bndMark = new BindingSource();
+        public static BindingSource bndHistory = new BindingSource();
+        public static BindingSource bndOtdel = new BindingSource();
         #endregion BindingSources
 
         /// <summary>
@@ -100,6 +104,23 @@ namespace DBClass
             bndSostavObj.DataMember = "OBJECTSSostavDoc";
             bndZadania.DataSource = bndObject;
             bndZadania.DataMember = "OBJECTSZadania";
+
+            //Events
+            bndEvents.DataSource = bndObject;
+            bndEvents.DataMember = "OBJECTSEvents";
+
+            //MarkProject
+            bndMark.DataSource = DB_Cmd.dsDB;
+            bndMark.DataMember = "Mark_project";
+
+            //History
+            bndHistory.DataSource = DB_Cmd.dsDB;
+            bndHistory.DataMember = "History";
+
+            //Otdel
+            bndOtdel.DataSource = DB_Cmd.dsDB;
+            bndOtdel.DataMember = "Otdel";
+
         }
 
         private static void DBFills()
@@ -235,17 +256,17 @@ namespace DBClass
 
         #region Document
 
-        public static void SaveDoc(BindingSource bnd)
+        public static void SaveDoc()
         {
-            int position = bnd.Position;
+            int position = bndDocument.Position;
             try
             {
-                bnd.EndEdit();
+                bndDocument.EndEdit();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Сохранение вызвало ошибку: " + ex.Message);
-                bnd.ResetBindings(false);
+                bndDocument.ResetBindings(false);
             }
             finally
             {
@@ -253,37 +274,37 @@ namespace DBClass
                 dsDB.Tables["Documents"].AcceptChanges();
                 adpDocument.Fill(dsDB.Documents);
 
-                bnd.Position = position;
+                bndDocument.Position = position;
             }
         }
 
-        public static void CancelDoc(BindingSource bnd)
+        public static void CancelDoc()
         {
-            int position = bnd.Position;
+            int position = bndDocument.Position;
 
-            bnd.ResetBindings(false);
+            bndDocument.ResetBindings(false);
 
             adpDocument.Update(dsDB.Documents);
             dsDB.Tables["Documents"].AcceptChanges();
             adpDocument.Fill(dsDB.Documents);
 
-            bnd.Position = position;
+            bndDocument.Position = position;
         }
 
-        public static void AddDoc(BindingSource bnd)
+        public static void AddDoc()
         {
-            bnd.AddNew();
+            bndDocument.AddNew();
         }
 
-        public static void DeleteDoc(BindingSource bnd)
+        public static void DeleteDoc()
         {
-            DataRowView rw = bnd.Current as DataRowView;
+            DataRowView rw = bndDocument.Current as DataRowView;
             string NameDelete = rw.Row["Namedoc"].ToString();
             if (MessageBox.Show("Вы действитель хотите удалить " + NameDelete + "? \r\n ДЕЙСТВИЕ НЕВОЗМОЖНО ОТМЕНИТЬ!", "Удаление записи", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 try
                 {
-                    bnd.RemoveCurrent();
+                    bndDocument.RemoveCurrent();
                 }
                 catch (Exception ex)
                 {
@@ -298,17 +319,17 @@ namespace DBClass
 
         #region TypeDocument
 
-        public static void SaveTypeDoc(BindingSource bnd)
+        public static void SaveTypeDoc()
         {
-            int position = bnd.Position;
+            int position = bndTypeDoc.Position;
             try
             {
-                bnd.EndEdit();
+                bndTypeDoc.EndEdit();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Сохранение вызвало ошибку: " + ex.Message);
-                bnd.ResetBindings(false);
+                bndTypeDoc.ResetBindings(false);
             }
             finally
             {
@@ -316,37 +337,37 @@ namespace DBClass
                 dsDB.Tables["Documets_type"].AcceptChanges();
                 adpTypeDocument.Fill(dsDB.Documets_type);
 
-                bnd.Position = position;
+                bndTypeDoc.Position = position;
             }
         }
 
-        public static void CancelTypeDoc(BindingSource bnd)
+        public static void CancelTypeDoc()
         {
-            int position = bnd.Position;
+            int position = bndTypeDoc.Position;
 
-            bnd.ResetBindings(false);
+            bndTypeDoc.ResetBindings(false);
 
             adpTypeDocument.Update(dsDB.Documets_type);
             dsDB.Tables["Documets_type"].AcceptChanges();
             adpTypeDocument.Fill(dsDB.Documets_type);
 
-            bnd.Position = position;
+            bndTypeDoc.Position = position;
         }
 
-        public static void AddTypeDoc(BindingSource bnd)
+        public static void AddTypeDoc()
         {
-            bnd.AddNew();
+            bndTypeDoc.AddNew();
         }
 
-        public static void DeleteTypeDoc(BindingSource bnd)
+        public static void DeleteTypeDoc()
         {
-            DataRowView rw = bnd.Current as DataRowView;
+            DataRowView rw = bndTypeDoc.Current as DataRowView;
             string NameDelete = rw.Row["Name_doc"].ToString();
             if (MessageBox.Show("Вы действитель хотите удалить " + NameDelete + "? \r\n ДЕЙСТВИЕ НЕВОЗМОЖНО ОТМЕНИТЬ!", "Удаление записи", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 try
                 {
-                    bnd.RemoveCurrent();
+                    bndTypeDoc.RemoveCurrent();
                 }
                 catch (Exception ex)
                 {
@@ -359,17 +380,17 @@ namespace DBClass
         #endregion
 
         #region Dogovor
-        public static void SaveDogovor(BindingSource bnd)
+        public static void SaveDogovor()
         {
-            int position = bnd.Position;
+            int position = bndDogovor.Position;
             try
             {
-                bnd.EndEdit();
+                bndDogovor.EndEdit();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Сохранение вызвало ошибку: " + ex.Message);
-                bnd.ResetBindings(false);
+                bndDogovor.ResetBindings(false);
             }
             finally
             {
@@ -377,37 +398,50 @@ namespace DBClass
                 dsDB.Tables["Dogovor"].AcceptChanges();
                 adpDogovor.Fill(dsDB.Dogovor);
 
-                bnd.Position = position;
+                bndDogovor.Position = position;
             }
         }
 
-        public static void CancelDogovor(BindingSource bnd)
+        public static void CancelDogovor()
         {
-            int position = bnd.Position;
+            int position = bndDogovor.Position;
 
-            bnd.ResetBindings(false);
+            bndDogovor.ResetBindings(false);
 
             adpDogovor.Update(dsDB.Dogovor);
             dsDB.Tables["Dogovor"].AcceptChanges();
             adpDogovor.Fill(dsDB.Dogovor);
 
-            bnd.Position = position;
+            bndDogovor.Position = position;
         }
 
-        public static void AddDogovor(BindingSource bnd)
+        public static void AddDogovor()
         {
-            bnd.AddNew();
+            if (DB_Cmd.bndTender.Count != 0)
+            {
+                bndDogovor.AddNew();
+                ((DataRowView)DB_Cmd.bndDogovor.Current).Row["IDCust"] = ((DataRowView)DB_Cmd.bndTender.Current).Row["IDCust"];
+                ((DataRowView)DB_Cmd.bndDogovor.Current).Row["Name_Dog"] = ((DataRowView)DB_Cmd.bndTender.Current).Row["Name_Tender"];
+                ((DataRowView)DB_Cmd.bndDogovor.Current).Row["IDGip"] = ((DataRowView)DB_Cmd.bndTender.Current).Row["GIP"];
+                ((DataRowView)DB_Cmd.bndDogovor.Current).Row["id_Tender"] = ((DataRowView)DB_Cmd.bndTender.Current).Row["ID_Teder"];
+                ((DataRowView)DB_Cmd.bndDogovor.Current).Row["IDStady"] = ((DataRowView)DB_Cmd.bndTender.Current).Row["IDStadia"];
+                ((DataRowView)DB_Cmd.bndDogovor.Current).Row["Sostav"] = ((DataRowView)DB_Cmd.bndTender.Current).Row["Sostav"];
+            }
+            else
+            {
+                MessageBox.Show("Для создания договора требуется активная запись 'Тендер'", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
-        public static void DeleteDogovor(BindingSource bnd)
+        public static void DeleteDogovor()
         {
-            DataRowView rw = bnd.Current as DataRowView;
+            DataRowView rw = bndDogovor.Current as DataRowView;
             string NameDelete = rw.Row["Nambe_Dog"].ToString();
             if (MessageBox.Show("Вы действитель хотите удалить " + NameDelete + "? \r\n ДЕЙСТВИЕ НЕВОЗМОЖНО ОТМЕНИТЬ!", "Удаление записи", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 try
                 {
-                    bnd.RemoveCurrent();
+                    bndDogovor.RemoveCurrent();
                 }
                 catch (Exception ex)
                 {
@@ -486,17 +520,17 @@ namespace DBClass
         #endregion
 
         #region CalendarPlan
-        public static void SaveCalendarPlan(BindingSource bnd)
+        public static void SaveCalendarPlan()
         {
-            int position = bnd.Position;
+            int position = bndCalendarPlan.Position;
             try
             {
-                bnd.EndEdit();
+                bndCalendarPlan.EndEdit();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Сохранение вызвало ошибку: " + ex.Message);
-                bnd.ResetBindings(false);
+                bndCalendarPlan.ResetBindings(false);
             }
             finally
             {
@@ -504,37 +538,49 @@ namespace DBClass
                 dsDB.Tables["CalendarPlan"].AcceptChanges();
                 adpCPlan.Fill(dsDB.CalendarPlan);
 
-                bnd.Position = position;
+                bndCalendarPlan.Position = position;
             }
         }
 
-        public static void CancelCalendarPlan(BindingSource bnd)
+        public static void CancelCalendarPlan()
         {
-            int position = bnd.Position;
+            int position = bndCalendarPlan.Position;
 
-            bnd.ResetBindings(false);
+            bndCalendarPlan.ResetBindings(false);
 
             adpCPlan.Update(dsDB.CalendarPlan);
             dsDB.Tables["CalendarPlan"].AcceptChanges();
             adpCPlan.Fill(dsDB.CalendarPlan);
 
-            bnd.Position = position;
+            bndCalendarPlan.Position = position;
         }
 
-        public static void AddCalendarPlan(BindingSource bnd)
+        public static void AddCalendarPlan()
         {
-            bnd.AddNew();
+            if (DB_Cmd.bndDogovor.Count != 0)
+            {
+                bndCalendarPlan.AddNew();
+                //   ((DataRowView)bndCalendarPlan.Current).Row["IDCust"] = ((DataRowView)bndDogovor.Current).Row["IDCust"];
+                //    ((DataRowView)bndObject.Current).Row["GIP"] = ((DataRowView)bndDogovor.Current).Row["IDGip"];
+                //    ((DataRowView)bndObject.Current).Row["Name_Ustanovka"] = ((DataRowView)bndDogovor.Current).Row["Name_Dog"];
+
+            }
+            else
+            {
+                MessageBox.Show("Для создания объекта требуется активная запись 'Договор'", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
-        public static void DeleteCalendarPlan(BindingSource bnd)
+
+        public static void DeleteCalendarPlan()
         {
-            DataRowView rw = bnd.Current as DataRowView;
+            DataRowView rw = bndCalendarPlan.Current as DataRowView;
             string NameDelete = rw.Row["Name_Etap"].ToString();
             if (MessageBox.Show("Вы действитель хотите удалить " + NameDelete + "? \r\n ДЕЙСТВИЕ НЕВОЗМОЖНО ОТМЕНИТЬ!", "Удаление записи", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 try
                 {
-                    bnd.RemoveCurrent();
+                    bndCalendarPlan.RemoveCurrent();
                 }
                 catch (Exception ex)
                 {
@@ -548,17 +594,17 @@ namespace DBClass
         #endregion
 
         #region DopSoglashenia
-        public static void SaveDopSoglashenia(BindingSource bnd)
+        public static void SaveDopSoglashenia()
         {
-            int position = bnd.Position;
+            int position = bndDopDogovor.Position;
             try
             {
-                bnd.EndEdit();
+                bndDopDogovor.EndEdit();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Сохранение вызвало ошибку: " + ex.Message);
-                bnd.ResetBindings(false);
+                bndDopDogovor.ResetBindings(false);
             }
             finally
             {
@@ -566,37 +612,49 @@ namespace DBClass
                 dsDB.Tables["DopSoglashenia"].AcceptChanges();
                 adpDDogovor.Fill(dsDB.DopSoglashenia);
 
-                bnd.Position = position;
+                bndDopDogovor.Position = position;
             }
         }
 
-        public static void CancelDopSoglashenia(BindingSource bnd)
+        public static void CancelDopSoglashenia()
         {
-            int position = bnd.Position;
+            int position = bndDopDogovor.Position;
 
-            bnd.ResetBindings(false);
+            bndDopDogovor.ResetBindings(false);
 
             adpDDogovor.Update(dsDB.DopSoglashenia);
             dsDB.Tables["DopSoglashenia"].AcceptChanges();
             adpDDogovor.Fill(dsDB.DopSoglashenia);
 
-            bnd.Position = position;
+            bndDopDogovor.Position = position;
         }
 
-        public static void AddDopSoglashenia(BindingSource bnd)
+        public static void AddDopSoglashenia()
         {
-            bnd.AddNew();
+            if (DB_Cmd.bndDogovor.Count != 0)
+            {
+                bndDopDogovor.AddNew();
+
+                ((DataRowView)DB_Cmd.bndDopDogovor.Current).Row["DogID"] = ((DataRowView)DB_Cmd.bndDogovor.Current).Row["DogID"];
+
+               
+            }
+            else
+            {
+                MessageBox.Show("Для создания допсоглашения требуется активная запись 'Договор'", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            
         }
 
-        public static void DeleteDopSoglashenia(BindingSource bnd)
+        public static void DeleteDopSoglashenia()
         {
-            DataRowView rw = bnd.Current as DataRowView;
+            DataRowView rw = bndDopDogovor.Current as DataRowView;
             string NameDelete = rw.Row["Nambe_DS"].ToString();
             if (MessageBox.Show("Вы действитель хотите удалить " + NameDelete + "? \r\n ДЕЙСТВИЕ НЕВОЗМОЖНО ОТМЕНИТЬ!", "Удаление записи", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 try
                 {
-                    bnd.RemoveCurrent();
+                    bndDopDogovor.RemoveCurrent();
                 }
                 catch (Exception ex)
                 {
@@ -610,17 +668,17 @@ namespace DBClass
         #endregion
 
         #region Events
-        public static void SaveEvents(BindingSource bnd)
+        public static void SaveEvents()
         {
-            int position = bnd.Position;
+            int position = bndEvents.Position;
             try
             {
-                bnd.EndEdit();
+                bndEvents.EndEdit();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Сохранение вызвало ошибку: " + ex.Message);
-                bnd.ResetBindings(false);
+                bndEvents.ResetBindings(false);
             }
             finally
             {
@@ -628,37 +686,37 @@ namespace DBClass
                 dsDB.Tables["Events"].AcceptChanges();
                 adpEvent.Fill(dsDB.Events);
 
-                bnd.Position = position;
+                bndEvents.Position = position;
             }
         }
 
-        public static void CancelEvents(BindingSource bnd)
+        public static void CancelEvents()
         {
-            int position = bnd.Position;
+            int position = bndEvents.Position;
 
-            bnd.ResetBindings(false);
+            bndEvents.ResetBindings(false);
 
             adpEvent.Update(dsDB.Events);
             dsDB.Tables["Events"].AcceptChanges();
             adpEvent.Fill(dsDB.Events);
 
-            bnd.Position = position;
+            bndEvents.Position = position;
         }
 
-        public static void AddEvents(BindingSource bnd)
+        public static void AddEvents()
         {
-            bnd.AddNew();
+            bndEvents.AddNew();
         }
 
-        public static void DeleteEvents(BindingSource bnd)
+        public static void DeleteEvents()
         {
-            DataRowView rw = bnd.Current as DataRowView;
+            DataRowView rw = bndEvents.Current as DataRowView;
             string NameDelete = rw.Row["Событие"].ToString();
             if (MessageBox.Show("Вы действитель хотите удалить " + NameDelete + "? \r\n ДЕЙСТВИЕ НЕВОЗМОЖНО ОТМЕНИТЬ!", "Удаление записи", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 try
                 {
-                    bnd.RemoveCurrent();
+                    bndEvents.RemoveCurrent();
                 }
                 catch (Exception ex)
                 {
@@ -672,17 +730,17 @@ namespace DBClass
         #endregion
 
         #region Stady_project
-        public static void SaveStady_project(BindingSource bnd)
+        public static void SaveStady_project()
         {
-            int position = bnd.Position;
+            int position = bndStadia.Position;
             try
             {
-                bnd.EndEdit();
+                bndStadia.EndEdit();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Сохранение вызвало ошибку: " + ex.Message);
-                bnd.ResetBindings(false);
+                bndStadia.ResetBindings(false);
             }
             finally
             {
@@ -690,37 +748,37 @@ namespace DBClass
                 dsDB.Tables["Stady_project"].AcceptChanges();
                 adpStadyPrj.Fill(dsDB.Stady_project);
 
-                bnd.Position = position;
+                bndStadia.Position = position;
             }
         }
 
-        public static void CancelStady_project(BindingSource bnd)
+        public static void CancelStady_project()
         {
-            int position = bnd.Position;
+            int position = bndStadia.Position;
 
-            bnd.ResetBindings(false);
+            bndStadia.ResetBindings(false);
 
             adpStadyPrj.Update(dsDB.Stady_project);
             dsDB.Tables["Stady_project"].AcceptChanges();
             adpStadyPrj.Fill(dsDB.Stady_project);
 
-            bnd.Position = position;
+            bndStadia.Position = position;
         }
 
-        public static void AddStady_project(BindingSource bnd)
+        public static void AddStady_project()
         {
-            bnd.AddNew();
+            bndStadia.AddNew();
         }
 
-        public static void DeleteStady_project(BindingSource bnd)
+        public static void DeleteStady_project()
         {
-            DataRowView rw = bnd.Current as DataRowView;
+            DataRowView rw = bndStadia.Current as DataRowView;
             string NameDelete = rw.Row["Расшифровка"].ToString();
             if (MessageBox.Show("Вы действитель хотите удалить " + NameDelete + "? \r\n ДЕЙСТВИЕ НЕВОЗМОЖНО ОТМЕНИТЬ!", "Удаление записи", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 try
                 {
-                    bnd.RemoveCurrent();
+                    bndStadia.RemoveCurrent();
                 }
                 catch (Exception ex)
                 {
@@ -734,17 +792,17 @@ namespace DBClass
         #endregion
 
         #region Act
-        public static void SaveAct(BindingSource bnd)
+        public static void SaveAct()
         {
-            int position = bnd.Position;
+            int position = bndAct.Position;
             try
             {
-                bnd.EndEdit();
+                bndAct.EndEdit();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Сохранение вызвало ошибку: " + ex.Message);
-                bnd.ResetBindings(false);
+                bndAct.ResetBindings(false);
             }
             finally
             {
@@ -752,37 +810,37 @@ namespace DBClass
                 dsDB.Tables["Act"].AcceptChanges();
                 adpAct.Fill(dsDB.Act);
 
-                bnd.Position = position;
+                bndAct.Position = position;
             }
         }
 
-        public static void CancelAct(BindingSource bnd)
+        public static void CancelAct()
         {
-            int position = bnd.Position;
+            int position = bndAct.Position;
 
-            bnd.ResetBindings(false);
+            bndAct.ResetBindings(false);
 
             adpAct.Update(dsDB.Act);
             dsDB.Tables["Act"].AcceptChanges();
             adpAct.Fill(dsDB.Act);
 
-            bnd.Position = position;
+            bndAct.Position = position;
         }
 
-        public static void AddAct(BindingSource bnd)
+        public static void AddAct()
         {
-            bnd.AddNew();
+            bndAct.AddNew();
         }
 
-        public static void DeleteAct(BindingSource bnd)
+        public static void DeleteAct()
         {
-            DataRowView rw = bnd.Current as DataRowView;
+            DataRowView rw = bndAct.Current as DataRowView;
             string NameDelete = rw.Row["Nambe_Act"].ToString();
             if (MessageBox.Show("Вы действитель хотите удалить " + NameDelete + "? \r\n ДЕЙСТВИЕ НЕВОЗМОЖНО ОТМЕНИТЬ!", "Удаление записи", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 try
                 {
-                    bnd.RemoveCurrent();
+                    bndAct.RemoveCurrent();
                 }
                 catch (Exception ex)
                 {
@@ -796,17 +854,17 @@ namespace DBClass
         #endregion
 
         #region OBJECTS
-        public static void SaveOBJECTS(BindingSource bnd)
+        public static void SaveOBJECTS()
         {
-            int position = bnd.Position;
+            int position = bndObject.Position;
             try
             {
-                bnd.EndEdit();
+                bndObject.EndEdit();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Сохранение вызвало ошибку: " + ex.Message);
-                bnd.ResetBindings(false);
+                bndObject.ResetBindings(false);
             }
             finally
             {
@@ -814,37 +872,47 @@ namespace DBClass
                 dsDB.Tables["OBJECTS"].AcceptChanges();
                 adpObject.Fill(dsDB.OBJECTS);
 
-                bnd.Position = position;
+                bndObject.Position = position;
             }
         }
 
-        public static void CancelOBJECTS(BindingSource bnd)
+        public static void CancelOBJECTS()
         {
-            int position = bnd.Position;
+            int position = bndObject.Position;
 
-            bnd.ResetBindings(false);
+            bndObject.ResetBindings(false);
 
             adpObject.Update(dsDB.OBJECTS);
             dsDB.Tables["OBJECTS"].AcceptChanges();
             adpObject.Fill(dsDB.OBJECTS);
 
-            bnd.Position = position;
+            bndObject.Position = position;
         }
 
-        public static void AddOBJECTS(BindingSource bnd)
+        public static void AddOBJECTS()
         {
-            bnd.AddNew();
+            if (DB_Cmd.bndDogovor.Count != 0)
+            {
+                bndObject.AddNew();
+                ((DataRowView)DB_Cmd.bndObject.Current).Row["IDCust"] = ((DataRowView)DB_Cmd.bndDogovor.Current).Row["IDCust"];
+                ((DataRowView)DB_Cmd.bndObject.Current).Row["GIP"] = ((DataRowView)DB_Cmd.bndDogovor.Current).Row["IDGip"];
+                ((DataRowView)DB_Cmd.bndObject.Current).Row["Name_Ustanovka"] = ((DataRowView)DB_Cmd.bndDogovor.Current).Row["Name_Dog"];
+            }
+            else
+            {
+                MessageBox.Show("Для создания объекта требуется активная запись 'Договор'", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
-        public static void DeleteOBJECTS(BindingSource bnd)
+        public static void DeleteOBJECTS()
         {
-            DataRowView rw = bnd.Current as DataRowView;
+            DataRowView rw = bndObject.Current as DataRowView;
             string NameDelete = rw.Row["Name_object"].ToString();
             if (MessageBox.Show("Вы действитель хотите удалить " + NameDelete + "? \r\n ДЕЙСТВИЕ НЕВОЗМОЖНО ОТМЕНИТЬ!", "Удаление записи", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 try
                 {
-                    bnd.RemoveCurrent();
+                    bndObject.RemoveCurrent();
                 }
                 catch (Exception ex)
                 {
@@ -858,17 +926,17 @@ namespace DBClass
         #endregion
 
         #region SostavDoc
-        public static void SaveSostavDoc(BindingSource bnd)
+        public static void SaveSostavDoc()
         {
-            int position = bnd.Position;
+            int position = bndSostavObj.Position;
             try
             {
-                bnd.EndEdit();
+                bndSostavObj.EndEdit();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Сохранение вызвало ошибку: " + ex.Message);
-                bnd.ResetBindings(false);
+                bndSostavObj.ResetBindings(false);
             }
             finally
             {
@@ -876,37 +944,37 @@ namespace DBClass
                 dsDB.Tables["SostavDoc"].AcceptChanges();
                 adpSostavD.Fill(dsDB.SostavDoc);
 
-                bnd.Position = position;
+                bndSostavObj.Position = position;
             }
         }
 
-        public static void CancelSostavDoc(BindingSource bnd)
+        public static void CancelSostavDoc()
         {
-            int position = bnd.Position;
+            int position = bndSostavObj.Position;
 
-            bnd.ResetBindings(false);
+            bndSostavObj.ResetBindings(false);
 
             adpSostavD.Update(dsDB.SostavDoc);
             dsDB.Tables["SostavDoc"].AcceptChanges();
             adpSostavD.Fill(dsDB.SostavDoc);
 
-            bnd.Position = position;
+            bndSostavObj.Position = position;
         }
 
-        public static void AddSostavDoc(BindingSource bnd)
+        public static void AddSostavDoc()
         {
-            bnd.AddNew();
+            bndSostavObj.AddNew();
         }
 
-        public static void DeleteSostavDoc(BindingSource bnd)
+        public static void DeleteSostavDoc()
         {
-            DataRowView rw = bnd.Current as DataRowView;
+            DataRowView rw = bndSostavObj.Current as DataRowView;
             string NameDelete = rw.Row["Mark"].ToString();
             if (MessageBox.Show("Вы действитель хотите удалить " + NameDelete + "? \r\n ДЕЙСТВИЕ НЕВОЗМОЖНО ОТМЕНИТЬ!", "Удаление записи", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 try
                 {
-                    bnd.RemoveCurrent();
+                    bndSostavObj.RemoveCurrent();
                 }
                 catch (Exception ex)
                 {
@@ -920,17 +988,17 @@ namespace DBClass
         #endregion
 
         #region Mark_project
-        public static void SaveMark_project(BindingSource bnd)
+        public static void SaveMark_project()
         {
-            int position = bnd.Position;
+            int position = bndMark.Position;
             try
             {
-                bnd.EndEdit();
+                bndMark.EndEdit();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Сохранение вызвало ошибку: " + ex.Message);
-                bnd.ResetBindings(false);
+                bndMark.ResetBindings(false);
             }
             finally
             {
@@ -938,37 +1006,37 @@ namespace DBClass
                 dsDB.Tables["Mark_project"].AcceptChanges();
                 adpMark.Fill(dsDB.Mark_project);
 
-                bnd.Position = position;
+                bndMark.Position = position;
             }
         }
 
-        public static void CancelMark_project(BindingSource bnd)
+        public static void CancelMark_project()
         {
-            int position = bnd.Position;
+            int position = bndMark.Position;
 
-            bnd.ResetBindings(false);
+            bndMark.ResetBindings(false);
 
             adpMark.Update(dsDB.Mark_project);
             dsDB.Tables["Mark_project"].AcceptChanges();
             adpMark.Fill(dsDB.Mark_project);
 
-            bnd.Position = position;
+            bndMark.Position = position;
         }
 
-        public static void AddMark_project(BindingSource bnd)
+        public static void AddMark_project()
         {
-            bnd.AddNew();
+            bndMark.AddNew();
         }
 
-        public static void DeleteMark_project(BindingSource bnd)
+        public static void DeleteMark_project()
         {
-            DataRowView rw = bnd.Current as DataRowView;
+            DataRowView rw = bndMark.Current as DataRowView;
             string NameDelete = rw.Row["Марка"].ToString();
             if (MessageBox.Show("Вы действитель хотите удалить " + NameDelete + "? \r\n ДЕЙСТВИЕ НЕВОЗМОЖНО ОТМЕНИТЬ!", "Удаление записи", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 try
                 {
-                    bnd.RemoveCurrent();
+                    bndMark.RemoveCurrent();
                 }
                 catch (Exception ex)
                 {
@@ -982,17 +1050,17 @@ namespace DBClass
         #endregion
 
         #region Zadania
-        public static void SaveZadania(BindingSource bnd)
+        public static void SaveZadania()
         {
-            int position = bnd.Position;
+            int position = bndZadania.Position;
             try
             {
-                bnd.EndEdit();
+                bndZadania.EndEdit();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Сохранение вызвало ошибку: " + ex.Message);
-                bnd.ResetBindings(false);
+                bndZadania.ResetBindings(false);
             }
             finally
             {
@@ -1000,29 +1068,29 @@ namespace DBClass
                 dsDB.Tables["Zadania"].AcceptChanges();
                 adpZadania.Fill(dsDB.Zadania);
 
-                bnd.Position = position;
+                bndZadania.Position = position;
             }
         }
 
-        public static void CancelZadania(BindingSource bnd)
+        public static void CancelZadania()
         {
-            int position = bnd.Position;
+            int position = bndZadania.Position;
 
-            bnd.ResetBindings(false);
+            bndZadania.ResetBindings(false);
 
             adpZadania.Update(dsDB.Zadania);
             dsDB.Tables["Zadania"].AcceptChanges();
             adpZadania.Fill(dsDB.Zadania);
 
-            bnd.Position = position;
+            bndZadania.Position = position;
         }
 
-        public static void AddZadania(BindingSource bnd)
+        public static void AddZadania()
         {
-            bnd.AddNew();
+            bndZadania.AddNew();
         }
 
-        public static void DeleteZadania(BindingSource bnd)
+        public static void DeleteZadania()
         {
             //DataRowView rw = bnd.Current as DataRowView;
             //string NameDelete = rw.Row["Коментарий"].ToString();
@@ -1030,7 +1098,7 @@ namespace DBClass
             {
                 try
                 {
-                    bnd.RemoveCurrent();
+                    bndZadania.RemoveCurrent();
                 }
                 catch (Exception ex)
                 {
@@ -1044,17 +1112,17 @@ namespace DBClass
         #endregion
 
         #region History
-        public static void SaveHistory(BindingSource bnd)
+        public static void SaveHistory()
         {
-            int position = bnd.Position;
+            int position = bndHistory.Position;
             try
             {
-                bnd.EndEdit();
+                bndHistory.EndEdit();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Сохранение вызвало ошибку: " + ex.Message);
-                bnd.ResetBindings(false);
+                bndHistory.ResetBindings(false);
             }
             finally
             {
@@ -1062,37 +1130,37 @@ namespace DBClass
                 dsDB.Tables["History"].AcceptChanges();
                 adpHistory.Fill(dsDB.History);
 
-                bnd.Position = position;
+                bndHistory.Position = position;
             }
         }
 
-        public static void CancelHistory(BindingSource bnd)
+        public static void CancelHistory()
         {
-            int position = bnd.Position;
+            int position = bndHistory.Position;
 
-            bnd.ResetBindings(false);
+            bndHistory.ResetBindings(false);
 
             adpHistory.Update(dsDB.History);
             dsDB.Tables["History"].AcceptChanges();
             adpHistory.Fill(dsDB.History);
 
-            bnd.Position = position;
+            bndHistory.Position = position;
         }
 
-        public static void AddHistory(BindingSource bnd)
+        public static void AddHistory()
         {
-            bnd.AddNew();
+            bndHistory.AddNew();
         }
 
-        public static void DeleteHistory(BindingSource bnd)
+        public static void DeleteHistory()
         {
-            DataRowView rw = bnd.Current as DataRowView;
+            DataRowView rw = bndHistory.Current as DataRowView;
             string NameDelete = rw.Row["EvHist"].ToString();
             if (MessageBox.Show("Вы действитель хотите удалить " + NameDelete + "? \r\n ДЕЙСТВИЕ НЕВОЗМОЖНО ОТМЕНИТЬ!", "Удаление записи", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 try
                 {
-                    bnd.RemoveCurrent();
+                    bndHistory.RemoveCurrent();
                 }
                 catch (Exception ex)
                 {
@@ -1106,17 +1174,17 @@ namespace DBClass
         #endregion
 
         #region Otdel
-        public static void SaveOtdel(BindingSource bnd)
+        public static void SaveOtdel()
         {
-            int position = bnd.Position;
+            int position = bndOtdel.Position;
             try
             {
-                bnd.EndEdit();
+                bndOtdel.EndEdit();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Сохранение вызвало ошибку: " + ex.Message);
-                bnd.ResetBindings(false);
+                bndOtdel.ResetBindings(false);
             }
             finally
             {
@@ -1124,37 +1192,37 @@ namespace DBClass
                 dsDB.Tables["Otdel"].AcceptChanges();
                 adpOtdel.Fill(dsDB.Otdel);
 
-                bnd.Position = position;
+                bndOtdel.Position = position;
             }
         }
 
-        public static void CancelOtdel(BindingSource bnd)
+        public static void CancelOtdel()
         {
-            int position = bnd.Position;
+            int position = bndOtdel.Position;
 
-            bnd.ResetBindings(false);
+            bndOtdel.ResetBindings(false);
 
             adpOtdel.Update(dsDB.Otdel);
             dsDB.Tables["Otdel"].AcceptChanges();
             adpOtdel.Fill(dsDB.Otdel);
 
-            bnd.Position = position;
+            bndOtdel.Position = position;
         }
 
-        public static void AddOtdel(BindingSource bnd)
+        public static void AddOtdel()
         {
-            bnd.AddNew();
+            bndOtdel.AddNew();
         }
 
-        public static void DeleteOtdel(BindingSource bnd)
+        public static void DeleteOtdel()
         {
-            DataRowView rw = bnd.Current as DataRowView;
+            DataRowView rw = bndOtdel.Current as DataRowView;
             string NameDelete = rw.Row["NameOtd"].ToString();
             if (MessageBox.Show("Вы действитель хотите удалить " + NameDelete + "? \r\n ДЕЙСТВИЕ НЕВОЗМОЖНО ОТМЕНИТЬ!", "Удаление записи", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 try
                 {
-                    bnd.RemoveCurrent();
+                    bndOtdel.RemoveCurrent();
                 }
                 catch (Exception ex)
                 {
@@ -1179,7 +1247,7 @@ namespace DBClass
                 name = System.IO.Path.GetFileNameWithoutExtension(el);
                 date = System.IO.File.GetLastWriteTime(el);
            
-                AddDoc(bnd);
+                AddDoc();
                 ((DataRowView)bnd.Current).Row["NameDoc"] = name;
                 ((DataRowView)bnd.Current).Row["DataDoc"] = date;
                 ((DataRowView)bnd.Current).Row["PathDoc"] = path;
@@ -1191,7 +1259,7 @@ namespace DBClass
 
             }
 
-            SaveDoc(bnd);
+            SaveDoc();
 
         }
 
@@ -1208,7 +1276,7 @@ namespace DBClass
                 name = System.IO.Path.GetFileNameWithoutExtension(p);
                 date = System.IO.File.GetLastWriteTime(p).ToShortDateString();
 
-                AddDoc(bnd);
+                AddDoc();
                 ((DataRowView)bnd.Current).Row["NameDoc"] = name;
                 ((DataRowView)bnd.Current).Row["DataDoc"] = date;
                 ((DataRowView)bnd.Current).Row["PathDoc"] = path;
@@ -1217,7 +1285,7 @@ namespace DBClass
 
             }
 
-            SaveDoc(bnd);
+            SaveDoc();
         }
     }
 }
