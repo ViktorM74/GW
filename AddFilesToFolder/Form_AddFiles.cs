@@ -13,11 +13,12 @@ namespace AddFilesToFolder
     {
         string pathL;
         string pathS;
+        string pathRoot;
         int Napr;
         string nameRoot;
         List<TreeNode> listfolder = new List<TreeNode>(); // Короткий путь до уровня root 
-        //List<ListFile> listp = new List<ListFile>(); // список свойств (имя \ дата, путьЛок, путьСерв)
-        //List<string> listNPathFolders = new List<string>(); // список папок выбранных как путь сохранения
+
+        public List<string> ListFiles = new List<string>();
 
         public Form_AddFiles()
         {
@@ -33,17 +34,97 @@ namespace AddFilesToFolder
             nameRoot = Path.GetFileName(pathLocal);
             textBox1.Text = pathL;
             textBox2.Text = pathS;
-            Napr = CheckedChange();
 
-            rb_All.Click += (a, s) => CheckedChange();
-            rb_Loc.Click += (a, s) => CheckedChange();
-            rb_Serv.Click += (a, s) => CheckedChange();
+
+            rb_All.Click += (a, s) =>
+            {
+                CheckedChange();
+                SetRootNode();
+                CreateTreeNodeFolder();
+            };
+            rb_Loc.Click += (a, s) =>
+            {
+                CheckedChange();
+                SetRootNode();
+                CreateTreeNodeFolder();
+            };
+            rb_Serv.Click += (a, s) =>
+            {
+                CheckedChange();
+                SetRootNode();
+                CreateTreeNodeFolder();
+            };
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             Close();
 
+        }
+
+        public void SetNapr(int i)
+        {
+            switch (i)
+            {
+                case 0: // только локально
+                    rb_Loc.Enabled = true;
+                    rb_Serv.Enabled = false;
+                    rb_All.Enabled = false;
+                    rb_Loc.Checked = true;
+                    rb_Serv.Checked = false;
+                    rb_All.Checked = false;
+                    textBox1.Enabled = true;
+                    textBox2.Enabled = false;
+                    break;
+                case 1: // только сервер
+                    rb_Loc.Enabled = false;
+                    rb_Serv.Enabled = true;
+                    rb_All.Enabled = false;
+                    rb_Serv.Checked = true;
+                    rb_Loc.Checked = false;
+                    rb_All.Checked = false;
+                    textBox1.Enabled = false;
+                    textBox2.Enabled = true;
+                    break;
+                case 2: // два направления
+                    rb_Loc.Enabled = false;
+                    rb_Serv.Enabled = false;
+                    rb_All.Enabled = true;
+                    rb_All.Checked = true;
+                    rb_Loc.Checked = false;
+                    rb_Serv.Checked = false;
+                    textBox1.Enabled = true;
+                    textBox2.Enabled = true;
+                    break;
+                default: // на выбор пользователя
+                    rb_Loc.Enabled = true;
+                    rb_Serv.Enabled = true;
+                    rb_All.Enabled = true;
+                    rb_All.Checked = true;
+                    rb_Loc.Checked = false;
+                    rb_Serv.Checked = false;
+                    textBox1.Enabled = true;
+                    textBox2.Enabled = true;
+                    break;
+            }
+
+           
+        }
+
+        /// <summary>
+        /// Определяет направление копирования
+        /// </summary>
+        /// <returns></returns>
+        private int CheckedChange()
+        {
+            int result = 0;
+            if (rb_All.Checked)
+                result = 2;
+            if (rb_Loc.Checked)
+                result = 0;
+            if (rb_Serv.Checked)
+                result = 1;
+            return result;
         }
 
         /// <summary>
@@ -166,11 +247,40 @@ namespace AddFilesToFolder
         /// </summary>
         private void Form_SelectSave_Load(object sender, EventArgs e)
         {
-            TreeFolders.GetTreeDir(treeViewFolder, textBox1.Text); //Создает дерево узлов
+            SetRootNode();
+
+            CreateTreeNodeFolder();
+
+            if (ListFiles.Count != 0)
+            {
+                foreach (string l in ListFiles)
+                {
+                    listBoxFiles.Items.Add(l);
+                }
+            }
+
+        }
+
+        private void SetRootNode()
+        {
+            Napr = CheckedChange();
+            if (Napr == 2 || Napr == 0)
+            {
+                pathRoot = textBox1.Text;
+            }
+            else
+            {
+                pathRoot = textBox2.Text;
+            }
+        }
+
+        private void CreateTreeNodeFolder()
+        {
+            TreeFolders.GetTreeDir(treeViewFolder, pathRoot); //Создает дерево узлов
             treeViewFolder.Nodes[0].Text = nameRoot; //Устанавливает имя первого узла
             treeViewFolder.CheckBoxes = true; //Разрешает CheckBox в узлах
         }
-        
+
         /// <summary>
         /// Создает список отмеченных узлов
         /// </summary>
@@ -342,22 +452,6 @@ namespace AddFilesToFolder
         //}
 
         /// <summary>
-        /// Определяет направление копирования
-        /// </summary>
-        /// <returns></returns>
-        private int CheckedChange()
-        {
-            int result = 0;
-            if (rb_All.Checked) 
-                result = 2;
-            if (rb_Loc.Checked)
-                result = 0;
-            if (rb_Serv.Checked)
-                result = 1;
-            return result;
-        }
-
-        /// <summary>
         /// Обеспечивает выделение Node по правому клику мыши 
         /// нужно для правильной работы контекстного меню по выбранному узлу
         /// </summary>
@@ -384,19 +478,12 @@ namespace AddFilesToFolder
                 // создать новые папки 
                 AddNewFolderToSelectedFolder();
                 // добавляем новые папки в пути копирования и копируем файлы
-                if (CopySelectedFilesToNewFolder())
-                {
-                    MessageBox.Show("Файлы скопированы по указанным адресам");
-                }
-                else { MessageBox.Show("При копировании возникли ошибки"); }
+                CopySelectedFilesToNewFolder();
+                
             }
             else
             {
-                if (CopySelectedFiles())
-                {
-                    MessageBox.Show("Файлы скопированы по указанным адресам");
-                }
-                else { MessageBox.Show("При копировании возникли ошибки"); }
+                CopySelectedFiles();
             }
         }
 
@@ -410,6 +497,10 @@ namespace AddFilesToFolder
             newNameFolder = tb_newNameFolder.Text;
             // Получаем список выбранных узлов
             GetPathFolders(listFolders, listFileDBPath);
+            if (listFolders.Count == 0)
+            {
+                throw new Exception("Вы не выбрали пути для копирования. Повторите операцию!");
+            }
             // создать новые папки 
             foreach(string p in listFolders)
             {

@@ -74,7 +74,7 @@ namespace FolderManager
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.BackColor = System.Drawing.SystemColors.Control;
             this.panel1.Controls.Add(this.bt_Close);
             this.panel1.Controls.Add(this.btn_DeleteFld);
             this.panel1.Controls.Add(this.bt_CreateFld);
@@ -119,7 +119,7 @@ namespace FolderManager
             // 
             // gr_Folders
             // 
-            this.gr_Folders.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.gr_Folders.BackColor = System.Drawing.SystemColors.Control;
             this.gr_Folders.Controls.Add(this.tableLayoutPanel1);
             this.gr_Folders.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gr_Folders.Location = new System.Drawing.Point(0, 0);
@@ -131,7 +131,7 @@ namespace FolderManager
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.tableLayoutPanel1.BackColor = System.Drawing.SystemColors.Control;
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
@@ -221,6 +221,7 @@ namespace FolderManager
             this.ch_OutFld.Name = "ch_OutFld";
             this.ch_OutFld.Size = new System.Drawing.Size(84, 17);
             this.ch_OutFld.TabIndex = 0;
+            this.ch_OutFld.Tag = "12";
             this.ch_OutFld.Text = "Исходящие";
             this.ch_OutFld.UseVisualStyleBackColor = true;
             // 
@@ -243,6 +244,7 @@ namespace FolderManager
             this.ch_InFld.Name = "ch_InFld";
             this.ch_InFld.Size = new System.Drawing.Size(77, 17);
             this.ch_InFld.TabIndex = 0;
+            this.ch_InFld.Tag = "11";
             this.ch_InFld.Text = "Входящие";
             this.ch_InFld.UseVisualStyleBackColor = true;
             // 
@@ -254,6 +256,7 @@ namespace FolderManager
             this.ch_DogovorFld.Name = "ch_DogovorFld";
             this.ch_DogovorFld.Size = new System.Drawing.Size(70, 17);
             this.ch_DogovorFld.TabIndex = 0;
+            this.ch_DogovorFld.Tag = "4";
             this.ch_DogovorFld.Text = "Договор";
             this.ch_DogovorFld.UseVisualStyleBackColor = true;
             // 
@@ -265,6 +268,7 @@ namespace FolderManager
             this.ch_OsnFld.Name = "ch_OsnFld";
             this.ch_OsnFld.Size = new System.Drawing.Size(137, 17);
             this.ch_OsnFld.TabIndex = 0;
+            this.ch_OsnFld.Tag = "10";
             this.ch_OsnFld.Text = "Основные положения";
             this.ch_OsnFld.UseVisualStyleBackColor = true;
             // 
@@ -276,6 +280,7 @@ namespace FolderManager
             this.ch_GeoFld.Name = "ch_GeoFld";
             this.ch_GeoFld.Size = new System.Drawing.Size(84, 17);
             this.ch_GeoFld.TabIndex = 0;
+            this.ch_GeoFld.Tag = "7";
             this.ch_GeoFld.Text = "Изыскания";
             this.ch_GeoFld.UseVisualStyleBackColor = true;
             // 
@@ -287,6 +292,7 @@ namespace FolderManager
             this.ch_OtherFld.Name = "ch_OtherFld";
             this.ch_OtherFld.Size = new System.Drawing.Size(63, 17);
             this.ch_OtherFld.TabIndex = 0;
+            this.ch_OtherFld.Tag = "9";
             this.ch_OtherFld.Text = "Разное";
             this.ch_OtherFld.UseVisualStyleBackColor = true;
             // 
@@ -298,6 +304,7 @@ namespace FolderManager
             this.ch_StampFld.Name = "ch_StampFld";
             this.ch_StampFld.Size = new System.Drawing.Size(60, 17);
             this.ch_StampFld.TabIndex = 0;
+            this.ch_StampFld.Tag = "8";
             this.ch_StampFld.Text = "Штамп";
             this.ch_StampFld.UseVisualStyleBackColor = true;
             // 
@@ -309,6 +316,7 @@ namespace FolderManager
             this.ch_ZadaniaFld.Name = "ch_ZadaniaFld";
             this.ch_ZadaniaFld.Size = new System.Drawing.Size(69, 17);
             this.ch_ZadaniaFld.TabIndex = 0;
+            this.ch_ZadaniaFld.Tag = "2";
             this.ch_ZadaniaFld.Text = "Задания";
             this.ch_ZadaniaFld.UseVisualStyleBackColor = true;
             // 
@@ -488,7 +496,7 @@ namespace FolderManager
             // 
             // gr_fldSorce
             // 
-            this.gr_fldSorce.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.gr_fldSorce.BackColor = System.Drawing.SystemColors.Control;
             this.gr_fldSorce.Controls.Add(this.ch_ServerFld);
             this.gr_fldSorce.Controls.Add(this.ch_WorkFld);
             this.gr_fldSorce.Dock = System.Windows.Forms.DockStyle.Right;

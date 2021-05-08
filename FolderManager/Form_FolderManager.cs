@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 using FileAction;
+using Distinary;
 
 namespace FolderManager
 {
@@ -23,8 +24,6 @@ namespace FolderManager
 
         string pathLocal = "";
         string pathServer = "";
-
-        string[] NameFld = { "Договор", "Изыскания", "Штамп", "Задания", "Разное", "Основные положения", "Входящие", "Исходящие" };
 
         CheckBox[] ChckGroup;
 
@@ -136,30 +135,43 @@ namespace FolderManager
 
         private void ExistFolders() // проверка наличия папок
         {
-            void EV(CheckBox cBox, string path, int iName)
+            void EV(CheckBox cBox, string path, string Name)
             {
-                string fpath = path + "\\" + NameFld[iName];
+                string fpath = path + "\\" + Name;
                 cBox.Checked = Directory.Exists(fpath);
 
             }
+            //
+            //0"Исходные данные",
+            //1"Письма",
+            //2"Задания",
+            //3"Тендер",
+            //4"Договор",
+            //5"График",
+            //6"Объект",
+            //7"Изыскания",
+            //8"Штамп",
+            //9"Разное",
+            //10"Основные положения",
+            //11"Входящие",
+            //12"Исходящие"
+            EV(ch_dw, pathLocal, Libr.NameFld[4]); // Договор
+            EV(ch_gw, pathLocal, Libr.NameFld[7]); //Изыскания
+            EV(ch_sw, pathLocal, Libr.NameFld[8]); //Штамп
+            EV(ch_zw, pathLocal, Libr.NameFld[2]); //Задания
+            EV(ch_ow, pathLocal, Libr.NameFld[9]); //Разное
+            EV(ch_osw, pathLocal, Libr.NameFld[10]); //Основные положения
+            EV(ch_inw, pathLocal, Path.Combine(Libr.NameFld[1], Libr.NameFld[11])); //Входящие
+            EV(ch_outw, pathLocal, Path.Combine(Libr.NameFld[1], Libr.NameFld[12])); //Исходящие
 
-            EV(ch_dw, pathLocal, 0);
-            EV(ch_gw, pathLocal, 1);
-            EV(ch_sw, pathLocal, 2);
-            EV(ch_zw, pathLocal, 3);
-            EV(ch_ow, pathLocal, 4);
-            EV(ch_osw, pathLocal, 5);
-            EV(ch_inw, pathLocal, 6);
-            EV(ch_outw, pathLocal, 7);
-
-            EV(ch_ds, pathServer, 0);
-            EV(ch_gs, pathServer, 1);
-            EV(ch_ss, pathServer, 2);
-            EV(ch_zs, pathServer, 3);
-            EV(ch_os, pathServer, 4);
-            EV(ch_oss, pathServer, 5);
-            EV(ch_ins, pathServer, 6);
-            EV(ch_outs, pathServer, 7);
+            EV(ch_ds, pathServer, Libr.NameFld[4]);
+            EV(ch_gs, pathServer, Libr.NameFld[7]);
+            EV(ch_ss, pathServer, Libr.NameFld[8]);
+            EV(ch_zs, pathServer, Libr.NameFld[2]);
+            EV(ch_os, pathServer, Libr.NameFld[9]);
+            EV(ch_oss, pathServer, Libr.NameFld[10]);
+            EV(ch_ins, pathServer, Path.Combine(Libr.NameFld[1], Libr.NameFld[11]));
+            EV(ch_outs, pathServer, Path.Combine(Libr.NameFld[1], Libr.NameFld[12]));
 
 
         }
@@ -181,12 +193,24 @@ namespace FolderManager
 
         private void clkCheckers(CheckBox cb)
         {
+            int iTag = Convert.ToInt32(cb.Tag);
+            string name = Libr.NameFld[iTag];
             if (cb.Checked)
             {
                 if (ch_WorkFld.Checked)
-                    listLocalValue.Add(cb.Text);
+                {
+                    if (iTag == 11 || iTag == 12)
+                        name = Path.Combine(Libr.NameFld[1], Libr.NameFld[iTag]);
+                    listLocalValue.Add(name);
+                }
+                    
                 if (ch_ServerFld.Checked)
-                    listServerValue.Add(cb.Text);
+                {
+                    if ((int)cb.Tag == 11 || (int)cb.Tag == 12)
+                        name = Path.Combine(Libr.NameFld[1], Libr.NameFld[iTag]);
+                    listServerValue.Add(name);
+                }
+                    
             }
         }
 
