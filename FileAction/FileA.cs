@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FileAction
@@ -136,6 +133,29 @@ namespace FileAction
                         CopyFile(f, newPath);
                     else
                         CopyFolder(f, newPath);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+
+        }
+
+        public static bool CopyListFiles(List<string> listF, List<string> newPath)
+        {
+            try
+            {
+                foreach (string f in listF)
+                {
+                    if (GetAtributesPath(f))
+                        foreach(string p in newPath)
+                            CopyFile(f, p);
+                    else
+                        foreach (string p in newPath)
+                            CopyFolder(f, p);
                 }
                 return true;
             }
