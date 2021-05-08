@@ -50,7 +50,6 @@ namespace TenderClass
             this.tb_Comment = new System.Windows.Forms.RichTextBox();
             this.tb_pathTender = new System.Windows.Forms.TextBox();
             this.btn_setPathTender = new System.Windows.Forms.Button();
-            this.btn_addFiles = new System.Windows.Forms.Button();
             this.panelNotes.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -248,15 +247,6 @@ namespace TenderClass
             this.btn_setPathTender.UseVisualStyleBackColor = true;
             this.btn_setPathTender.Click += new System.EventHandler(this.btn_setPathTender_Click);
             // 
-            // btn_addFiles
-            // 
-            this.btn_addFiles.Location = new System.Drawing.Point(405, 421);
-            this.btn_addFiles.Name = "btn_addFiles";
-            this.btn_addFiles.Size = new System.Drawing.Size(78, 34);
-            this.btn_addFiles.TabIndex = 28;
-            this.btn_addFiles.Text = "Добавить файлы";
-            this.btn_addFiles.UseVisualStyleBackColor = true;
-            // 
             // Form_Tender
             // 
             this.AcceptButton = this.btn_Save;
@@ -265,7 +255,6 @@ namespace TenderClass
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.CancelButton = this.btn_Close;
             this.ClientSize = new System.Drawing.Size(492, 461);
-            this.Controls.Add(this.btn_addFiles);
             this.Controls.Add(this.btn_setPathTender);
             this.Controls.Add(this.tb_pathTender);
             this.Controls.Add(this.panelNotes);
@@ -319,6 +308,5 @@ namespace TenderClass
         private System.Windows.Forms.RichTextBox tb_Comment;
         private System.Windows.Forms.TextBox tb_pathTender;
         private System.Windows.Forms.Button btn_setPathTender;
-        private System.Windows.Forms.Button btn_addFiles;
     }
 }

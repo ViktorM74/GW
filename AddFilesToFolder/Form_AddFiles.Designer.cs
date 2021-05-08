@@ -48,14 +48,20 @@ namespace AddFilesToFolder
             this.rb_Loc = new System.Windows.Forms.RadioButton();
             this.btn_Accept = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btn_contextMenuNameFolder = new System.Windows.Forms.Button();
             this.tb_newNameFolder = new System.Windows.Forms.TextBox();
             this.btnCreateFolder = new System.Windows.Forms.Button();
             this.btnRenameFolder = new System.Windows.Forms.Button();
             this.btnDeleteFolder = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.listBoxFiles = new System.Windows.Forms.ListBox();
+            this.contextMenuListFiles = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.удалитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.очиститьСписокToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.chb_CopyToNewFolder = new System.Windows.Forms.CheckBox();
             this.contextMenuSave.SuspendLayout();
             this.gb_Napravlenie.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.contextMenuListFiles.SuspendLayout();
             this.SuspendLayout();
             // 
             // treeViewFolder
@@ -67,7 +73,7 @@ namespace AddFilesToFolder
             this.treeViewFolder.Location = new System.Drawing.Point(0, 0);
             this.treeViewFolder.Name = "treeViewFolder";
             this.treeViewFolder.SelectedImageIndex = 3;
-            this.treeViewFolder.Size = new System.Drawing.Size(261, 363);
+            this.treeViewFolder.Size = new System.Drawing.Size(261, 402);
             this.treeViewFolder.TabIndex = 0;
             this.treeViewFolder.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeViewFolder_NodeMouseClick);
             // 
@@ -79,7 +85,6 @@ namespace AddFilesToFolder
             this.MenuItemDeleteFolder});
             this.contextMenuSave.Name = "contextMenuSave";
             this.contextMenuSave.Size = new System.Drawing.Size(162, 70);
-            this.contextMenuSave.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuSave_Opening);
             // 
             // MenuItemNewFolder
             // 
@@ -117,7 +122,7 @@ namespace AddFilesToFolder
             this.textBox1.Location = new System.Drawing.Point(267, 27);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(280, 13);
+            this.textBox1.Size = new System.Drawing.Size(371, 13);
             this.textBox1.TabIndex = 1;
             this.textBox1.Text = "путь к локальному каталогу";
             // 
@@ -125,11 +130,11 @@ namespace AddFilesToFolder
             // 
             this.btn_Close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_Close.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btn_Close.Location = new System.Drawing.Point(421, 310);
+            this.btn_Close.Location = new System.Drawing.Point(389, 349);
             this.btn_Close.Name = "btn_Close";
             this.btn_Close.Size = new System.Drawing.Size(122, 42);
             this.btn_Close.TabIndex = 2;
-            this.btn_Close.Text = "Отменить";
+            this.btn_Close.Text = "Закрыть";
             this.btn_Close.UseVisualStyleBackColor = true;
             this.btn_Close.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -149,7 +154,7 @@ namespace AddFilesToFolder
             this.textBox2.Location = new System.Drawing.Point(267, 73);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(280, 13);
+            this.textBox2.Size = new System.Drawing.Size(371, 13);
             this.textBox2.TabIndex = 1;
             this.textBox2.Text = "путь к серверному каталогу";
             // 
@@ -171,7 +176,7 @@ namespace AddFilesToFolder
             this.gb_Napravlenie.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.gb_Napravlenie.Location = new System.Drawing.Point(270, 102);
             this.gb_Napravlenie.Name = "gb_Napravlenie";
-            this.gb_Napravlenie.Size = new System.Drawing.Size(273, 95);
+            this.gb_Napravlenie.Size = new System.Drawing.Size(368, 95);
             this.gb_Napravlenie.TabIndex = 4;
             this.gb_Napravlenie.TabStop = false;
             this.gb_Napravlenie.Text = "Направление записи: ";
@@ -188,7 +193,6 @@ namespace AddFilesToFolder
             this.rb_All.TabStop = true;
             this.rb_All.Text = "два направления";
             this.rb_All.UseVisualStyleBackColor = true;
-            this.rb_All.Click += new System.EventHandler(this.rb_All_Click);
             // 
             // rb_Serv
             // 
@@ -200,7 +204,6 @@ namespace AddFilesToFolder
             this.rb_Serv.TabIndex = 1;
             this.rb_Serv.Text = "только сеть";
             this.rb_Serv.UseVisualStyleBackColor = true;
-            this.rb_Serv.CheckedChanged += new System.EventHandler(this.rb_Serv_CheckedChanged);
             // 
             // rb_Loc
             // 
@@ -212,13 +215,12 @@ namespace AddFilesToFolder
             this.rb_Loc.TabIndex = 1;
             this.rb_Loc.Text = "только локально";
             this.rb_Loc.UseVisualStyleBackColor = true;
-            this.rb_Loc.CheckedChanged += new System.EventHandler(this.rb_Loc_CheckedChanged);
             // 
             // btn_Accept
             // 
             this.btn_Accept.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_Accept.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btn_Accept.Location = new System.Drawing.Point(293, 310);
+            this.btn_Accept.Location = new System.Drawing.Point(517, 349);
             this.btn_Accept.Name = "btn_Accept";
             this.btn_Accept.Size = new System.Drawing.Size(122, 42);
             this.btn_Accept.TabIndex = 2;
@@ -228,21 +230,34 @@ namespace AddFilesToFolder
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.chb_CopyToNewFolder);
+            this.groupBox2.Controls.Add(this.btn_contextMenuNameFolder);
             this.groupBox2.Controls.Add(this.tb_newNameFolder);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox2.Location = new System.Drawing.Point(270, 203);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(273, 101);
+            this.groupBox2.Size = new System.Drawing.Size(368, 140);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Имя папки для создания либо переименования";
             // 
+            // btn_contextMenuNameFolder
+            // 
+            this.btn_contextMenuNameFolder.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_contextMenuNameFolder.Location = new System.Drawing.Point(198, 28);
+            this.btn_contextMenuNameFolder.Name = "btn_contextMenuNameFolder";
+            this.btn_contextMenuNameFolder.Size = new System.Drawing.Size(67, 23);
+            this.btn_contextMenuNameFolder.TabIndex = 1;
+            this.btn_contextMenuNameFolder.Text = "доб. дату";
+            this.btn_contextMenuNameFolder.UseVisualStyleBackColor = true;
+            this.btn_contextMenuNameFolder.Click += new System.EventHandler(this.btn_contextMenuNameFolder_Click);
+            // 
             // tb_newNameFolder
             // 
             this.tb_newNameFolder.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tb_newNameFolder.Location = new System.Drawing.Point(6, 35);
+            this.tb_newNameFolder.Location = new System.Drawing.Point(8, 28);
             this.tb_newNameFolder.Name = "tb_newNameFolder";
-            this.tb_newNameFolder.Size = new System.Drawing.Size(259, 20);
+            this.tb_newNameFolder.Size = new System.Drawing.Size(186, 20);
             this.tb_newNameFolder.TabIndex = 0;
             this.tb_newNameFolder.Text = "Новая папка";
             // 
@@ -276,14 +291,51 @@ namespace AddFilesToFolder
             this.btnDeleteFolder.UseVisualStyleBackColor = true;
             this.btnDeleteFolder.Click += new System.EventHandler(this.MenuItemDeleteFolder_Click);
             // 
-            // listBox1
+            // listBoxFiles
             // 
-            this.listBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(0, 363);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(547, 108);
-            this.listBox1.TabIndex = 7;
+            this.listBoxFiles.AllowDrop = true;
+            this.listBoxFiles.ContextMenuStrip = this.contextMenuListFiles;
+            this.listBoxFiles.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.listBoxFiles.FormattingEnabled = true;
+            this.listBoxFiles.Location = new System.Drawing.Point(0, 402);
+            this.listBoxFiles.Name = "listBoxFiles";
+            this.listBoxFiles.Size = new System.Drawing.Size(643, 108);
+            this.listBoxFiles.Sorted = true;
+            this.listBoxFiles.TabIndex = 7;
+            this.listBoxFiles.DragDrop += new System.Windows.Forms.DragEventHandler(this.listBox1_DragDrop);
+            this.listBoxFiles.DragEnter += new System.Windows.Forms.DragEventHandler(this.listBox1_DragEnter);
+            // 
+            // contextMenuListFiles
+            // 
+            this.contextMenuListFiles.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.удалитьToolStripMenuItem,
+            this.очиститьСписокToolStripMenuItem});
+            this.contextMenuListFiles.Name = "contextMenuListFiles";
+            this.contextMenuListFiles.Size = new System.Drawing.Size(169, 48);
+            // 
+            // удалитьToolStripMenuItem
+            // 
+            this.удалитьToolStripMenuItem.Name = "удалитьToolStripMenuItem";
+            this.удалитьToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.удалитьToolStripMenuItem.Text = "Удалить";
+            this.удалитьToolStripMenuItem.Click += new System.EventHandler(this.удалитьToolStripMenuItem_Click);
+            // 
+            // очиститьСписокToolStripMenuItem
+            // 
+            this.очиститьСписокToolStripMenuItem.Name = "очиститьСписокToolStripMenuItem";
+            this.очиститьСписокToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.очиститьСписокToolStripMenuItem.Text = "Очистить список";
+            this.очиститьСписокToolStripMenuItem.Click += new System.EventHandler(this.очиститьСписокToolStripMenuItem_Click);
+            // 
+            // chb_CopyToNewFolder
+            // 
+            this.chb_CopyToNewFolder.AutoSize = true;
+            this.chb_CopyToNewFolder.Location = new System.Drawing.Point(8, 103);
+            this.chb_CopyToNewFolder.Name = "chb_CopyToNewFolder";
+            this.chb_CopyToNewFolder.Size = new System.Drawing.Size(344, 17);
+            this.chb_CopyToNewFolder.TabIndex = 2;
+            this.chb_CopyToNewFolder.Text = "При коприровании создавать новый каталог с датой";
+            this.chb_CopyToNewFolder.UseVisualStyleBackColor = true;
             // 
             // Form_AddFiles
             // 
@@ -292,7 +344,7 @@ namespace AddFilesToFolder
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.CancelButton = this.btn_Close;
-            this.ClientSize = new System.Drawing.Size(547, 471);
+            this.ClientSize = new System.Drawing.Size(643, 510);
             this.Controls.Add(this.btnDeleteFolder);
             this.Controls.Add(this.btnRenameFolder);
             this.Controls.Add(this.btnCreateFolder);
@@ -305,7 +357,7 @@ namespace AddFilesToFolder
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.treeViewFolder);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.listBoxFiles);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "Form_AddFiles";
@@ -318,6 +370,7 @@ namespace AddFilesToFolder
             this.gb_Napravlenie.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.contextMenuListFiles.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -346,6 +399,11 @@ namespace AddFilesToFolder
         private System.Windows.Forms.Button btnCreateFolder;
         private System.Windows.Forms.Button btnRenameFolder;
         private System.Windows.Forms.Button btnDeleteFolder;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox listBoxFiles;
+        private System.Windows.Forms.Button btn_contextMenuNameFolder;
+        private System.Windows.Forms.ContextMenuStrip contextMenuListFiles;
+        private System.Windows.Forms.ToolStripMenuItem удалитьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem очиститьСписокToolStripMenuItem;
+        private System.Windows.Forms.CheckBox chb_CopyToNewFolder;
     }
 }
