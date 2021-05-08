@@ -48,6 +48,7 @@ namespace AddFilesToFolder
             this.rb_Loc = new System.Windows.Forms.RadioButton();
             this.btn_Accept = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.chb_CopyToNewFolder = new System.Windows.Forms.CheckBox();
             this.btn_contextMenuNameFolder = new System.Windows.Forms.Button();
             this.tb_newNameFolder = new System.Windows.Forms.TextBox();
             this.btnCreateFolder = new System.Windows.Forms.Button();
@@ -57,7 +58,6 @@ namespace AddFilesToFolder
             this.contextMenuListFiles = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.удалитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.очиститьСписокToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.chb_CopyToNewFolder = new System.Windows.Forms.CheckBox();
             this.contextMenuSave.SuspendLayout();
             this.gb_Napravlenie.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -241,6 +241,16 @@ namespace AddFilesToFolder
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Имя папки для создания либо переименования";
             // 
+            // chb_CopyToNewFolder
+            // 
+            this.chb_CopyToNewFolder.AutoSize = true;
+            this.chb_CopyToNewFolder.Location = new System.Drawing.Point(8, 103);
+            this.chb_CopyToNewFolder.Name = "chb_CopyToNewFolder";
+            this.chb_CopyToNewFolder.Size = new System.Drawing.Size(344, 17);
+            this.chb_CopyToNewFolder.TabIndex = 2;
+            this.chb_CopyToNewFolder.Text = "При коприровании создавать новый каталог с датой";
+            this.chb_CopyToNewFolder.UseVisualStyleBackColor = true;
+            // 
             // btn_contextMenuNameFolder
             // 
             this.btn_contextMenuNameFolder.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -294,11 +304,13 @@ namespace AddFilesToFolder
             // listBoxFiles
             // 
             this.listBoxFiles.AllowDrop = true;
+            this.listBoxFiles.BackColor = System.Drawing.SystemColors.Info;
             this.listBoxFiles.ContextMenuStrip = this.contextMenuListFiles;
             this.listBoxFiles.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.listBoxFiles.FormattingEnabled = true;
             this.listBoxFiles.Location = new System.Drawing.Point(0, 402);
             this.listBoxFiles.Name = "listBoxFiles";
+            this.listBoxFiles.ScrollAlwaysVisible = true;
             this.listBoxFiles.Size = new System.Drawing.Size(643, 108);
             this.listBoxFiles.Sorted = true;
             this.listBoxFiles.TabIndex = 7;
@@ -327,22 +339,12 @@ namespace AddFilesToFolder
             this.очиститьСписокToolStripMenuItem.Text = "Очистить список";
             this.очиститьСписокToolStripMenuItem.Click += new System.EventHandler(this.очиститьСписокToolStripMenuItem_Click);
             // 
-            // chb_CopyToNewFolder
-            // 
-            this.chb_CopyToNewFolder.AutoSize = true;
-            this.chb_CopyToNewFolder.Location = new System.Drawing.Point(8, 103);
-            this.chb_CopyToNewFolder.Name = "chb_CopyToNewFolder";
-            this.chb_CopyToNewFolder.Size = new System.Drawing.Size(344, 17);
-            this.chb_CopyToNewFolder.TabIndex = 2;
-            this.chb_CopyToNewFolder.Text = "При коприровании создавать новый каталог с датой";
-            this.chb_CopyToNewFolder.UseVisualStyleBackColor = true;
-            // 
             // Form_AddFiles
             // 
             this.AcceptButton = this.btn_Accept;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.CancelButton = this.btn_Close;
             this.ClientSize = new System.Drawing.Size(643, 510);
             this.Controls.Add(this.btnDeleteFolder);

@@ -804,7 +804,27 @@ namespace GW_Dogovor
                 e.Effect = DragDropEffects.Copy;
         }
 
-      
+        private void _DragDrop(object sender, DragEventArgs e, int Narp, string Name)
+        {            
+            string pLocal = Path.Combine(link_LocalFld.Text, Name);
+            string pServer = Path.Combine(link_ServetFld.Text, Name);
+            if (Narp == 0 || Narp == 2)
+                if (!Directory.Exists(pLocal))
+                     throw new Exception("Локальная папка не указана. Укажите локальную папку в свойствах проекта");
+            
+            if (Narp == 1 || Narp == 2)
+               if (!Directory.Exists(pServer))
+                 throw new Exception("Серверная папка не указана. Укажите серверную папку в свойствах проекта");
+            
+            //DragDropDocuments(sender, e, 0); // Исходные данные
+            Form_AddFiles frm_Copyfiles = new Form_AddFiles(pLocal, pServer);
+            frm_Copyfiles.SetNapr(Narp);
+            foreach (string f in (string[])e.Data.GetData(DataFormats.FileDrop))
+            {
+                frm_Copyfiles.ListFiles.Add(f); // передаем список файлов в модуль копирования
+            }
+            frm_Copyfiles.ShowDialog();
+        }
 
         private void DragDropDocuments(object sender, DragEventArgs e, int typeDocument)
         {
@@ -905,15 +925,14 @@ namespace GW_Dogovor
         }
 
 
-        #region DRAG Documents
+        #region DRAG Documents Исходные данные
         private void gridDocument_DragEnter(object sender, DragEventArgs e)
         {
             _DragEnter(sender, e);
         }
-
         private void gridDocument_DragDrop(object sender, DragEventArgs e)
         {
-            DragDropDocuments(sender, e, 0); // Исходные данные
+            _DragDrop(sender, e, 2, "Основные положения");
         }
         #endregion 
 
@@ -1092,6 +1111,16 @@ namespace GW_Dogovor
         {
             Form_CPlan feCPlan = new Form_CPlan();
             feCPlan.Show();
+        }
+
+        private void grid_MailControl_DragDrop(object sender, DragEventArgs e)
+        {
+            _DragDrop(sender, e, 0, "Письма");
+        }
+
+        private void grid_Zadania_DragDrop(object sender, DragEventArgs e)
+        {
+            _DragDrop(sender, e, 1, "Задания");
         }
     }
 
