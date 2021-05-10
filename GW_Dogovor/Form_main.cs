@@ -94,7 +94,7 @@ namespace GW_Dogovor
             grid_ProjectCode.AutoGenerateColumns = false;
             grid_ProjectCode.DataSource = DB_Cmd.bndProject;
             grid_ProjectCode.Columns["Code_object"].DataPropertyName = "Code_object";
-            this.grid_ProjectCode.Sort(this.grid_ProjectCode.Columns["Code_object"], ListSortDirection.Ascending);
+            //this.grid_ProjectCode.Sort(this.grid_ProjectCode.Columns["Code_object"], ListSortDirection.Ascending);
         }
         private void SetViewDataDocument()
         {
@@ -106,7 +106,7 @@ namespace GW_Dogovor
             gridDocument.Columns["DataDoc"].DataPropertyName = "DataDoc";
             gridDocument.Columns["Status"].DataPropertyName = "Status";
             gridDocument.Columns["PathDoc"].DataPropertyName = "PathDoc";
-            this.gridDocument.Sort(this.gridDocument.Columns["DataDoc"], ListSortDirection.Ascending);
+            //this.gridDocument.Sort(this.gridDocument.Columns["DataDoc"], ListSortDirection.Ascending);
 
             bndNvg_IshDoc.BindingSource = DB_Cmd.bndDocument;
          
@@ -171,9 +171,9 @@ namespace GW_Dogovor
             grid_CPlan.Columns["Summ"].DataPropertyName = "Summ";
             grid_CPlan.Columns["Valute"].DataPropertyName = "V";
             grid_CPlan.Columns["StatusCPlan"].DataPropertyName = "Status";
-            grid_CPlan.Columns["id_DDog"].DataPropertyName = "ID_DopS";
+            grid_CPlan.Columns["id_DDog"].DataPropertyName = "NumDD";
             grid_CPlan.Columns["Num_sort"].DataPropertyName = "Num_sort";
-            this.grid_CPlan.Sort(this.grid_CPlan.Columns["Num_sort"], ListSortDirection.Ascending);
+            //this.grid_CPlan.Sort(this.grid_CPlan.Columns["Num_sort"], ListSortDirection.Ascending);
 
             //grid_CPlan.EditingPanel.BorderStyle = BorderStyle.Fixed3D;
 
@@ -190,7 +190,7 @@ namespace GW_Dogovor
             grid_DD.AutoGenerateColumns = false;
             grid_DD.DataSource = DB_Cmd.bndDopDogovor;
             grid_DD.Columns["NumDD"].DataPropertyName = "Nambe_DS";
-            this.grid_DD.Sort(this.grid_DD.Columns["NumDD"], ListSortDirection.Ascending);
+            //this.grid_DD.Sort(this.grid_DD.Columns["NumDD"], ListSortDirection.Ascending);
 
             bndNavigatorDDog.BindingSource = DB_Cmd.bndDopDogovor;
             bndNavigator_KP_Dop.BindingSource = DB_Cmd.bndCalendarPlan;
@@ -211,7 +211,7 @@ namespace GW_Dogovor
             grid_Object.AutoGenerateColumns = false;
             grid_Object.DataSource = DB_Cmd.bndObject;
             grid_Object.Columns["CodeObj"].DataPropertyName = "CodeOBJ";
-            this.grid_Object.Sort(this.grid_Object.Columns["CodeObj"], ListSortDirection.Ascending);
+            //this.grid_Object.Sort(this.grid_Object.Columns["CodeObj"], ListSortDirection.Ascending);
 
 
             bndNavigatorObject.BindingSource = DB_Cmd.bndObject;
