@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DBClass._bsp_snhpDataSetTableAdapters;
+using feature_сlass;
 
 namespace DBClass
 {
@@ -71,11 +73,13 @@ namespace DBClass
             //Project
             bndProject.DataSource = DB_Cmd.dsDB;
             bndProject.DataMember = "Project";
+            bndProject.Sort = "Code_object";
             bndAreaStroy.DataSource = DB_Cmd.dsDB;
             bndAreaStroy.DataMember = "Customers";
             //Ish Documents
             bndDocument.DataSource = bndProject; //привязка по связи к Проекту
             bndDocument.DataMember = "ProjectDocuments";
+            bndDocument.Sort = "DataDoc";
             bndTypeDoc.DataSource = DB_Cmd.dsDB;
             bndTypeDoc.DataMember = "Documets_type";
             //Tender
@@ -88,26 +92,33 @@ namespace DBClass
             //Dogovor
             bndDogovor.DataSource = bndProject;
             bndDogovor.DataMember = "ProjectDogovor";
+            bndDogovor.Sort = "Nambe_Dog";
             bndCalendarPlan.DataSource = bndDogovor;
             bndCalendarPlan.DataMember = "DogovorCalendarPlan";
+            bndCalendarPlan.Sort = "Num_sort";
             bndAct.DataSource = bndCalendarPlan;
             bndAct.DataMember = "CalendarPlanAct";
+            bndAct.Sort = "Data_podp";
 
             //DopDogovor
             bndDopDogovor.DataSource = bndDogovor;
             bndDopDogovor.DataMember = "DogovorDopSoglashenia";
+            bndDopDogovor.Sort = "Nambe_DS";
 
             //Object
             bndObject.DataSource = bndDogovor;
             bndObject.DataMember = "DogovorOBJECTS";
+            bndObject.Sort = "Nambe_Object";
             bndSostavObj.DataSource = bndObject;
             bndSostavObj.DataMember = "OBJECTSSostavDoc";
             bndZadania.DataSource = bndObject;
             bndZadania.DataMember = "OBJECTSZadania";
+            bndZadania.Sort = "Date_graf";
 
             //Events
             bndEvents.DataSource = bndObject;
             bndEvents.DataMember = "OBJECTSEvents";
+            bndEvents.Sort = "Срок_по_плану";
 
             //MarkProject
             bndMark.DataSource = DB_Cmd.dsDB;
@@ -116,6 +127,7 @@ namespace DBClass
             //History
             bndHistory.DataSource = DB_Cmd.dsDB;
             bndHistory.DataMember = "History";
+            bndHistory.Sort = "DataHist";
 
             //Otdel
             bndOtdel.DataSource = DB_Cmd.dsDB;
@@ -178,6 +190,7 @@ namespace DBClass
             tableManager.ZadaniaTableAdapter = adpZadania;
             tableManager.HistoryTableAdapter = adpHistory;
             tableManager.EventsTableAdapter = adpEvent;
+            
 
             tableManager.BackupDataSetBeforeUpdate = true;
             tableManager.UpdateOrder = TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
@@ -525,7 +538,16 @@ namespace DBClass
             int position = bndCalendarPlan.Position;
             try
             {
+                //Автозаполнение поля для правильной сортировки Num_sort
+                ((DataRowView)bndCalendarPlan.Current).Row["Num_sort"] = feature.NormalizeNumSort(((DataRowView)bndCalendarPlan.Current).Row["Num_Etap"].ToString());
+
+                //StatGlob
+
+                //((DataRowView)bndCalendarPlan.Current).Row["ID_DopS"] = ((DataRowView)bndDopDogovor.Current).Row["DS_ID"];
+                //((DataRowView)bndCalendarPlan.Current).Row["IDDog"] = ((DataRowView)bndDogovor.Current).Row["DogID"];
+
                 bndCalendarPlan.EndEdit();
+                tableManager.UpdateAll(dsDB);
             }
             catch (Exception ex)
             {
@@ -534,25 +556,33 @@ namespace DBClass
             }
             finally
             {
-                adpCPlan.Update(dsDB.CalendarPlan);
-                dsDB.Tables["CalendarPlan"].AcceptChanges();
-                adpCPlan.Fill(dsDB.CalendarPlan);
+                //dsDB.Tables["CalendarPlan"].AcceptChanges();
+                //adpCPlan.Update(dsDB.CalendarPlan);
+                //adpCPlan.Fill(dsDB.CalendarPlan);
+                bndCalendarPlan.ResetBindings(true);
 
                 bndCalendarPlan.Position = position;
             }
         }
 
+        public static void RefreshCPlan()
+        {
+            bndCalendarPlan.EndEdit();
+            adpCPlan.Fill(dsDB.CalendarPlan);
+            bndCalendarPlan.ResetBindings(true);
+        }
+
         public static void CancelCalendarPlan()
         {
-            int position = bndCalendarPlan.Position;
+            //int position = bndCalendarPlan.Position;
 
-            bndCalendarPlan.ResetBindings(false);
+            //bndCalendarPlan.ResetBindings(false);
 
-            adpCPlan.Update(dsDB.CalendarPlan);
-            dsDB.Tables["CalendarPlan"].AcceptChanges();
-            adpCPlan.Fill(dsDB.CalendarPlan);
+            //adpCPlan.Update(dsDB.CalendarPlan);
+            //dsDB.Tables["CalendarPlan"].AcceptChanges();
+            //adpCPlan.Fill(dsDB.CalendarPlan);
 
-            bndCalendarPlan.Position = position;
+            //bndCalendarPlan.Position = position;
         }
 
         public static void AddCalendarPlan()
@@ -560,10 +590,6 @@ namespace DBClass
             if (DB_Cmd.bndDogovor.Count != 0)
             {
                 bndCalendarPlan.AddNew();
-                //   ((DataRowView)bndCalendarPlan.Current).Row["IDCust"] = ((DataRowView)bndDogovor.Current).Row["IDCust"];
-                //    ((DataRowView)bndObject.Current).Row["GIP"] = ((DataRowView)bndDogovor.Current).Row["IDGip"];
-                //    ((DataRowView)bndObject.Current).Row["Name_Ustanovka"] = ((DataRowView)bndDogovor.Current).Row["Name_Dog"];
-
             }
             else
             {
@@ -571,6 +597,7 @@ namespace DBClass
             }
         }
 
+ 
 
         public static void DeleteCalendarPlan()
         {
@@ -599,7 +626,12 @@ namespace DBClass
             int position = bndDopDogovor.Position;
             try
             {
+                ((DataRowView)DB_Cmd.bndDopDogovor.Current).Row["Nambe_DS"] = feature.NormalizeNumSort(((DataRowView)DB_Cmd.bndDopDogovor.Current).Row["Nambe_DS"].ToString());
+
                 bndDopDogovor.EndEdit();
+             
+                adpDDogovor.Update(dsDB.DopSoglashenia);
+                dsDB.Tables["DopSoglashenia"].AcceptChanges();
             }
             catch (Exception ex)
             {
@@ -608,10 +640,7 @@ namespace DBClass
             }
             finally
             {
-                adpDDogovor.Update(dsDB.DopSoglashenia);
-                dsDB.Tables["DopSoglashenia"].AcceptChanges();
                 adpDDogovor.Fill(dsDB.DopSoglashenia);
-
                 bndDopDogovor.Position = position;
             }
         }
@@ -629,14 +658,18 @@ namespace DBClass
             bndDopDogovor.Position = position;
         }
 
-        public static void AddDopSoglashenia()
+        public static void AddDopSoglashenia(string num)
         {
             if (DB_Cmd.bndDogovor.Count != 0)
             {
                 bndDopDogovor.AddNew();
 
-                ((DataRowView)DB_Cmd.bndDopDogovor.Current).Row["DogID"] = ((DataRowView)DB_Cmd.bndDogovor.Current).Row["DogID"];
-
+                //((DataRowView)DB_Cmd.bndDopDogovor.Current).Row["DogID"] = ((DataRowView)DB_Cmd.bndDogovor.Current).Row["DogID"];
+               
+                if (num != null)
+                {
+                    ((DataRowView)DB_Cmd.bndDopDogovor.Current).Row["Nambe_DS"] = num;
+                }
                
             }
             else

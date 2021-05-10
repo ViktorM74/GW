@@ -63,11 +63,11 @@ namespace CPlan
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.splitter_CPlan = new System.Windows.Forms.Splitter();
             this.bndNavigator_edit_CPlan = new System.Windows.Forms.BindingNavigator(this.components);
+            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
-            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
@@ -75,6 +75,8 @@ namespace CPlan
             this.btn_Add = new System.Windows.Forms.ToolStripButton();
             this.btn_Del = new System.Windows.Forms.ToolStripButton();
             this.btn_Save = new System.Windows.Forms.ToolStripButton();
+            this.btn_Refresh = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_edit_CPlan)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -98,6 +100,7 @@ namespace CPlan
             this.dgv_edit_CPlan.Name = "dgv_edit_CPlan";
             this.dgv_edit_CPlan.Size = new System.Drawing.Size(1025, 245);
             this.dgv_edit_CPlan.TabIndex = 0;
+            this.dgv_edit_CPlan.DoubleClick += new System.EventHandler(this.dgv_edit_CPlan_DoubleClick);
             // 
             // Num_Etap
             // 
@@ -189,7 +192,8 @@ namespace CPlan
             // chb_Begin
             // 
             this.chb_Begin.AutoSize = true;
-            this.chb_Begin.Location = new System.Drawing.Point(900, 59);
+            this.chb_Begin.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chb_Begin.Location = new System.Drawing.Point(832, 37);
             this.chb_Begin.Name = "chb_Begin";
             this.chb_Begin.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.chb_Begin.Size = new System.Drawing.Size(119, 17);
@@ -205,7 +209,7 @@ namespace CPlan
             "Приостановлен",
             "Завершен",
             "Закрыт актом"});
-            this.cb_Status.Location = new System.Drawing.Point(845, 32);
+            this.cb_Status.Location = new System.Drawing.Point(638, 32);
             this.cb_Status.Name = "cb_Status";
             this.cb_Status.Size = new System.Drawing.Size(175, 21);
             this.cb_Status.TabIndex = 5;
@@ -218,45 +222,46 @@ namespace CPlan
             "RUB",
             "EUR",
             "USD"});
-            this.cb_Valute.Location = new System.Drawing.Point(731, 32);
+            this.cb_Valute.Location = new System.Drawing.Point(555, 32);
             this.cb_Valute.Name = "cb_Valute";
             this.cb_Valute.Size = new System.Drawing.Size(77, 21);
             this.cb_Valute.TabIndex = 5;
             // 
             // tb_Summ
             // 
-            this.tb_Summ.Location = new System.Drawing.Point(593, 32);
+            this.tb_Summ.Location = new System.Drawing.Point(417, 32);
             this.tb_Summ.Name = "tb_Summ";
             this.tb_Summ.Size = new System.Drawing.Size(132, 20);
             this.tb_Summ.TabIndex = 4;
             // 
             // tb_Comments
             // 
-            this.tb_Comments.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.tb_Comments.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_Comments.Location = new System.Drawing.Point(521, 71);
             this.tb_Comments.Multiline = true;
             this.tb_Comments.Name = "tb_Comments";
-            this.tb_Comments.Size = new System.Drawing.Size(362, 135);
+            this.tb_Comments.Size = new System.Drawing.Size(498, 135);
             this.tb_Comments.TabIndex = 4;
             // 
             // tb_Days
             // 
-            this.tb_Days.Location = new System.Drawing.Point(243, 32);
+            this.tb_Days.Location = new System.Drawing.Point(103, 32);
             this.tb_Days.Name = "tb_Days";
             this.tb_Days.Size = new System.Drawing.Size(45, 20);
             this.tb_Days.TabIndex = 4;
             // 
             // dp_Konec_Data
             // 
-            this.dp_Konec_Data.Location = new System.Drawing.Point(421, 32);
+            this.dp_Konec_Data.Location = new System.Drawing.Point(281, 32);
             this.dp_Konec_Data.Name = "dp_Konec_Data";
             this.dp_Konec_Data.Size = new System.Drawing.Size(125, 20);
             this.dp_Konec_Data.TabIndex = 3;
             // 
             // dp_Nachalo_Data
             // 
-            this.dp_Nachalo_Data.Location = new System.Drawing.Point(294, 32);
+            this.dp_Nachalo_Data.Location = new System.Drawing.Point(154, 32);
             this.dp_Nachalo_Data.Name = "dp_Nachalo_Data";
             this.dp_Nachalo_Data.Size = new System.Drawing.Size(121, 20);
             this.dp_Nachalo_Data.TabIndex = 3;
@@ -281,7 +286,7 @@ namespace CPlan
             // lbl_Status
             // 
             this.lbl_Status.AutoSize = true;
-            this.lbl_Status.Location = new System.Drawing.Point(842, 16);
+            this.lbl_Status.Location = new System.Drawing.Point(635, 16);
             this.lbl_Status.Name = "lbl_Status";
             this.lbl_Status.Size = new System.Drawing.Size(41, 13);
             this.lbl_Status.TabIndex = 0;
@@ -290,7 +295,7 @@ namespace CPlan
             // lbl_V
             // 
             this.lbl_V.AutoSize = true;
-            this.lbl_V.Location = new System.Drawing.Point(728, 16);
+            this.lbl_V.Location = new System.Drawing.Point(552, 16);
             this.lbl_V.Name = "lbl_V";
             this.lbl_V.Size = new System.Drawing.Size(45, 13);
             this.lbl_V.TabIndex = 0;
@@ -299,7 +304,7 @@ namespace CPlan
             // lbl_Summ
             // 
             this.lbl_Summ.AutoSize = true;
-            this.lbl_Summ.Location = new System.Drawing.Point(590, 16);
+            this.lbl_Summ.Location = new System.Drawing.Point(414, 16);
             this.lbl_Summ.Name = "lbl_Summ";
             this.lbl_Summ.Size = new System.Drawing.Size(41, 13);
             this.lbl_Summ.TabIndex = 0;
@@ -317,7 +322,7 @@ namespace CPlan
             // lbl_Days
             // 
             this.lbl_Days.AutoSize = true;
-            this.lbl_Days.Location = new System.Drawing.Point(240, 16);
+            this.lbl_Days.Location = new System.Drawing.Point(100, 16);
             this.lbl_Days.Name = "lbl_Days";
             this.lbl_Days.Size = new System.Drawing.Size(28, 13);
             this.lbl_Days.TabIndex = 0;
@@ -326,7 +331,7 @@ namespace CPlan
             // lbl_Konec_Data
             // 
             this.lbl_Konec_Data.AutoSize = true;
-            this.lbl_Konec_Data.Location = new System.Drawing.Point(421, 16);
+            this.lbl_Konec_Data.Location = new System.Drawing.Point(281, 16);
             this.lbl_Konec_Data.Name = "lbl_Konec_Data";
             this.lbl_Konec_Data.Size = new System.Drawing.Size(62, 13);
             this.lbl_Konec_Data.TabIndex = 0;
@@ -335,7 +340,7 @@ namespace CPlan
             // lbl_Nachalo_Data
             // 
             this.lbl_Nachalo_Data.AutoSize = true;
-            this.lbl_Nachalo_Data.Location = new System.Drawing.Point(291, 16);
+            this.lbl_Nachalo_Data.Location = new System.Drawing.Point(151, 16);
             this.lbl_Nachalo_Data.Name = "lbl_Nachalo_Data";
             this.lbl_Nachalo_Data.Size = new System.Drawing.Size(44, 13);
             this.lbl_Nachalo_Data.TabIndex = 0;
@@ -400,7 +405,9 @@ namespace CPlan
             this.bindingNavigatorSeparator2,
             this.btn_Add,
             this.btn_Del,
-            this.btn_Save});
+            this.btn_Save,
+            this.btn_Refresh,
+            this.toolStripSeparator1});
             this.bndNavigator_edit_CPlan.Location = new System.Drawing.Point(0, 0);
             this.bndNavigator_edit_CPlan.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.bndNavigator_edit_CPlan.MoveLastItem = this.bindingNavigatorMoveLastItem;
@@ -411,6 +418,13 @@ namespace CPlan
             this.bndNavigator_edit_CPlan.Size = new System.Drawing.Size(1031, 25);
             this.bndNavigator_edit_CPlan.TabIndex = 6;
             this.bndNavigator_edit_CPlan.Text = "bindingNavigator1";
+            // 
+            // bindingNavigatorCountItem
+            // 
+            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(43, 22);
+            this.bindingNavigatorCountItem.Text = "для {0}";
+            this.bindingNavigatorCountItem.ToolTipText = "Общее число элементов";
             // 
             // bindingNavigatorMoveFirstItem
             // 
@@ -445,16 +459,9 @@ namespace CPlan
             this.bindingNavigatorPositionItem.Text = "0";
             this.bindingNavigatorPositionItem.ToolTipText = "Текущее положение";
             // 
-            // bindingNavigatorCountItem
-            // 
-            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(43, 22);
-            this.bindingNavigatorCountItem.Text = "для {0}";
-            this.bindingNavigatorCountItem.ToolTipText = "Общее число элементов";
-            // 
             // bindingNavigatorSeparator1
             // 
-            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
             this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // bindingNavigatorMoveNextItem
@@ -477,26 +484,28 @@ namespace CPlan
             // 
             // bindingNavigatorSeparator2
             // 
-            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
             // btn_Add
             // 
             this.btn_Add.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.btn_Add.Image = ((System.Drawing.Image)(resources.GetObject("btn_Add.Image")));
-            this.btn_Add.Name = "bindingNavigatorAddNewItem";
+            this.btn_Add.Name = "btn_Add";
             this.btn_Add.RightToLeftAutoMirrorImage = true;
             this.btn_Add.Size = new System.Drawing.Size(23, 22);
             this.btn_Add.Text = "Добавить";
+            this.btn_Add.Click += new System.EventHandler(this.btn_Add_Click_1);
             // 
             // btn_Del
             // 
             this.btn_Del.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.btn_Del.Image = ((System.Drawing.Image)(resources.GetObject("btn_Del.Image")));
-            this.btn_Del.Name = "bindingNavigatorDeleteItem";
+            this.btn_Del.Name = "btn_Del";
             this.btn_Del.RightToLeftAutoMirrorImage = true;
             this.btn_Del.Size = new System.Drawing.Size(23, 22);
             this.btn_Del.Text = "Удалить";
+            this.btn_Del.Click += new System.EventHandler(this.btn_Del_Click_1);
             // 
             // btn_Save
             // 
@@ -506,6 +515,22 @@ namespace CPlan
             this.btn_Save.Name = "btn_Save";
             this.btn_Save.Size = new System.Drawing.Size(23, 22);
             this.btn_Save.Text = "toolStripButton1";
+            this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click_1);
+            // 
+            // btn_Refresh
+            // 
+            this.btn_Refresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btn_Refresh.Image = global::CPlan.Properties.Resources.Refresh;
+            this.btn_Refresh.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btn_Refresh.Name = "btn_Refresh";
+            this.btn_Refresh.Size = new System.Drawing.Size(23, 22);
+            this.btn_Refresh.Text = "toolStripButton1";
+            this.btn_Refresh.Click += new System.EventHandler(this.btn_Refresh_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // Form_CPlan
             // 
@@ -578,5 +603,7 @@ namespace CPlan
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.ToolStripButton btn_Save;
+        private System.Windows.Forms.ToolStripButton btn_Refresh;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     }
 }

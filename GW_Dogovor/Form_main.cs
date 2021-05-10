@@ -23,6 +23,8 @@ using DogovorClass;
 using DocumentsClass;
 using DopSoglClass;
 using CPlan;
+using feature_сlass;
+using System.ComponentModel;
 
 namespace GW_Dogovor
 {
@@ -92,6 +94,7 @@ namespace GW_Dogovor
             grid_ProjectCode.AutoGenerateColumns = false;
             grid_ProjectCode.DataSource = DB_Cmd.bndProject;
             grid_ProjectCode.Columns["Code_object"].DataPropertyName = "Code_object";
+            this.grid_ProjectCode.Sort(this.grid_ProjectCode.Columns["Code_object"], ListSortDirection.Ascending);
         }
         private void SetViewDataDocument()
         {
@@ -103,6 +106,7 @@ namespace GW_Dogovor
             gridDocument.Columns["DataDoc"].DataPropertyName = "DataDoc";
             gridDocument.Columns["Status"].DataPropertyName = "Status";
             gridDocument.Columns["PathDoc"].DataPropertyName = "PathDoc";
+            this.gridDocument.Sort(this.gridDocument.Columns["DataDoc"], ListSortDirection.Ascending);
 
             bndNvg_IshDoc.BindingSource = DB_Cmd.bndDocument;
          
@@ -161,14 +165,18 @@ namespace GW_Dogovor
             grid_CPlan.DataSource = DB_Cmd.bndCalendarPlan;
             grid_CPlan.Columns["Num_Etap"].DataPropertyName = "Num_Etap";
             grid_CPlan.Columns["Name_Etap"].DataPropertyName = "Name_Etap";
+            grid_CPlan.Columns["day"].DataPropertyName = "Days";
             grid_CPlan.Columns["Nachalo_Data"].DataPropertyName = "Nachalo_Data";
             grid_CPlan.Columns["Konec_Data"].DataPropertyName = "Konec_Data";
             grid_CPlan.Columns["Summ"].DataPropertyName = "Summ";
             grid_CPlan.Columns["Valute"].DataPropertyName = "V";
             grid_CPlan.Columns["StatusCPlan"].DataPropertyName = "Status";
+            grid_CPlan.Columns["id_DDog"].DataPropertyName = "ID_DopS";
+            grid_CPlan.Columns["Num_sort"].DataPropertyName = "Num_sort";
+            this.grid_CPlan.Sort(this.grid_CPlan.Columns["Num_sort"], ListSortDirection.Ascending);
 
-            grid_CPlan.EditingPanel.BorderStyle = BorderStyle.Fixed3D;
-           
+            //grid_CPlan.EditingPanel.BorderStyle = BorderStyle.Fixed3D;
+
 
         }
         private void SetViewDDog()
@@ -182,6 +190,7 @@ namespace GW_Dogovor
             grid_DD.AutoGenerateColumns = false;
             grid_DD.DataSource = DB_Cmd.bndDopDogovor;
             grid_DD.Columns["NumDD"].DataPropertyName = "Nambe_DS";
+            this.grid_DD.Sort(this.grid_DD.Columns["NumDD"], ListSortDirection.Ascending);
 
             bndNavigatorDDog.BindingSource = DB_Cmd.bndDopDogovor;
             bndNavigator_KP_Dop.BindingSource = DB_Cmd.bndCalendarPlan;
@@ -202,6 +211,8 @@ namespace GW_Dogovor
             grid_Object.AutoGenerateColumns = false;
             grid_Object.DataSource = DB_Cmd.bndObject;
             grid_Object.Columns["CodeObj"].DataPropertyName = "CodeOBJ";
+            this.grid_Object.Sort(this.grid_Object.Columns["CodeObj"], ListSortDirection.Ascending);
+
 
             bndNavigatorObject.BindingSource = DB_Cmd.bndObject;
             bndNavigator_Graph_Mark.BindingSource = DB_Cmd.bndSostavObj;
@@ -383,6 +394,7 @@ namespace GW_Dogovor
         private void Form_main_FormClosing(object sender, FormClosingEventArgs e)
         {
             SetFormView();
+            DB_Cmd.tableManager.UpdateAll(DB_Cmd.dsDB);
         }
         private void Clk() // Все простые события Клик
         {
@@ -516,12 +528,6 @@ namespace GW_Dogovor
                 EditDogovor();
             };
 
-            tbtn_AddDog.Click += (s, a) =>
-            {
-                DB_Cmd.AddDogovor();
-                EditDogovor();
-            };
-
             tbtn_DeleteDog.Click += (s, a) =>
             {
                 DB_Cmd.DeleteDogovor();
@@ -535,7 +541,7 @@ namespace GW_Dogovor
 
             tbtn_AddDDog.Click += (s, a) =>
             {
-                DB_Cmd.AddDopSoglashenia();
+                DB_Cmd.AddDopSoglashenia(null);
                 EditDopDogovor();
             };
 
@@ -1121,6 +1127,41 @@ namespace GW_Dogovor
         private void grid_Zadania_DragDrop(object sender, DragEventArgs e)
         {
             _DragDrop(sender, e, 1, "Задания");
+        }
+
+        private void grid_CPlan_DoubleClick(object sender, EventArgs e)
+        {
+            Form_CP001 fr = new Form_CP001();
+            fr.ShowDialog();
+            grid_CPlan.DataSource = DB_Cmd.bndCalendarPlan;
+            grid_CPlan.Refresh();
+        }
+
+        private void btn_addCPItem_Click(object sender, EventArgs e)
+        {
+            DB_Cmd.AddCalendarPlan();
+            Form_CP001 fr = new Form_CP001();
+            fr.ShowDialog();
+            grid_CPlan.DataSource = DB_Cmd.bndCalendarPlan;
+            grid_CPlan.Refresh();
+        }
+
+        private void btn_del_CPItem_Click(object sender, EventArgs e)
+        {
+            DB_Cmd.DeleteCalendarPlan();
+        }
+
+        private void normalizeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(feature.NormalizeNumSort("1.34.12"));
+
+        }
+
+        private void tbtn_AddDog_Click(object sender, EventArgs e)
+        {
+            DB_Cmd.AddDogovor();
+            DB_Cmd.AddDopSoglashenia("0");
+            EditDogovor();
         }
     }
 

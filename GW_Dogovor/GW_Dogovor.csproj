@@ -107,6 +107,8 @@
     <None Include="Resources\icons8-дерево-папок-128.png" />
     <None Include="Resources\icons8-дерево-папок-30.png" />
     <None Include="Resources\Modify.bmp" />
+    <None Include="Resources\bindingNavigatorAddNewItem1.Image.png" />
+    <None Include="Resources\bindingNavigatorDeleteItem1.Image.png" />
     <Content Include="Resources\return.png" />
     <None Include="Resources\return1.png" />
     <None Include="Resources\Save.bmp" />
@@ -145,6 +147,10 @@
     <ProjectReference Include="..\DopSoglClass\DopSoglClass.csproj">
       <Project>{4aba2d23-e044-4331-ab38-762a2495f3ee}</Project>
       <Name>DopSoglClass</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\feature_сlass\feature_сlass.csproj">
+      <Project>{59ee863f-eedc-4a06-bc08-729b92241c7d}</Project>
+      <Name>feature_сlass</Name>
     </ProjectReference>
     <ProjectReference Include="..\FileAction\FileAction.csproj">
       <Project>{85ebfd50-4585-49f5-b8fd-dd9235788d76}</Project>
