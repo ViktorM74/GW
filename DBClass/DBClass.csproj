@@ -129,5 +129,11 @@
   <ItemGroup>
     <None Include="Resources\dropper.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\feature_сlass\feature_сlass.csproj">
+      <Project>{59ee863f-eedc-4a06-bc08-729b92241c7d}</Project>
+      <Name>feature_сlass</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
