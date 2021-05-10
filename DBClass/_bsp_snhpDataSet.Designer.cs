@@ -698,7 +698,7 @@ namespace DBClass {
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableAct = new ActDataTable();
             base.Tables.Add(this.tableAct);
-            this.tableCalendarPlan = new CalendarPlanDataTable();
+            this.tableCalendarPlan = new CalendarPlanDataTable(false);
             base.Tables.Add(this.tableCalendarPlan);
             this.tableDogovor = new DogovorDataTable();
             base.Tables.Add(this.tableDogovor);
@@ -1004,6 +1004,7 @@ namespace DBClass {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitExpressions() {
+            this.CalendarPlan.NumDDColumn.Expression = "Parent([DopSoglasheniaCalendarPlan]).[Nambe_DS]";
             this.Project.AreaStroyColumn.Expression = "Parent([CustomersProject]).[NameCust]";
             this.Documents.TYPEColumn.Expression = "Parent([Documets_typeDocuments]).[Name_doc]";
             this.OBJECTS.NameGIPColumn.Expression = "Parent([Users GIP_OBJECTS]).[Family]";
@@ -1498,12 +1499,23 @@ namespace DBClass {
             
             private global::System.Data.DataColumn columnStatus;
             
+            private global::System.Data.DataColumn columnNumDD;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public CalendarPlanDataTable() {
+            public CalendarPlanDataTable() : 
+                    this(false) {
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public CalendarPlanDataTable(bool initExpressions) {
                 this.TableName = "CalendarPlan";
                 this.BeginInit();
                 this.InitClass();
+                if ((initExpressions == true)) {
+                    this.InitExpressions();
+                }
                 this.EndInit();
             }
             
@@ -1661,6 +1673,14 @@ namespace DBClass {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn NumDDColumn {
+                get {
+                    return this.columnNumDD;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1696,6 +1716,55 @@ namespace DBClass {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public CalendarPlanRow AddCalendarPlanRow(
+                        DogovorRow parentDogovorRowByDogovorCalendarPlan, 
+                        DopSoglasheniaRow parentDopSoglasheniaRowByDopSoglasheniaCalendarPlan, 
+                        int ID_EtapRoot, 
+                        string Num_Etap, 
+                        string Name_Etap, 
+                        System.DateTime Nachalo_Data, 
+                        System.DateTime Konec_Data, 
+                        int Days, 
+                        string Comments, 
+                        decimal Summ, 
+                        string V, 
+                        string Num_sort, 
+                        int StatGlob, 
+                        bool Begin, 
+                        string Status, 
+                        string NumDD) {
+                CalendarPlanRow rowCalendarPlanRow = ((CalendarPlanRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        null,
+                        null,
+                        ID_EtapRoot,
+                        Num_Etap,
+                        Name_Etap,
+                        Nachalo_Data,
+                        Konec_Data,
+                        Days,
+                        Comments,
+                        Summ,
+                        V,
+                        Num_sort,
+                        StatGlob,
+                        Begin,
+                        Status,
+                        NumDD};
+                if ((parentDogovorRowByDogovorCalendarPlan != null)) {
+                    columnValuesArray[1] = parentDogovorRowByDogovorCalendarPlan[0];
+                }
+                if ((parentDopSoglasheniaRowByDopSoglasheniaCalendarPlan != null)) {
+                    columnValuesArray[2] = parentDopSoglasheniaRowByDopSoglasheniaCalendarPlan[0];
+                }
+                rowCalendarPlanRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowCalendarPlanRow);
+                return rowCalendarPlanRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public CalendarPlanRow AddCalendarPlanRow(DogovorRow parentDogovorRowByDogovorCalendarPlan, DopSoglasheniaRow parentDopSoglasheniaRowByDopSoglasheniaCalendarPlan, int ID_EtapRoot, string Num_Etap, string Name_Etap, System.DateTime Nachalo_Data, System.DateTime Konec_Data, int Days, string Comments, decimal Summ, string V, string Num_sort, int StatGlob, bool Begin, string Status) {
                 CalendarPlanRow rowCalendarPlanRow = ((CalendarPlanRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
@@ -1714,7 +1783,8 @@ namespace DBClass {
                         Num_sort,
                         StatGlob,
                         Begin,
-                        Status};
+                        Status,
+                        null};
                 if ((parentDogovorRowByDogovorCalendarPlan != null)) {
                     columnValuesArray[1] = parentDogovorRowByDogovorCalendarPlan[0];
                 }
@@ -1766,6 +1836,7 @@ namespace DBClass {
                 this.columnStatGlob = base.Columns["StatGlob"];
                 this.columnBegin = base.Columns["Begin"];
                 this.columnStatus = base.Columns["Status"];
+                this.columnNumDD = base.Columns["NumDD"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1803,6 +1874,8 @@ namespace DBClass {
                 base.Columns.Add(this.columnBegin);
                 this.columnStatus = new global::System.Data.DataColumn("Status", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnStatus);
+                this.columnNumDD = new global::System.Data.DataColumn("NumDD", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNumDD);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID_Kplan}, true));
                 this.columnID_Kplan.AutoIncrement = true;
@@ -1816,6 +1889,7 @@ namespace DBClass {
                 this.columnV.MaxLength = 255;
                 this.columnNum_sort.MaxLength = 255;
                 this.columnStatus.MaxLength = 255;
+                this.columnNumDD.ReadOnly = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1834,6 +1908,12 @@ namespace DBClass {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Type GetRowType() {
                 return typeof(CalendarPlanRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            private void InitExpressions() {
+                this.NumDDColumn.Expression = "Parent([DopSoglasheniaCalendarPlan]).[Nambe_DS]";
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8917,6 +8997,22 @@ namespace DBClass {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string NumDD {
+                get {
+                    try {
+                        return ((string)(this[this.tableCalendarPlan.NumDDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'NumDD\' в таблице \'CalendarPlan\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCalendarPlan.NumDDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public DogovorRow DogovorRow {
                 get {
                     return ((DogovorRow)(this.GetParentRow(this.Table.ParentRelations["DogovorCalendarPlan"])));
@@ -9115,6 +9211,18 @@ namespace DBClass {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetStatusNull() {
                 this[this.tableCalendarPlan.StatusColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsNumDDNull() {
+                return this.IsNull(this.tableCalendarPlan.NumDDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetNumDDNull() {
+                this[this.tableCalendarPlan.NumDDColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -15191,7 +15299,7 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual _bsp_snhpDataSet.CalendarPlanDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            _bsp_snhpDataSet.CalendarPlanDataTable dataTable = new _bsp_snhpDataSet.CalendarPlanDataTable();
+            _bsp_snhpDataSet.CalendarPlanDataTable dataTable = new _bsp_snhpDataSet.CalendarPlanDataTable(true);
             this.Adapter.Fill(dataTable);
             return dataTable;
         }

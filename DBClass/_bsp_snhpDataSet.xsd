@@ -1727,6 +1727,7 @@ FROM            Tender</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="NumDD" msdata:ReadOnly="true" msdata:Expression="Parent([DopSoglasheniaCalendarPlan]).[Nambe_DS]" msprop:Generator_ColumnVarNameInTable="columnNumDD" msprop:Generator_ColumnPropNameInRow="NumDD" msprop:Generator_ColumnPropNameInTable="NumDDColumn" msprop:Generator_UserColumnName="NumDD" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
