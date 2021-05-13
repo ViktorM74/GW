@@ -28,6 +28,11 @@ namespace CPlan
             cb_Valute.DataBindings.Add("Text", DB_Cmd.bndCalendarPlan, "V");
             tb_Comments.DataBindings.Add("Text", DB_Cmd.bndCalendarPlan, "Comments");
             lb_Sort.DataBindings.Add("Text", DB_Cmd.bndCalendarPlan, "Num_sort");
+
+            cb_DD.DataSource = DB_Cmd.bndDopDogovor; // источник данных
+            cb_DD.DisplayMember = "Nambe_DS"; // отображаемое значение
+            cb_DD.ValueMember = "DS_ID"; // значение передаваемое в источник данных или привязанный источник
+            cb_DD.DataBindings.Add("SelectedValue", DB_Cmd.bndCalendarPlan, "ID_DopS"); // привязка к данным таблицы CalendarPlan        
         }
 
         private void btn_deleteItem_Click(object sender, System.EventArgs e)

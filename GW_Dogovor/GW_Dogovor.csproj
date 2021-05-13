@@ -109,6 +109,7 @@
     <None Include="Resources\Modify.bmp" />
     <None Include="Resources\bindingNavigatorAddNewItem1.Image.png" />
     <None Include="Resources\bindingNavigatorDeleteItem1.Image.png" />
+    <None Include="Resources\Refresh.png" />
     <Content Include="Resources\return.png" />
     <None Include="Resources\return1.png" />
     <None Include="Resources\Save.bmp" />
