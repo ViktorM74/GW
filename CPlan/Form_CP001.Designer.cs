@@ -73,6 +73,8 @@ namespace CPlan
             this.tb_Comments = new System.Windows.Forms.TextBox();
             this.cb_Valute = new System.Windows.Forms.ComboBox();
             this.cb_Status = new System.Windows.Forms.ComboBox();
+            this.cb_DD = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.navigatorCP)).BeginInit();
             this.navigatorCP.SuspendLayout();
             this.panelButton.SuspendLayout();
@@ -252,7 +254,9 @@ namespace CPlan
             // 
             this.panelButton.Controls.Add(this.btn_refreshItem);
             this.panelButton.Controls.Add(this.btn_addItem);
+            this.panelButton.Controls.Add(this.label12);
             this.panelButton.Controls.Add(this.btn_deleteItem);
+            this.panelButton.Controls.Add(this.label11);
             this.panelButton.Controls.Add(this.btn_Close);
             this.panelButton.Controls.Add(this.lb_Sort);
             this.panelButton.Controls.Add(this.btn_UpdateItem);
@@ -431,7 +435,7 @@ namespace CPlan
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(324, 30);
+            this.label11.Location = new System.Drawing.Point(30, 254);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(48, 13);
             this.label11.TabIndex = 17;
@@ -440,7 +444,7 @@ namespace CPlan
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(324, 46);
+            this.label12.Location = new System.Drawing.Point(30, 214);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(34, 13);
             this.label12.TabIndex = 17;
@@ -485,20 +489,37 @@ namespace CPlan
             "Приостановлен",
             "Завершен",
             "Закрыт актом"});
-            this.cb_Status.Location = new System.Drawing.Point(118, 28);
+            this.cb_Status.Location = new System.Drawing.Point(118, 27);
             this.cb_Status.Name = "cb_Status";
             this.cb_Status.Size = new System.Drawing.Size(167, 21);
             this.cb_Status.TabIndex = 18;
+            // 
+            // cb_DD
+            // 
+            this.cb_DD.FormattingEnabled = true;
+            this.cb_DD.Location = new System.Drawing.Point(291, 27);
+            this.cb_DD.Name = "cb_DD";
+            this.cb_DD.Size = new System.Drawing.Size(89, 21);
+            this.cb_DD.TabIndex = 19;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(288, 11);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(23, 13);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "ДС";
             // 
             // Form_CP001
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(712, 375);
+            this.Controls.Add(this.cb_DD);
             this.Controls.Add(this.cb_Status);
             this.Controls.Add(this.cb_Valute);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lb_Status);
             this.Controls.Add(this.lb_Valute);
             this.Controls.Add(this.lb_Summ);
@@ -575,5 +596,7 @@ namespace CPlan
         private System.Windows.Forms.ComboBox cb_Valute;
         private System.Windows.Forms.ComboBox cb_Status;
         private System.Windows.Forms.Button btn_Close;
+        private System.Windows.Forms.ComboBox cb_DD;
+        private System.Windows.Forms.Label label1;
     }
 }

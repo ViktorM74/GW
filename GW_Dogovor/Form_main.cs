@@ -192,6 +192,19 @@ namespace GW_Dogovor
             grid_DD.Columns["NumDD"].DataPropertyName = "Nambe_DS";
             //this.grid_DD.Sort(this.grid_DD.Columns["NumDD"], ListSortDirection.Ascending);
 
+            grid_CPlanDD.AutoGenerateColumns = false;
+            grid_CPlanDD.DataSource = DB_Cmd.bndCalendarPlan;
+            grid_CPlanDD.Columns["num_ds"].DataPropertyName = "Num_Etap";
+            grid_CPlanDD.Columns["name_ds"].DataPropertyName = "Name_Etap";
+            grid_CPlanDD.Columns["day_ds"].DataPropertyName = "Days";
+            grid_CPlanDD.Columns["nachalo_ds"].DataPropertyName = "Nachalo_Data";
+            grid_CPlanDD.Columns["konec_ds"].DataPropertyName = "Konec_Data";
+            grid_CPlanDD.Columns["summ_ds"].DataPropertyName = "Summ";
+            grid_CPlanDD.Columns["valute_ds"].DataPropertyName = "V";
+            grid_CPlanDD.Columns["status_ds"].DataPropertyName = "Status";
+            grid_CPlanDD.Columns["num_sort_ds"].DataPropertyName = "Num_sort";
+
+
             bndNavigatorDDog.BindingSource = DB_Cmd.bndDopDogovor;
             bndNavigator_KP_Dop.BindingSource = DB_Cmd.bndCalendarPlan;
             //bndCalendarPlan.Filter = "";
@@ -443,29 +456,6 @@ namespace GW_Dogovor
                 DB_Cmd.SaveProject();
             };
 
-            tbtn_TndEdit.Click += (s, a) =>
-            {
-                EditTender();
-            };
-
-            tbtn_TndAdd.Click += (s, a) =>
-            {
-                DB_Cmd.AddTender();
-                FileA.CreateFolder("Тендер", link_LocalFld.Text);
-                string newPath = Path.Combine(Path.Combine(link_LocalFld.Text, "Тендер"), DateTime.Now.ToString("yyyy.MM.dd"));
-                FileA.CreateFolder(DateTime.Now.ToString("yyyy.MM.dd"), Path.Combine(link_LocalFld.Text, "Тендер"));
-                ((DataRowView)DB_Cmd.bndTender.Current).Row["Path"] = newPath;
-                EditTender();
-               
-                
-            };
-
-            tbtn_TndDelete.Click += (s, a) =>
-            {
-                DB_Cmd.DeleteTender();
-                DB_Cmd.SaveTender();
-            };
-
             tbtn_AddFolders.Click += (s, a) =>
             {
                 Form_FolderManager ff = new Form_FolderManager(link_LocalFld.Text, link_ServetFld.Text, false);
@@ -523,17 +513,6 @@ namespace GW_Dogovor
                 dbEditText(DB_Cmd.bndDopDogovor, "Comments");
             };
 
-            tbtn_EditDog.Click += (s, a) =>
-            {
-                EditDogovor();
-            };
-
-            tbtn_DeleteDog.Click += (s, a) =>
-            {
-                DB_Cmd.DeleteDogovor();
-                DB_Cmd.SaveDogovor();
-            };
-
             tbtn_EditDDog.Click += (s, a) =>
             {
                 EditDopDogovor();
@@ -541,7 +520,7 @@ namespace GW_Dogovor
 
             tbtn_AddDDog.Click += (s, a) =>
             {
-                DB_Cmd.AddDopSoglashenia(null);
+                DB_Cmd.AddDopSoglashenia();
                 EditDopDogovor();
             };
 
@@ -576,7 +555,7 @@ namespace GW_Dogovor
             if (!R) Close(); 
             GetFormView();
             Clk();
-            lbl_BasePath.Text =tPathDB;
+            lbl_BasePath.Text = tPathDB;
         }
         #endregion
 
@@ -1117,6 +1096,7 @@ namespace GW_Dogovor
         {
             Form_CPlan feCPlan = new Form_CPlan();
             feCPlan.Show();
+            DB_Cmd.InitializeBindingSources();
         }
 
         private void grid_MailControl_DragDrop(object sender, DragEventArgs e)
@@ -1133,22 +1113,17 @@ namespace GW_Dogovor
         {
             Form_CP001 fr = new Form_CP001();
             fr.ShowDialog();
-            grid_CPlan.DataSource = DB_Cmd.bndCalendarPlan;
-            grid_CPlan.Refresh();
+            DB_Cmd.InitializeBindingSources();
         }
 
         private void btn_addCPItem_Click(object sender, EventArgs e)
         {
-            DB_Cmd.AddCalendarPlan();
-            Form_CP001 fr = new Form_CP001();
-            fr.ShowDialog();
-            grid_CPlan.DataSource = DB_Cmd.bndCalendarPlan;
-            grid_CPlan.Refresh();
+            
         }
 
         private void btn_del_CPItem_Click(object sender, EventArgs e)
         {
-            DB_Cmd.DeleteCalendarPlan();
+            
         }
 
         private void normalizeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1160,8 +1135,82 @@ namespace GW_Dogovor
         private void tbtn_AddDog_Click(object sender, EventArgs e)
         {
             DB_Cmd.AddDogovor();
-            DB_Cmd.AddDopSoglashenia("0");
+            int pos = DB_Cmd.bndDogovor.Position;
+
+            //MessageBox.Show(pos.ToString());
+           
             EditDogovor();
+           
+            DB_Cmd.bndDogovor.Position = pos;
+
+            //MessageBox.Show(((DataRowView)(DB_Cmd.bndDogovor.Current)).Row["Nambe_Dog"].ToString());
+
+            //if (DB_Cmd.bndDopDogovor.Count == 0) 
+            //           DB_Cmd.AddDopSoglashenia();
+
+        }
+
+        private void btn_Refr_CP_Click(object sender, EventArgs e)
+        {
+            DB_Cmd.DBLoad();
+            //DB_Cmd.RefreshCPlan();
+            //DB_Cmd.adpDogovor.Fill(DB_Cmd.dsDB.DopSoglashenia);
+            //DB_Cmd.bndDogovor.ResetBindings(false);
+            //DB_Cmd.bndProject.ResetBindings(false);
+        }
+
+        private void btn_add_CP_Click(object sender, EventArgs e)
+        {
+            DB_Cmd.AddCalendarPlan();
+            Form_CP001 fr = new Form_CP001();
+            fr.ShowDialog();
+            DB_Cmd.InitializeBindingSources();
+        }
+
+        private void btn_delete_CP_Click(object sender, EventArgs e)
+        {
+            DB_Cmd.DeleteCalendarPlan();
+        }
+
+        private void btn_edit_CP_Click(object sender, EventArgs e)
+        {
+            Form_CP001 fr = new Form_CP001();
+            fr.ShowDialog();
+            DB_Cmd.InitializeBindingSources();
+        }
+
+        private void tbtn_TndDelete_Click(object sender, EventArgs e)
+        {
+            DB_Cmd.DeleteTender();
+            DB_Cmd.SaveTender();
+        }
+
+        private void tbtn_TndAdd_Click(object sender, EventArgs e)
+        {
+            DB_Cmd.AddTender();
+            if (link_LocalFld.Text != "")
+                throw new Exception("Не заданы базовая рабочая папка на локальном диске");
+            FileA.CreateFolder("Тендер", link_LocalFld.Text);
+            string newPath = Path.Combine(Path.Combine(link_LocalFld.Text, "Тендер"), DateTime.Now.ToString("yyyy.MM.dd"));
+            FileA.CreateFolder(DateTime.Now.ToString("yyyy.MM.dd"), Path.Combine(link_LocalFld.Text, "Тендер"));
+            ((DataRowView)DB_Cmd.bndTender.Current).Row["Path"] = newPath;
+            EditTender();
+        }
+
+        private void tbtn_TndEdit_Click(object sender, EventArgs e)
+        {
+            EditTender();
+        }
+
+        private void tbtn_EditDog_Click(object sender, EventArgs e)
+        {
+            EditDogovor();
+        }
+
+        private void tbtn_DeleteDog_Click(object sender, EventArgs e)
+        {
+            DB_Cmd.DeleteDogovor();
+            DB_Cmd.SaveDogovor();
         }
     }
 

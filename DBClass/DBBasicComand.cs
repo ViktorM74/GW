@@ -67,7 +67,7 @@ namespace DBClass
             InitializeBindingSources();
         }
 
-        private static void InitializeBindingSources()
+        public static void InitializeBindingSources()
         {
 
             //Project
@@ -177,19 +177,19 @@ namespace DBClass
         public static void GreateTableManager_1()
         {
             tableManager.ProjectTableAdapter = adpProject;
-            tableManager.CustomersTableAdapter = adpCustomer;
-            tableManager.DocumentsTableAdapter = adpDocument;
-            tableManager.Documets_typeTableAdapter = adpTypeDocument;
-            tableManager.TenderTableAdapter = adpTender;
+            //tableManager.CustomersTableAdapter = adpCustomer;
+            //tableManager.DocumentsTableAdapter = adpDocument;
+            //tableManager.Documets_typeTableAdapter = adpTypeDocument;
+            //tableManager.TenderTableAdapter = adpTender;
             tableManager.DogovorTableAdapter = adpDogovor;
             tableManager.DopSoglasheniaTableAdapter = adpDDogovor;
             tableManager.CalendarPlanTableAdapter = adpCPlan;
-            tableManager.ActTableAdapter = adpAct;
-            tableManager.OBJECTSTableAdapter = adpObject;
-            tableManager.SostavDocTableAdapter = adpSostavD;
-            tableManager.ZadaniaTableAdapter = adpZadania;
-            tableManager.HistoryTableAdapter = adpHistory;
-            tableManager.EventsTableAdapter = adpEvent;
+            //tableManager.ActTableAdapter = adpAct;
+            //tableManager.OBJECTSTableAdapter = adpObject;
+            //tableManager.SostavDocTableAdapter = adpSostavD;
+            //tableManager.ZadaniaTableAdapter = adpZadania;
+            //tableManager.HistoryTableAdapter = adpHistory;
+            //tableManager.EventsTableAdapter = adpEvent;
             
 
             tableManager.BackupDataSetBeforeUpdate = true;
@@ -211,15 +211,13 @@ namespace DBClass
             try
             {
                 bndProject.EndEdit();
-                adpProject.Update(dsDB.Project);
-                dsDB.Tables["Project"].AcceptChanges();
-                adpProject.Fill(dsDB.Project);
+                tableManager.UpdateAll(dsDB);
                 return true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Сохранение вызвало ошибку: " + ex.Message);
-                //bndProject.ResetBindings(false);
+                
             }
             finally
             {
@@ -233,18 +231,19 @@ namespace DBClass
         {
             int position = bndProject.Position;
 
-            //bndProject.ResetBindings(false);
+            bndProject.CancelEdit();
+            bndProject.ResetBindings(false);
 
-            adpProject.Update(dsDB.Project);
-            dsDB.Tables["Project"].AcceptChanges();
-            adpProject.Fill(dsDB.Project);
+            //adpProject.Update(dsDB.Project);
+            //dsDB.Tables["Project"].AcceptChanges();
+            //adpProject.Fill(dsDB.Project);
 
             bndProject.Position = position;
         }
 
-        public static void AddProject()
+        public static object AddProject()
         {
-            bndProject.AddNew();
+            return bndProject.AddNew();
         }
 
         public static void DeleteProject()
@@ -396,9 +395,11 @@ namespace DBClass
         public static void SaveDogovor()
         {
             int position = bndDogovor.Position;
+
             try
             {
                 bndDogovor.EndEdit();
+                tableManager.UpdateAll(dsDB);
             }
             catch (Exception ex)
             {
@@ -407,10 +408,6 @@ namespace DBClass
             }
             finally
             {
-                adpDogovor.Update(dsDB.Dogovor);
-                dsDB.Tables["Dogovor"].AcceptChanges();
-                adpDogovor.Fill(dsDB.Dogovor);
-
                 bndDogovor.Position = position;
             }
         }
@@ -419,30 +416,47 @@ namespace DBClass
         {
             int position = bndDogovor.Position;
 
+            bndDogovor.CancelEdit();
             bndDogovor.ResetBindings(false);
 
-            adpDogovor.Update(dsDB.Dogovor);
-            dsDB.Tables["Dogovor"].AcceptChanges();
-            adpDogovor.Fill(dsDB.Dogovor);
+            //tableManager.UpdateAll(dsDB);
+
+            //adpDogovor.Update(dsDB.Dogovor);
+            //dsDB.Tables["Dogovor"].AcceptChanges();
+            //adpDogovor.Fill(dsDB.Dogovor);
 
             bndDogovor.Position = position;
         }
 
-        public static void AddDogovor()
+        public static object AddDogovor()
         {
+            object newobj;
+
             if (DB_Cmd.bndTender.Count != 0)
             {
-                bndDogovor.AddNew();
+                newobj =  bndDogovor.AddNew();
+
                 ((DataRowView)DB_Cmd.bndDogovor.Current).Row["IDCust"] = ((DataRowView)DB_Cmd.bndTender.Current).Row["IDCust"];
                 ((DataRowView)DB_Cmd.bndDogovor.Current).Row["Name_Dog"] = ((DataRowView)DB_Cmd.bndTender.Current).Row["Name_Tender"];
                 ((DataRowView)DB_Cmd.bndDogovor.Current).Row["IDGip"] = ((DataRowView)DB_Cmd.bndTender.Current).Row["GIP"];
                 ((DataRowView)DB_Cmd.bndDogovor.Current).Row["id_Tender"] = ((DataRowView)DB_Cmd.bndTender.Current).Row["ID_Teder"];
                 ((DataRowView)DB_Cmd.bndDogovor.Current).Row["IDStady"] = ((DataRowView)DB_Cmd.bndTender.Current).Row["IDStadia"];
                 ((DataRowView)DB_Cmd.bndDogovor.Current).Row["Sostav"] = ((DataRowView)DB_Cmd.bndTender.Current).Row["Sostav"];
+
+                //MessageBox.Show(((DataRowView)newobj).Row["DogID"].ToString());
+
+                if (bndDopDogovor.Count == 0)
+                {
+                    object newDD = DB_Cmd.AddDopSoglashenia();
+                    ((DataRowView)newDD).Row["DogID"] = ((DataRowView)newobj).Row["DogID"];
+                }
+
+                return newobj;
             }
             else
             {
                 MessageBox.Show("Для создания договора требуется активная запись 'Тендер'", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return null;
             }
         }
 
@@ -539,15 +553,25 @@ namespace DBClass
             try
             {
                 //Автозаполнение поля для правильной сортировки Num_sort
-                ((DataRowView)bndCalendarPlan.Current).Row["Num_sort"] = feature.NormalizeNumSort(((DataRowView)bndCalendarPlan.Current).Row["Num_Etap"].ToString());
+                if (bndCalendarPlan.Count != 0)
+                 ((DataRowView)bndCalendarPlan.Current).Row["Num_sort"] = feature.NormalizeNumSort(((DataRowView)bndCalendarPlan.Current).Row["Num_Etap"].ToString());
 
                 //StatGlob
 
                 //((DataRowView)bndCalendarPlan.Current).Row["ID_DopS"] = ((DataRowView)bndDopDogovor.Current).Row["DS_ID"];
                 //((DataRowView)bndCalendarPlan.Current).Row["IDDog"] = ((DataRowView)bndDogovor.Current).Row["DogID"];
-
+                //bndProject.EndEdit();
+                //bndDogovor.EndEdit();
+                //bndDopDogovor.EndEdit();
                 bndCalendarPlan.EndEdit();
+
                 tableManager.UpdateAll(dsDB);
+
+                //adpDogovor.Fill(dsDB.Dogovor);
+                //adpDDogovor.Fill(dsDB.DopSoglashenia);
+                //adpCPlan.Fill(dsDB.CalendarPlan);
+
+
             }
             catch (Exception ex)
             {
@@ -556,44 +580,44 @@ namespace DBClass
             }
             finally
             {
-                //dsDB.Tables["CalendarPlan"].AcceptChanges();
-                //adpCPlan.Update(dsDB.CalendarPlan);
-                //adpCPlan.Fill(dsDB.CalendarPlan);
-                bndCalendarPlan.ResetBindings(true);
-
-                bndCalendarPlan.Position = position;
+               bndCalendarPlan.Position = position;
             }
         }
 
         public static void RefreshCPlan()
         {
             bndCalendarPlan.EndEdit();
-            adpCPlan.Fill(dsDB.CalendarPlan);
+            tableManager.UpdateAll(dsDB);
             bndCalendarPlan.ResetBindings(true);
         }
 
         public static void CancelCalendarPlan()
         {
-            //int position = bndCalendarPlan.Position;
+            int position = bndCalendarPlan.Position;
 
-            //bndCalendarPlan.ResetBindings(false);
+            bndCalendarPlan.ResetBindings(false);
+
+            //bndProject.EndEdit();
+            //bndDogovor.EndEdit();
+            bndCalendarPlan.CancelEdit();
 
             //adpCPlan.Update(dsDB.CalendarPlan);
             //dsDB.Tables["CalendarPlan"].AcceptChanges();
             //adpCPlan.Fill(dsDB.CalendarPlan);
 
-            //bndCalendarPlan.Position = position;
+            bndCalendarPlan.Position = position;
         }
 
-        public static void AddCalendarPlan()
+        public static object AddCalendarPlan()
         {
             if (DB_Cmd.bndDogovor.Count != 0)
             {
-                bndCalendarPlan.AddNew();
+                return bndCalendarPlan.AddNew();
             }
             else
             {
                 MessageBox.Show("Для создания объекта требуется активная запись 'Договор'", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return null;
             }
         }
 
@@ -626,12 +650,14 @@ namespace DBClass
             int position = bndDopDogovor.Position;
             try
             {
-                ((DataRowView)DB_Cmd.bndDopDogovor.Current).Row["Nambe_DS"] = feature.NormalizeNumSort(((DataRowView)DB_Cmd.bndDopDogovor.Current).Row["Nambe_DS"].ToString());
+                if (bndDopDogovor.Count != 0)
+                    ((DataRowView)DB_Cmd.bndDopDogovor.Current).Row["Nambe_DS"] = feature.NormalizeNumSort(((DataRowView)DB_Cmd.bndDopDogovor.Current).Row["Nambe_DS"].ToString());
 
                 bndDopDogovor.EndEdit();
-             
-                adpDDogovor.Update(dsDB.DopSoglashenia);
-                dsDB.Tables["DopSoglashenia"].AcceptChanges();
+
+                tableManager.UpdateAll(dsDB);
+                //adpDDogovor.Update(dsDB.DopSoglashenia);
+                //dsDB.Tables["DopSoglashenia"].AcceptChanges();
             }
             catch (Exception ex)
             {
@@ -640,7 +666,7 @@ namespace DBClass
             }
             finally
             {
-                adpDDogovor.Fill(dsDB.DopSoglashenia);
+                //adpDDogovor.Fill(dsDB.DopSoglashenia);
                 bndDopDogovor.Position = position;
             }
         }
@@ -649,32 +675,33 @@ namespace DBClass
         {
             int position = bndDopDogovor.Position;
 
+            bndDopDogovor.CancelEdit();
             bndDopDogovor.ResetBindings(false);
 
-            adpDDogovor.Update(dsDB.DopSoglashenia);
-            dsDB.Tables["DopSoglashenia"].AcceptChanges();
-            adpDDogovor.Fill(dsDB.DopSoglashenia);
+            //adpDDogovor.Update(dsDB.DopSoglashenia);
+            //dsDB.Tables["DopSoglashenia"].AcceptChanges();
+            //adpDDogovor.Fill(dsDB.DopSoglashenia);
 
             bndDopDogovor.Position = position;
         }
 
-        public static void AddDopSoglashenia(string num)
+        public static object AddDopSoglashenia()
         {
             if (DB_Cmd.bndDogovor.Count != 0)
             {
-                bndDopDogovor.AddNew();
+              object newobj =  bndDopDogovor.AddNew();
 
-                //((DataRowView)DB_Cmd.bndDopDogovor.Current).Row["DogID"] = ((DataRowView)DB_Cmd.bndDogovor.Current).Row["DogID"];
+               ((DataRowView)DB_Cmd.bndDopDogovor.Current).Row["DogID"] = ((DataRowView)DB_Cmd.bndDogovor.Current).Row["DogID"];
                
-                if (num != null)
-                {
-                    ((DataRowView)DB_Cmd.bndDopDogovor.Current).Row["Nambe_DS"] = num;
-                }
+               ((DataRowView)DB_Cmd.bndDopDogovor.Current).Row["Nambe_DS"] = Convert.ToString(DB_Cmd.bndDopDogovor.Count -1);
+
+                return newobj;
                
             }
             else
             {
                 MessageBox.Show("Для создания допсоглашения требуется активная запись 'Договор'", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return null;
             }
             
         }
