@@ -48,7 +48,7 @@ namespace FileAction
             }
             else
             {
-                MessageBox.Show("Путь не найден");
+                //MessageBox.Show("Путь не найден");
                 return false;
             }
         }

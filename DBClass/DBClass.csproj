@@ -134,6 +134,10 @@
       <Project>{59ee863f-eedc-4a06-bc08-729b92241c7d}</Project>
       <Name>feature_сlass</Name>
     </ProjectReference>
+    <ProjectReference Include="..\FileAction\FileAction.csproj">
+      <Project>{85ebfd50-4585-49f5-b8fd-dd9235788d76}</Project>
+      <Name>FileAction</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

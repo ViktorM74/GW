@@ -165,6 +165,10 @@
       <Project>{d4fff505-5d3f-4f57-8b28-1df3746b2280}</Project>
       <Name>ObjectClass</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PRD\PRD.csproj">
+      <Project>{4e521a31-30a7-4a57-b855-e1fc6f3fead5}</Project>
+      <Name>PRD</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ProjectClass\ProjectClass.csproj">
       <Project>{9ab45481-2bfa-4408-8be1-068aeffab986}</Project>
       <Name>ProjectClass</Name>
@@ -172,6 +176,10 @@
     <ProjectReference Include="..\TenderClass\TenderClass.csproj">
       <Project>{d57e014a-08a4-4b8b-a768-e9f8932483ea}</Project>
       <Name>TenderClass</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zadania\Zadania.csproj">
+      <Project>{d26f909e-2bc4-4fca-ab02-e078bd025d51}</Project>
+      <Name>Zadania</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

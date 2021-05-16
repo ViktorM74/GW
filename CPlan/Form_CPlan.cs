@@ -17,8 +17,6 @@ namespace CPlan
 
         private void BindingSourceInitialize()
         {
-            int position = DB_Cmd.bndCalendarPlan.Position;
-
             bndNavigator_edit_CPlan.BindingSource = DB_Cmd.bndCalendarPlan;
 
             tb_Num_Etap.DataBindings.Add("Text", DB_Cmd.bndCalendarPlan, "Num_Etap");
@@ -43,18 +41,13 @@ namespace CPlan
             dgv_edit_CPlan.Columns["Valute"].DataPropertyName = "V";
             dgv_edit_CPlan.Columns["StatusCPlan"].DataPropertyName = "Status";
 
-            DB_Cmd.bndCalendarPlan.Position = position;
-        }
-
-        private void toolStripButton1_Click(object sender, EventArgs e)
-        {
-            Close();
+           
         }
 
         private void btn_Add_Click_1(object sender, EventArgs e)
         {
             DB_Cmd.AddCalendarPlan();
-            DB_Cmd.bndCalendarPlan.ResetBindings(true);
+            //DB_Cmd.bndCalendarPlan.ResetBindings(true);
         }
 
         private void btn_Del_Click_1(object sender, EventArgs e)
@@ -73,9 +66,9 @@ namespace CPlan
             DB_Cmd.RefreshCPlan();
         }
 
-        private void dgv_edit_CPlan_DoubleClick(object sender, EventArgs e)
+        private void Form_CPlan_FormClosing(object sender, FormClosingEventArgs e)
         {
-
+            DB_Cmd.CancelCalendarPlan();
         }
     }
 }

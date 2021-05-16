@@ -50,7 +50,10 @@ namespace CPlan
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.panelButton = new System.Windows.Forms.Panel();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.btn_Close = new System.Windows.Forms.Button();
+            this.lb_Sort = new System.Windows.Forms.Label();
             this.group_Period = new System.Windows.Forms.GroupBox();
             this.group_Param_Period = new System.Windows.Forms.GroupBox();
             this.rb_fix_day = new System.Windows.Forms.RadioButton();
@@ -66,9 +69,6 @@ namespace CPlan
             this.lb_Summ = new System.Windows.Forms.Label();
             this.lb_Valute = new System.Windows.Forms.Label();
             this.lb_Status = new System.Windows.Forms.Label();
-            this.lb_Sort = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
             this.tb_Summ = new System.Windows.Forms.TextBox();
             this.tb_Comments = new System.Windows.Forms.TextBox();
             this.cb_Valute = new System.Windows.Forms.ComboBox();
@@ -104,9 +104,10 @@ namespace CPlan
             // 
             // btn_UpdateItem
             // 
-            this.btn_UpdateItem.Location = new System.Drawing.Point(20, 98);
+            this.btn_UpdateItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_UpdateItem.Location = new System.Drawing.Point(8, 282);
             this.btn_UpdateItem.Name = "btn_UpdateItem";
-            this.btn_UpdateItem.Size = new System.Drawing.Size(75, 23);
+            this.btn_UpdateItem.Size = new System.Drawing.Size(89, 23);
             this.btn_UpdateItem.TabIndex = 2;
             this.btn_UpdateItem.Text = "Сохранить";
             this.btn_UpdateItem.UseVisualStyleBackColor = true;
@@ -266,15 +267,42 @@ namespace CPlan
             this.panelButton.Size = new System.Drawing.Size(107, 350);
             this.panelButton.TabIndex = 15;
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(30, 136);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(34, 13);
+            this.label12.TabIndex = 17;
+            this.label12.Text = "Begin";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(30, 162);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(48, 13);
+            this.label11.TabIndex = 17;
+            this.label11.Text = "StatGlob";
+            // 
             // btn_Close
             // 
-            this.btn_Close.Location = new System.Drawing.Point(20, 127);
+            this.btn_Close.Location = new System.Drawing.Point(8, 311);
             this.btn_Close.Name = "btn_Close";
-            this.btn_Close.Size = new System.Drawing.Size(75, 23);
+            this.btn_Close.Size = new System.Drawing.Size(89, 23);
             this.btn_Close.TabIndex = 2;
             this.btn_Close.Text = "Закрыть";
             this.btn_Close.UseVisualStyleBackColor = true;
             this.btn_Close.Click += new System.EventHandler(this.btn_Close_Click);
+            // 
+            // lb_Sort
+            // 
+            this.lb_Sort.AutoSize = true;
+            this.lb_Sort.Location = new System.Drawing.Point(30, 113);
+            this.lb_Sort.Name = "lb_Sort";
+            this.lb_Sort.Size = new System.Drawing.Size(52, 13);
+            this.lb_Sort.TabIndex = 17;
+            this.lb_Sort.Text = "Num_sort";
             // 
             // group_Period
             // 
@@ -423,33 +451,6 @@ namespace CPlan
             this.lb_Status.TabIndex = 17;
             this.lb_Status.Text = "Статус";
             // 
-            // lb_Sort
-            // 
-            this.lb_Sort.AutoSize = true;
-            this.lb_Sort.Location = new System.Drawing.Point(43, 322);
-            this.lb_Sort.Name = "lb_Sort";
-            this.lb_Sort.Size = new System.Drawing.Size(52, 13);
-            this.lb_Sort.TabIndex = 17;
-            this.lb_Sort.Text = "Num_sort";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(30, 254);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(48, 13);
-            this.label11.TabIndex = 17;
-            this.label11.Text = "StatGlob";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(30, 214);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(34, 13);
-            this.label12.TabIndex = 17;
-            this.label12.Text = "Begin";
-            // 
             // tb_Summ
             // 
             this.tb_Summ.Location = new System.Drawing.Point(12, 277);
@@ -538,6 +539,7 @@ namespace CPlan
             this.Name = "Form_CP001";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Редактор записи календарного плана";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_CP001_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.navigatorCP)).EndInit();
             this.navigatorCP.ResumeLayout(false);
             this.navigatorCP.PerformLayout();

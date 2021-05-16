@@ -100,7 +100,6 @@ namespace CPlan
             this.dgv_edit_CPlan.Name = "dgv_edit_CPlan";
             this.dgv_edit_CPlan.Size = new System.Drawing.Size(1025, 245);
             this.dgv_edit_CPlan.TabIndex = 0;
-            this.dgv_edit_CPlan.DoubleClick += new System.EventHandler(this.dgv_edit_CPlan_DoubleClick);
             // 
             // Num_Etap
             // 
@@ -545,6 +544,7 @@ namespace CPlan
             this.Name = "Form_CPlan";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Редактор календарного плана";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_CPlan_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_edit_CPlan)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

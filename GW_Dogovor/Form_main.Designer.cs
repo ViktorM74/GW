@@ -29,16 +29,22 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle82 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle83 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle84 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle85 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle86 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle87 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle46 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle47 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle48 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_main));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle88 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle89 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle90 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle49 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle50 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle51 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle52 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle53 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle54 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle55 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle56 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle57 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle58 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle59 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle60 = new System.Windows.Forms.DataGridViewCellStyle();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.lbl_BasePath = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
@@ -251,9 +257,7 @@
             this.valute_ds = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.status_ds = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bndNavigator_KP_Dop = new System.Windows.Forms.BindingNavigator(this.components);
-            this.btn_add_CP = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorCountItem2 = new System.Windows.Forms.ToolStripLabel();
-            this.btn_delete_CP = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem2 = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem2 = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator6 = new System.Windows.Forms.ToolStripSeparator();
@@ -263,6 +267,8 @@
             this.bindingNavigatorMoveLastItem2 = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.btn_edit_CP = new System.Windows.Forms.ToolStripButton();
+            this.btn_add_CP = new System.Windows.Forms.ToolStripButton();
+            this.btn_delete_CP = new System.Windows.Forms.ToolStripButton();
             this.bndNavigatorDDog = new System.Windows.Forms.BindingNavigator(this.components);
             this.toolStripLabel4 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
@@ -279,6 +285,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.grid_DD = new System.Windows.Forms.DataGridView();
             this.NumDD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tb_numDog_DD = new System.Windows.Forms.TextBox();
+            this.label35 = new System.Windows.Forms.Label();
             this.tab_Object = new System.Windows.Forms.TabPage();
             this.splitContainerObject = new System.Windows.Forms.SplitContainer();
             this.tb_GIPObject = new System.Windows.Forms.TextBox();
@@ -297,9 +305,9 @@
             this.tabPageGrafMarkObject = new System.Windows.Forms.TabPage();
             this.grid_GrafMark = new System.Windows.Forms.DataGridView();
             this.bndNavigator_Graph_Mark = new System.Windows.Forms.BindingNavigator(this.components);
-            this.bindingNavigatorAddNewItem2 = new System.Windows.Forms.ToolStripButton();
+            this.tbtn_AddMark = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorCountItem3 = new System.Windows.Forms.ToolStripLabel();
-            this.bindingNavigatorDeleteItem2 = new System.Windows.Forms.ToolStripButton();
+            this.tbtn_DeleteMark = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem3 = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem3 = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator9 = new System.Windows.Forms.ToolStripSeparator();
@@ -311,9 +319,9 @@
             this.tabPageGrafZadaniaObject = new System.Windows.Forms.TabPage();
             this.grid_GrafZ = new System.Windows.Forms.DataGridView();
             this.bndNavigator_Graph_Z = new System.Windows.Forms.BindingNavigator(this.components);
-            this.bindingNavigatorAddNewItem3 = new System.Windows.Forms.ToolStripButton();
+            this.tbtn_add_Zadania = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorCountItem4 = new System.Windows.Forms.ToolStripLabel();
-            this.bindingNavigatorDeleteItem3 = new System.Windows.Forms.ToolStripButton();
+            this.tbtn_delete_Zadania = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem4 = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem4 = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator12 = new System.Windows.Forms.ToolStripSeparator();
@@ -324,7 +332,7 @@
             this.bindingNavigatorSeparator14 = new System.Windows.Forms.ToolStripSeparator();
             this.tabPageZadaniaObject = new System.Windows.Forms.TabPage();
             this.grid_Z = new System.Windows.Forms.DataGridView();
-            this.bndNavigator_Z = new System.Windows.Forms.BindingNavigator(this.components);
+            this.bndNavigator_Zadania_file = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem4 = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorCountItem5 = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorDeleteItem4 = new System.Windows.Forms.ToolStripButton();
@@ -382,7 +390,7 @@
             this.panelPrj = new System.Windows.Forms.Panel();
             this.grid_ProjectCode = new System.Windows.Forms.DataGridView();
             this.Code_object = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.tb_findProject = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tbNameProject = new System.Windows.Forms.TextBox();
             this.cMenuTop = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -392,6 +400,17 @@
             this.tmOpenServerFolder = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.tbtn_EditMark = new System.Windows.Forms.ToolStripButton();
+            this.Mark_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Mark_notes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Mark_date_plan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Mark_GIP = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Mark_date_GIP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Mark_Arhiv = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Mark_data_fakt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tbtn_edit_Zadania = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator17 = new System.Windows.Forms.ToolStripSeparator();
+            this.tbtn_RefreshAll = new System.Windows.Forms.ToolStripButton();
             this.statusStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
@@ -469,8 +488,8 @@
             this.bndNavigator_Graph_Z.SuspendLayout();
             this.tabPageZadaniaObject.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid_Z)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bndNavigator_Z)).BeginInit();
-            this.bndNavigator_Z.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bndNavigator_Zadania_file)).BeginInit();
+            this.bndNavigator_Zadania_file.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bndNavigatorObject)).BeginInit();
             this.bndNavigatorObject.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -566,7 +585,9 @@
             this.tbtn_AddProject,
             this.tbtn_DeleteProject,
             this.toolStripSeparator12,
-            this.tbtn_AddFolders});
+            this.tbtn_AddFolders,
+            this.toolStripSeparator17,
+            this.tbtn_RefreshAll});
             this.toolStrip.Location = new System.Drawing.Point(0, 59);
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.Size = new System.Drawing.Size(1338, 25);
@@ -595,6 +616,7 @@
             this.tbtn_EditProject.Name = "tbtn_EditProject";
             this.tbtn_EditProject.Size = new System.Drawing.Size(23, 22);
             this.tbtn_EditProject.Text = "Изменить проект";
+            this.tbtn_EditProject.Click += new System.EventHandler(this.tbtn_EditProject_Click);
             // 
             // tbtn_AddProject
             // 
@@ -604,6 +626,7 @@
             this.tbtn_AddProject.Name = "tbtn_AddProject";
             this.tbtn_AddProject.Size = new System.Drawing.Size(23, 22);
             this.tbtn_AddProject.Text = "Добавить проект";
+            this.tbtn_AddProject.Click += new System.EventHandler(this.tbtn_AddProject_Click);
             // 
             // tbtn_DeleteProject
             // 
@@ -613,6 +636,7 @@
             this.tbtn_DeleteProject.Name = "tbtn_DeleteProject";
             this.tbtn_DeleteProject.Size = new System.Drawing.Size(23, 22);
             this.tbtn_DeleteProject.Text = "Удалить проект";
+            this.tbtn_DeleteProject.Click += new System.EventHandler(this.tbtn_DeleteProject_Click);
             // 
             // toolStripSeparator12
             // 
@@ -927,9 +951,9 @@
             // 
             // DataDoc
             // 
-            dataGridViewCellStyle82.Format = "d";
-            dataGridViewCellStyle82.NullValue = null;
-            this.DataDoc.DefaultCellStyle = dataGridViewCellStyle82;
+            dataGridViewCellStyle46.Format = "d";
+            dataGridViewCellStyle46.NullValue = null;
+            this.DataDoc.DefaultCellStyle = dataGridViewCellStyle46;
             this.DataDoc.HeaderText = "Дата";
             this.DataDoc.Name = "DataDoc";
             this.DataDoc.ReadOnly = true;
@@ -1018,9 +1042,9 @@
             // 
             // dataGridViewTextBoxColumn4
             // 
-            dataGridViewCellStyle83.Format = "d";
-            dataGridViewCellStyle83.NullValue = null;
-            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle83;
+            dataGridViewCellStyle47.Format = "d";
+            dataGridViewCellStyle47.NullValue = null;
+            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle47;
             this.dataGridViewTextBoxColumn4.HeaderText = "Дата";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
@@ -1106,9 +1130,9 @@
             // 
             // dataGridViewTextBoxColumn9
             // 
-            dataGridViewCellStyle84.Format = "d";
-            dataGridViewCellStyle84.NullValue = null;
-            this.dataGridViewTextBoxColumn9.DefaultCellStyle = dataGridViewCellStyle84;
+            dataGridViewCellStyle48.Format = "d";
+            dataGridViewCellStyle48.NullValue = null;
+            this.dataGridViewTextBoxColumn9.DefaultCellStyle = dataGridViewCellStyle48;
             this.dataGridViewTextBoxColumn9.HeaderText = "Дата";
             this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
             this.dataGridViewTextBoxColumn9.ReadOnly = true;
@@ -1544,11 +1568,11 @@
             // 
             // Delete
             // 
-            dataGridViewCellStyle85.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle85.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle85.NullValue = null;
-            dataGridViewCellStyle85.Padding = new System.Windows.Forms.Padding(3);
-            this.Delete.DefaultCellStyle = dataGridViewCellStyle85;
+            dataGridViewCellStyle49.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle49.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle49.NullValue = null;
+            dataGridViewCellStyle49.Padding = new System.Windows.Forms.Padding(3);
+            this.Delete.DefaultCellStyle = dataGridViewCellStyle49;
             this.Delete.HeaderText = "Удалить";
             this.Delete.Image = global::GW_Dogovor.Properties.Resources.Delete;
             this.Delete.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
@@ -1821,11 +1845,11 @@
             // 
             // dDelDoc
             // 
-            dataGridViewCellStyle86.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle86.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle86.NullValue = null;
-            dataGridViewCellStyle86.Padding = new System.Windows.Forms.Padding(3);
-            this.dDelDoc.DefaultCellStyle = dataGridViewCellStyle86;
+            dataGridViewCellStyle50.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle50.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle50.NullValue = null;
+            dataGridViewCellStyle50.Padding = new System.Windows.Forms.Padding(3);
+            this.dDelDoc.DefaultCellStyle = dataGridViewCellStyle50;
             this.dDelDoc.HeaderText = "Удалить";
             this.dDelDoc.Image = global::GW_Dogovor.Properties.Resources.Delete;
             this.dDelDoc.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
@@ -1999,9 +2023,9 @@
             this.grid_CPlan.Location = new System.Drawing.Point(3, 41);
             this.grid_CPlan.Name = "grid_CPlan";
             this.grid_CPlan.ReadOnly = true;
+            this.grid_CPlan.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grid_CPlan.Size = new System.Drawing.Size(830, 180);
             this.grid_CPlan.TabIndex = 0;
-            this.grid_CPlan.DoubleClick += new System.EventHandler(this.grid_CPlan_DoubleClick);
             // 
             // id_DDog
             // 
@@ -2017,16 +2041,20 @@
             this.Num_sort.ReadOnly = true;
             this.Num_sort.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             this.Num_sort.Visible = false;
+            this.Num_sort.Width = 5;
             // 
             // Num_Etap
             // 
             this.Num_Etap.HeaderText = "№";
             this.Num_Etap.Name = "Num_Etap";
             this.Num_Etap.ReadOnly = true;
+            this.Num_Etap.Width = 60;
             // 
             // Name_Etap
             // 
             this.Name_Etap.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle51.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Name_Etap.DefaultCellStyle = dataGridViewCellStyle51;
             this.Name_Etap.HeaderText = "Название";
             this.Name_Etap.Name = "Name_Etap";
             this.Name_Etap.ReadOnly = true;
@@ -2036,6 +2064,7 @@
             this.day.HeaderText = "Дни";
             this.day.Name = "day";
             this.day.ReadOnly = true;
+            this.day.Width = 50;
             // 
             // Nachalo_Data
             // 
@@ -2051,10 +2080,10 @@
             // 
             // Summ
             // 
-            dataGridViewCellStyle87.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle87.Format = "N2";
-            dataGridViewCellStyle87.NullValue = null;
-            this.Summ.DefaultCellStyle = dataGridViewCellStyle87;
+            dataGridViewCellStyle52.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle52.Format = "N2";
+            dataGridViewCellStyle52.NullValue = null;
+            this.Summ.DefaultCellStyle = dataGridViewCellStyle52;
             this.Summ.HeaderText = "Сумма";
             this.Summ.Name = "Summ";
             this.Summ.ReadOnly = true;
@@ -2064,13 +2093,14 @@
             this.Valute.HeaderText = "Валюта";
             this.Valute.Name = "Valute";
             this.Valute.ReadOnly = true;
+            this.Valute.Width = 60;
             // 
             // StatusCPlan
             // 
-            this.StatusCPlan.HeaderText = "Вып.";
+            this.StatusCPlan.HeaderText = "Статус";
             this.StatusCPlan.Name = "StatusCPlan";
             this.StatusCPlan.ReadOnly = true;
-            this.StatusCPlan.Width = 50;
+            this.StatusCPlan.Width = 60;
             // 
             // bndNavigator_KP_Dog
             // 
@@ -2466,11 +2496,11 @@
             // 
             // dataGridViewImageColumn1
             // 
-            dataGridViewCellStyle88.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle88.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle88.NullValue = null;
-            dataGridViewCellStyle88.Padding = new System.Windows.Forms.Padding(3);
-            this.dataGridViewImageColumn1.DefaultCellStyle = dataGridViewCellStyle88;
+            dataGridViewCellStyle53.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle53.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle53.NullValue = null;
+            dataGridViewCellStyle53.Padding = new System.Windows.Forms.Padding(3);
+            this.dataGridViewImageColumn1.DefaultCellStyle = dataGridViewCellStyle53;
             this.dataGridViewImageColumn1.HeaderText = "Удалить";
             this.dataGridViewImageColumn1.Image = global::GW_Dogovor.Properties.Resources.Delete;
             this.dataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
@@ -2574,12 +2604,14 @@
             this.grid_CPlanDD.ReadOnly = true;
             this.grid_CPlanDD.Size = new System.Drawing.Size(830, 272);
             this.grid_CPlanDD.TabIndex = 0;
+            this.grid_CPlanDD.DoubleClick += new System.EventHandler(this.btn_edit_CP_Click);
             // 
             // num_ds
             // 
             this.num_ds.HeaderText = "№";
             this.num_ds.Name = "num_ds";
             this.num_ds.ReadOnly = true;
+            this.num_ds.Width = 60;
             // 
             // num_sort_ds
             // 
@@ -2587,10 +2619,13 @@
             this.num_sort_ds.Name = "num_sort_ds";
             this.num_sort_ds.ReadOnly = true;
             this.num_sort_ds.Visible = false;
+            this.num_sort_ds.Width = 5;
             // 
             // name_ds
             // 
             this.name_ds.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle54.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.name_ds.DefaultCellStyle = dataGridViewCellStyle54;
             this.name_ds.HeaderText = "Название этапа";
             this.name_ds.Name = "name_ds";
             this.name_ds.ReadOnly = true;
@@ -2600,6 +2635,7 @@
             this.day_ds.HeaderText = "Дни";
             this.day_ds.Name = "day_ds";
             this.day_ds.ReadOnly = true;
+            this.day_ds.Width = 50;
             // 
             // nachalo_ds
             // 
@@ -2615,6 +2651,11 @@
             // 
             // summ_ds
             // 
+            this.summ_ds.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle55.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle55.Format = "N2";
+            dataGridViewCellStyle55.NullValue = null;
+            this.summ_ds.DefaultCellStyle = dataGridViewCellStyle55;
             this.summ_ds.HeaderText = "Сумма";
             this.summ_ds.Name = "summ_ds";
             this.summ_ds.ReadOnly = true;
@@ -2624,18 +2665,20 @@
             this.valute_ds.HeaderText = "Валюта";
             this.valute_ds.Name = "valute_ds";
             this.valute_ds.ReadOnly = true;
+            this.valute_ds.Width = 60;
             // 
             // status_ds
             // 
             this.status_ds.HeaderText = "Статус";
             this.status_ds.Name = "status_ds";
             this.status_ds.ReadOnly = true;
+            this.status_ds.Width = 60;
             // 
             // bndNavigator_KP_Dop
             // 
-            this.bndNavigator_KP_Dop.AddNewItem = this.btn_add_CP;
+            this.bndNavigator_KP_Dop.AddNewItem = null;
             this.bndNavigator_KP_Dop.CountItem = this.bindingNavigatorCountItem2;
-            this.bndNavigator_KP_Dop.DeleteItem = this.btn_delete_CP;
+            this.bndNavigator_KP_Dop.DeleteItem = null;
             this.bndNavigator_KP_Dop.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.bindingNavigatorMoveFirstItem2,
             this.bindingNavigatorMovePreviousItem2,
@@ -2646,9 +2689,9 @@
             this.bindingNavigatorMoveNextItem2,
             this.bindingNavigatorMoveLastItem2,
             this.bindingNavigatorSeparator8,
+            this.btn_edit_CP,
             this.btn_add_CP,
-            this.btn_delete_CP,
-            this.btn_edit_CP});
+            this.btn_delete_CP});
             this.bndNavigator_KP_Dop.Location = new System.Drawing.Point(3, 16);
             this.bndNavigator_KP_Dop.MoveFirstItem = this.bindingNavigatorMoveFirstItem2;
             this.bndNavigator_KP_Dop.MoveLastItem = this.bindingNavigatorMoveLastItem2;
@@ -2660,32 +2703,12 @@
             this.bndNavigator_KP_Dop.TabIndex = 1;
             this.bndNavigator_KP_Dop.Text = "bindingNavigator2";
             // 
-            // btn_add_CP
-            // 
-            this.btn_add_CP.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btn_add_CP.Image = ((System.Drawing.Image)(resources.GetObject("btn_add_CP.Image")));
-            this.btn_add_CP.Name = "btn_add_CP";
-            this.btn_add_CP.RightToLeftAutoMirrorImage = true;
-            this.btn_add_CP.Size = new System.Drawing.Size(23, 22);
-            this.btn_add_CP.Text = "Добавить";
-            this.btn_add_CP.Click += new System.EventHandler(this.btn_add_CP_Click);
-            // 
             // bindingNavigatorCountItem2
             // 
             this.bindingNavigatorCountItem2.Name = "bindingNavigatorCountItem2";
             this.bindingNavigatorCountItem2.Size = new System.Drawing.Size(43, 22);
             this.bindingNavigatorCountItem2.Text = "для {0}";
             this.bindingNavigatorCountItem2.ToolTipText = "Общее число элементов";
-            // 
-            // btn_delete_CP
-            // 
-            this.btn_delete_CP.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btn_delete_CP.Image = ((System.Drawing.Image)(resources.GetObject("btn_delete_CP.Image")));
-            this.btn_delete_CP.Name = "btn_delete_CP";
-            this.btn_delete_CP.RightToLeftAutoMirrorImage = true;
-            this.btn_delete_CP.Size = new System.Drawing.Size(23, 22);
-            this.btn_delete_CP.Text = "Удалить";
-            this.btn_delete_CP.Click += new System.EventHandler(this.btn_delete_CP_Click);
             // 
             // bindingNavigatorMoveFirstItem2
             // 
@@ -2757,6 +2780,26 @@
             this.btn_edit_CP.Size = new System.Drawing.Size(23, 22);
             this.btn_edit_CP.Text = "Изменить";
             this.btn_edit_CP.Click += new System.EventHandler(this.btn_edit_CP_Click);
+            // 
+            // btn_add_CP
+            // 
+            this.btn_add_CP.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btn_add_CP.Image = ((System.Drawing.Image)(resources.GetObject("btn_add_CP.Image")));
+            this.btn_add_CP.Name = "btn_add_CP";
+            this.btn_add_CP.RightToLeftAutoMirrorImage = true;
+            this.btn_add_CP.Size = new System.Drawing.Size(23, 22);
+            this.btn_add_CP.Text = "Добавить";
+            this.btn_add_CP.Click += new System.EventHandler(this.btn_add_CP_Click);
+            // 
+            // btn_delete_CP
+            // 
+            this.btn_delete_CP.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btn_delete_CP.Image = ((System.Drawing.Image)(resources.GetObject("btn_delete_CP.Image")));
+            this.btn_delete_CP.Name = "btn_delete_CP";
+            this.btn_delete_CP.RightToLeftAutoMirrorImage = true;
+            this.btn_delete_CP.Size = new System.Drawing.Size(23, 22);
+            this.btn_delete_CP.Text = "Удалить";
+            this.btn_delete_CP.Click += new System.EventHandler(this.btn_delete_CP_Click);
             // 
             // bndNavigatorDDog
             // 
@@ -2885,6 +2928,8 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.grid_DD);
+            this.panel1.Controls.Add(this.tb_numDog_DD);
+            this.panel1.Controls.Add(this.label35);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
@@ -2902,11 +2947,11 @@
             this.grid_DD.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NumDD});
             this.grid_DD.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grid_DD.Location = new System.Drawing.Point(0, 10);
+            this.grid_DD.Location = new System.Drawing.Point(0, 44);
             this.grid_DD.Name = "grid_DD";
             this.grid_DD.ReadOnly = true;
             this.grid_DD.RowHeadersVisible = false;
-            this.grid_DD.Size = new System.Drawing.Size(116, 510);
+            this.grid_DD.Size = new System.Drawing.Size(116, 476);
             this.grid_DD.TabIndex = 1;
             // 
             // NumDD
@@ -2916,6 +2961,26 @@
             this.NumDD.Name = "NumDD";
             this.NumDD.ReadOnly = true;
             this.NumDD.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // tb_numDog_DD
+            // 
+            this.tb_numDog_DD.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tb_numDog_DD.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tb_numDog_DD.Location = new System.Drawing.Point(0, 23);
+            this.tb_numDog_DD.Name = "tb_numDog_DD";
+            this.tb_numDog_DD.ReadOnly = true;
+            this.tb_numDog_DD.Size = new System.Drawing.Size(116, 21);
+            this.tb_numDog_DD.TabIndex = 2;
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label35.Location = new System.Drawing.Point(0, 10);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(68, 13);
+            this.label35.TabIndex = 3;
+            this.label35.Text = "№ договора";
             // 
             // tab_Object
             // 
@@ -3055,6 +3120,7 @@
             this.tb_NameObject.Name = "tb_NameObject";
             this.tb_NameObject.Size = new System.Drawing.Size(368, 45);
             this.tb_NameObject.TabIndex = 0;
+            this.tb_NameObject.DoubleClick += new System.EventHandler(this.tbtn_EditObj_Click);
             // 
             // tb_NameUObject
             // 
@@ -3064,6 +3130,7 @@
             this.tb_NameUObject.Name = "tb_NameUObject";
             this.tb_NameUObject.Size = new System.Drawing.Size(368, 45);
             this.tb_NameUObject.TabIndex = 0;
+            this.tb_NameUObject.DoubleClick += new System.EventHandler(this.tbtn_EditObj_Click);
             // 
             // tabControlGrafics
             // 
@@ -3091,18 +3158,30 @@
             // 
             // grid_GrafMark
             // 
+            this.grid_GrafMark.AllowUserToAddRows = false;
+            this.grid_GrafMark.AllowUserToDeleteRows = false;
             this.grid_GrafMark.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grid_GrafMark.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Mark_name,
+            this.Mark_notes,
+            this.Mark_date_plan,
+            this.Mark_GIP,
+            this.Mark_date_GIP,
+            this.Mark_Arhiv,
+            this.Mark_data_fakt});
             this.grid_GrafMark.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grid_GrafMark.Location = new System.Drawing.Point(3, 28);
             this.grid_GrafMark.Name = "grid_GrafMark";
+            this.grid_GrafMark.ReadOnly = true;
             this.grid_GrafMark.Size = new System.Drawing.Size(740, 303);
             this.grid_GrafMark.TabIndex = 0;
+            this.grid_GrafMark.DoubleClick += new System.EventHandler(this.tbtn_EditMark_Click);
             // 
             // bndNavigator_Graph_Mark
             // 
-            this.bndNavigator_Graph_Mark.AddNewItem = this.bindingNavigatorAddNewItem2;
+            this.bndNavigator_Graph_Mark.AddNewItem = null;
             this.bndNavigator_Graph_Mark.CountItem = this.bindingNavigatorCountItem3;
-            this.bndNavigator_Graph_Mark.DeleteItem = this.bindingNavigatorDeleteItem2;
+            this.bndNavigator_Graph_Mark.DeleteItem = null;
             this.bndNavigator_Graph_Mark.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.bindingNavigatorMoveFirstItem3,
             this.bindingNavigatorMovePreviousItem3,
@@ -3113,8 +3192,9 @@
             this.bindingNavigatorMoveNextItem3,
             this.bindingNavigatorMoveLastItem3,
             this.bindingNavigatorSeparator11,
-            this.bindingNavigatorAddNewItem2,
-            this.bindingNavigatorDeleteItem2});
+            this.tbtn_EditMark,
+            this.tbtn_AddMark,
+            this.tbtn_DeleteMark});
             this.bndNavigator_Graph_Mark.Location = new System.Drawing.Point(3, 3);
             this.bndNavigator_Graph_Mark.MoveFirstItem = this.bindingNavigatorMoveFirstItem3;
             this.bndNavigator_Graph_Mark.MoveLastItem = this.bindingNavigatorMoveLastItem3;
@@ -3125,15 +3205,17 @@
             this.bndNavigator_Graph_Mark.Size = new System.Drawing.Size(740, 25);
             this.bndNavigator_Graph_Mark.TabIndex = 1;
             this.bndNavigator_Graph_Mark.Text = "bindingNavigator1";
+            this.bndNavigator_Graph_Mark.Paint += new System.Windows.Forms.PaintEventHandler(this.bndNavigator_Graph_Mark_Paint);
             // 
-            // bindingNavigatorAddNewItem2
+            // tbtn_AddMark
             // 
-            this.bindingNavigatorAddNewItem2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorAddNewItem2.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem2.Image")));
-            this.bindingNavigatorAddNewItem2.Name = "bindingNavigatorAddNewItem2";
-            this.bindingNavigatorAddNewItem2.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem2.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorAddNewItem2.Text = "Добавить";
+            this.tbtn_AddMark.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tbtn_AddMark.Image = ((System.Drawing.Image)(resources.GetObject("tbtn_AddMark.Image")));
+            this.tbtn_AddMark.Name = "tbtn_AddMark";
+            this.tbtn_AddMark.RightToLeftAutoMirrorImage = true;
+            this.tbtn_AddMark.Size = new System.Drawing.Size(23, 22);
+            this.tbtn_AddMark.Text = "Добавить";
+            this.tbtn_AddMark.Click += new System.EventHandler(this.tbtn_AddMark_Click);
             // 
             // bindingNavigatorCountItem3
             // 
@@ -3142,14 +3224,15 @@
             this.bindingNavigatorCountItem3.Text = "для {0}";
             this.bindingNavigatorCountItem3.ToolTipText = "Общее число элементов";
             // 
-            // bindingNavigatorDeleteItem2
+            // tbtn_DeleteMark
             // 
-            this.bindingNavigatorDeleteItem2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorDeleteItem2.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem2.Image")));
-            this.bindingNavigatorDeleteItem2.Name = "bindingNavigatorDeleteItem2";
-            this.bindingNavigatorDeleteItem2.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem2.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorDeleteItem2.Text = "Удалить";
+            this.tbtn_DeleteMark.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tbtn_DeleteMark.Image = ((System.Drawing.Image)(resources.GetObject("tbtn_DeleteMark.Image")));
+            this.tbtn_DeleteMark.Name = "tbtn_DeleteMark";
+            this.tbtn_DeleteMark.RightToLeftAutoMirrorImage = true;
+            this.tbtn_DeleteMark.Size = new System.Drawing.Size(23, 22);
+            this.tbtn_DeleteMark.Text = "Удалить";
+            this.tbtn_DeleteMark.Click += new System.EventHandler(this.tbtn_DeleteMark_Click);
             // 
             // bindingNavigatorMoveFirstItem3
             // 
@@ -3235,9 +3318,9 @@
             // 
             // bndNavigator_Graph_Z
             // 
-            this.bndNavigator_Graph_Z.AddNewItem = this.bindingNavigatorAddNewItem3;
+            this.bndNavigator_Graph_Z.AddNewItem = null;
             this.bndNavigator_Graph_Z.CountItem = this.bindingNavigatorCountItem4;
-            this.bndNavigator_Graph_Z.DeleteItem = this.bindingNavigatorDeleteItem3;
+            this.bndNavigator_Graph_Z.DeleteItem = null;
             this.bndNavigator_Graph_Z.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.bindingNavigatorMoveFirstItem4,
             this.bindingNavigatorMovePreviousItem4,
@@ -3248,8 +3331,9 @@
             this.bindingNavigatorMoveNextItem4,
             this.bindingNavigatorMoveLastItem4,
             this.bindingNavigatorSeparator14,
-            this.bindingNavigatorAddNewItem3,
-            this.bindingNavigatorDeleteItem3});
+            this.tbtn_edit_Zadania,
+            this.tbtn_add_Zadania,
+            this.tbtn_delete_Zadania});
             this.bndNavigator_Graph_Z.Location = new System.Drawing.Point(3, 3);
             this.bndNavigator_Graph_Z.MoveFirstItem = this.bindingNavigatorMoveFirstItem4;
             this.bndNavigator_Graph_Z.MoveLastItem = this.bindingNavigatorMoveLastItem4;
@@ -3261,14 +3345,15 @@
             this.bndNavigator_Graph_Z.TabIndex = 1;
             this.bndNavigator_Graph_Z.Text = "bindingNavigator1";
             // 
-            // bindingNavigatorAddNewItem3
+            // tbtn_add_Zadania
             // 
-            this.bindingNavigatorAddNewItem3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorAddNewItem3.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem3.Image")));
-            this.bindingNavigatorAddNewItem3.Name = "bindingNavigatorAddNewItem3";
-            this.bindingNavigatorAddNewItem3.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem3.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorAddNewItem3.Text = "Добавить";
+            this.tbtn_add_Zadania.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tbtn_add_Zadania.Image = ((System.Drawing.Image)(resources.GetObject("tbtn_add_Zadania.Image")));
+            this.tbtn_add_Zadania.Name = "tbtn_add_Zadania";
+            this.tbtn_add_Zadania.RightToLeftAutoMirrorImage = true;
+            this.tbtn_add_Zadania.Size = new System.Drawing.Size(23, 22);
+            this.tbtn_add_Zadania.Text = "Добавить";
+            this.tbtn_add_Zadania.Click += new System.EventHandler(this.tbtn_add_Zadania_Click);
             // 
             // bindingNavigatorCountItem4
             // 
@@ -3277,14 +3362,15 @@
             this.bindingNavigatorCountItem4.Text = "для {0}";
             this.bindingNavigatorCountItem4.ToolTipText = "Общее число элементов";
             // 
-            // bindingNavigatorDeleteItem3
+            // tbtn_delete_Zadania
             // 
-            this.bindingNavigatorDeleteItem3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorDeleteItem3.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem3.Image")));
-            this.bindingNavigatorDeleteItem3.Name = "bindingNavigatorDeleteItem3";
-            this.bindingNavigatorDeleteItem3.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem3.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorDeleteItem3.Text = "Удалить";
+            this.tbtn_delete_Zadania.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tbtn_delete_Zadania.Image = ((System.Drawing.Image)(resources.GetObject("tbtn_delete_Zadania.Image")));
+            this.tbtn_delete_Zadania.Name = "tbtn_delete_Zadania";
+            this.tbtn_delete_Zadania.RightToLeftAutoMirrorImage = true;
+            this.tbtn_delete_Zadania.Size = new System.Drawing.Size(23, 22);
+            this.tbtn_delete_Zadania.Text = "Удалить";
+            this.tbtn_delete_Zadania.Click += new System.EventHandler(this.tbtn_delete_Zadania_Click);
             // 
             // bindingNavigatorMoveFirstItem4
             // 
@@ -3350,7 +3436,7 @@
             // tabPageZadaniaObject
             // 
             this.tabPageZadaniaObject.Controls.Add(this.grid_Z);
-            this.tabPageZadaniaObject.Controls.Add(this.bndNavigator_Z);
+            this.tabPageZadaniaObject.Controls.Add(this.bndNavigator_Zadania_file);
             this.tabPageZadaniaObject.Location = new System.Drawing.Point(4, 22);
             this.tabPageZadaniaObject.Name = "tabPageZadaniaObject";
             this.tabPageZadaniaObject.Padding = new System.Windows.Forms.Padding(3);
@@ -3368,12 +3454,12 @@
             this.grid_Z.Size = new System.Drawing.Size(740, 303);
             this.grid_Z.TabIndex = 0;
             // 
-            // bndNavigator_Z
+            // bndNavigator_Zadania_file
             // 
-            this.bndNavigator_Z.AddNewItem = this.bindingNavigatorAddNewItem4;
-            this.bndNavigator_Z.CountItem = this.bindingNavigatorCountItem5;
-            this.bndNavigator_Z.DeleteItem = this.bindingNavigatorDeleteItem4;
-            this.bndNavigator_Z.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bndNavigator_Zadania_file.AddNewItem = null;
+            this.bndNavigator_Zadania_file.CountItem = this.bindingNavigatorCountItem5;
+            this.bndNavigator_Zadania_file.DeleteItem = null;
+            this.bndNavigator_Zadania_file.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.bindingNavigatorMoveFirstItem5,
             this.bindingNavigatorMovePreviousItem5,
             this.bindingNavigatorSeparator15,
@@ -3385,16 +3471,16 @@
             this.bindingNavigatorSeparator17,
             this.bindingNavigatorAddNewItem4,
             this.bindingNavigatorDeleteItem4});
-            this.bndNavigator_Z.Location = new System.Drawing.Point(3, 3);
-            this.bndNavigator_Z.MoveFirstItem = this.bindingNavigatorMoveFirstItem5;
-            this.bndNavigator_Z.MoveLastItem = this.bindingNavigatorMoveLastItem5;
-            this.bndNavigator_Z.MoveNextItem = this.bindingNavigatorMoveNextItem5;
-            this.bndNavigator_Z.MovePreviousItem = this.bindingNavigatorMovePreviousItem5;
-            this.bndNavigator_Z.Name = "bndNavigator_Z";
-            this.bndNavigator_Z.PositionItem = this.bindingNavigatorPositionItem5;
-            this.bndNavigator_Z.Size = new System.Drawing.Size(740, 25);
-            this.bndNavigator_Z.TabIndex = 1;
-            this.bndNavigator_Z.Text = "bindingNavigator1";
+            this.bndNavigator_Zadania_file.Location = new System.Drawing.Point(3, 3);
+            this.bndNavigator_Zadania_file.MoveFirstItem = this.bindingNavigatorMoveFirstItem5;
+            this.bndNavigator_Zadania_file.MoveLastItem = this.bindingNavigatorMoveLastItem5;
+            this.bndNavigator_Zadania_file.MoveNextItem = this.bindingNavigatorMoveNextItem5;
+            this.bndNavigator_Zadania_file.MovePreviousItem = this.bindingNavigatorMovePreviousItem5;
+            this.bndNavigator_Zadania_file.Name = "bndNavigator_Zadania_file";
+            this.bndNavigator_Zadania_file.PositionItem = this.bindingNavigatorPositionItem5;
+            this.bndNavigator_Zadania_file.Size = new System.Drawing.Size(740, 25);
+            this.bndNavigator_Zadania_file.TabIndex = 1;
+            this.bndNavigator_Zadania_file.Text = "bindingNavigator1";
             // 
             // bindingNavigatorAddNewItem4
             // 
@@ -3587,6 +3673,7 @@
             this.tbtn_EditObj.Name = "tbtn_EditObj";
             this.tbtn_EditObj.Size = new System.Drawing.Size(23, 22);
             this.tbtn_EditObj.Text = "Изменить";
+            this.tbtn_EditObj.Click += new System.EventHandler(this.tbtn_EditObj_Click);
             // 
             // tbtn_AddObj
             // 
@@ -3596,6 +3683,7 @@
             this.tbtn_AddObj.RightToLeftAutoMirrorImage = true;
             this.tbtn_AddObj.Size = new System.Drawing.Size(23, 22);
             this.tbtn_AddObj.Text = "Добавить";
+            this.tbtn_AddObj.Click += new System.EventHandler(this.tbtn_AddObj_Click);
             // 
             // tbtn_DeleteObj
             // 
@@ -3605,6 +3693,7 @@
             this.tbtn_DeleteObj.RightToLeftAutoMirrorImage = true;
             this.tbtn_DeleteObj.Size = new System.Drawing.Size(23, 22);
             this.tbtn_DeleteObj.Text = "Удалить";
+            this.tbtn_DeleteObj.Click += new System.EventHandler(this.tbtn_DeleteObj_Click);
             // 
             // panel3
             // 
@@ -3632,6 +3721,7 @@
             this.grid_Object.RowHeadersVisible = false;
             this.grid_Object.Size = new System.Drawing.Size(198, 510);
             this.grid_Object.TabIndex = 1;
+            this.grid_Object.DoubleClick += new System.EventHandler(this.tbtn_EditObj_Click);
             // 
             // CodeObj
             // 
@@ -3921,7 +4011,7 @@
             // panelPrj
             // 
             this.panelPrj.Controls.Add(this.grid_ProjectCode);
-            this.panelPrj.Controls.Add(this.textBox3);
+            this.panelPrj.Controls.Add(this.tb_findProject);
             this.panelPrj.Controls.Add(this.label2);
             this.panelPrj.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelPrj.Location = new System.Drawing.Point(0, 84);
@@ -3958,14 +4048,15 @@
             this.Code_object.ReadOnly = true;
             this.Code_object.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             // 
-            // textBox3
+            // tb_findProject
             // 
-            this.textBox3.BackColor = System.Drawing.SystemColors.Info;
-            this.textBox3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.textBox3.Location = new System.Drawing.Point(10, 23);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(116, 20);
-            this.textBox3.TabIndex = 2;
+            this.tb_findProject.BackColor = System.Drawing.SystemColors.Info;
+            this.tb_findProject.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tb_findProject.Location = new System.Drawing.Point(10, 23);
+            this.tb_findProject.Name = "tb_findProject";
+            this.tb_findProject.Size = new System.Drawing.Size(116, 20);
+            this.tb_findProject.TabIndex = 2;
+            this.tb_findProject.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // label2
             // 
@@ -4029,11 +4120,11 @@
             // 
             // dataGridViewImageColumn2
             // 
-            dataGridViewCellStyle89.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle89.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle89.NullValue = null;
-            dataGridViewCellStyle89.Padding = new System.Windows.Forms.Padding(3);
-            this.dataGridViewImageColumn2.DefaultCellStyle = dataGridViewCellStyle89;
+            dataGridViewCellStyle56.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle56.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle56.NullValue = null;
+            dataGridViewCellStyle56.Padding = new System.Windows.Forms.Padding(3);
+            this.dataGridViewImageColumn2.DefaultCellStyle = dataGridViewCellStyle56;
             this.dataGridViewImageColumn2.HeaderText = "Удалить";
             this.dataGridViewImageColumn2.Image = global::GW_Dogovor.Properties.Resources.Delete;
             this.dataGridViewImageColumn2.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
@@ -4044,11 +4135,11 @@
             // 
             // dataGridViewImageColumn3
             // 
-            dataGridViewCellStyle90.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle90.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle90.NullValue = null;
-            dataGridViewCellStyle90.Padding = new System.Windows.Forms.Padding(3);
-            this.dataGridViewImageColumn3.DefaultCellStyle = dataGridViewCellStyle90;
+            dataGridViewCellStyle57.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle57.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle57.NullValue = null;
+            dataGridViewCellStyle57.Padding = new System.Windows.Forms.Padding(3);
+            this.dataGridViewImageColumn3.DefaultCellStyle = dataGridViewCellStyle57;
             this.dataGridViewImageColumn3.HeaderText = "Удалить";
             this.dataGridViewImageColumn3.Image = global::GW_Dogovor.Properties.Resources.Delete;
             this.dataGridViewImageColumn3.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
@@ -4057,6 +4148,99 @@
             this.dataGridViewImageColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewImageColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.dataGridViewImageColumn3.Width = 30;
+            // 
+            // tbtn_EditMark
+            // 
+            this.tbtn_EditMark.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tbtn_EditMark.Image = global::GW_Dogovor.Properties.Resources.Modify;
+            this.tbtn_EditMark.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tbtn_EditMark.Name = "tbtn_EditMark";
+            this.tbtn_EditMark.Size = new System.Drawing.Size(23, 22);
+            this.tbtn_EditMark.Text = "toolStripButton9";
+            this.tbtn_EditMark.Click += new System.EventHandler(this.tbtn_EditMark_Click);
+            // 
+            // Mark_name
+            // 
+            this.Mark_name.HeaderText = "Марка";
+            this.Mark_name.Name = "Mark_name";
+            this.Mark_name.ReadOnly = true;
+            // 
+            // Mark_notes
+            // 
+            this.Mark_notes.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Mark_notes.HeaderText = "Описание";
+            this.Mark_notes.Name = "Mark_notes";
+            this.Mark_notes.ReadOnly = true;
+            // 
+            // Mark_date_plan
+            // 
+            dataGridViewCellStyle58.Format = "D";
+            dataGridViewCellStyle58.NullValue = null;
+            this.Mark_date_plan.DefaultCellStyle = dataGridViewCellStyle58;
+            this.Mark_date_plan.HeaderText = "Дата по плану";
+            this.Mark_date_plan.Name = "Mark_date_plan";
+            this.Mark_date_plan.ReadOnly = true;
+            // 
+            // Mark_GIP
+            // 
+            this.Mark_GIP.HeaderText = "Подпись ГИП";
+            this.Mark_GIP.Name = "Mark_GIP";
+            this.Mark_GIP.ReadOnly = true;
+            this.Mark_GIP.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Mark_GIP.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // Mark_date_GIP
+            // 
+            dataGridViewCellStyle59.Format = "D";
+            dataGridViewCellStyle59.NullValue = null;
+            this.Mark_date_GIP.DefaultCellStyle = dataGridViewCellStyle59;
+            this.Mark_date_GIP.HeaderText = "Дата подписи";
+            this.Mark_date_GIP.Name = "Mark_date_GIP";
+            this.Mark_date_GIP.ReadOnly = true;
+            // 
+            // Mark_Arhiv
+            // 
+            this.Mark_Arhiv.HeaderText = "Архив";
+            this.Mark_Arhiv.Name = "Mark_Arhiv";
+            this.Mark_Arhiv.ReadOnly = true;
+            this.Mark_Arhiv.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Mark_Arhiv.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // Mark_data_fakt
+            // 
+            dataGridViewCellStyle60.Format = "D";
+            dataGridViewCellStyle60.NullValue = null;
+            this.Mark_data_fakt.DefaultCellStyle = dataGridViewCellStyle60;
+            this.Mark_data_fakt.HeaderText = "Дата по факту";
+            this.Mark_data_fakt.Name = "Mark_data_fakt";
+            this.Mark_data_fakt.ReadOnly = true;
+            // 
+            // tbtn_edit_Zadania
+            // 
+            this.tbtn_edit_Zadania.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tbtn_edit_Zadania.Image = global::GW_Dogovor.Properties.Resources.Modify;
+            this.tbtn_edit_Zadania.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tbtn_edit_Zadania.Name = "tbtn_edit_Zadania";
+            this.tbtn_edit_Zadania.Size = new System.Drawing.Size(23, 22);
+            this.tbtn_edit_Zadania.Text = "Zadania";
+            this.tbtn_edit_Zadania.ToolTipText = "Изменить";
+            this.tbtn_edit_Zadania.Click += new System.EventHandler(this.tbtn_edit_Zadania_Click);
+            // 
+            // toolStripSeparator17
+            // 
+            this.toolStripSeparator17.Name = "toolStripSeparator17";
+            this.toolStripSeparator17.Size = new System.Drawing.Size(6, 25);
+            // 
+            // tbtn_RefreshAll
+            // 
+            this.tbtn_RefreshAll.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tbtn_RefreshAll.Image = global::GW_Dogovor.Properties.Resources.Refresh;
+            this.tbtn_RefreshAll.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tbtn_RefreshAll.Name = "tbtn_RefreshAll";
+            this.tbtn_RefreshAll.Size = new System.Drawing.Size(23, 22);
+            this.tbtn_RefreshAll.Text = "toolStripButton10";
+            this.tbtn_RefreshAll.ToolTipText = "Обновить данные базы";
+            this.tbtn_RefreshAll.Click += new System.EventHandler(this.tbtn_RefreshAll_Click);
             // 
             // Form_main
             // 
@@ -4155,6 +4339,7 @@
             this.bndNavigatorDDog.ResumeLayout(false);
             this.bndNavigatorDDog.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid_DD)).EndInit();
             this.tab_Object.ResumeLayout(false);
             this.tab_Object.PerformLayout();
@@ -4179,9 +4364,9 @@
             this.tabPageZadaniaObject.ResumeLayout(false);
             this.tabPageZadaniaObject.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid_Z)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bndNavigator_Z)).EndInit();
-            this.bndNavigator_Z.ResumeLayout(false);
-            this.bndNavigator_Z.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bndNavigator_Zadania_file)).EndInit();
+            this.bndNavigator_Zadania_file.ResumeLayout(false);
+            this.bndNavigator_Zadania_file.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bndNavigatorObject)).EndInit();
             this.bndNavigatorObject.ResumeLayout(false);
             this.bndNavigatorObject.PerformLayout();
@@ -4233,7 +4418,7 @@
         private System.Windows.Forms.Label lb_ServerFld;
         private System.Windows.Forms.LinkLabel link_ServetFld;
         private System.Windows.Forms.ToolStripButton tbtn_EditProject;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox tb_findProject;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ToolStripButton tbtn_AddProject;
         private System.Windows.Forms.ContextMenuStrip cMenuTop;
@@ -4498,9 +4683,9 @@
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem2;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator8;
         private System.Windows.Forms.BindingNavigator bndNavigator_Graph_Mark;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem2;
+        private System.Windows.Forms.ToolStripButton tbtn_AddMark;
         private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem3;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorDeleteItem2;
+        private System.Windows.Forms.ToolStripButton tbtn_DeleteMark;
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem3;
         private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem3;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator9;
@@ -4510,9 +4695,9 @@
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem3;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator11;
         private System.Windows.Forms.BindingNavigator bndNavigator_Graph_Z;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem3;
+        private System.Windows.Forms.ToolStripButton tbtn_add_Zadania;
         private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem4;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorDeleteItem3;
+        private System.Windows.Forms.ToolStripButton tbtn_delete_Zadania;
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem4;
         private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem4;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator12;
@@ -4521,7 +4706,7 @@
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem4;
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem4;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator14;
-        private System.Windows.Forms.BindingNavigator bndNavigator_Z;
+        private System.Windows.Forms.BindingNavigator bndNavigator_Zadania_file;
         private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem4;
         private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem5;
         private System.Windows.Forms.ToolStripButton bindingNavigatorDeleteItem4;
@@ -4538,6 +4723,9 @@
         private System.Windows.Forms.ToolStripMenuItem normalizeToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn NumDD;
         private System.Windows.Forms.DataGridViewTextBoxColumn Code_object;
+        private System.Windows.Forms.ToolStripButton btn_edit_CP;
+        private System.Windows.Forms.TextBox tb_numDog_DD;
+        private System.Windows.Forms.Label label35;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_DDog;
         private System.Windows.Forms.DataGridViewTextBoxColumn Num_sort;
         private System.Windows.Forms.DataGridViewTextBoxColumn Num_Etap;
@@ -4548,7 +4736,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Summ;
         private System.Windows.Forms.DataGridViewTextBoxColumn Valute;
         private System.Windows.Forms.DataGridViewTextBoxColumn StatusCPlan;
-        private System.Windows.Forms.ToolStripButton btn_edit_CP;
         private System.Windows.Forms.DataGridViewTextBoxColumn num_ds;
         private System.Windows.Forms.DataGridViewTextBoxColumn num_sort_ds;
         private System.Windows.Forms.DataGridViewTextBoxColumn name_ds;
@@ -4558,6 +4745,17 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn summ_ds;
         private System.Windows.Forms.DataGridViewTextBoxColumn valute_ds;
         private System.Windows.Forms.DataGridViewTextBoxColumn status_ds;
+        private System.Windows.Forms.ToolStripButton tbtn_EditMark;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Mark_name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Mark_notes;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Mark_date_plan;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Mark_GIP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Mark_date_GIP;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Mark_Arhiv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Mark_data_fakt;
+        private System.Windows.Forms.ToolStripButton tbtn_edit_Zadania;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator17;
+        private System.Windows.Forms.ToolStripButton tbtn_RefreshAll;
     }
 }
 

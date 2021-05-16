@@ -54,6 +54,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjectClass", "ObjectClass\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "feature_сlass", "feature_сlass\feature_сlass.csproj", "{59EE863F-EEDC-4A06-BC08-729B92241C7D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PRD", "PRD\PRD.csproj", "{4E521A31-30A7-4A57-B855-E1FC6F3FEAD5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zadania", "Zadania\Zadania.csproj", "{D26F909E-2BC4-4FCA-AB02-E078BD025D51}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -128,6 +132,14 @@ Global
 		{59EE863F-EEDC-4A06-BC08-729B92241C7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59EE863F-EEDC-4A06-BC08-729B92241C7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59EE863F-EEDC-4A06-BC08-729B92241C7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E521A31-30A7-4A57-B855-E1FC6F3FEAD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E521A31-30A7-4A57-B855-E1FC6F3FEAD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E521A31-30A7-4A57-B855-E1FC6F3FEAD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E521A31-30A7-4A57-B855-E1FC6F3FEAD5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D26F909E-2BC4-4FCA-AB02-E078BD025D51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D26F909E-2BC4-4FCA-AB02-E078BD025D51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D26F909E-2BC4-4FCA-AB02-E078BD025D51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D26F909E-2BC4-4FCA-AB02-E078BD025D51}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
