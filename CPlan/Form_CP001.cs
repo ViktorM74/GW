@@ -13,55 +13,56 @@ namespace CPlan
         {
             InitializeComponent();
 
-            string idnum = ((DataRowView)DB_Cmd.bndCalendarPlan.Current).Row["ID_Kplan"].ToString();
+            string idnum = ((DataRowView)DB_Cmd.bndCalendarPlanDD.Current).Row["ID_Kplan"].ToString();
 
             this.Text = this.Text + " - " + idnum;
-            navigatorCP.BindingSource = DB_Cmd.bndCalendarPlan;
 
-            tb_num.DataBindings.Add("Text", DB_Cmd.bndCalendarPlan, "Num_Etap");
-            tb_name.DataBindings.Add("Text", DB_Cmd.bndCalendarPlan, "Name_Etap");
-            tb_day.DataBindings.Add("Text", DB_Cmd.bndCalendarPlan, "Days");
-            dtp_nachalo.DataBindings.Add("Text", DB_Cmd.bndCalendarPlan, "Nachalo_Data");
-            dtp_konec.DataBindings.Add("Text", DB_Cmd.bndCalendarPlan, "Konec_Data");
-            cb_Status.DataBindings.Add("Text", DB_Cmd.bndCalendarPlan, "Status");
-            tb_Summ.DataBindings.Add("Text", DB_Cmd.bndCalendarPlan, "Summ");
-            cb_Valute.DataBindings.Add("Text", DB_Cmd.bndCalendarPlan, "V");
-            tb_Comments.DataBindings.Add("Text", DB_Cmd.bndCalendarPlan, "Comments");
-            lb_Sort.DataBindings.Add("Text", DB_Cmd.bndCalendarPlan, "Num_sort");
+            navigatorCP.BindingSource = DB_Cmd.bndCalendarPlanDD;
+
+            tb_num.DataBindings.Add("Text", DB_Cmd.bndCalendarPlanDD, "Num_Etap");
+            tb_name.DataBindings.Add("Text", DB_Cmd.bndCalendarPlanDD, "Name_Etap");
+            tb_day.DataBindings.Add("Text", DB_Cmd.bndCalendarPlanDD, "Days");
+            dtp_nachalo.DataBindings.Add("Text", DB_Cmd.bndCalendarPlanDD, "Nachalo_Data");
+            dtp_konec.DataBindings.Add("Text", DB_Cmd.bndCalendarPlanDD, "Konec_Data");
+            cb_Status.DataBindings.Add("Text", DB_Cmd.bndCalendarPlanDD, "Status");
+            tb_Summ.DataBindings.Add("Text", DB_Cmd.bndCalendarPlanDD, "Summ");
+            cb_Valute.DataBindings.Add("Text", DB_Cmd.bndCalendarPlanDD, "V");
+            tb_Comments.DataBindings.Add("Text", DB_Cmd.bndCalendarPlanDD, "Comments");
+            lb_Sort.DataBindings.Add("Text", DB_Cmd.bndCalendarPlanDD, "Num_sort");
 
             cb_DD.DataSource = DB_Cmd.bndDopDogovor; // источник данных
             cb_DD.DisplayMember = "Nambe_DS"; // отображаемое значение
             cb_DD.ValueMember = "DS_ID"; // значение передаваемое в источник данных или привязанный источник
-            cb_DD.DataBindings.Add("SelectedValue", DB_Cmd.bndCalendarPlan, "ID_DopS"); // привязка к данным таблицы CalendarPlan        
+            cb_DD.DataBindings.Add("SelectedValue", DB_Cmd.bndCalendarPlanDD, "ID_DopS"); // привязка к данным таблицы CalendarPlan        
         }
 
         private void btn_deleteItem_Click(object sender, System.EventArgs e)
         {
-            DB_Cmd.DeleteCalendarPlan();
+            DB_Cmd.DeleteCalendarPlanDD();
             Close();
         }
 
         private void btn_refreshItem_Click(object sender, System.EventArgs e)
         {
-            DB_Cmd.RefreshCPlan();
-            DB_Cmd.bndCalendarPlan.ResetBindings(true);
+            DB_Cmd.RefreshCPlanDD();
+            DB_Cmd.bndCalendarPlanDD.ResetBindings(true);
         }
 
         private void btn_UpdateItem_Click(object sender, System.EventArgs e)
         {
-            DB_Cmd.SaveCalendarPlan();
+            DB_Cmd.SaveCalendarPlanDD();
             Close();
         }
 
         private void btn_addItem_Click(object sender, System.EventArgs e)
         {
-            DB_Cmd.SaveCalendarPlan();
-            DB_Cmd.AddCalendarPlan();
+            //DB_Cmd.SaveCalendarPlanDD();
+            DB_Cmd.AddCalendarPlanDD();
         }
 
         private void btn_Close_Click(object sender, System.EventArgs e)
         {
-            DB_Cmd.CancelCalendarPlan();
+            DB_Cmd.CancelCalendarPlanDD();
             Close();
         }
 
@@ -80,10 +81,14 @@ namespace CPlan
             feature.TextBoxCurrency(tb_Summ);
         }
 
-
         private void tb_Summ_Leave(object sender, EventArgs e)
         {
             feature.TextBoxCurrency(tb_Summ);
+        }
+
+        private void Form_CP001_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DB_Cmd.CancelCalendarPlanDD();
         }
     }
 }

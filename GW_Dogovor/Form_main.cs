@@ -25,17 +25,16 @@ using DopSoglClass;
 using CPlan;
 using feature_сlass;
 using System.ComponentModel;
+using PRD;
+using Zadania;
 
 namespace GW_Dogovor
 {
     public partial class Form_main : Form
     {
-
         string tPathDB;
-
         bool R = false;
-
-     
+             
         public Form_main()
         {
             InitializeComponent();
@@ -73,13 +72,119 @@ namespace GW_Dogovor
             }
 
         }
+
         public void ConnectDB()
         {
             DB_Cmd.DBLoad();
         }
 
+        private void Clk() // Все простые события Клик
+        {
+            menuItem_PropertyConnect.Click += (s, a) =>
+            {
+                ContactManager cmForm = new ContactManager();
+                cmForm.ShowDialog();
+            };
+
+            menuItem_TypeDoc.Click += (s, a) =>
+            {
+                Lib_doc_type libDocForm = new Lib_doc_type();
+                libDocForm.ShowDialog();
+            };
+
+            bndNav_DeleteDoc.Click += deleteDocument;
+
+            bndNav_AddDoc.Click += (s, a) =>
+            {
+                DB_Cmd.AddDoc();
+                EditDoc();
+            };
+
+            bndNav_EditDoc.Click += (s, a) =>
+            {
+                EditDoc();
+            };
+
+            tbtn_ViewProject.Click += ProjectPanelsVisable;
+
+            tbtn_AddFolders.Click += (s, a) =>
+            {
+                Form_FolderManager ff = new Form_FolderManager(link_LocalFld.Text, link_ServetFld.Text, false);
+                ff.ShowDialog();
+            };
+
+            gridDocument.DoubleClick += (s, a) =>
+            {
+                EditDoc();
+            };
+
+            link_LocalFld.Click += (s, a) =>
+            {
+                FileA.RunFolder(link_LocalFld.Text);
+            };
+
+            link_ServetFld.Click += (s, a) =>
+            {
+                FileA.RunFolder(link_ServetFld.Text);
+            };
+
+            tmCopySelect.Click += (s, a) =>
+            {
+                if (tbNameProject.SelectionLength > 0)
+                    tbNameProject.Copy();
+            };
+
+            tmOpenLocalFolder.Click += (s, a) =>
+            {
+                FileA.RunFolder(link_LocalFld.Text);
+            };
+
+            tmOpenServerFolder.Click += (s, a) =>
+            {
+                FileA.RunFolder(link_ServetFld.Text);
+            };
+
+            tb_TndComents.DoubleClick += (s, a) =>
+            {
+                dbEditText(DB_Cmd.bndTender, "Comments");
+            };
+
+            tb_pNotes.DoubleClick += (s, a) =>
+            {
+                dbEditText(DB_Cmd.bndProject, "Notes");
+            };
+
+            tb_CommentDog.DoubleClick += (s, a) =>
+            {
+                dbEditText(DB_Cmd.bndDogovor, "Comments");
+            };
+
+            tb_NotesDD.DoubleClick += (s, a) =>
+            {
+                dbEditText(DB_Cmd.bndDopDogovor, "Comments");
+            };
+
+            tbtn_EditDDog.Click += (s, a) =>
+            {
+                EditDopDogovor();
+            };
+
+            tbtn_AddDDog.Click += (s, a) =>
+            {
+                DB_Cmd.AddDopSoglashenia();
+                EditDopDogovor();
+            };
+
+            tbtn_DeleteDDog.Click += (s, a) =>
+            {
+                DB_Cmd.DeleteDopSoglashenia();
+                DB_Cmd.SaveDopSoglashenia();
+            };
+
+        }
+
         #region ViewForms 
-        // Установка связей контролов с базой
+        #region Установка связей контролов с базой
         private void SetViewDataProject()
         {
             tbNameProject.DataBindings.Add("Text", DB_Cmd.bndProject, "Name");
@@ -173,6 +278,11 @@ namespace GW_Dogovor
             grid_CPlan.Columns["StatusCPlan"].DataPropertyName = "Status";
             grid_CPlan.Columns["id_DDog"].DataPropertyName = "NumDD";
             grid_CPlan.Columns["Num_sort"].DataPropertyName = "Num_sort";
+
+            grid_CPlan.Columns["Name_Etap"].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            grid_CPlan.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
+            grid_CPlan.Columns["Name_Etap"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
             //this.grid_CPlan.Sort(this.grid_CPlan.Columns["Num_sort"], ListSortDirection.Ascending);
 
             //grid_CPlan.EditingPanel.BorderStyle = BorderStyle.Fixed3D;
@@ -186,6 +296,7 @@ namespace GW_Dogovor
             tb_StatusDD.DataBindings.Add("Text", DB_Cmd.bndDopDogovor, "Status");
             tb_ToDateDD.DataBindings.Add("Text", DB_Cmd.bndDopDogovor, "Data_Konec");
             tb_NotesDD.DataBindings.Add("Text", DB_Cmd.bndDopDogovor, "Comments");
+            tb_numDog_DD.DataBindings.Add("Text", DB_Cmd.bndDopDogovor, "NumDog");
 
             grid_DD.AutoGenerateColumns = false;
             grid_DD.DataSource = DB_Cmd.bndDopDogovor;
@@ -193,7 +304,7 @@ namespace GW_Dogovor
             //this.grid_DD.Sort(this.grid_DD.Columns["NumDD"], ListSortDirection.Ascending);
 
             grid_CPlanDD.AutoGenerateColumns = false;
-            grid_CPlanDD.DataSource = DB_Cmd.bndCalendarPlan;
+            grid_CPlanDD.DataSource = DB_Cmd.bndCalendarPlanDD;
             grid_CPlanDD.Columns["num_ds"].DataPropertyName = "Num_Etap";
             grid_CPlanDD.Columns["name_ds"].DataPropertyName = "Name_Etap";
             grid_CPlanDD.Columns["day_ds"].DataPropertyName = "Days";
@@ -204,9 +315,13 @@ namespace GW_Dogovor
             grid_CPlanDD.Columns["status_ds"].DataPropertyName = "Status";
             grid_CPlanDD.Columns["num_sort_ds"].DataPropertyName = "Num_sort";
 
+            grid_CPlanDD.Columns["name_ds"].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            grid_CPlanDD.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
+            grid_CPlanDD.Columns["name_ds"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
 
             bndNavigatorDDog.BindingSource = DB_Cmd.bndDopDogovor;
-            bndNavigator_KP_Dop.BindingSource = DB_Cmd.bndCalendarPlan;
+            bndNavigator_KP_Dop.BindingSource = DB_Cmd.bndCalendarPlanDD;
             //bndCalendarPlan.Filter = "";
             
         }
@@ -220,21 +335,45 @@ namespace GW_Dogovor
           
             //GIP
             tb_GIPObject.DataBindings.Add("Text", DB_Cmd.bndObject, "NameGIP");
-
+            //Object
             grid_Object.AutoGenerateColumns = false;
             grid_Object.DataSource = DB_Cmd.bndObject;
             grid_Object.Columns["CodeObj"].DataPropertyName = "CodeOBJ";
             //this.grid_Object.Sort(this.grid_Object.Columns["CodeObj"], ListSortDirection.Ascending);
 
+            //Mark
+            grid_GrafMark.AutoGenerateColumns = false;
+            grid_GrafMark.DataSource = DB_Cmd.bndSostavObj;
+            grid_GrafMark.Columns["Mark_name"].DataPropertyName = "Mark";
+            grid_GrafMark.Columns["Mark_date_plan"].DataPropertyName = "Data_plan";
+            grid_GrafMark.Columns["Mark_GIP"].DataPropertyName = "GIP_viz";
+            grid_GrafMark.Columns["Mark_date_GIP"].DataPropertyName = "Data_GIP_viz";
+            grid_GrafMark.Columns["Mark_Arhiv"].DataPropertyName = "Arhiv";
+            grid_GrafMark.Columns["Mark_data_fakt"].DataPropertyName = "Data_fakt";
+            grid_GrafMark.Columns["Mark_notes"].DataPropertyName = "Notes";
+
+            //Graf_Zadania
+            grid_GrafZ.AutoGenerateColumns = false;
+            grid_GrafZ.DataSource = DB_Cmd.bndZadania;
+            grid_GrafZ.Columns[""].DataPropertyName = "";
+            grid_GrafZ.Columns[""].DataPropertyName = "";
+            grid_GrafZ.Columns[""].DataPropertyName = "";
+            grid_GrafZ.Columns[""].DataPropertyName = "";
+            grid_GrafZ.Columns[""].DataPropertyName = "";
+            grid_GrafZ.Columns[""].DataPropertyName = "";
+            grid_GrafZ.Columns[""].DataPropertyName = "";
+
+
 
             bndNavigatorObject.BindingSource = DB_Cmd.bndObject;
             bndNavigator_Graph_Mark.BindingSource = DB_Cmd.bndSostavObj;
             bndNavigator_Graph_Z.BindingSource = DB_Cmd.bndZadania;
-            bndNavigator_Z.BindingSource = DB_Cmd.bndZadania;
+            //bndNavigator_Zadania_file.BindingSource = DB_Cmd.bndZadania;
 
         }
-        //
-      
+        #endregion Установка связей контролов с базой
+
+        #region FilterGrid
         private void SetViewTabControl() /// логика - вынести из UI
         {
             //0-ИД; 1-Письма; 2-Задания; 3-Тендер; 4-Договор; 5-График; 6- Объект; 7- Изыскания; 8- Штамп; 9- Разное; 10- Основные положения; 11- Входящие; 12- Исходящие
@@ -304,19 +443,60 @@ namespace GW_Dogovor
             }
 
         } // Фильтры для Документов вкладка Документы
+        #endregion FilterGrid
+
+        #region View
+        private void bndNavigator_Graph_Mark_Paint(object sender, PaintEventArgs e)
+        {
+            if (grid_GrafMark.Rows.Count == 0)
+            {
+                tbtn_EditMark.Enabled = false;
+                tbtn_DeleteMark.Enabled = false;
+            }
+            else
+            {
+                tbtn_EditMark.Enabled = true;
+                tbtn_DeleteMark.Enabled = true;
+            }
+        }
         private void SetViewBindNavigators()
         {
             if (DB_Cmd.bndProject.Count != 0)
-            { 
-              bndNvg_IshDoc.Enabled = true;
+            {
+                bndNvg_IshDoc.Enabled = true;
                 bndNavigatorTender.Enabled = true;
                 if (DB_Cmd.bndTender.Count != 0)
                 {
                     bndNavigatorDogovor.Enabled = true;
+
                     if (DB_Cmd.bndDogovor.Count != 0)
                     {
                         bndNavigatorDDog.Enabled = true;
                         bndNavigatorObject.Enabled = true;
+                        if (DB_Cmd.bndDopDogovor.Count != 0)
+                        {
+                            bndNavigator_KP_Dog.Enabled = true;
+                            bndNavigator_KP_Dop.Enabled = true;
+                            bndNavigatorObject.Enabled = true;
+                            if (DB_Cmd.bndObject.Count != 0)
+                            {
+                                bndNavigator_Graph_Mark.Enabled = true;
+                                bndNavigator_Graph_Z.Enabled = true;
+                                bndNavigator_Zadania_file.Enabled = true;
+                            }
+                            else
+                            {
+                                bndNavigator_Graph_Mark.Enabled = false;
+                                bndNavigator_Graph_Z.Enabled = false;
+                                bndNavigator_Zadania_file.Enabled = false;
+                            }
+                        }
+                        else
+                        {
+                            bndNavigator_KP_Dog.Enabled = false;
+                            bndNavigator_KP_Dop.Enabled = false;
+                            bndNavigatorObject.Enabled = false;
+                        }
                     }
                     else
                     {
@@ -335,6 +515,12 @@ namespace GW_Dogovor
                 bndNavigatorTender.Enabled = false;
             }
         } // Активность Навигаторов
+        private void ProjectPanelsVisable(object sender, EventArgs e)
+        {
+            Settings.Default.PanelsProjectView = !Settings.Default.PanelsProjectView;
+            Settings.Default.Save();
+            SetViewForm();
+        } // Установка видимости панели Проект
         private void SetViewForm()
         {
             if (Settings.Default.PanelsProjectView)
@@ -345,21 +531,10 @@ namespace GW_Dogovor
             else
             {
                 splitContainer1.Panel1Collapsed = Settings.Default.PanelsProjectView;
-                
+
                 tbtn_ViewProject.Image = Resources._return;
             }
         } // Установка иконки кнопки видимости панели Проект
-        private void ProjectPanelsVisable(object sender, EventArgs e)
-        {
-            Settings.Default.PanelsProjectView = !Settings.Default.PanelsProjectView;
-            Settings.Default.Save();
-            SetViewForm();
-        } // Установка видимости панели Проект
-        private void ts_ComboBoxDoc_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            SelectedTypeDocuments();
-        }
-        #region WindowState
         private void GetFormView() // Устанавлюваем значения Формы из сохраненных параметров
         {
             if (Settings.Default.Main_Location != null)
@@ -409,147 +584,21 @@ namespace GW_Dogovor
             SetFormView();
             DB_Cmd.tableManager.UpdateAll(DB_Cmd.dsDB);
         }
-        private void Clk() // Все простые события Клик
+        private void grid_ProjectCode_SelectionChanged(object sender, EventArgs e)
         {
-            menuItem_PropertyConnect.Click += (s, a) =>
-            {
-                ContactManager cmForm = new ContactManager();
-                cmForm.ShowDialog();
-            };
-            
-            menuItem_TypeDoc.Click += (s, a) =>
-            {
-                Lib_doc_type libDocForm = new Lib_doc_type();
-                libDocForm.ShowDialog();
-            };
-            
-            bndNav_DeleteDoc.Click += deleteDocument;
-
-            bndNav_AddDoc.Click += (s, a) =>
-            {
-                DB_Cmd.AddDoc();
-                EditDoc();
-            };
-
-            bndNav_EditDoc.Click += (s, a) =>
-            {
-                EditDoc();
-            };
-
-            tbtn_ViewProject.Click += ProjectPanelsVisable;
-
-            tbtn_EditProject.Click += (s, a) =>
-            {
-                EditProject();
-            };
-
-            tbtn_AddProject.Click += (s, a) =>
-            {
-                DB_Cmd.AddProject();
-                
-                EditProject();
-            };
-
-            tbtn_DeleteProject.Click += (s, a) =>
-            {
-                DB_Cmd.DeleteProject();
-                DB_Cmd.SaveProject();
-            };
-
-            tbtn_AddFolders.Click += (s, a) =>
-            {
-                Form_FolderManager ff = new Form_FolderManager(link_LocalFld.Text, link_ServetFld.Text, false);
-                ff.ShowDialog();
-            };
-
-            gridDocument.DoubleClick += (s, a) =>
-            {
-                EditDoc();
-            };
-   
-            link_LocalFld.Click += (s, a) =>
-            {
-                FileA.RunFolder(link_LocalFld.Text);
-            };
-
-            link_ServetFld.Click += (s, a) =>
-            {
-                FileA.RunFolder(link_ServetFld.Text);
-            };
-
-            tmCopySelect.Click += (s, a) =>
-            {
-                if (tbNameProject.SelectionLength > 0)
-                    tbNameProject.Copy();
-            };
-
-            tmOpenLocalFolder.Click += (s, a) =>
-            {
-                FileA.RunFolder(link_LocalFld.Text);
-            };
-
-            tmOpenServerFolder.Click += (s, a) =>
-            {
-                FileA.RunFolder(link_ServetFld.Text);
-            };
-
-            tb_TndComents.DoubleClick += (s, a) =>
-            {
-                dbEditText(DB_Cmd.bndTender, "Comments");
-            };
-
-            tb_pNotes.DoubleClick += (s, a) =>
-            {
-                dbEditText(DB_Cmd.bndProject, "Notes");
-            };
-
-            tb_CommentDog.DoubleClick += (s, a) =>
-            {
-                dbEditText(DB_Cmd.bndDogovor, "Comments");
-            };
-
-            tb_NotesDD.DoubleClick += (s, a) =>
-            {
-                dbEditText(DB_Cmd.bndDopDogovor, "Comments");
-            };
-
-            tbtn_EditDDog.Click += (s, a) =>
-            {
-                EditDopDogovor();
-            };
-
-            tbtn_AddDDog.Click += (s, a) =>
-            {
-                DB_Cmd.AddDopSoglashenia();
-                EditDopDogovor();
-            };
-
-            tbtn_DeleteDDog.Click += (s, a) =>
-            {
-                DB_Cmd.DeleteDopSoglashenia();
-                DB_Cmd.SaveDopSoglashenia();
-            };
-
-            tbtn_EditObj.Click += (s, a) =>
-            {
-                EditObject();
-            };
-
-            tbtn_AddObj.Click += (s, a) =>
-            {
-                DB_Cmd.AddOBJECTS();
-                EditObject();
-            };
-
-            tbtn_DeleteObj.Click += (s, a) =>
-            {
-                DB_Cmd.DeleteOBJECTS();
-                DB_Cmd.SaveOBJECTS();
-            };
-
-            
+            SetViewBindNavigators();
         }
-        #endregion
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Form_AddFiles fSel = new Form_AddFiles(link_LocalFld.Text, link_ServetFld.Text);
+            fSel.ShowDialog();
+        }
+        private void tabControlMain_Selected(object sender, TabControlEventArgs e)
+        {
+            SetViewTabControl();
+        }
+        #endregion View
+
         private void Form_main_Load(object sender, EventArgs e)
         {
             if (!R) Close(); 
@@ -557,7 +606,7 @@ namespace GW_Dogovor
             Clk();
             lbl_BasePath.Text = tPathDB;
         }
-        #endregion
+        #endregion ViewForms
 
         #region Edit DB
         #region Project
@@ -578,9 +627,9 @@ namespace GW_Dogovor
         {
             EditProject();
         }
-        #endregion
+        #endregion DoubleClik_EditProject
 
-        #endregion
+        #endregion Project
 
         #region Tender
         private void EditTender()
@@ -704,7 +753,7 @@ namespace GW_Dogovor
         #region Object
         private void EditObject()
         {
-            Form_Object fе = new Form_Object(DB_Cmd.bndObject, DB_Cmd.bndGip, DB_Cmd.bndStadia);
+            Form_Object fе = new Form_Object();
 
             if (fе.ShowDialog() == DialogResult.OK)
             {
@@ -731,17 +780,34 @@ namespace GW_Dogovor
             if (fe.ShowDialog() == DialogResult.OK)
             {
                 fe.Validate();
-                DB_Cmd.SaveProject();
+                DB_Cmd.Save_BndDB(bnd);
             }
             else
             {
                 fe.Validate();
-                DB_Cmd.CancelProject();
+                DB_Cmd.Cancel_BndDB(bnd);
             }
         }
-        #endregion
+        #endregion EditText
 
-        #endregion
+        #region Zadania
+        private void EditZadania()
+        {
+            Form_Zadania_Plan fеd = new Form_Zadania_Plan();
+            fеd.ShowDialog();
+        }
+
+        #endregion Zadania
+
+        #region Mark
+        private void EditSostavObj()
+        {
+            Form_PRD fеd = new Form_PRD();
+            fеd.ShowDialog();
+        }
+        #endregion Mark
+
+        #endregion Edit DB
 
         #region CellContentClick
         private void gridDocument_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -778,8 +844,21 @@ namespace GW_Dogovor
                 DeleteDoc(fld);
             }
         }
+        private void gridDocument_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 3)
+            {
+                string p = gridDocument[2, e.RowIndex].Value.ToString(); // читаем путь
 
-        #endregion
+                if (FileA.GetAtributesPath(p))
+                    FileA.RunFile(p);
+                else
+                    FileA.RunFolder(p);
+
+            }
+        }
+
+        #endregion CellContentClick
 
         #region DRAG
 
@@ -908,7 +987,7 @@ namespace GW_Dogovor
 
             msf.ShowDialog();
         }
-
+   
 
         #region DRAG Documents Исходные данные
         private void gridDocument_DragEnter(object sender, DragEventArgs e)
@@ -919,7 +998,15 @@ namespace GW_Dogovor
         {
             _DragDrop(sender, e, 2, "Основные положения");
         }
-        #endregion 
+        private void grid_MailControl_DragDrop(object sender, DragEventArgs e)
+        {
+            _DragDrop(sender, e, 0, "Письма");
+        }
+        private void grid_Zadania_DragDrop(object sender, DragEventArgs e)
+        {
+            _DragDrop(sender, e, 1, "Задания");
+        }
+        #endregion DRAG Documents Исходные данные
 
         #region DRAG Tender Documents "Тендер"
         private void grid_TenderDoc_DragEnter(object sender, DragEventArgs e)
@@ -962,7 +1049,7 @@ namespace GW_Dogovor
 
         #endregion
 
-        #endregion
+        #endregion DRAG
 
         #region ARHIVE
         private void btn_BrouseArh_Click(object sender, EventArgs e)
@@ -1062,121 +1149,11 @@ namespace GW_Dogovor
 
         #endregion
 
-        private void grid_ProjectCode_SelectionChanged(object sender, EventArgs e)
+        #region BindingManager_button
+        #region Tender
+        private void tbtn_TndEdit_Click(object sender, EventArgs e)
         {
-            SetViewBindNavigators();
-        }
-
-        private void toolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            Form_AddFiles fSel = new Form_AddFiles(link_LocalFld.Text, link_ServetFld.Text);
-            fSel.ShowDialog();
-        }
-
-        private void tabControlMain_Selected(object sender, TabControlEventArgs e)
-        {
-            SetViewTabControl();
-        }
-
-        private void gridDocument_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == 3)
-            {
-                string p = gridDocument[2, e.RowIndex].Value.ToString(); // читаем путь
-
-                if (FileA.GetAtributesPath(p))
-                    FileA.RunFile(p);
-                else
-                    FileA.RunFolder(p);
-
-            }
-        }
-
-        private void tbtn_Edit_ItemCPlan_Click(object sender, EventArgs e)
-        {
-            Form_CPlan feCPlan = new Form_CPlan();
-            feCPlan.Show();
-            DB_Cmd.InitializeBindingSources();
-        }
-
-        private void grid_MailControl_DragDrop(object sender, DragEventArgs e)
-        {
-            _DragDrop(sender, e, 0, "Письма");
-        }
-
-        private void grid_Zadania_DragDrop(object sender, DragEventArgs e)
-        {
-            _DragDrop(sender, e, 1, "Задания");
-        }
-
-        private void grid_CPlan_DoubleClick(object sender, EventArgs e)
-        {
-            Form_CP001 fr = new Form_CP001();
-            fr.ShowDialog();
-            DB_Cmd.InitializeBindingSources();
-        }
-
-        private void btn_addCPItem_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void btn_del_CPItem_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void normalizeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show(feature.NormalizeNumSort("1.34.12"));
-
-        }
-
-        private void tbtn_AddDog_Click(object sender, EventArgs e)
-        {
-            DB_Cmd.AddDogovor();
-            int pos = DB_Cmd.bndDogovor.Position;
-
-            //MessageBox.Show(pos.ToString());
-           
-            EditDogovor();
-           
-            DB_Cmd.bndDogovor.Position = pos;
-
-            //MessageBox.Show(((DataRowView)(DB_Cmd.bndDogovor.Current)).Row["Nambe_Dog"].ToString());
-
-            //if (DB_Cmd.bndDopDogovor.Count == 0) 
-            //           DB_Cmd.AddDopSoglashenia();
-
-        }
-
-        private void btn_Refr_CP_Click(object sender, EventArgs e)
-        {
-            DB_Cmd.DBLoad();
-            //DB_Cmd.RefreshCPlan();
-            //DB_Cmd.adpDogovor.Fill(DB_Cmd.dsDB.DopSoglashenia);
-            //DB_Cmd.bndDogovor.ResetBindings(false);
-            //DB_Cmd.bndProject.ResetBindings(false);
-        }
-
-        private void btn_add_CP_Click(object sender, EventArgs e)
-        {
-            DB_Cmd.AddCalendarPlan();
-            Form_CP001 fr = new Form_CP001();
-            fr.ShowDialog();
-            DB_Cmd.InitializeBindingSources();
-        }
-
-        private void btn_delete_CP_Click(object sender, EventArgs e)
-        {
-            DB_Cmd.DeleteCalendarPlan();
-        }
-
-        private void btn_edit_CP_Click(object sender, EventArgs e)
-        {
-            Form_CP001 fr = new Form_CP001();
-            fr.ShowDialog();
-            DB_Cmd.InitializeBindingSources();
+            EditTender();
         }
 
         private void tbtn_TndDelete_Click(object sender, EventArgs e)
@@ -1187,21 +1164,14 @@ namespace GW_Dogovor
 
         private void tbtn_TndAdd_Click(object sender, EventArgs e)
         {
-            DB_Cmd.AddTender();
-            if (link_LocalFld.Text != "")
-                throw new Exception("Не заданы базовая рабочая папка на локальном диске");
-            FileA.CreateFolder("Тендер", link_LocalFld.Text);
-            string newPath = Path.Combine(Path.Combine(link_LocalFld.Text, "Тендер"), DateTime.Now.ToString("yyyy.MM.dd"));
-            FileA.CreateFolder(DateTime.Now.ToString("yyyy.MM.dd"), Path.Combine(link_LocalFld.Text, "Тендер"));
-            ((DataRowView)DB_Cmd.bndTender.Current).Row["Path"] = newPath;
+            DB_Cmd.AddTender(link_LocalFld.Text);
             EditTender();
-        }
 
-        private void tbtn_TndEdit_Click(object sender, EventArgs e)
-        {
-            EditTender();
+            SetViewBindNavigators();
         }
+        #endregion Tender
 
+        #region Dogovor
         private void tbtn_EditDog_Click(object sender, EventArgs e)
         {
             EditDogovor();
@@ -1212,6 +1182,177 @@ namespace GW_Dogovor
             DB_Cmd.DeleteDogovor();
             DB_Cmd.SaveDogovor();
         }
+
+        private void tbtn_AddDog_Click(object sender, EventArgs e)
+        {
+            int pos = DB_Cmd.bndDogovor.Position;
+
+            object newobject = DB_Cmd.AddDogovor();
+
+            EditDogovor();
+
+            DB_Cmd.grid_SetOldPosition(pos, newobject, DB_Cmd.bndDogovor, "DogID");
+
+            string s = "Для обеспечения целостности данных необходимо создать нулевое допсоглашение " +
+               "связанное с текущим договором. \r \n Если Вы согласны, то нажмите Ok!";
+
+            if (MessageBox.Show(s, "Автоматическое создание записи Дополнительного соглашения", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                DB_Cmd.AddDopSoglashenia();
+                EditDopDogovor();
+            }
+
+            SetViewBindNavigators();
+        }
+
+        //CPlan Tab Dogovor
+        private void tbtn_Edit_ItemCPlan_Click(object sender, EventArgs e)
+        {
+            Form_CPlan feCPlan = new Form_CPlan();
+            feCPlan.Show();
+            //DB_Cmd.InitializeBindingSources();
+
+            SetViewBindNavigators();
+        }
+        #endregion Dogovor
+
+        #region CPlan Tab DDog
+        private void btn_add_CP_Click(object sender, EventArgs e)
+        {
+            DB_Cmd.AddCalendarPlanDD();
+
+            Form_CP001 fr = new Form_CP001();
+            fr.ShowDialog();
+
+            //SetViewBindNavigators();
+        }
+
+        private void btn_delete_CP_Click(object sender, EventArgs e)
+        {
+            DB_Cmd.DeleteCalendarPlanDD();
+        }
+
+        private void btn_edit_CP_Click(object sender, EventArgs e)
+        {
+            Form_CP001 fr = new Form_CP001();
+            fr.ShowDialog();
+        }
+        #endregion CPlan Tab DDog
+
+        #region Project
+        private void tbtn_AddProject_Click(object sender, EventArgs e)
+        {
+            int pos = DB_Cmd.bndProject.Position;
+            object newProject = DB_Cmd.AddProject();
+
+            EditProject();
+
+            DB_Cmd.grid_SetOldPosition(pos, newProject, DB_Cmd.bndProject, "ID_project");
+
+            string s = "Для обеспечения целостности данных \r\n необходимо создать тендер связанный с проектом. " +
+                "\r \n Если Вы согласны, то нажмите Ok!";
+
+            if (MessageBox.Show(s, "Автоматическое создание записи Тендера", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                DB_Cmd.AddTender(link_LocalFld.Text);
+                EditTender();
+            }
+
+            SetViewBindNavigators();
+
+        }
+
+        private void tbtn_EditProject_Click(object sender, EventArgs e)
+        {
+            EditProject();
+        }
+
+        private void tbtn_DeleteProject_Click(object sender, EventArgs e)
+        {
+            DB_Cmd.DeleteProject();
+            DB_Cmd.SaveProject();
+        }
+        #endregion Project
+
+        #region Object
+        private void tbtn_EditObj_Click(object sender, EventArgs e)
+        {
+            EditObject();
+        }
+
+        private void tbtn_AddObj_Click(object sender, EventArgs e)
+        {
+            DB_Cmd.AddOBJECTS();
+            EditObject();
+        }
+
+        private void tbtn_DeleteObj_Click(object sender, EventArgs e)
+        {
+            DB_Cmd.DeleteOBJECTS();
+            DB_Cmd.SaveOBJECTS();
+        }
+
+        #endregion Object
+
+        #region SostavObj
+        private void tbtn_EditMark_Click(object sender, EventArgs e)
+        {
+            EditSostavObj();
+        }
+
+        private void tbtn_AddMark_Click(object sender, EventArgs e)
+        {
+            DB_Cmd.AddSostavObj();
+            EditSostavObj();
+        }
+
+        private void tbtn_DeleteMark_Click(object sender, EventArgs e)
+        {
+            DB_Cmd.DeleteSostavObj();
+            DB_Cmd.SaveSostavObj();
+        }
+
+        #endregion SostavObj
+
+        #region Zadania
+        private void tbtn_edit_Zadania_Click(object sender, EventArgs e)
+        {
+            EditZadania();
+        }
+
+        private void tbtn_add_Zadania_Click(object sender, EventArgs e)
+        {
+            DB_Cmd.AddZadania();
+            EditZadania();
+        }
+
+        private void tbtn_delete_Zadania_Click(object sender, EventArgs e)
+        {
+            DB_Cmd.DeleteZadania();
+            DB_Cmd.SaveZadania();
+        }
+
+        #endregion Zadania
+
+        #endregion BindingManager_button
+
+        private void normalizeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(feature.NormalizeNumSort("1.34.12"));
+
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+            DB_Cmd.Filter_Bnd(tb_findProject.Text, DB_Cmd.bndProject, "Code_object");
+        }
+
+        private void tbtn_RefreshAll_Click(object sender, EventArgs e)
+        {
+            ConnectDB();
+        }
+
+   
     }
 
 }

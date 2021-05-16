@@ -60,6 +60,8 @@ namespace DBClass {
         
         private ZadaniaDataTable tableZadania;
         
+        private Otdel_SNHPDataTable tableOtdel_SNHP;
+        
         private global::System.Data.DataRelation relationCalendarPlanAct;
         
         private global::System.Data.DataRelation relationDogovorCalendarPlan;
@@ -197,6 +199,9 @@ namespace DBClass {
                 }
                 if ((ds.Tables["Zadania"] != null)) {
                     base.Tables.Add(new ZadaniaDataTable(ds.Tables["Zadania"]));
+                }
+                if ((ds.Tables["Otdel_SNHP"] != null)) {
+                    base.Tables.Add(new Otdel_SNHPDataTable(ds.Tables["Otdel_SNHP"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -399,6 +404,16 @@ namespace DBClass {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public Otdel_SNHPDataTable Otdel_SNHP {
+            get {
+                return this.tableOtdel_SNHP;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.BrowsableAttribute(true)]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public override global::System.Data.SchemaSerializationMode SchemaSerializationMode {
@@ -518,6 +533,9 @@ namespace DBClass {
                 }
                 if ((ds.Tables["Zadania"] != null)) {
                     base.Tables.Add(new ZadaniaDataTable(ds.Tables["Zadania"]));
+                }
+                if ((ds.Tables["Otdel_SNHP"] != null)) {
+                    base.Tables.Add(new Otdel_SNHPDataTable(ds.Tables["Otdel_SNHP"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -660,6 +678,12 @@ namespace DBClass {
                     this.tableZadania.InitVars();
                 }
             }
+            this.tableOtdel_SNHP = ((Otdel_SNHPDataTable)(base.Tables["Otdel_SNHP"]));
+            if ((initTable == true)) {
+                if ((this.tableOtdel_SNHP != null)) {
+                    this.tableOtdel_SNHP.InitVars();
+                }
+            }
             this.relationCalendarPlanAct = this.Relations["CalendarPlanAct"];
             this.relationDogovorCalendarPlan = this.Relations["DogovorCalendarPlan"];
             this.relationProjectDogovor = this.Relations["ProjectDogovor"];
@@ -702,7 +726,7 @@ namespace DBClass {
             base.Tables.Add(this.tableCalendarPlan);
             this.tableDogovor = new DogovorDataTable();
             base.Tables.Add(this.tableDogovor);
-            this.tableDopSoglashenia = new DopSoglasheniaDataTable();
+            this.tableDopSoglashenia = new DopSoglasheniaDataTable(false);
             base.Tables.Add(this.tableDopSoglashenia);
             this.tableProject = new ProjectDataTable(false);
             base.Tables.Add(this.tableProject);
@@ -732,6 +756,8 @@ namespace DBClass {
             base.Tables.Add(this.tableOtdel);
             this.tableZadania = new ZadaniaDataTable();
             base.Tables.Add(this.tableZadania);
+            this.tableOtdel_SNHP = new Otdel_SNHPDataTable();
+            base.Tables.Add(this.tableOtdel_SNHP);
             this.relationCalendarPlanAct = new global::System.Data.DataRelation("CalendarPlanAct", new global::System.Data.DataColumn[] {
                         this.tableCalendarPlan.ID_KplanColumn}, new global::System.Data.DataColumn[] {
                         this.tableAct.ID_EtapColumn}, false);
@@ -948,6 +974,12 @@ namespace DBClass {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private bool ShouldSerializeOtdel_SNHP() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void SchemaChanged(object sender, global::System.ComponentModel.CollectionChangeEventArgs e) {
             if ((e.Action == global::System.ComponentModel.CollectionChangeAction.Remove)) {
                 this.InitVars();
@@ -1005,6 +1037,7 @@ namespace DBClass {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitExpressions() {
             this.CalendarPlan.NumDDColumn.Expression = "Parent([DopSoglasheniaCalendarPlan]).[Nambe_DS]";
+            this.DopSoglashenia.NumDogColumn.Expression = "Parent([DogovorDopSoglashenia]).[Nambe_Dog]";
             this.Project.AreaStroyColumn.Expression = "Parent([CustomersProject]).[NameCust]";
             this.Documents.TYPEColumn.Expression = "Parent([Documets_typeDocuments]).[Name_doc]";
             this.OBJECTS.NameGIPColumn.Expression = "Parent([Users GIP_OBJECTS]).[Family]";
@@ -1068,6 +1101,9 @@ namespace DBClass {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public delegate void ZadaniaRowChangeEventHandler(object sender, ZadaniaRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public delegate void Otdel_SNHPRowChangeEventHandler(object sender, Otdel_SNHPRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -1882,12 +1918,14 @@ namespace DBClass {
                 this.columnID_Kplan.AutoIncrementSeed = 1;
                 this.columnID_Kplan.AllowDBNull = false;
                 this.columnID_Kplan.Unique = true;
+                this.columnID_DopS.DefaultValue = ((int)(0));
                 this.columnID_EtapRoot.DefaultValue = ((int)(0));
                 this.columnNum_Etap.MaxLength = 255;
                 this.columnName_Etap.MaxLength = 536870910;
                 this.columnComments.MaxLength = 536870910;
                 this.columnV.MaxLength = 255;
                 this.columnNum_sort.MaxLength = 255;
+                this.columnStatGlob.DefaultValue = ((int)(0));
                 this.columnStatus.MaxLength = 255;
                 this.columnNumDD.ReadOnly = true;
             }
@@ -2630,12 +2668,23 @@ namespace DBClass {
             
             private global::System.Data.DataColumn columnStatus;
             
+            private global::System.Data.DataColumn columnNumDog;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DopSoglasheniaDataTable() {
+            public DopSoglasheniaDataTable() : 
+                    this(false) {
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public DopSoglasheniaDataTable(bool initExpressions) {
                 this.TableName = "DopSoglashenia";
                 this.BeginInit();
                 this.InitClass();
+                if ((initExpressions == true)) {
+                    this.InitExpressions();
+                }
                 this.EndInit();
             }
             
@@ -2737,6 +2786,14 @@ namespace DBClass {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn NumDogColumn {
+                get {
+                    return this.columnNumDog;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2772,6 +2829,29 @@ namespace DBClass {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public DopSoglasheniaRow AddDopSoglasheniaRow(DogovorRow parentDogovorRowByDogovorDopSoglashenia, short Nambe_DS, string Sostav, System.DateTime Data_Konec, string Comments, bool StatPod, System.DateTime DataPodp, string Status, string NumDog) {
+                DopSoglasheniaRow rowDopSoglasheniaRow = ((DopSoglasheniaRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        null,
+                        Nambe_DS,
+                        Sostav,
+                        Data_Konec,
+                        Comments,
+                        StatPod,
+                        DataPodp,
+                        Status,
+                        NumDog};
+                if ((parentDogovorRowByDogovorDopSoglashenia != null)) {
+                    columnValuesArray[1] = parentDogovorRowByDogovorDopSoglashenia[0];
+                }
+                rowDopSoglasheniaRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowDopSoglasheniaRow);
+                return rowDopSoglasheniaRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public DopSoglasheniaRow AddDopSoglasheniaRow(DogovorRow parentDogovorRowByDogovorDopSoglashenia, short Nambe_DS, string Sostav, System.DateTime Data_Konec, string Comments, bool StatPod, System.DateTime DataPodp, string Status) {
                 DopSoglasheniaRow rowDopSoglasheniaRow = ((DopSoglasheniaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
@@ -2783,7 +2863,8 @@ namespace DBClass {
                         Comments,
                         StatPod,
                         DataPodp,
-                        Status};
+                        Status,
+                        null};
                 if ((parentDogovorRowByDogovorDopSoglashenia != null)) {
                     columnValuesArray[1] = parentDogovorRowByDogovorDopSoglashenia[0];
                 }
@@ -2825,6 +2906,7 @@ namespace DBClass {
                 this.columnStatPod = base.Columns["StatPod"];
                 this.columnDataPodp = base.Columns["DataPodp"];
                 this.columnStatus = base.Columns["Status"];
+                this.columnNumDog = base.Columns["NumDog"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2848,6 +2930,8 @@ namespace DBClass {
                 base.Columns.Add(this.columnDataPodp);
                 this.columnStatus = new global::System.Data.DataColumn("Status", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnStatus);
+                this.columnNumDog = new global::System.Data.DataColumn("NumDog", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNumDog);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnDS_ID}, true));
                 this.columnDS_ID.AutoIncrement = true;
@@ -2857,6 +2941,7 @@ namespace DBClass {
                 this.columnSostav.MaxLength = 50;
                 this.columnComments.MaxLength = 255;
                 this.columnStatus.MaxLength = 255;
+                this.columnNumDog.ReadOnly = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2875,6 +2960,12 @@ namespace DBClass {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Type GetRowType() {
                 return typeof(DopSoglasheniaRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            private void InitExpressions() {
+                this.NumDogColumn.Expression = "Parent([DogovorDopSoglashenia]).[Nambe_Dog]";
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6540,9 +6631,11 @@ namespace DBClass {
             
             private global::System.Data.DataColumn columnArhiv;
             
-            private global::System.Data.DataColumn columnSM;
+            private global::System.Data.DataColumn columnData_GIP_viz;
             
-            private global::System.Data.DataColumn columnData_SM;
+            private global::System.Data.DataColumn columnNotes;
+            
+            private global::System.Data.DataColumn columnid_Parent;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -6635,17 +6728,25 @@ namespace DBClass {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn SMColumn {
+            public global::System.Data.DataColumn Data_GIP_vizColumn {
                 get {
-                    return this.columnSM;
+                    return this.columnData_GIP_viz;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn Data_SMColumn {
+            public global::System.Data.DataColumn NotesColumn {
                 get {
-                    return this.columnData_SM;
+                    return this.columnNotes;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn id_ParentColumn {
+                get {
+                    return this.columnid_Parent;
                 }
             }
             
@@ -6686,7 +6787,7 @@ namespace DBClass {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public SostavDocRow AddSostavDocRow(OBJECTSRow parentOBJECTSRowByOBJECTSSostavDoc, string Mark, System.DateTime Data_plan, System.DateTime Data_fakt, bool GIP_viz, bool Arhiv, string SM, System.DateTime Data_SM) {
+            public SostavDocRow AddSostavDocRow(OBJECTSRow parentOBJECTSRowByOBJECTSSostavDoc, string Mark, System.DateTime Data_plan, System.DateTime Data_fakt, bool GIP_viz, bool Arhiv, System.DateTime Data_GIP_viz, string Notes, int id_Parent) {
                 SostavDocRow rowSostavDocRow = ((SostavDocRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -6696,8 +6797,9 @@ namespace DBClass {
                         Data_fakt,
                         GIP_viz,
                         Arhiv,
-                        SM,
-                        Data_SM};
+                        Data_GIP_viz,
+                        Notes,
+                        id_Parent};
                 if ((parentOBJECTSRowByOBJECTSSostavDoc != null)) {
                     columnValuesArray[1] = parentOBJECTSRowByOBJECTSSostavDoc[0];
                 }
@@ -6737,8 +6839,9 @@ namespace DBClass {
                 this.columnData_fakt = base.Columns["Data_fakt"];
                 this.columnGIP_viz = base.Columns["GIP_viz"];
                 this.columnArhiv = base.Columns["Arhiv"];
-                this.columnSM = base.Columns["SM"];
-                this.columnData_SM = base.Columns["Data_SM"];
+                this.columnData_GIP_viz = base.Columns["Data_GIP_viz"];
+                this.columnNotes = base.Columns["Notes"];
+                this.columnid_Parent = base.Columns["id_Parent"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6758,10 +6861,12 @@ namespace DBClass {
                 base.Columns.Add(this.columnGIP_viz);
                 this.columnArhiv = new global::System.Data.DataColumn("Arhiv", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnArhiv);
-                this.columnSM = new global::System.Data.DataColumn("SM", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSM);
-                this.columnData_SM = new global::System.Data.DataColumn("Data_SM", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnData_SM);
+                this.columnData_GIP_viz = new global::System.Data.DataColumn("Data_GIP_viz", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnData_GIP_viz);
+                this.columnNotes = new global::System.Data.DataColumn("Notes", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNotes);
+                this.columnid_Parent = new global::System.Data.DataColumn("id_Parent", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnid_Parent);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnIDSostavDoc}, true));
                 this.columnIDSostavDoc.AutoIncrement = true;
@@ -6769,7 +6874,9 @@ namespace DBClass {
                 this.columnIDSostavDoc.AllowDBNull = false;
                 this.columnIDSostavDoc.Unique = true;
                 this.columnMark.MaxLength = 255;
-                this.columnSM.MaxLength = 255;
+                this.columnGIP_viz.DefaultValue = ((bool)(false));
+                this.columnArhiv.DefaultValue = ((bool)(false));
+                this.columnNotes.MaxLength = 255;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8390,6 +8497,297 @@ namespace DBClass {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "ZadaniaDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class Otdel_SNHPDataTable : global::System.Data.TypedTableBase<Otdel_SNHPRow> {
+            
+            private global::System.Data.DataColumn columnID_otdel;
+            
+            private global::System.Data.DataColumn columnКО;
+            
+            private global::System.Data.DataColumn columnИмяКО;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public Otdel_SNHPDataTable() {
+                this.TableName = "Otdel_SNHP";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal Otdel_SNHPDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected Otdel_SNHPDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ID_otdelColumn {
+                get {
+                    return this.columnID_otdel;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn КОColumn {
+                get {
+                    return this.columnКО;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ИмяКОColumn {
+                get {
+                    return this.columnИмяКО;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public Otdel_SNHPRow this[int index] {
+                get {
+                    return ((Otdel_SNHPRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event Otdel_SNHPRowChangeEventHandler Otdel_SNHPRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event Otdel_SNHPRowChangeEventHandler Otdel_SNHPRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event Otdel_SNHPRowChangeEventHandler Otdel_SNHPRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event Otdel_SNHPRowChangeEventHandler Otdel_SNHPRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void AddOtdel_SNHPRow(Otdel_SNHPRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public Otdel_SNHPRow AddOtdel_SNHPRow(string КО, string ИмяКО) {
+                Otdel_SNHPRow rowOtdel_SNHPRow = ((Otdel_SNHPRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        КО,
+                        ИмяКО};
+                rowOtdel_SNHPRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowOtdel_SNHPRow);
+                return rowOtdel_SNHPRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public Otdel_SNHPRow FindByID_otdel(int ID_otdel) {
+                return ((Otdel_SNHPRow)(this.Rows.Find(new object[] {
+                            ID_otdel})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                Otdel_SNHPDataTable cln = ((Otdel_SNHPDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new Otdel_SNHPDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal void InitVars() {
+                this.columnID_otdel = base.Columns["ID_otdel"];
+                this.columnКО = base.Columns["КО"];
+                this.columnИмяКО = base.Columns["ИмяКО"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            private void InitClass() {
+                this.columnID_otdel = new global::System.Data.DataColumn("ID_otdel", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnID_otdel);
+                this.columnКО = new global::System.Data.DataColumn("КО", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnКО);
+                this.columnИмяКО = new global::System.Data.DataColumn("ИмяКО", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnИмяКО);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnID_otdel}, true));
+                this.columnID_otdel.AutoIncrement = true;
+                this.columnID_otdel.AutoIncrementSeed = -1;
+                this.columnID_otdel.AutoIncrementStep = -1;
+                this.columnID_otdel.AllowDBNull = false;
+                this.columnID_otdel.Unique = true;
+                this.columnКО.MaxLength = 6;
+                this.columnИмяКО.MaxLength = 90;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public Otdel_SNHPRow NewOtdel_SNHPRow() {
+                return ((Otdel_SNHPRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new Otdel_SNHPRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(Otdel_SNHPRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.Otdel_SNHPRowChanged != null)) {
+                    this.Otdel_SNHPRowChanged(this, new Otdel_SNHPRowChangeEvent(((Otdel_SNHPRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.Otdel_SNHPRowChanging != null)) {
+                    this.Otdel_SNHPRowChanging(this, new Otdel_SNHPRowChangeEvent(((Otdel_SNHPRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.Otdel_SNHPRowDeleted != null)) {
+                    this.Otdel_SNHPRowDeleted(this, new Otdel_SNHPRowChangeEvent(((Otdel_SNHPRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.Otdel_SNHPRowDeleting != null)) {
+                    this.Otdel_SNHPRowDeleting(this, new Otdel_SNHPRowChangeEvent(((Otdel_SNHPRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void RemoveOtdel_SNHPRow(Otdel_SNHPRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                _bsp_snhpDataSet ds = new _bsp_snhpDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "Otdel_SNHPDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -10066,6 +10464,22 @@ namespace DBClass {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string NumDog {
+                get {
+                    try {
+                        return ((string)(this[this.tableDopSoglashenia.NumDogColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'NumDog\' в таблице \'DopSoglashenia\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDopSoglashenia.NumDogColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public DogovorRow DogovorRow {
                 get {
                     return ((DogovorRow)(this.GetParentRow(this.Table.ParentRelations["DogovorDopSoglashenia"])));
@@ -10169,6 +10583,18 @@ namespace DBClass {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetStatusNull() {
                 this[this.tableDopSoglashenia.StatusColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsNumDogNull() {
+                return this.IsNull(this.tableDopSoglashenia.NumDogColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetNumDogNull() {
+                this[this.tableDopSoglashenia.NumDogColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -12702,33 +13128,49 @@ namespace DBClass {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string SM {
+            public System.DateTime Data_GIP_viz {
                 get {
                     try {
-                        return ((string)(this[this.tableSostavDoc.SMColumn]));
+                        return ((global::System.DateTime)(this[this.tableSostavDoc.Data_GIP_vizColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'SM\' в таблице \'SostavDoc\' равно DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Data_GIP_viz\' в таблице \'SostavDoc\' равно DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableSostavDoc.SMColumn] = value;
+                    this[this.tableSostavDoc.Data_GIP_vizColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public System.DateTime Data_SM {
+            public string Notes {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tableSostavDoc.Data_SMColumn]));
+                        return ((string)(this[this.tableSostavDoc.NotesColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Data_SM\' в таблице \'SostavDoc\' равно DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Notes\' в таблице \'SostavDoc\' равно DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableSostavDoc.Data_SMColumn] = value;
+                    this[this.tableSostavDoc.NotesColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int id_Parent {
+                get {
+                    try {
+                        return ((int)(this[this.tableSostavDoc.id_ParentColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'id_Parent\' в таблице \'SostavDoc\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSostavDoc.id_ParentColumn] = value;
                 }
             }
             
@@ -12817,26 +13259,38 @@ namespace DBClass {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsSMNull() {
-                return this.IsNull(this.tableSostavDoc.SMColumn);
+            public bool IsData_GIP_vizNull() {
+                return this.IsNull(this.tableSostavDoc.Data_GIP_vizColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetSMNull() {
-                this[this.tableSostavDoc.SMColumn] = global::System.Convert.DBNull;
+            public void SetData_GIP_vizNull() {
+                this[this.tableSostavDoc.Data_GIP_vizColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsData_SMNull() {
-                return this.IsNull(this.tableSostavDoc.Data_SMColumn);
+            public bool IsNotesNull() {
+                return this.IsNull(this.tableSostavDoc.NotesColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetData_SMNull() {
-                this[this.tableSostavDoc.Data_SMColumn] = global::System.Convert.DBNull;
+            public void SetNotesNull() {
+                this[this.tableSostavDoc.NotesColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Isid_ParentNull() {
+                return this.IsNull(this.tableSostavDoc.id_ParentColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setid_ParentNull() {
+                this[this.tableSostavDoc.id_ParentColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -13839,6 +14293,88 @@ namespace DBClass {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class Otdel_SNHPRow : global::System.Data.DataRow {
+            
+            private Otdel_SNHPDataTable tableOtdel_SNHP;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal Otdel_SNHPRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableOtdel_SNHP = ((Otdel_SNHPDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int ID_otdel {
+                get {
+                    return ((int)(this[this.tableOtdel_SNHP.ID_otdelColumn]));
+                }
+                set {
+                    this[this.tableOtdel_SNHP.ID_otdelColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string КО {
+                get {
+                    try {
+                        return ((string)(this[this.tableOtdel_SNHP.КОColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'КО\' в таблице \'Otdel_SNHP\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOtdel_SNHP.КОColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string ИмяКО {
+                get {
+                    try {
+                        return ((string)(this[this.tableOtdel_SNHP.ИмяКОColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'ИмяКО\' в таблице \'Otdel_SNHP\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOtdel_SNHP.ИмяКОColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsКОNull() {
+                return this.IsNull(this.tableOtdel_SNHP.КОColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetКОNull() {
+                this[this.tableOtdel_SNHP.КОColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsИмяКОNull() {
+                return this.IsNull(this.tableOtdel_SNHP.ИмяКОColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetИмяКОNull() {
+                this[this.tableOtdel_SNHP.ИмяКОColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -14436,6 +14972,40 @@ namespace DBClass {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public ZadaniaRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public class Otdel_SNHPRowChangeEvent : global::System.EventArgs {
+            
+            private Otdel_SNHPRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public Otdel_SNHPRowChangeEvent(Otdel_SNHPRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public Otdel_SNHPRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -16932,7 +17502,7 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual _bsp_snhpDataSet.DopSoglasheniaDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            _bsp_snhpDataSet.DopSoglasheniaDataTable dataTable = new _bsp_snhpDataSet.DopSoglasheniaDataTable();
+            _bsp_snhpDataSet.DopSoglasheniaDataTable dataTable = new _bsp_snhpDataSet.DopSoglasheniaDataTable(true);
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -21671,12 +22241,13 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("Data_fakt", "Data_fakt");
             tableMapping.ColumnMappings.Add("GIP_viz", "GIP_viz");
             tableMapping.ColumnMappings.Add("Arhiv", "Arhiv");
-            tableMapping.ColumnMappings.Add("SM", "SM");
-            tableMapping.ColumnMappings.Add("Data_SM", "Data_SM");
+            tableMapping.ColumnMappings.Add("Data_GIP_viz", "Data_GIP_viz");
+            tableMapping.ColumnMappings.Add("Notes", "Notes");
+            tableMapping.ColumnMappings.Add("id_Parent", "id_Parent");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM `SostavDoc` WHERE ((`IDSostavDoc` = ?) AND ((? = 1 AND `IDOBJ` IS NULL) OR (`IDOBJ` = ?)) AND ((? = 1 AND `Mark` IS NULL) OR (`Mark` = ?)) AND ((? = 1 AND `Data_plan` IS NULL) OR (`Data_plan` = ?)) AND ((? = 1 AND `Data_fakt` IS NULL) OR (`Data_fakt` = ?)) AND ((? = 1 AND `GIP_viz` IS NULL) OR (`GIP_viz` = ?)) AND ((? = 1 AND `Arhiv` IS NULL) OR (`Arhiv` = ?)) AND ((? = 1 AND `SM` IS NULL) OR (`SM` = ?)) AND ((? = 1 AND `Data_SM` IS NULL) OR (`Data_SM` = ?)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM `SostavDoc` WHERE ((`IDSostavDoc` = ?) AND ((? = 1 AND `IDOBJ` IS NULL) OR (`IDOBJ` = ?)) AND ((? = 1 AND `Mark` IS NULL) OR (`Mark` = ?)) AND ((? = 1 AND `Data_plan` IS NULL) OR (`Data_plan` = ?)) AND ((? = 1 AND `Data_fakt` IS NULL) OR (`Data_fakt` = ?)) AND ((? = 1 AND `GIP_viz` IS NULL) OR (`GIP_viz` = ?)) AND ((? = 1 AND `Arhiv` IS NULL) OR (`Arhiv` = ?)) AND ((? = 1 AND `Data_GIP_viz` IS NULL) OR (`Data_GIP_viz` = ?)) AND ((? = 1 AND `Notes` IS NULL) OR (`Notes` = ?)) AND ((? = 1 AND `id_Parent` IS NULL) OR (`id_Parent` = ?)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_IDSostavDoc", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "IDSostavDoc", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_IDOBJ", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "IDOBJ", global::System.Data.DataRowVersion.Original, true, null));
@@ -21691,14 +22262,16 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_GIP_viz", global::System.Data.OleDb.OleDbType.Boolean, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "GIP_viz", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Arhiv", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Arhiv", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Arhiv", global::System.Data.OleDb.OleDbType.Boolean, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Arhiv", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_SM", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "SM", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_SM", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "SM", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Data_SM", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Data_SM", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Data_SM", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Data_SM", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Data_GIP_viz", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Data_GIP_viz", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Data_GIP_viz", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Data_GIP_viz", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Notes", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Notes", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Notes", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Notes", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_id_Parent", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_Parent", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_id_Parent", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_Parent", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.InsertCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO `SostavDoc` (`IDOBJ`, `Mark`, `Data_plan`, `Data_fakt`, `GIP_viz`, `A" +
-                "rhiv`, `SM`, `Data_SM`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+                "rhiv`, `Data_GIP_viz`, `Notes`, `id_Parent`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IDOBJ", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "IDOBJ", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Mark", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Mark", global::System.Data.DataRowVersion.Current, false, null));
@@ -21706,11 +22279,12 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Data_fakt", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Data_fakt", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("GIP_viz", global::System.Data.OleDb.OleDbType.Boolean, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "GIP_viz", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Arhiv", global::System.Data.OleDb.OleDbType.Boolean, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Arhiv", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("SM", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "SM", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Data_SM", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Data_SM", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Data_GIP_viz", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Data_GIP_viz", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Notes", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Notes", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("id_Parent", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_Parent", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE `SostavDoc` SET `IDOBJ` = ?, `Mark` = ?, `Data_plan` = ?, `Data_fakt` = ?, `GIP_viz` = ?, `Arhiv` = ?, `SM` = ?, `Data_SM` = ? WHERE ((`IDSostavDoc` = ?) AND ((? = 1 AND `IDOBJ` IS NULL) OR (`IDOBJ` = ?)) AND ((? = 1 AND `Mark` IS NULL) OR (`Mark` = ?)) AND ((? = 1 AND `Data_plan` IS NULL) OR (`Data_plan` = ?)) AND ((? = 1 AND `Data_fakt` IS NULL) OR (`Data_fakt` = ?)) AND ((? = 1 AND `GIP_viz` IS NULL) OR (`GIP_viz` = ?)) AND ((? = 1 AND `Arhiv` IS NULL) OR (`Arhiv` = ?)) AND ((? = 1 AND `SM` IS NULL) OR (`SM` = ?)) AND ((? = 1 AND `Data_SM` IS NULL) OR (`Data_SM` = ?)))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE `SostavDoc` SET `IDOBJ` = ?, `Mark` = ?, `Data_plan` = ?, `Data_fakt` = ?, `GIP_viz` = ?, `Arhiv` = ?, `Data_GIP_viz` = ?, `Notes` = ?, `id_Parent` = ? WHERE ((`IDSostavDoc` = ?) AND ((? = 1 AND `IDOBJ` IS NULL) OR (`IDOBJ` = ?)) AND ((? = 1 AND `Mark` IS NULL) OR (`Mark` = ?)) AND ((? = 1 AND `Data_plan` IS NULL) OR (`Data_plan` = ?)) AND ((? = 1 AND `Data_fakt` IS NULL) OR (`Data_fakt` = ?)) AND ((? = 1 AND `GIP_viz` IS NULL) OR (`GIP_viz` = ?)) AND ((? = 1 AND `Arhiv` IS NULL) OR (`Arhiv` = ?)) AND ((? = 1 AND `Data_GIP_viz` IS NULL) OR (`Data_GIP_viz` = ?)) AND ((? = 1 AND `Notes` IS NULL) OR (`Notes` = ?)) AND ((? = 1 AND `id_Parent` IS NULL) OR (`id_Parent` = ?)))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IDOBJ", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "IDOBJ", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Mark", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Mark", global::System.Data.DataRowVersion.Current, false, null));
@@ -21718,8 +22292,9 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Data_fakt", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Data_fakt", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("GIP_viz", global::System.Data.OleDb.OleDbType.Boolean, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "GIP_viz", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Arhiv", global::System.Data.OleDb.OleDbType.Boolean, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Arhiv", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("SM", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "SM", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Data_SM", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Data_SM", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Data_GIP_viz", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Data_GIP_viz", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Notes", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Notes", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("id_Parent", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_Parent", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_IDSostavDoc", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "IDSostavDoc", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_IDOBJ", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "IDOBJ", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_IDOBJ", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "IDOBJ", global::System.Data.DataRowVersion.Original, false, null));
@@ -21733,10 +22308,12 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_GIP_viz", global::System.Data.OleDb.OleDbType.Boolean, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "GIP_viz", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Arhiv", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Arhiv", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Arhiv", global::System.Data.OleDb.OleDbType.Boolean, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Arhiv", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_SM", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "SM", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_SM", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "SM", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Data_SM", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Data_SM", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Data_SM", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Data_SM", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Data_GIP_viz", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Data_GIP_viz", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Data_GIP_viz", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Data_GIP_viz", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Notes", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Notes", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Notes", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Notes", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_id_Parent", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_Parent", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_id_Parent", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_Parent", global::System.Data.DataRowVersion.Original, false, null));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -21752,8 +22329,8 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
             this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT IDSostavDoc, IDOBJ, Mark, Data_plan, Data_fakt, GIP_viz, Arhiv, SM, Data_S" +
-                "M FROM SostavDoc";
+            this._commandCollection[0].CommandText = "SELECT        IDSostavDoc, IDOBJ, Mark, Data_plan, Data_fakt, GIP_viz, Arhiv, Dat" +
+                "a_GIP_viz, Notes, id_Parent\r\nFROM            SostavDoc";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -21814,19 +22391,12 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_IDSostavDoc, global::System.Nullable<int> Original_IDOBJ, string Original_Mark, global::System.Nullable<global::System.DateTime> Original_Data_plan, global::System.Nullable<global::System.DateTime> Original_Data_fakt, bool Original_GIP_viz, bool Original_Arhiv, string Original_SM, global::System.Nullable<global::System.DateTime> Original_Data_SM) {
+        public virtual int Delete(int Original_IDSostavDoc, int Original_IDOBJ, string Original_Mark, global::System.Nullable<global::System.DateTime> Original_Data_plan, global::System.Nullable<global::System.DateTime> Original_Data_fakt, bool Original_GIP_viz, bool Original_Arhiv, global::System.Nullable<global::System.DateTime> Original_Data_GIP_viz, string Original_Notes, global::System.Nullable<int> Original_id_Parent) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_IDSostavDoc));
-            if ((Original_IDOBJ.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_IDOBJ.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_IDOBJ));
             if ((Original_Mark == null)) {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("Original_Mark");
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
@@ -21852,21 +22422,29 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
             this.Adapter.DeleteCommand.Parameters[10].Value = ((bool)(Original_GIP_viz));
             this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(0));
             this.Adapter.DeleteCommand.Parameters[12].Value = ((bool)(Original_Arhiv));
-            if ((Original_SM == null)) {
+            if ((Original_Data_GIP_viz.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[14].Value = ((System.DateTime)(Original_Data_GIP_viz.Value));
+            }
+            else {
                 this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[14].Value = ((string)(Original_SM));
-            }
-            if ((Original_Data_SM.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[16].Value = ((System.DateTime)(Original_Data_SM.Value));
-            }
-            else {
+            if ((Original_Notes == null)) {
                 this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[16].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[16].Value = ((string)(Original_Notes));
+            }
+            if ((Original_id_Parent.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[17].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[18].Value = ((int)(Original_id_Parent.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[17].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[18].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -21888,15 +22466,10 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(global::System.Nullable<int> IDOBJ, string Mark, global::System.Nullable<global::System.DateTime> Data_plan, global::System.Nullable<global::System.DateTime> Data_fakt, bool GIP_viz, bool Arhiv, string SM, global::System.Nullable<global::System.DateTime> Data_SM) {
-            if ((IDOBJ.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((int)(IDOBJ.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
-            }
+        public virtual int Insert(int IDOBJ, string Mark, global::System.Nullable<global::System.DateTime> Data_plan, global::System.Nullable<global::System.DateTime> Data_fakt, bool GIP_viz, bool Arhiv, global::System.Nullable<global::System.DateTime> Data_GIP_viz, string Notes, global::System.Nullable<int> id_Parent) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(IDOBJ));
             if ((Mark == null)) {
-                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("Mark");
             }
             else {
                 this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Mark));
@@ -21915,17 +22488,23 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
             }
             this.Adapter.InsertCommand.Parameters[4].Value = ((bool)(GIP_viz));
             this.Adapter.InsertCommand.Parameters[5].Value = ((bool)(Arhiv));
-            if ((SM == null)) {
+            if ((Data_GIP_viz.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[6].Value = ((System.DateTime)(Data_GIP_viz.Value));
+            }
+            else {
                 this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(SM));
-            }
-            if ((Data_SM.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[7].Value = ((System.DateTime)(Data_SM.Value));
-            }
-            else {
+            if ((Notes == null)) {
                 this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(Notes));
+            }
+            if ((id_Parent.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[8].Value = ((int)(id_Parent.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -21948,31 +22527,28 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
-                    global::System.Nullable<int> IDOBJ, 
+                    int IDOBJ, 
                     string Mark, 
                     global::System.Nullable<global::System.DateTime> Data_plan, 
                     global::System.Nullable<global::System.DateTime> Data_fakt, 
                     bool GIP_viz, 
                     bool Arhiv, 
-                    string SM, 
-                    global::System.Nullable<global::System.DateTime> Data_SM, 
+                    global::System.Nullable<global::System.DateTime> Data_GIP_viz, 
+                    string Notes, 
+                    global::System.Nullable<int> id_Parent, 
                     int Original_IDSostavDoc, 
-                    global::System.Nullable<int> Original_IDOBJ, 
+                    int Original_IDOBJ, 
                     string Original_Mark, 
                     global::System.Nullable<global::System.DateTime> Original_Data_plan, 
                     global::System.Nullable<global::System.DateTime> Original_Data_fakt, 
                     bool Original_GIP_viz, 
                     bool Original_Arhiv, 
-                    string Original_SM, 
-                    global::System.Nullable<global::System.DateTime> Original_Data_SM) {
-            if ((IDOBJ.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(IDOBJ.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
-            }
+                    global::System.Nullable<global::System.DateTime> Original_Data_GIP_viz, 
+                    string Original_Notes, 
+                    global::System.Nullable<int> Original_id_Parent) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(IDOBJ));
             if ((Mark == null)) {
-                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("Mark");
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Mark));
@@ -21991,70 +22567,77 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
             }
             this.Adapter.UpdateCommand.Parameters[4].Value = ((bool)(GIP_viz));
             this.Adapter.UpdateCommand.Parameters[5].Value = ((bool)(Arhiv));
-            if ((SM == null)) {
+            if ((Data_GIP_viz.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((System.DateTime)(Data_GIP_viz.Value));
+            }
+            else {
                 this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(SM));
-            }
-            if ((Data_SM.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((System.DateTime)(Data_SM.Value));
-            }
-            else {
+            if ((Notes == null)) {
                 this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_IDSostavDoc));
-            if ((Original_IDOBJ.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Original_IDOBJ.Value));
+            else {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Notes));
+            }
+            if ((id_Parent.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(id_Parent.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_IDSostavDoc));
+            this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(0));
+            this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(Original_IDOBJ));
             if ((Original_Mark == null)) {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("Original_Mark");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_Mark));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Original_Mark));
             }
             if ((Original_Data_plan.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((System.DateTime)(Original_Data_plan.Value));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((System.DateTime)(Original_Data_plan.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
             }
             if ((Original_Data_fakt.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((System.DateTime)(Original_Data_fakt.Value));
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((System.DateTime)(Original_Data_fakt.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(0));
-            this.Adapter.UpdateCommand.Parameters[18].Value = ((bool)(Original_GIP_viz));
-            this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(0));
-            this.Adapter.UpdateCommand.Parameters[20].Value = ((bool)(Original_Arhiv));
-            if ((Original_SM == null)) {
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[22].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[22].Value = ((string)(Original_SM));
-            }
-            if ((Original_Data_SM.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[24].Value = ((System.DateTime)(Original_Data_SM.Value));
+            this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(0));
+            this.Adapter.UpdateCommand.Parameters[19].Value = ((bool)(Original_GIP_viz));
+            this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(0));
+            this.Adapter.UpdateCommand.Parameters[21].Value = ((bool)(Original_Arhiv));
+            if ((Original_Data_GIP_viz.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((System.DateTime)(Original_Data_GIP_viz.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[24].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[23].Value = global::System.DBNull.Value;
+            }
+            if ((Original_Notes == null)) {
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[25].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((string)(Original_Notes));
+            }
+            if ((Original_id_Parent.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((int)(Original_id_Parent.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[27].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -24024,6 +24607,354 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
     }
     
     /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class Otdel_SNHPTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.OleDb.OleDbDataAdapter _adapter;
+        
+        private global::System.Data.OleDb.OleDbConnection _connection;
+        
+        private global::System.Data.OleDb.OleDbTransaction _transaction;
+        
+        private global::System.Data.OleDb.OleDbCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public Otdel_SNHPTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        protected internal global::System.Data.OleDb.OleDbDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        internal global::System.Data.OleDb.OleDbConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.OleDb.OleDbCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        internal global::System.Data.OleDb.OleDbTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        protected global::System.Data.OleDb.OleDbCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.OleDb.OleDbDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "Otdel_SNHP";
+            tableMapping.ColumnMappings.Add("ID_otdel", "ID_otdel");
+            tableMapping.ColumnMappings.Add("КО", "КО");
+            tableMapping.ColumnMappings.Add("ИмяКО", "ИмяКО");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::System.Data.OleDb.OleDbCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM `Otdel_SNHP` WHERE ((`ID_otdel` = ?) AND ((? = 1 AND `КО` IS NULL) OR" +
+                " (`КО` = ?)) AND ((? = 1 AND `ИмяКО` IS NULL) OR (`ИмяКО` = ?)))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_ID_otdel", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ID_otdel", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_КО", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "КО", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_КО", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "КО", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_ИмяКО", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ИмяКО", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_ИмяКО", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ИмяКО", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.InsertCommand = new global::System.Data.OleDb.OleDbCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = "INSERT INTO `Otdel_SNHP` (`КО`, `ИмяКО`) VALUES (?, ?)";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("КО", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "КО", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ИмяКО", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ИмяКО", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand = new global::System.Data.OleDb.OleDbCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = "UPDATE `Otdel_SNHP` SET `КО` = ?, `ИмяКО` = ? WHERE ((`ID_otdel` = ?) AND ((? = 1" +
+                " AND `КО` IS NULL) OR (`КО` = ?)) AND ((? = 1 AND `ИмяКО` IS NULL) OR (`ИмяКО` =" +
+                " ?)))";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("КО", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "КО", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ИмяКО", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ИмяКО", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_ID_otdel", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ID_otdel", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_КО", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "КО", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_КО", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "КО", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_ИмяКО", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ИмяКО", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_ИмяКО", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ИмяКО", global::System.Data.DataRowVersion.Original, false, null));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.OleDb.OleDbConnection();
+            this._connection.ConnectionString = global::DBClass.Properties.Settings.Default.dbs_ConnectString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
+            this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT        ID_otdel, КО, ИмяКО\r\nFROM            Otdel_SNHP";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(_bsp_snhpDataSet.Otdel_SNHPDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual _bsp_snhpDataSet.Otdel_SNHPDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            _bsp_snhpDataSet.Otdel_SNHPDataTable dataTable = new _bsp_snhpDataSet.Otdel_SNHPDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(_bsp_snhpDataSet.Otdel_SNHPDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(_bsp_snhpDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "Otdel_SNHP");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(int Original_ID_otdel, string Original_КО, string Original_ИмяКО) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_ID_otdel));
+            if ((Original_КО == null)) {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_КО));
+            }
+            if ((Original_ИмяКО == null)) {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_ИмяКО));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(string КО, string ИмяКО) {
+            if ((КО == null)) {
+                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(КО));
+            }
+            if ((ИмяКО == null)) {
+                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(ИмяКО));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(string КО, string ИмяКО, int Original_ID_otdel, string Original_КО, string Original_ИмяКО) {
+            if ((КО == null)) {
+                this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(КО));
+            }
+            if ((ИмяКО == null)) {
+                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(ИмяКО));
+            }
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Original_ID_otdel));
+            if ((Original_КО == null)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Original_КО));
+            }
+            if ((Original_ИмяКО == null)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_ИмяКО));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+    }
+    
+    /// <summary>
     ///TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
     ///</summary>
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -24068,6 +24999,8 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
         private OtdelTableAdapter _otdelTableAdapter;
         
         private ZadaniaTableAdapter _zadaniaTableAdapter;
+        
+        private Otdel_SNHPTableAdapter _otdel_SNHPTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -24324,6 +25257,20 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
+        public Otdel_SNHPTableAdapter Otdel_SNHPTableAdapter {
+            get {
+                return this._otdel_SNHPTableAdapter;
+            }
+            set {
+                this._otdel_SNHPTableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public bool BackupDataSetBeforeUpdate {
             get {
                 return this._backupDataSetBeforeUpdate;
@@ -24409,6 +25356,10 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
                             && (this._zadaniaTableAdapter.Connection != null))) {
                     return this._zadaniaTableAdapter.Connection;
                 }
+                if (((this._otdel_SNHPTableAdapter != null) 
+                            && (this._otdel_SNHPTableAdapter.Connection != null))) {
+                    return this._otdel_SNHPTableAdapter.Connection;
+                }
                 return null;
             }
             set {
@@ -24471,6 +25422,9 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
                     count = (count + 1);
                 }
                 if ((this._zadaniaTableAdapter != null)) {
+                    count = (count + 1);
+                }
+                if ((this._otdel_SNHPTableAdapter != null)) {
                     count = (count + 1);
                 }
                 return count;
@@ -24556,6 +25510,15 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._eventsTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Events.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._eventsTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this._documets_typeTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.Documets_type.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -24571,15 +25534,6 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._calendarPlanTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._eventsTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Events.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._eventsTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -24601,15 +25555,6 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._otdelTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Otdel.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._otdelTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._sostavDocTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.SostavDoc.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -24628,12 +25573,30 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._otdelTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Otdel.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._otdelTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this._zadaniaTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.Zadania.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._zadaniaTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._otdel_SNHPTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Otdel_SNHP.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._otdel_SNHPTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -24711,6 +25674,14 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._eventsTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Events.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._eventsTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._documets_typeTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.Documets_type.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -24724,14 +25695,6 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._calendarPlanTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._eventsTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Events.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._eventsTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -24751,14 +25714,6 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._otdelTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Otdel.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._otdelTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._sostavDocTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.SostavDoc.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -24775,11 +25730,27 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._otdelTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Otdel.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._otdelTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._zadaniaTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.Zadania.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._zadaniaTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._otdel_SNHPTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Otdel_SNHP.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._otdel_SNHPTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -24793,11 +25764,27 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private int UpdateDeletedRows(_bsp_snhpDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
+            if ((this._otdel_SNHPTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Otdel_SNHP.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._otdel_SNHPTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._zadaniaTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.Zadania.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._zadaniaTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._otdelTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Otdel.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._otdelTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -24817,14 +25804,6 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._otdelTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Otdel.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._otdelTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._mark_projectTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.Mark_project.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -24841,14 +25820,6 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._eventsTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Events.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._eventsTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._calendarPlanTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.CalendarPlan.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -24862,6 +25833,14 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._documets_typeTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._eventsTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Events.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._eventsTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -25053,6 +26032,11 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
                 throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
                         "r, должны использовать одинаковую строку подключения.");
             }
+            if (((this._otdel_SNHPTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._otdel_SNHPTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
+                        "r, должны использовать одинаковую строку подключения.");
+            }
             global::System.Data.IDbConnection workConnection = this.Connection;
             if ((workConnection == null)) {
                 throw new global::System.ApplicationException("TableAdapterManager не содержит сведений о подключении. Укажите для каждого адапт" +
@@ -25238,6 +26222,15 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
                         adaptersWithAcceptChangesDuringUpdate.Add(this._zadaniaTableAdapter.Adapter);
                     }
                 }
+                if ((this._otdel_SNHPTableAdapter != null)) {
+                    revertConnections.Add(this._otdel_SNHPTableAdapter, this._otdel_SNHPTableAdapter.Connection);
+                    this._otdel_SNHPTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(workConnection));
+                    this._otdel_SNHPTableAdapter.Transaction = ((global::System.Data.OleDb.OleDbTransaction)(workTransaction));
+                    if (this._otdel_SNHPTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._otdel_SNHPTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._otdel_SNHPTableAdapter.Adapter);
+                    }
+                }
                 // 
                 //---- Perform updates -----------
                 //
@@ -25363,6 +26356,10 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
                 if ((this._zadaniaTableAdapter != null)) {
                     this._zadaniaTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(revertConnections[this._zadaniaTableAdapter]));
                     this._zadaniaTableAdapter.Transaction = null;
+                }
+                if ((this._otdel_SNHPTableAdapter != null)) {
+                    this._otdel_SNHPTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(revertConnections[this._otdel_SNHPTableAdapter]));
+                    this._otdel_SNHPTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];
