@@ -19,7 +19,7 @@ namespace TreeFoldersClass
             TreeFolders tf = new TreeFolders();
             tf.startPath = root;
             tf.CreateTree(tree);
-            tree.ExpandAll();
+            tree.Nodes[0].Expand();
         }
 
         public void CreateTree(TreeView tree)
@@ -88,6 +88,7 @@ namespace TreeFoldersClass
                 TreeNode nodeDir = new TreeNode(dir.Name);
                 // Добавляем его как дочерний к текущему узлу
                 node.Nodes.Add(nodeDir);
+                
                 // Развертываем узел
                 nodeDir.Expand();
                 // Делаем дочерний узел текущим и спускаемся рекурсивно ниже
@@ -95,7 +96,7 @@ namespace TreeFoldersClass
             }
         }
         //////////
-        ///
+      
         public static void SelectNodeByName(TreeView tree, int IndexNode)
         {
             foreach (TreeNode item in tree.Nodes)

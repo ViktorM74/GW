@@ -50,5 +50,18 @@ namespace TenderClass
                 tb_pathTender.Text = openDialog1.SelectedPath;
             }
         }
+
+        private void btn_Save_Click(object sender, System.EventArgs e)
+        {
+            this.Validate();
+            DB_Cmd.SaveTender();
+        }
+
+        private void btn_Close_Click(object sender, System.EventArgs e)
+        {
+            this.Validate();
+            DB_Cmd.CancelTender();
+
+        }
     }
 }

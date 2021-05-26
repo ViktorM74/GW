@@ -66,6 +66,7 @@ namespace AddFilesToFolder
             // 
             // treeViewFolder
             // 
+            this.treeViewFolder.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.treeViewFolder.ContextMenuStrip = this.contextMenuSave;
             this.treeViewFolder.Dock = System.Windows.Forms.DockStyle.Left;
             this.treeViewFolder.ImageIndex = 2;
@@ -129,7 +130,6 @@ namespace AddFilesToFolder
             // btn_Close
             // 
             this.btn_Close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_Close.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btn_Close.Location = new System.Drawing.Point(389, 349);
             this.btn_Close.Name = "btn_Close";
             this.btn_Close.Size = new System.Drawing.Size(122, 42);
@@ -184,13 +184,11 @@ namespace AddFilesToFolder
             // rb_All
             // 
             this.rb_All.AutoSize = true;
-            this.rb_All.Checked = true;
             this.rb_All.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.rb_All.Location = new System.Drawing.Point(15, 64);
             this.rb_All.Name = "rb_All";
             this.rb_All.Size = new System.Drawing.Size(112, 17);
             this.rb_All.TabIndex = 1;
-            this.rb_All.TabStop = true;
             this.rb_All.Text = "два направления";
             this.rb_All.UseVisualStyleBackColor = true;
             // 
@@ -208,18 +206,19 @@ namespace AddFilesToFolder
             // rb_Loc
             // 
             this.rb_Loc.AutoSize = true;
+            this.rb_Loc.Checked = true;
             this.rb_Loc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.rb_Loc.Location = new System.Drawing.Point(15, 19);
             this.rb_Loc.Name = "rb_Loc";
             this.rb_Loc.Size = new System.Drawing.Size(111, 17);
             this.rb_Loc.TabIndex = 1;
+            this.rb_Loc.TabStop = true;
             this.rb_Loc.Text = "только локально";
             this.rb_Loc.UseVisualStyleBackColor = true;
             // 
             // btn_Accept
             // 
             this.btn_Accept.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_Accept.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btn_Accept.Location = new System.Drawing.Point(517, 349);
             this.btn_Accept.Name = "btn_Accept";
             this.btn_Accept.Size = new System.Drawing.Size(122, 42);
@@ -341,11 +340,9 @@ namespace AddFilesToFolder
             // 
             // Form_AddFiles
             // 
-            this.AcceptButton = this.btn_Accept;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.CancelButton = this.btn_Close;
             this.ClientSize = new System.Drawing.Size(643, 510);
             this.Controls.Add(this.btnDeleteFolder);
             this.Controls.Add(this.btnRenameFolder);

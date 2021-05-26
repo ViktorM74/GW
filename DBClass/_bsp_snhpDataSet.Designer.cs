@@ -106,13 +106,13 @@ namespace DBClass {
         
         private global::System.Data.DataRelation relationDopSoglasheniaCalendarPlan;
         
-        private global::System.Data.DataRelation relationOBJECTSZadania;
-        
         private global::System.Data.DataRelation relationTenderDogovor;
         
         private global::System.Data.DataRelation relationUsers_GIP_OBJECTS;
         
         private global::System.Data.DataRelation relationProjectDocuments;
+        
+        private global::System.Data.DataRelation relationOBJECTSZadania;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -706,10 +706,10 @@ namespace DBClass {
             this.relationActDocuments = this.Relations["ActDocuments"];
             this.relationTenderDocuments = this.Relations["TenderDocuments"];
             this.relationDopSoglasheniaCalendarPlan = this.Relations["DopSoglasheniaCalendarPlan"];
-            this.relationOBJECTSZadania = this.Relations["OBJECTSZadania"];
             this.relationTenderDogovor = this.Relations["TenderDogovor"];
             this.relationUsers_GIP_OBJECTS = this.Relations["Users GIP_OBJECTS"];
             this.relationProjectDocuments = this.Relations["ProjectDocuments"];
+            this.relationOBJECTSZadania = this.Relations["OBJECTSZadania"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -756,7 +756,7 @@ namespace DBClass {
             base.Tables.Add(this.tableOtdel);
             this.tableZadania = new ZadaniaDataTable();
             base.Tables.Add(this.tableZadania);
-            this.tableOtdel_SNHP = new Otdel_SNHPDataTable();
+            this.tableOtdel_SNHP = new Otdel_SNHPDataTable(false);
             base.Tables.Add(this.tableOtdel_SNHP);
             this.relationCalendarPlanAct = new global::System.Data.DataRelation("CalendarPlanAct", new global::System.Data.DataColumn[] {
                         this.tableCalendarPlan.ID_KplanColumn}, new global::System.Data.DataColumn[] {
@@ -846,10 +846,6 @@ namespace DBClass {
                         this.tableDopSoglashenia.DS_IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableCalendarPlan.ID_DopSColumn}, false);
             this.Relations.Add(this.relationDopSoglasheniaCalendarPlan);
-            this.relationOBJECTSZadania = new global::System.Data.DataRelation("OBJECTSZadania", new global::System.Data.DataColumn[] {
-                        this.tableOBJECTS.ID_ObjectColumn}, new global::System.Data.DataColumn[] {
-                        this.tableZadania.Obj_idColumn}, false);
-            this.Relations.Add(this.relationOBJECTSZadania);
             this.relationTenderDogovor = new global::System.Data.DataRelation("TenderDogovor", new global::System.Data.DataColumn[] {
                         this.tableTender.ID_TederColumn}, new global::System.Data.DataColumn[] {
                         this.tableDogovor.id_TenderColumn}, false);
@@ -862,6 +858,10 @@ namespace DBClass {
                         this.tableProject.ID_projectColumn}, new global::System.Data.DataColumn[] {
                         this.tableDocuments.Project_idColumn}, false);
             this.Relations.Add(this.relationProjectDocuments);
+            this.relationOBJECTSZadania = new global::System.Data.DataRelation("OBJECTSZadania", new global::System.Data.DataColumn[] {
+                        this.tableOBJECTS.ID_ObjectColumn}, new global::System.Data.DataColumn[] {
+                        this.tableZadania.Obj_idColumn}, false);
+            this.Relations.Add(this.relationOBJECTSZadania);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1043,9 +1043,11 @@ namespace DBClass {
             this.OBJECTS.NameGIPColumn.Expression = "Parent([Users GIP_OBJECTS]).[Family]";
             this.OBJECTS.CodeOBJColumn.Expression = "ISNull([Nambe_Object], \'\') + \' - \' + ISNull([Titul], \'\')+\' - \'+ISNull([Block], \'\'" +
                 ")";
+            this.OBJECTS.StadyColumn.Expression = "Parent([Stady_projectOBJECTS]).[Обозначение]";
             this.Tender.CustomerColumn.Expression = "Parent([CustomersTender]).[NameCust]";
             this.Tender.StadiaColumn.Expression = "Parent([Stady_projectTender]).[Обозначение]";
             this.Tender.NameGipColumn.Expression = "Parent([Users GIP_Tender]).[Family]";
+            this.Otdel_SNHP.FullNameColumn.Expression = "ISNull([КО], \'\') + \' - \' + ISNull([ИмяКО], \'\')";
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -6019,6 +6021,8 @@ namespace DBClass {
             
             private global::System.Data.DataColumn columnCodeOBJ;
             
+            private global::System.Data.DataColumn columnStady;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public OBJECTSDataTable() : 
@@ -6223,6 +6227,14 @@ namespace DBClass {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn StadyColumn {
+                get {
+                    return this.columnStady;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -6277,7 +6289,8 @@ namespace DBClass {
                         string Name_Ustanovka, 
                         string NameGIP, 
                         int Zakazchik, 
-                        string CodeOBJ) {
+                        string CodeOBJ, 
+                        string Stady) {
                 OBJECTSRow rowOBJECTSRow = ((OBJECTSRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -6299,7 +6312,8 @@ namespace DBClass {
                         Name_Ustanovka,
                         NameGIP,
                         Zakazchik,
-                        CodeOBJ};
+                        CodeOBJ,
+                        Stady};
                 if ((parentDogovorRowByDogovorOBJECTS != null)) {
                     columnValuesArray[1] = parentDogovorRowByDogovorOBJECTS[0];
                 }
@@ -6355,6 +6369,7 @@ namespace DBClass {
                         Name_Ustanovka,
                         null,
                         Zakazchik,
+                        null,
                         null};
                 if ((parentDogovorRowByDogovorOBJECTS != null)) {
                     columnValuesArray[1] = parentDogovorRowByDogovorOBJECTS[0];
@@ -6414,6 +6429,7 @@ namespace DBClass {
                 this.columnNameGIP = base.Columns["NameGIP"];
                 this.columnZakazchik = base.Columns["Zakazchik"];
                 this.columnCodeOBJ = base.Columns["CodeOBJ"];
+                this.columnStady = base.Columns["Stady"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6459,6 +6475,8 @@ namespace DBClass {
                 base.Columns.Add(this.columnZakazchik);
                 this.columnCodeOBJ = new global::System.Data.DataColumn("CodeOBJ", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCodeOBJ);
+                this.columnStady = new global::System.Data.DataColumn("Stady", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnStady);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID_Object}, true));
                 this.columnID_Object.AutoIncrement = true;
@@ -6476,6 +6494,7 @@ namespace DBClass {
                 this.columnName_Ustanovka.MaxLength = 255;
                 this.columnNameGIP.ReadOnly = true;
                 this.columnCodeOBJ.ReadOnly = true;
+                this.columnStady.ReadOnly = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6502,6 +6521,7 @@ namespace DBClass {
                 this.NameGIPColumn.Expression = "Parent([Users GIP_OBJECTS]).[Family]";
                 this.CodeOBJColumn.Expression = "ISNull([Nambe_Object], \'\') + \' - \' + ISNull([Titul], \'\')+\' - \'+ISNull([Block], \'\'" +
                     ")";
+                this.StadyColumn.Expression = "Parent([Stady_projectOBJECTS]).[Обозначение]";
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8200,15 +8220,15 @@ namespace DBClass {
             
             private global::System.Data.DataColumn columnObj_id;
             
-            private global::System.Data.DataColumn columnOtdel_id_out;
-            
-            private global::System.Data.DataColumn columnOtdel_id_in;
-            
             private global::System.Data.DataColumn columnDate_graf;
             
             private global::System.Data.DataColumn columnDate_fact;
             
             private global::System.Data.DataColumn columnComents;
+            
+            private global::System.Data.DataColumn columnOtdel_id_out;
+            
+            private global::System.Data.DataColumn columnOtdel_id_in;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -8261,22 +8281,6 @@ namespace DBClass {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn Otdel_id_outColumn {
-                get {
-                    return this.columnOtdel_id_out;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn Otdel_id_inColumn {
-                get {
-                    return this.columnOtdel_id_in;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn Date_grafColumn {
                 get {
                     return this.columnDate_graf;
@@ -8296,6 +8300,22 @@ namespace DBClass {
             public global::System.Data.DataColumn ComentsColumn {
                 get {
                     return this.columnComents;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn Otdel_id_outColumn {
+                get {
+                    return this.columnOtdel_id_out;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn Otdel_id_inColumn {
+                get {
+                    return this.columnOtdel_id_in;
                 }
             }
             
@@ -8336,16 +8356,16 @@ namespace DBClass {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public ZadaniaRow AddZadaniaRow(OBJECTSRow parentOBJECTSRowByOBJECTSZadania, int Otdel_id_out, int Otdel_id_in, System.DateTime Date_graf, System.DateTime Date_fact, string Coments) {
+            public ZadaniaRow AddZadaniaRow(OBJECTSRow parentOBJECTSRowByOBJECTSZadania, System.DateTime Date_graf, System.DateTime Date_fact, string Coments, string Otdel_id_out, string Otdel_id_in) {
                 ZadaniaRow rowZadaniaRow = ((ZadaniaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         null,
-                        Otdel_id_out,
-                        Otdel_id_in,
                         Date_graf,
                         Date_fact,
-                        Coments};
+                        Coments,
+                        Otdel_id_out,
+                        Otdel_id_in};
                 if ((parentOBJECTSRowByOBJECTSZadania != null)) {
                     columnValuesArray[1] = parentOBJECTSRowByOBJECTSZadania[0];
                 }
@@ -8380,11 +8400,11 @@ namespace DBClass {
             internal void InitVars() {
                 this.columnZadanID = base.Columns["ZadanID"];
                 this.columnObj_id = base.Columns["Obj_id"];
-                this.columnOtdel_id_out = base.Columns["Otdel_id_out"];
-                this.columnOtdel_id_in = base.Columns["Otdel_id_in"];
                 this.columnDate_graf = base.Columns["Date_graf"];
                 this.columnDate_fact = base.Columns["Date_fact"];
                 this.columnComents = base.Columns["Coments"];
+                this.columnOtdel_id_out = base.Columns["Otdel_id_out"];
+                this.columnOtdel_id_in = base.Columns["Otdel_id_in"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8394,16 +8414,16 @@ namespace DBClass {
                 base.Columns.Add(this.columnZadanID);
                 this.columnObj_id = new global::System.Data.DataColumn("Obj_id", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnObj_id);
-                this.columnOtdel_id_out = new global::System.Data.DataColumn("Otdel_id_out", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnOtdel_id_out);
-                this.columnOtdel_id_in = new global::System.Data.DataColumn("Otdel_id_in", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnOtdel_id_in);
                 this.columnDate_graf = new global::System.Data.DataColumn("Date_graf", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDate_graf);
                 this.columnDate_fact = new global::System.Data.DataColumn("Date_fact", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDate_fact);
                 this.columnComents = new global::System.Data.DataColumn("Coments", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnComents);
+                this.columnOtdel_id_out = new global::System.Data.DataColumn("Otdel_id_out", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOtdel_id_out);
+                this.columnOtdel_id_in = new global::System.Data.DataColumn("Otdel_id_in", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOtdel_id_in);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnZadanID}, true));
                 this.columnZadanID.AutoIncrement = true;
@@ -8411,6 +8431,8 @@ namespace DBClass {
                 this.columnZadanID.AllowDBNull = false;
                 this.columnZadanID.Unique = true;
                 this.columnComents.MaxLength = 255;
+                this.columnOtdel_id_out.MaxLength = 255;
+                this.columnOtdel_id_in.MaxLength = 255;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8550,12 +8572,25 @@ namespace DBClass {
             
             private global::System.Data.DataColumn columnИмяКО;
             
+            private global::System.Data.DataColumn columnFullName;
+            
+            private global::System.Data.DataColumn columnAbbreviation;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public Otdel_SNHPDataTable() {
+            public Otdel_SNHPDataTable() : 
+                    this(false) {
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public Otdel_SNHPDataTable(bool initExpressions) {
                 this.TableName = "Otdel_SNHP";
                 this.BeginInit();
                 this.InitClass();
+                if ((initExpressions == true)) {
+                    this.InitExpressions();
+                }
                 this.EndInit();
             }
             
@@ -8609,6 +8644,22 @@ namespace DBClass {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn FullNameColumn {
+                get {
+                    return this.columnFullName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn AbbreviationColumn {
+                get {
+                    return this.columnAbbreviation;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -8644,12 +8695,14 @@ namespace DBClass {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public Otdel_SNHPRow AddOtdel_SNHPRow(string КО, string ИмяКО) {
+            public Otdel_SNHPRow AddOtdel_SNHPRow(string КО, string ИмяКО, string FullName, string Abbreviation) {
                 Otdel_SNHPRow rowOtdel_SNHPRow = ((Otdel_SNHPRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         КО,
-                        ИмяКО};
+                        ИмяКО,
+                        FullName,
+                        Abbreviation};
                 rowOtdel_SNHPRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowOtdel_SNHPRow);
                 return rowOtdel_SNHPRow;
@@ -8657,9 +8710,17 @@ namespace DBClass {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public Otdel_SNHPRow FindByID_otdel(int ID_otdel) {
-                return ((Otdel_SNHPRow)(this.Rows.Find(new object[] {
-                            ID_otdel})));
+            public Otdel_SNHPRow AddOtdel_SNHPRow(string КО, string ИмяКО, string Abbreviation) {
+                Otdel_SNHPRow rowOtdel_SNHPRow = ((Otdel_SNHPRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        КО,
+                        ИмяКО,
+                        null,
+                        Abbreviation};
+                rowOtdel_SNHPRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowOtdel_SNHPRow);
+                return rowOtdel_SNHPRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8682,6 +8743,8 @@ namespace DBClass {
                 this.columnID_otdel = base.Columns["ID_otdel"];
                 this.columnКО = base.Columns["КО"];
                 this.columnИмяКО = base.Columns["ИмяКО"];
+                this.columnFullName = base.Columns["FullName"];
+                this.columnAbbreviation = base.Columns["Abbreviation"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8693,8 +8756,12 @@ namespace DBClass {
                 base.Columns.Add(this.columnКО);
                 this.columnИмяКО = new global::System.Data.DataColumn("ИмяКО", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnИмяКО);
+                this.columnFullName = new global::System.Data.DataColumn("FullName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFullName);
+                this.columnAbbreviation = new global::System.Data.DataColumn("Abbreviation", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAbbreviation);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnID_otdel}, true));
+                                this.columnID_otdel}, false));
                 this.columnID_otdel.AutoIncrement = true;
                 this.columnID_otdel.AutoIncrementSeed = -1;
                 this.columnID_otdel.AutoIncrementStep = -1;
@@ -8702,6 +8769,8 @@ namespace DBClass {
                 this.columnID_otdel.Unique = true;
                 this.columnКО.MaxLength = 6;
                 this.columnИмяКО.MaxLength = 90;
+                this.columnFullName.ReadOnly = true;
+                this.columnAbbreviation.MaxLength = 255;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8720,6 +8789,12 @@ namespace DBClass {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Type GetRowType() {
                 return typeof(Otdel_SNHPRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            private void InitExpressions() {
+                this.FullNameColumn.Expression = "ISNull([КО], \'\') + \' - \' + ISNull([ИмяКО], \'\')";
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -12701,6 +12776,22 @@ namespace DBClass {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Stady {
+                get {
+                    try {
+                        return ((string)(this[this.tableOBJECTS.StadyColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Stady\' в таблице \'OBJECTS\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOBJECTS.StadyColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public DogovorRow DogovorRow {
                 get {
                     return ((DogovorRow)(this.GetParentRow(this.Table.ParentRelations["DogovorOBJECTS"])));
@@ -12958,6 +13049,18 @@ namespace DBClass {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetCodeOBJNull() {
                 this[this.tableOBJECTS.CodeOBJColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsStadyNull() {
+                return this.IsNull(this.tableOBJECTS.StadyColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetStadyNull() {
+                this[this.tableOBJECTS.StadyColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -14130,38 +14233,6 @@ namespace DBClass {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int Otdel_id_out {
-                get {
-                    try {
-                        return ((int)(this[this.tableZadania.Otdel_id_outColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Otdel_id_out\' в таблице \'Zadania\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableZadania.Otdel_id_outColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int Otdel_id_in {
-                get {
-                    try {
-                        return ((int)(this[this.tableZadania.Otdel_id_inColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Otdel_id_in\' в таблице \'Zadania\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableZadania.Otdel_id_inColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public System.DateTime Date_graf {
                 get {
                     try {
@@ -14210,6 +14281,38 @@ namespace DBClass {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Otdel_id_out {
+                get {
+                    try {
+                        return ((string)(this[this.tableZadania.Otdel_id_outColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Otdel_id_out\' в таблице \'Zadania\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableZadania.Otdel_id_outColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Otdel_id_in {
+                get {
+                    try {
+                        return ((string)(this[this.tableZadania.Otdel_id_inColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Otdel_id_in\' в таблице \'Zadania\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableZadania.Otdel_id_inColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public OBJECTSRow OBJECTSRow {
                 get {
                     return ((OBJECTSRow)(this.GetParentRow(this.Table.ParentRelations["OBJECTSZadania"])));
@@ -14229,30 +14332,6 @@ namespace DBClass {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetObj_idNull() {
                 this[this.tableZadania.Obj_idColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsOtdel_id_outNull() {
-                return this.IsNull(this.tableZadania.Otdel_id_outColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetOtdel_id_outNull() {
-                this[this.tableZadania.Otdel_id_outColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsOtdel_id_inNull() {
-                return this.IsNull(this.tableZadania.Otdel_id_inColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetOtdel_id_inNull() {
-                this[this.tableZadania.Otdel_id_inColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -14289,6 +14368,30 @@ namespace DBClass {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetComentsNull() {
                 this[this.tableZadania.ComentsColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsOtdel_id_outNull() {
+                return this.IsNull(this.tableZadania.Otdel_id_outColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetOtdel_id_outNull() {
+                this[this.tableZadania.Otdel_id_outColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsOtdel_id_inNull() {
+                return this.IsNull(this.tableZadania.Otdel_id_inColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetOtdel_id_inNull() {
+                this[this.tableZadania.Otdel_id_inColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -14351,6 +14454,38 @@ namespace DBClass {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string FullName {
+                get {
+                    try {
+                        return ((string)(this[this.tableOtdel_SNHP.FullNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'FullName\' в таблице \'Otdel_SNHP\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOtdel_SNHP.FullNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Abbreviation {
+                get {
+                    try {
+                        return ((string)(this[this.tableOtdel_SNHP.AbbreviationColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Abbreviation\' в таблице \'Otdel_SNHP\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOtdel_SNHP.AbbreviationColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsКОNull() {
                 return this.IsNull(this.tableOtdel_SNHP.КОColumn);
             }
@@ -14371,6 +14506,30 @@ namespace DBClass {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetИмяКОNull() {
                 this[this.tableOtdel_SNHP.ИмяКОColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsFullNameNull() {
+                return this.IsNull(this.tableOtdel_SNHP.FullNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetFullNameNull() {
+                this[this.tableOtdel_SNHP.FullNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsAbbreviationNull() {
+                return this.IsNull(this.tableOtdel_SNHP.AbbreviationColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetAbbreviationNull() {
+                this[this.tableOtdel_SNHP.AbbreviationColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -24242,63 +24401,63 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
             tableMapping.DataSetTable = "Zadania";
             tableMapping.ColumnMappings.Add("ZadanID", "ZadanID");
             tableMapping.ColumnMappings.Add("Obj_id", "Obj_id");
-            tableMapping.ColumnMappings.Add("Otdel_id_out", "Otdel_id_out");
-            tableMapping.ColumnMappings.Add("Otdel_id_in", "Otdel_id_in");
             tableMapping.ColumnMappings.Add("Date_graf", "Date_graf");
             tableMapping.ColumnMappings.Add("Date_fact", "Date_fact");
             tableMapping.ColumnMappings.Add("Coments", "Coments");
+            tableMapping.ColumnMappings.Add("Otdel_id_out", "Otdel_id_out");
+            tableMapping.ColumnMappings.Add("Otdel_id_in", "Otdel_id_in");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM `Zadania` WHERE ((`ZadanID` = ?) AND ((? = 1 AND `Obj_id` IS NULL) OR (`Obj_id` = ?)) AND ((? = 1 AND `Otdel_id_out` IS NULL) OR (`Otdel_id_out` = ?)) AND ((? = 1 AND `Otdel_id_in` IS NULL) OR (`Otdel_id_in` = ?)) AND ((? = 1 AND `Date_graf` IS NULL) OR (`Date_graf` = ?)) AND ((? = 1 AND `Date_fact` IS NULL) OR (`Date_fact` = ?)) AND ((? = 1 AND `Coments` IS NULL) OR (`Coments` = ?)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM `Zadania` WHERE ((`ZadanID` = ?) AND ((? = 1 AND `Obj_id` IS NULL) OR (`Obj_id` = ?)) AND ((? = 1 AND `Date_graf` IS NULL) OR (`Date_graf` = ?)) AND ((? = 1 AND `Date_fact` IS NULL) OR (`Date_fact` = ?)) AND ((? = 1 AND `Coments` IS NULL) OR (`Coments` = ?)) AND ((? = 1 AND `Otdel_id_out` IS NULL) OR (`Otdel_id_out` = ?)) AND ((? = 1 AND `Otdel_id_in` IS NULL) OR (`Otdel_id_in` = ?)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_ZadanID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ZadanID", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Obj_id", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Obj_id", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Obj_id", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Obj_id", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Otdel_id_out", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Otdel_id_out", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Otdel_id_out", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Otdel_id_out", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Otdel_id_in", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Otdel_id_in", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Otdel_id_in", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Otdel_id_in", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Date_graf", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Date_graf", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Date_graf", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Date_graf", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Date_fact", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Date_fact", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Date_fact", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Date_fact", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Coments", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Coments", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Coments", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Coments", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Otdel_id_out", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Otdel_id_out", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Otdel_id_out", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Otdel_id_out", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Otdel_id_in", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Otdel_id_in", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Otdel_id_in", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Otdel_id_in", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.InsertCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO `Zadania` (`Obj_id`, `Otdel_id_out`, `Otdel_id_in`, `Date_graf`, `Dat" +
-                "e_fact`, `Coments`) VALUES (?, ?, ?, ?, ?, ?)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO `Zadania` (`Obj_id`, `Date_graf`, `Date_fact`, `Coments`, `Otdel_id_o" +
+                "ut`, `Otdel_id_in`) VALUES (?, ?, ?, ?, ?, ?)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Obj_id", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Obj_id", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Otdel_id_out", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Otdel_id_out", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Otdel_id_in", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Otdel_id_in", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Date_graf", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Date_graf", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Date_fact", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Date_fact", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Coments", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Coments", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Otdel_id_out", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Otdel_id_out", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Otdel_id_in", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Otdel_id_in", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE `Zadania` SET `Obj_id` = ?, `Otdel_id_out` = ?, `Otdel_id_in` = ?, `Date_graf` = ?, `Date_fact` = ?, `Coments` = ? WHERE ((`ZadanID` = ?) AND ((? = 1 AND `Obj_id` IS NULL) OR (`Obj_id` = ?)) AND ((? = 1 AND `Otdel_id_out` IS NULL) OR (`Otdel_id_out` = ?)) AND ((? = 1 AND `Otdel_id_in` IS NULL) OR (`Otdel_id_in` = ?)) AND ((? = 1 AND `Date_graf` IS NULL) OR (`Date_graf` = ?)) AND ((? = 1 AND `Date_fact` IS NULL) OR (`Date_fact` = ?)) AND ((? = 1 AND `Coments` IS NULL) OR (`Coments` = ?)))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE `Zadania` SET `Obj_id` = ?, `Date_graf` = ?, `Date_fact` = ?, `Coments` = ?, `Otdel_id_out` = ?, `Otdel_id_in` = ? WHERE ((`ZadanID` = ?) AND ((? = 1 AND `Obj_id` IS NULL) OR (`Obj_id` = ?)) AND ((? = 1 AND `Date_graf` IS NULL) OR (`Date_graf` = ?)) AND ((? = 1 AND `Date_fact` IS NULL) OR (`Date_fact` = ?)) AND ((? = 1 AND `Coments` IS NULL) OR (`Coments` = ?)) AND ((? = 1 AND `Otdel_id_out` IS NULL) OR (`Otdel_id_out` = ?)) AND ((? = 1 AND `Otdel_id_in` IS NULL) OR (`Otdel_id_in` = ?)))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Obj_id", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Obj_id", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Otdel_id_out", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Otdel_id_out", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Otdel_id_in", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Otdel_id_in", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Date_graf", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Date_graf", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Date_fact", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Date_fact", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Coments", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Coments", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Otdel_id_out", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Otdel_id_out", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Otdel_id_in", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Otdel_id_in", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_ZadanID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ZadanID", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Obj_id", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Obj_id", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Obj_id", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Obj_id", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Otdel_id_out", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Otdel_id_out", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Otdel_id_out", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Otdel_id_out", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Otdel_id_in", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Otdel_id_in", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Otdel_id_in", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Otdel_id_in", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Date_graf", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Date_graf", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Date_graf", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Date_graf", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Date_fact", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Date_fact", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Date_fact", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Date_fact", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Coments", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Coments", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Coments", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Coments", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Otdel_id_out", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Otdel_id_out", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Otdel_id_out", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Otdel_id_out", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Otdel_id_in", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Otdel_id_in", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Otdel_id_in", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Otdel_id_in", global::System.Data.DataRowVersion.Original, false, null));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -24314,8 +24473,8 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
             this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ZadanID, Obj_id, Otdel_id_out, Otdel_id_in, Date_graf, Date_fact, Coments " +
-                "FROM Zadania";
+            this._commandCollection[0].CommandText = "SELECT        ZadanID, Obj_id, Date_graf, Date_fact, Coments, Otdel_id_out, Otdel" +
+                "_id_in\r\nFROM            Zadania";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -24376,7 +24535,7 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_ZadanID, global::System.Nullable<int> Original_Obj_id, global::System.Nullable<int> Original_Otdel_id_out, global::System.Nullable<int> Original_Otdel_id_in, global::System.Nullable<global::System.DateTime> Original_Date_graf, global::System.Nullable<global::System.DateTime> Original_Date_fact, string Original_Coments) {
+        public virtual int Delete(int Original_ZadanID, global::System.Nullable<int> Original_Obj_id, global::System.Nullable<global::System.DateTime> Original_Date_graf, global::System.Nullable<global::System.DateTime> Original_Date_fact, string Original_Coments, string Original_Otdel_id_out, string Original_Otdel_id_in) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_ZadanID));
             if ((Original_Obj_id.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
@@ -24386,45 +24545,45 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            if ((Original_Otdel_id_out.HasValue == true)) {
+            if ((Original_Date_graf.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((int)(Original_Otdel_id_out.Value));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((System.DateTime)(Original_Date_graf.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((Original_Otdel_id_in.HasValue == true)) {
+            if ((Original_Date_fact.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((int)(Original_Otdel_id_in.Value));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((System.DateTime)(Original_Date_fact.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
-            if ((Original_Date_graf.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((System.DateTime)(Original_Date_graf.Value));
-            }
-            else {
+            if ((Original_Coments == null)) {
                 this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
-            if ((Original_Date_fact.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[10].Value = ((System.DateTime)(Original_Date_fact.Value));
-            }
             else {
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((string)(Original_Coments));
+            }
+            if ((Original_Otdel_id_out == null)) {
                 this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
-            if ((Original_Coments == null)) {
+            else {
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((string)(Original_Otdel_id_out));
+            }
+            if ((Original_Otdel_id_in == null)) {
                 this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[12].Value = ((string)(Original_Coments));
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((string)(Original_Otdel_id_in));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -24446,42 +24605,42 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(global::System.Nullable<int> Obj_id, global::System.Nullable<int> Otdel_id_out, global::System.Nullable<int> Otdel_id_in, global::System.Nullable<global::System.DateTime> Date_graf, global::System.Nullable<global::System.DateTime> Date_fact, string Coments) {
+        public virtual int Insert(global::System.Nullable<int> Obj_id, global::System.Nullable<global::System.DateTime> Date_graf, global::System.Nullable<global::System.DateTime> Date_fact, string Coments, string Otdel_id_out, string Otdel_id_in) {
             if ((Obj_id.HasValue == true)) {
                 this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Obj_id.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
-            if ((Otdel_id_out.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((int)(Otdel_id_out.Value));
+            if ((Date_graf.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((System.DateTime)(Date_graf.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            if ((Otdel_id_in.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((int)(Otdel_id_in.Value));
+            if ((Date_fact.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((System.DateTime)(Date_fact.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            if ((Date_graf.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((System.DateTime)(Date_graf.Value));
-            }
-            else {
+            if ((Coments == null)) {
                 this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            if ((Date_fact.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((System.DateTime)(Date_fact.Value));
-            }
             else {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(Coments));
+            }
+            if ((Otdel_id_out == null)) {
                 this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((Coments == null)) {
+            else {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(Otdel_id_out));
+            }
+            if ((Otdel_id_in == null)) {
                 this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(Coments));
+                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(Otdel_id_in));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -24503,42 +24662,42 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(global::System.Nullable<int> Obj_id, global::System.Nullable<int> Otdel_id_out, global::System.Nullable<int> Otdel_id_in, global::System.Nullable<global::System.DateTime> Date_graf, global::System.Nullable<global::System.DateTime> Date_fact, string Coments, int Original_ZadanID, global::System.Nullable<int> Original_Obj_id, global::System.Nullable<int> Original_Otdel_id_out, global::System.Nullable<int> Original_Otdel_id_in, global::System.Nullable<global::System.DateTime> Original_Date_graf, global::System.Nullable<global::System.DateTime> Original_Date_fact, string Original_Coments) {
+        public virtual int Update(global::System.Nullable<int> Obj_id, global::System.Nullable<global::System.DateTime> Date_graf, global::System.Nullable<global::System.DateTime> Date_fact, string Coments, string Otdel_id_out, string Otdel_id_in, int Original_ZadanID, global::System.Nullable<int> Original_Obj_id, global::System.Nullable<global::System.DateTime> Original_Date_graf, global::System.Nullable<global::System.DateTime> Original_Date_fact, string Original_Coments, string Original_Otdel_id_out, string Original_Otdel_id_in) {
             if ((Obj_id.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Obj_id.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
-            if ((Otdel_id_out.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(Otdel_id_out.Value));
+            if ((Date_graf.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((System.DateTime)(Date_graf.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            if ((Otdel_id_in.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Otdel_id_in.Value));
+            if ((Date_fact.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((System.DateTime)(Date_fact.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            if ((Date_graf.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((System.DateTime)(Date_graf.Value));
-            }
-            else {
+            if ((Coments == null)) {
                 this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            if ((Date_fact.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((System.DateTime)(Date_fact.Value));
-            }
             else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Coments));
+            }
+            if ((Otdel_id_out == null)) {
                 this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((Coments == null)) {
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Otdel_id_out));
+            }
+            if ((Otdel_id_in == null)) {
                 this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Coments));
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Otdel_id_in));
             }
             this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_ZadanID));
             if ((Original_Obj_id.HasValue == true)) {
@@ -24549,45 +24708,45 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
                 this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
-            if ((Original_Otdel_id_out.HasValue == true)) {
+            if ((Original_Date_graf.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Original_Otdel_id_out.Value));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((System.DateTime)(Original_Date_graf.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
-            if ((Original_Otdel_id_in.HasValue == true)) {
+            if ((Original_Date_fact.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(Original_Otdel_id_in.Value));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((System.DateTime)(Original_Date_fact.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
-            if ((Original_Date_graf.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((System.DateTime)(Original_Date_graf.Value));
-            }
-            else {
+            if ((Original_Coments == null)) {
                 this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
-            if ((Original_Date_fact.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((System.DateTime)(Original_Date_fact.Value));
-            }
             else {
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Original_Coments));
+            }
+            if ((Original_Otdel_id_out == null)) {
                 this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
             }
-            if ((Original_Coments == null)) {
+            else {
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(Original_Otdel_id_out));
+            }
+            if ((Original_Otdel_id_in == null)) {
                 this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((string)(Original_Coments));
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((string)(Original_Otdel_id_in));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -24730,36 +24889,45 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("ID_otdel", "ID_otdel");
             tableMapping.ColumnMappings.Add("КО", "КО");
             tableMapping.ColumnMappings.Add("ИмяКО", "ИмяКО");
+            tableMapping.ColumnMappings.Add("Abbreviation", "Abbreviation");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
             this._adapter.DeleteCommand.CommandText = "DELETE FROM `Otdel_SNHP` WHERE ((`ID_otdel` = ?) AND ((? = 1 AND `КО` IS NULL) OR" +
-                " (`КО` = ?)) AND ((? = 1 AND `ИмяКО` IS NULL) OR (`ИмяКО` = ?)))";
+                " (`КО` = ?)) AND ((? = 1 AND `ИмяКО` IS NULL) OR (`ИмяКО` = ?)) AND ((? = 1 AND " +
+                "`Abbreviation` IS NULL) OR (`Abbreviation` = ?)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_ID_otdel", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ID_otdel", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_КО", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "КО", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_КО", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "КО", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_ИмяКО", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ИмяКО", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_ИмяКО", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ИмяКО", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Abbreviation", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Abbreviation", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Abbreviation", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Abbreviation", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.InsertCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO `Otdel_SNHP` (`КО`, `ИмяКО`) VALUES (?, ?)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO `Otdel_SNHP` (`КО`, `ИмяКО`, `Abbreviation`) VALUES (?, ?, ?)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("КО", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "КО", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ИмяКО", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ИмяКО", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Abbreviation", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Abbreviation", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE `Otdel_SNHP` SET `КО` = ?, `ИмяКО` = ? WHERE ((`ID_otdel` = ?) AND ((? = 1" +
-                " AND `КО` IS NULL) OR (`КО` = ?)) AND ((? = 1 AND `ИмяКО` IS NULL) OR (`ИмяКО` =" +
-                " ?)))";
+            this._adapter.UpdateCommand.CommandText = "UPDATE `Otdel_SNHP` SET `КО` = ?, `ИмяКО` = ?, `Abbreviation` = ? WHERE ((`ID_otd" +
+                "el` = ?) AND ((? = 1 AND `КО` IS NULL) OR (`КО` = ?)) AND ((? = 1 AND `ИмяКО` IS" +
+                " NULL) OR (`ИмяКО` = ?)) AND ((? = 1 AND `Abbreviation` IS NULL) OR (`Abbreviati" +
+                "on` = ?)))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("КО", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "КО", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ИмяКО", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ИмяКО", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Abbreviation", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Abbreviation", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_ID_otdel", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ID_otdel", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_КО", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "КО", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_КО", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "КО", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_ИмяКО", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ИмяКО", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_ИмяКО", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ИмяКО", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Abbreviation", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Abbreviation", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Abbreviation", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Abbreviation", global::System.Data.DataRowVersion.Original, false, null));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -24775,7 +24943,7 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
             this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        ID_otdel, КО, ИмяКО\r\nFROM            Otdel_SNHP";
+            this._commandCollection[0].CommandText = "SELECT        ID_otdel, КО, ИмяКО, Abbreviation\r\nFROM            Otdel_SNHP";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -24798,7 +24966,7 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual _bsp_snhpDataSet.Otdel_SNHPDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            _bsp_snhpDataSet.Otdel_SNHPDataTable dataTable = new _bsp_snhpDataSet.Otdel_SNHPDataTable();
+            _bsp_snhpDataSet.Otdel_SNHPDataTable dataTable = new _bsp_snhpDataSet.Otdel_SNHPDataTable(true);
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -24836,7 +25004,7 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_ID_otdel, string Original_КО, string Original_ИмяКО) {
+        public virtual int Delete(int Original_ID_otdel, string Original_КО, string Original_ИмяКО, string Original_Abbreviation) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_ID_otdel));
             if ((Original_КО == null)) {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
@@ -24853,6 +25021,14 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
             else {
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
                 this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_ИмяКО));
+            }
+            if ((Original_Abbreviation == null)) {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Original_Abbreviation));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -24874,7 +25050,7 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string КО, string ИмяКО) {
+        public virtual int Insert(string КО, string ИмяКО, string Abbreviation) {
             if ((КО == null)) {
                 this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -24886,6 +25062,12 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
             }
             else {
                 this.Adapter.InsertCommand.Parameters[1].Value = ((string)(ИмяКО));
+            }
+            if ((Abbreviation == null)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Abbreviation));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -24907,7 +25089,7 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string КО, string ИмяКО, int Original_ID_otdel, string Original_КО, string Original_ИмяКО) {
+        public virtual int Update(string КО, string ИмяКО, string Abbreviation, int Original_ID_otdel, string Original_КО, string Original_ИмяКО, string Original_Abbreviation) {
             if ((КО == null)) {
                 this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -24920,22 +25102,36 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(ИмяКО));
             }
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Original_ID_otdel));
-            if ((Original_КО == null)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
+            if ((Abbreviation == null)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Original_КО));
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Abbreviation));
+            }
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_ID_otdel));
+            if ((Original_КО == null)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Original_КО));
             }
             if ((Original_ИмяКО == null)) {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_ИмяКО));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Original_ИмяКО));
+            }
+            if ((Original_Abbreviation == null)) {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_Abbreviation));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 

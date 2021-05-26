@@ -59,7 +59,6 @@ namespace AddFilesToFolder
         private void button1_Click(object sender, EventArgs e)
         {
             Close();
-
         }
 
         public void SetNapr(int i)
@@ -323,14 +322,18 @@ namespace AddFilesToFolder
         public void GetPathFolders(List<string> listFolders, List<string> listFileDBPath)
         {
             // listFolders - список путей для копирования файлов
-            listfolder.Clear(); // - список выбранных путей из дерева узлов
+            listFolders.Clear(); // - список выбранных путей из дерева узлов
             listFileDBPath.Clear(); // - список для сохранения в базе данных
 
             CheckedNode(treeViewFolder.Nodes, listfolder); //Получаем список путей к папкам для копирования (без учета локального или сетевого каталога)
 
             foreach (TreeNode n in listfolder) // перебор папок
             {
-                string sp = (n.FullPath).Remove(0, nameRoot.Length + 1);
+                string sp;
+                if (n.FullPath == nameRoot)
+                    sp = "";
+                else
+                   sp = (n.FullPath).Remove(0, nameRoot.Length + 1);
 
                 if (Napr == 2) // в два направления
                 {
@@ -354,103 +357,6 @@ namespace AddFilesToFolder
             }
         }
 
-
-        //public List<ListFile> CreateNewPath(object sender, List<string> listfile, int typeDocument)
-        //{
-        //    listp.Clear();
-        //    listfolder.Clear();
-
-        //    CheckedNode(treeViewFolder.Nodes, listfolder);
-
-        //    foreach (string pfile in listfile) // перебор всех путей переданных по DargDrop
-        //    {
-        //        if (FileA.GetAtributesPath(pfile))
-        //        {
-        //            // Файл
-        //            string dfile = File.GetLastWriteTime(pfile).ToShortDateString(); //дата
-        //            string nfile = Path.GetFileNameWithoutExtension(pfile); // имя
-        //            listp.Add(new ListFile(pfile, nfile, dfile)); // создание списка файлов
-
-        //        }
-        //        else
-        //        {   // Папка
-        //            string dfile = File.GetLastWriteTime(pfile).ToShortDateString(); //дата
-        //            string nfile = Path.GetFileName(pfile); // имя
-        //            listp.Add(new ListFile(pfile, nfile, dfile)); // создание списка файлов
-
-        //        }
-        //    }
-
-        //    nPathes(listp, typeDocument);
-
-        //    return listp;
-        //}
-
-        //private void nPathes(List<ListFile> listp_, int typeDocument)
-        //{
-        //    int i = 0;
-        //    foreach (ListFile lf in listp_) // перебор списка файлов 
-        //    {
-        //        switch (typeDocument)
-        //        {
-        //            case 0: // Исходные данные | Основные положения Form_main.NameFld[5]
-        //                /// в два направления всегда
-        //                gb_Napravlenie.Enabled = false;
-        //                foreach (TreeNode n in listfolder) // перебор папок
-        //                {
-        //                    //string sp = (n.FullPath).Remove(0, 4);
-        //                    string sp = (n.FullPath).Remove(0, nameRoot.Length + 1);
-
-        //                    if (Napr == 2)
-        //                    {
-        //                        lf.NewPathFile.pathLocal.Add(Path.Combine(pathL, sp));
-        //                        lf.NewPathFile.pathServer.Add(Path.Combine(pathS, sp));
-        //                    }
-        //                    if (Napr == 1)
-        //                    {
-        //                        lf.NewPathFile.pathServer.Add(Path.Combine(pathS, sp));
-        //                    }
-        //                    if (Napr == 0)
-        //                    {
-        //                        lf.NewPathFile.pathLocal.Add(Path.Combine(pathL, sp));
-        //                    }
-
-        //                }
-
-        //                break;
-        //            case 1: // Письма
-        //                /// только локально
-        //                lf.NewPathFile.pathLocal.Add(Path.Combine(pathL, Libr.NameFld[6]));
-        //                lf.NewPathFile.pathServer.Add("");
-        //                /// выбор объекта
-        //                /// В имя папки добавить Название файла и дату 
-        //                break;
-        //            case 2: // Задания
-        //                /// выбор объекта
-        //                /// выбор раздела проекта либо своё название папки
-        //                break;
-        //            case 3:
-        //                /// выбор объекта
-        //                /// выбор раздела проекта либо своё название папки
-        //                break;
-        //            case 4:
-        //                /// выбор объекта
-        //                /// выбор раздела проекта либо своё название папки
-        //                break;
-        //            case 5:
-        //                /// выбор объекта
-        //                /// выбор раздела проекта либо своё название папки
-        //                break;
-        //            case 6:
-        //                /// выбор раздела проекта либо своё название папки
-        //                break;
-        //            default:
-
-        //                break;
-        //        }
-        //    }
-        //}
-
         /// <summary>
         /// Обеспечивает выделение Node по правому клику мыши 
         /// нужно для правильной работы контекстного меню по выбранному узлу
@@ -467,24 +373,32 @@ namespace AddFilesToFolder
             CheckedNode(treeViewFolder.Nodes, list);
             MessageBox.Show(list.Count.ToString());
         }
-      
-        #endregion
+
+        #endregion test
 
         private void btn_Accept_Click(object sender, EventArgs e)
         {
-           if (chb_CopyToNewFolder.Checked)
+            bool ac = false;
+            if (chb_CopyToNewFolder.Checked)
             {
                 // По списку выбранных узлов
                 // создать новые папки 
-                AddNewFolderToSelectedFolder();
+                //AddNewFolderToSelectedFolder();
                 // добавляем новые папки в пути копирования и копируем файлы
-                CopySelectedFilesToNewFolder();
+                ac = CopySelectedFilesToNewFolder();
                 
             }
             else
             {
-                CopySelectedFiles();
+                ac = CopySelectedFiles();
             }
+
+            if (ac)
+            {
+                MessageBox.Show("Файлы успешно скопированы.");
+                Close();
+            }
+                
         }
 
         private void AddNewFolderToSelectedFolder()
@@ -564,24 +478,20 @@ namespace AddFilesToFolder
             List<string> listFolders = new List<string>();
             List<string> listFileDBPath = new List<string>();
 
+            GetPathFolders(listFolders, listFileDBPath);
+            
             try
             {
+                if (listFolders.Count == 0 || listFileDBPath.Count == 0)
+                    throw new Exception("Не выбран ни один путь для копирования");
 
                 foreach (string fl in listBoxFiles.Items)
                 {
                     fileList.Add(fl);
                 }
-                GetPathFolders(listFolders, listFileDBPath);
 
-                if (listFolders.Count != 0 || listFileDBPath.Count != 0)
-                {
-                    FileA.CopyListFiles(fileList, listFolders);
+                FileA.CopyListFiles(fileList, listFolders);
                     //TODO: Добавить регистрация в базе по списку listFileDBPath
-                }
-                else
-                {
-                    MessageBox.Show("Не выбран ни один путь для копирования");
-                }
                 return true;
             }
             catch (Exception e)
@@ -598,27 +508,28 @@ namespace AddFilesToFolder
             List<string> listNewFolders = new List<string>();
             List<string> listFileDBPath = new List<string>();
 
+            GetPathFolders(listFolders, listFileDBPath);
+
             try
             {
+                if (listFolders.Count == 0 || listFileDBPath.Count == 0)
+                    throw new Exception("Не выбран ни один путь для копирования");
+
+                GenerateNewFolderName();
 
                 foreach (string fl in listBoxFiles.Items)
                 {
                     fileList.Add(fl);
                 }
-                GetPathFolders(listFolders, listFileDBPath);
+               
                 foreach(string p in listFolders)
                 {
                     listNewFolders.Add(Path.Combine(p, tb_newNameFolder.Text));
                 }
-                if (listNewFolders.Count != 0 || listFileDBPath.Count != 0)
-                {
-                    FileA.CopyListFiles(fileList, listNewFolders);
-                    //TODO: Добавить регистрация в базе по списку listFileDBPath
-                }
-                else
-                {
-                    MessageBox.Show("Не выбран ни один путь для копирования");
-                }
+               
+                FileA.CopyListFiles(fileList, listNewFolders);
+                //TODO: Добавить регистрация в базе по списку listFileDBPath
+               
                 return true;
             }
             catch (Exception e)
