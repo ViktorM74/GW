@@ -17,6 +17,8 @@ namespace DBClass
     {
         public static _bsp_snhpDataSet dsDB = new _bsp_snhpDataSet();
         public static TableAdapterManager tableManager = new TableAdapterManager();
+
+        #region DataBaseLoad
         #region TableAdapters
         public static ProjectTableAdapter adpProject = new ProjectTableAdapter();
         public static CustomersTableAdapter adpCustomer = new CustomersTableAdapter();
@@ -36,6 +38,7 @@ namespace DBClass
         public static HistoryTableAdapter adpHistory = new HistoryTableAdapter();
         public static OtdelTableAdapter adpOtdel = new OtdelTableAdapter();
         public static Users_GIPTableAdapter adpGIP = new Users_GIPTableAdapter();
+        public static Otdel_SNHPTableAdapter adpOtdel_SNHP = new Otdel_SNHPTableAdapter();
         #endregion TableAdapters
 
         #region BindingSources
@@ -58,6 +61,7 @@ namespace DBClass
         public static BindingSource bndMark = new BindingSource();
         public static BindingSource bndHistory = new BindingSource();
         public static BindingSource bndOtdel = new BindingSource();
+        public static BindingSource bndOtdel_SNHP = new BindingSource();
         #endregion BindingSources
 
         /// <summary>
@@ -73,7 +77,6 @@ namespace DBClass
 
         public static void InitializeBindingSources()
         {
-
             //Project
             bndProject.DataSource = DB_Cmd.dsDB;
             bndProject.DataMember = "Project";
@@ -151,6 +154,10 @@ namespace DBClass
             bndSostavObj.DataSource = bndObject;
             bndSostavObj.DataMember = "OBJECTSSostavDoc";
 
+            //Otdel_SNHP
+            bndOtdel_SNHP.DataSource = DB_Cmd.dsDB;
+            bndOtdel_SNHP.DataMember = "Otdel_SNHP";
+
         }
 
         private static void DBFills()
@@ -187,6 +194,8 @@ namespace DBClass
             adpOtdel.Fill(dsDB.Otdel);
             //GIP
             adpGIP.Fill(dsDB.Users_GIP);
+            //Otdel_SNHP
+            adpOtdel_SNHP.Fill(dsDB.Otdel_SNHP);
         }
 
         /// <summary>
@@ -213,6 +222,7 @@ namespace DBClass
             tableManager.BackupDataSetBeforeUpdate = true;
             tableManager.UpdateOrder = TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
         }
+        #endregion DataBaseLoad
 
         public static string GetCurrentValueField(BindingSource bnd, string field)
         {
@@ -223,7 +233,7 @@ namespace DBClass
         {
             ((DataRowView)bnd.Current).Row[field] = value;
         }
-        
+
         public static bool Save_BndDB(BindingSource bnd)
         {
             int position = bnd.Position;
@@ -267,7 +277,8 @@ namespace DBClass
 
             return false;
         }
-       
+
+        #region Update-Delete
         #region Project
 
         public static bool SaveProject()
@@ -485,16 +496,10 @@ namespace DBClass
             bndDogovor.CancelEdit();
             bndDogovor.ResetBindings(false);
 
-            //tableManager.UpdateAll(dsDB);
-
-            //adpDogovor.Update(dsDB.Dogovor);
-            //dsDB.Tables["Dogovor"].AcceptChanges();
-            //adpDogovor.Fill(dsDB.Dogovor);
-
             bndDogovor.Position = position;
         }
 
-        public static object AddDogovor()
+        public static object AddDogovor(string linkFolder)
         {
             object newobj;
 
@@ -508,6 +513,13 @@ namespace DBClass
                 ((DataRowView)DB_Cmd.bndDogovor.Current).Row["id_Tender"] = ((DataRowView)DB_Cmd.bndTender.Current).Row["ID_Teder"];
                 ((DataRowView)DB_Cmd.bndDogovor.Current).Row["IDStady"] = ((DataRowView)DB_Cmd.bndTender.Current).Row["IDStadia"];
                 ((DataRowView)DB_Cmd.bndDogovor.Current).Row["Sostav"] = ((DataRowView)DB_Cmd.bndTender.Current).Row["Sostav"];
+
+                if (linkFolder != "")
+                {
+                    string newPath = Path.Combine(Path.Combine(linkFolder, "Договор"), DateTime.Now.ToString("yyyy.MM.dd"));
+                    FileA.CreateFolder(newPath);
+                    ((DataRowView)bndDogovor.Current).Row["path"] = newPath;
+                }
 
                 return newobj;
             }
@@ -546,18 +558,15 @@ namespace DBClass
             try
             {
                 bndTender.EndEdit();
+                tableManager.UpdateAll(dsDB);
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Сохранение вызвало ошибку: " + ex.Message);
-                //bndTender.ResetBindings(false);
+               
             }
             finally
             {
-                adpTender.Update(dsDB.Tender);
-                dsDB.Tables["Tender"].AcceptChanges();
-                adpTender.Fill(dsDB.Tender);
-
                 bndTender.Position = position;
             }
         }
@@ -566,11 +575,8 @@ namespace DBClass
         {
             int position = bndTender.Position;
 
-            //bndTender.ResetBindings(false);
-
-            adpTender.Update(dsDB.Tender);
-            dsDB.Tables["Tender"].AcceptChanges();
-            adpTender.Fill(dsDB.Tender);
+            bndTender.CancelEdit();
+            bndTender.ResetBindings(false);
 
             bndTender.Position = position;
         }
@@ -584,7 +590,7 @@ namespace DBClass
             {
                 FileA.CreateFolder("Тендер", linkFolder);
                 string newPath = Path.Combine(Path.Combine(linkFolder, "Тендер"), DateTime.Now.ToString("yyyy.MM.dd"));
-                FileA.CreateFolder(DateTime.Now.ToString("yyyy.MM.dd"), Path.Combine(linkFolder, "Тендер"));
+                FileA.CreateFolder(newPath);
                 ((DataRowView)bndTender.Current).Row["Path"] = newPath;
             }
         }
@@ -1356,6 +1362,7 @@ namespace DBClass
             try
             {
                 bndOtdel.EndEdit();
+                adpOtdel.Update(dsDB.Otdel);
             }
             catch (Exception ex)
             {
@@ -1364,9 +1371,8 @@ namespace DBClass
             }
             finally
             {
-                adpOtdel.Update(dsDB.Otdel);
-                dsDB.Tables["Otdel"].AcceptChanges();
-                adpOtdel.Fill(dsDB.Otdel);
+                //dsDB.Tables["Otdel"].AcceptChanges();
+                //adpOtdel.Fill(dsDB.Otdel);
 
                 bndOtdel.Position = position;
             }
@@ -1376,25 +1382,22 @@ namespace DBClass
         {
             int position = bndOtdel.Position;
 
+            bndOtdel.CancelEdit();
             bndOtdel.ResetBindings(false);
 
-            adpOtdel.Update(dsDB.Otdel);
-            dsDB.Tables["Otdel"].AcceptChanges();
-            adpOtdel.Fill(dsDB.Otdel);
-
-            bndOtdel.Position = position;
+           bndOtdel.Position = position;
         }
 
-        public static void AddOtdel()
+        public static object AddOtdel()
         {
-            bndOtdel.AddNew();
+            return bndOtdel.AddNew();
         }
 
         public static void DeleteOtdel()
         {
             DataRowView rw = bndOtdel.Current as DataRowView;
             string NameDelete = rw.Row["NameOtd"].ToString();
-            if (MessageBox.Show("Вы действитель хотите удалить " + NameDelete + "? \r\n ДЕЙСТВИЕ НЕВОЗМОЖНО ОТМЕНИТЬ!", "Удаление записи", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show("Вы действитель хотите удалить " + NameDelete + "? \r \n ДЕЙСТВИЕ НЕВОЗМОЖНО ОТМЕНИТЬ!", "Удаление записи", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 try
                 {
@@ -1410,6 +1413,71 @@ namespace DBClass
         }
 
         #endregion
+
+        #region Otdel_SNHP
+        public static void SaveOtdel_SNHP()
+        {
+            int position = bndOtdel_SNHP.Position;
+            try
+            {
+                bndOtdel_SNHP.EndEdit();
+                adpOtdel_SNHP.Update(dsDB.Otdel_SNHP);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Сохранение вызвало ошибку: " + ex.Message);
+                bndOtdel_SNHP.ResetBindings(false);
+            }
+            finally
+            {
+                //dsDB.Tables["Otdel"].AcceptChanges();
+                //adpOtdel.Fill(dsDB.Otdel);
+
+                bndOtdel_SNHP.Position = position;
+            }
+        }
+
+        public static void CancelOtdel_SNHP()
+        {
+            int position = bndOtdel_SNHP.Position;
+
+            bndOtdel_SNHP.CancelEdit();
+            bndOtdel_SNHP.ResetBindings(false);
+
+            bndOtdel_SNHP.Position = position;
+        }
+
+        public static object AddOtdel_SNHP()
+        {
+            return bndOtdel_SNHP.AddNew();
+        }
+
+        public static void DeleteOtdel_SNHP()
+        {
+            DataRowView rw = bndOtdel_SNHP.Current as DataRowView;
+            string NameDelete = rw.Row["ИмяКО"].ToString();
+            if (MessageBox.Show("Вы действитель хотите удалить " + NameDelete + "? \r \n ДЕЙСТВИЕ НЕВОЗМОЖНО ОТМЕНИТЬ!", "Удаление записи", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                try
+                {
+                    bndOtdel_SNHP.RemoveCurrent();
+                }
+                catch (Exception ex)
+                {
+                    string exMessage = ex.Message.ToString();
+                    MessageBox.Show("Удаление вызвало ошибку: " + exMessage, "Удаление", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+
+            }
+        }
+        #endregion Otdel_SNHP
+        #endregion Update-Delete
+
+        #region DRAG
+        public static void AddDocumentToDB()
+        {
+        
+        }
 
         public static void AddDocDragDrop(List<string> ListFiles, string el, BindingSource bnd, int Group)
         {
@@ -1463,6 +1531,7 @@ namespace DBClass
 
             SaveDoc();
         }
+        #endregion DRAG
 
         /// <summary>
         /// Устанавливает курсор в таблице на новую (созданную) запись

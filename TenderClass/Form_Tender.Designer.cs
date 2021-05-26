@@ -160,6 +160,7 @@ namespace TenderClass
             this.btn_Save.TabIndex = 23;
             this.btn_Save.Text = "Сохранить";
             this.btn_Save.UseVisualStyleBackColor = true;
+            this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
             // 
             // btn_Close
             // 
@@ -171,6 +172,7 @@ namespace TenderClass
             this.btn_Close.TabIndex = 23;
             this.btn_Close.Text = "Закрыть";
             this.btn_Close.UseVisualStyleBackColor = true;
+            this.btn_Close.Click += new System.EventHandler(this.btn_Close_Click);
             // 
             // cb_Customer
             // 

@@ -48,7 +48,23 @@ namespace FileAction
             }
             else
             {
-                //MessageBox.Show("Путь не найден");
+                //MessageBox.Show("Папка существует");
+                return false;
+            }
+        }
+
+        public static bool CreateFolder(string newPath)
+        {
+            bool folderExists = Directory.Exists(newPath);
+
+            if (!folderExists)
+            {
+                Directory.CreateDirectory(newPath);
+                return true;
+            }
+            else
+            {
+                //MessageBox.Show("Папка существует");
                 return false;
             }
         }
@@ -75,7 +91,6 @@ namespace FileAction
             string fileName = Path.GetFileName(file);
             try
             {
-
                 if (!Directory.Exists(path))
                     Directory.CreateDirectory(path);
 

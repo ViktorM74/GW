@@ -57,5 +57,30 @@ namespace feature_сlass
             return result;
         }
 
+        public static void comboBox_DropDown(object sender, EventArgs e)
+        {
+            ComboBox senderComboBox = (ComboBox)sender;
+            int width = senderComboBox.DropDownWidth;
+            System.Drawing.Graphics g = senderComboBox.CreateGraphics();
+            System.Drawing.Font font = senderComboBox.Font;
+            int vertScrollBarWidth =
+                (senderComboBox.Items.Count > senderComboBox.MaxDropDownItems)
+                ? SystemInformation.VerticalScrollBarWidth : 0;
+            int newWidth;
+
+            foreach (string s in ((ComboBox)sender).Items)
+            {
+                newWidth = (int)g.MeasureString(s, font).Width
+                    + vertScrollBarWidth;
+
+                if (width < newWidth)
+                {
+                    width = newWidth;
+                }
+            }
+
+            senderComboBox.DropDownWidth = width;
+        }
+
     }
 }

@@ -34,7 +34,8 @@ namespace GW_Dogovor
     {
         string tPathDB;
         bool R = false;
-             
+      
+
         public Form_main()
         {
             InitializeComponent();
@@ -181,6 +182,8 @@ namespace GW_Dogovor
                 DB_Cmd.SaveDopSoglashenia();
             };
 
+           
+
         }
 
         #region ViewForms 
@@ -188,6 +191,8 @@ namespace GW_Dogovor
         private void SetViewDataProject()
         {
             tbNameProject.DataBindings.Add("Text", DB_Cmd.bndProject, "Name");
+            tb_num_dog.DataBindings.Add("Text", DB_Cmd.bndDogovor, "Nambe_Dog");
+            
             tb_Code_object.DataBindings.Add("Text", DB_Cmd.bndProject, "Code_object");
             tb_pName.DataBindings.Add("Text", DB_Cmd.bndProject, "Name");
             tb_pNotes.DataBindings.Add("Text", DB_Cmd.bndProject, "Notes");
@@ -296,7 +301,7 @@ namespace GW_Dogovor
             tb_StatusDD.DataBindings.Add("Text", DB_Cmd.bndDopDogovor, "Status");
             tb_ToDateDD.DataBindings.Add("Text", DB_Cmd.bndDopDogovor, "Data_Konec");
             tb_NotesDD.DataBindings.Add("Text", DB_Cmd.bndDopDogovor, "Comments");
-            tb_numDog_DD.DataBindings.Add("Text", DB_Cmd.bndDopDogovor, "NumDog");
+           
 
             grid_DD.AutoGenerateColumns = false;
             grid_DD.DataSource = DB_Cmd.bndDopDogovor;
@@ -332,9 +337,10 @@ namespace GW_Dogovor
             tb_CodeObject.DataBindings.Add("Text", DB_Cmd.bndObject, "Nambe_Object");
             tb_TitleObject.DataBindings.Add("Text", DB_Cmd.bndObject, "Titul");
             tb_BlockObject.DataBindings.Add("Text", DB_Cmd.bndObject, "Block");
-          
+            tb_Obj_std.DataBindings.Add("Text", DB_Cmd.bndObject, "Stady");
+
             //GIP
-            tb_GIPObject.DataBindings.Add("Text", DB_Cmd.bndObject, "NameGIP");
+            tb_ObjComment.DataBindings.Add("Text", DB_Cmd.bndObject, "Comments");
             //Object
             grid_Object.AutoGenerateColumns = false;
             grid_Object.DataSource = DB_Cmd.bndObject;
@@ -355,13 +361,12 @@ namespace GW_Dogovor
             //Graf_Zadania
             grid_GrafZ.AutoGenerateColumns = false;
             grid_GrafZ.DataSource = DB_Cmd.bndZadania;
-            grid_GrafZ.Columns[""].DataPropertyName = "";
-            grid_GrafZ.Columns[""].DataPropertyName = "";
-            grid_GrafZ.Columns[""].DataPropertyName = "";
-            grid_GrafZ.Columns[""].DataPropertyName = "";
-            grid_GrafZ.Columns[""].DataPropertyName = "";
-            grid_GrafZ.Columns[""].DataPropertyName = "";
-            grid_GrafZ.Columns[""].DataPropertyName = "";
+            grid_GrafZ.Columns["zadania_name"].DataPropertyName = "Coments";
+            grid_GrafZ.Columns["zadania_otdel_out"].DataPropertyName = "Otdel_id_out"; 
+            grid_GrafZ.Columns["zadania_otdel_in"].DataPropertyName = "Otdel_id_in";
+            grid_GrafZ.Columns["zadania_plan"].DataPropertyName = "Date_graf";
+            grid_GrafZ.Columns["zadania_fakt"].DataPropertyName = "Date_fact";
+            
 
 
 
@@ -635,20 +640,11 @@ namespace GW_Dogovor
         private void EditTender()
         {
             Form_Tender fe = new Form_Tender();
-  
-            if (fe.ShowDialog() == DialogResult.OK)
-            {
-                fe.Validate();
-                DB_Cmd.SaveTender();
-            }
-            else
-            {
-                fe.Validate();
-                DB_Cmd.CancelTender();
-            }
+            fe.ShowDialog();
+            
         }
 
-        #endregion
+        #endregion Tender
 
         #region Dogovor
         private void EditDogovor()
@@ -869,25 +865,34 @@ namespace GW_Dogovor
         }
 
         private void _DragDrop(object sender, DragEventArgs e, int Narp, string Name)
-        {            
-            string pLocal = Path.Combine(link_LocalFld.Text, Name);
-            string pServer = Path.Combine(link_ServetFld.Text, Name);
-            if (Narp == 0 || Narp == 2)
-                if (!Directory.Exists(pLocal))
-                     throw new Exception("Локальная папка не указана. Укажите локальную папку в свойствах проекта");
-            
-            if (Narp == 1 || Narp == 2)
-               if (!Directory.Exists(pServer))
-                 throw new Exception("Серверная папка не указана. Укажите серверную папку в свойствах проекта");
-            
-            //DragDropDocuments(sender, e, 0); // Исходные данные
-            Form_AddFiles frm_Copyfiles = new Form_AddFiles(pLocal, pServer);
-            frm_Copyfiles.SetNapr(Narp);
-            foreach (string f in (string[])e.Data.GetData(DataFormats.FileDrop))
+        {
+            try
             {
-                frm_Copyfiles.ListFiles.Add(f); // передаем список файлов в модуль копирования
+                string pLocal = Path.Combine(link_LocalFld.Text, Name);
+                string pServer = Path.Combine(link_ServetFld.Text, Name);
+                if (Narp == 0 || Narp == 2)
+                    if (!Directory.Exists(link_LocalFld.Text))
+                         throw new Exception("Локальная папка не указана. Укажите локальную папку в свойствах проекта");
+            
+                if (Narp == 1 || Narp == 2)
+                   if (!Directory.Exists(link_ServetFld.Text))
+                     throw new Exception("Серверная папка не указана. Укажите серверную папку в свойствах проекта");
+            
+                //DragDropDocuments(sender, e, 0); // Исходные данные
+          
+                Form_AddFiles frm_Copyfiles = new Form_AddFiles(pLocal, pServer);
+                frm_Copyfiles.SetNapr(Narp);
+                foreach (string f in (string[])e.Data.GetData(DataFormats.FileDrop))
+                {
+                    frm_Copyfiles.ListFiles.Add(f); // передаем список файлов в модуль копирования
+                }
+                frm_Copyfiles.ShowDialog();
             }
-            frm_Copyfiles.ShowDialog();
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
 
         private void DragDropDocuments(object sender, DragEventArgs e, int typeDocument)
@@ -949,7 +954,6 @@ namespace GW_Dogovor
             /// метод сохранения в базу данных записей из ListName по пути path
 
         }
-
         private void ShowListFile(List<ListFile> listNew)
         {
             Form_Message msf = new Form_Message();
@@ -989,7 +993,7 @@ namespace GW_Dogovor
         }
    
 
-        #region DRAG Documents Исходные данные
+        #region DRAG Documents
         private void gridDocument_DragEnter(object sender, DragEventArgs e)
         {
             _DragEnter(sender, e);
@@ -1006,7 +1010,7 @@ namespace GW_Dogovor
         {
             _DragDrop(sender, e, 1, "Задания");
         }
-        #endregion DRAG Documents Исходные данные
+        #endregion DRAG Documents
 
         #region DRAG Tender Documents "Тендер"
         private void grid_TenderDoc_DragEnter(object sender, DragEventArgs e)
@@ -1047,7 +1051,7 @@ namespace GW_Dogovor
             }
         }
 
-        #endregion
+        #endregion DRAG Tender Documents "Тендер"
 
         #endregion DRAG
 
@@ -1187,7 +1191,7 @@ namespace GW_Dogovor
         {
             int pos = DB_Cmd.bndDogovor.Position;
 
-            object newobject = DB_Cmd.AddDogovor();
+            object newobject = DB_Cmd.AddDogovor(link_LocalFld.Text);
 
             EditDogovor();
 
@@ -1352,7 +1356,10 @@ namespace GW_Dogovor
             ConnectDB();
         }
 
-   
+        private void bndNavigatorTender_RefreshItems(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }
