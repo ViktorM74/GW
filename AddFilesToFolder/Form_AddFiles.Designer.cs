@@ -76,6 +76,8 @@ namespace AddFilesToFolder
             this.treeViewFolder.SelectedImageIndex = 3;
             this.treeViewFolder.Size = new System.Drawing.Size(261, 402);
             this.treeViewFolder.TabIndex = 0;
+            this.treeViewFolder.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeViewFolder_BeforeExpand);
+            this.treeViewFolder.BeforeSelect += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeViewFolder_BeforeSelect);
             this.treeViewFolder.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeViewFolder_NodeMouseClick);
             // 
             // contextMenuSave

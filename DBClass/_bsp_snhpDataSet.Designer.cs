@@ -1041,7 +1041,7 @@ namespace DBClass {
             this.Project.AreaStroyColumn.Expression = "Parent([CustomersProject]).[NameCust]";
             this.Documents.TYPEColumn.Expression = "Parent([Documets_typeDocuments]).[Name_doc]";
             this.OBJECTS.NameGIPColumn.Expression = "Parent([Users GIP_OBJECTS]).[Family]";
-            this.OBJECTS.CodeOBJColumn.Expression = "ISNull([Nambe_Object], \'\') + \' - \' + ISNull([Titul], \'\')+\' - \'+ISNull([Block], \'\'" +
+            this.OBJECTS.CodeOBJColumn.Expression = "ISNull([Nambe_Object], \'\') + \' - \' + ISNull([Titul], \'\')+\' - \'+ISNull([Stady], \'\'" +
                 ")";
             this.OBJECTS.StadyColumn.Expression = "Parent([Stady_projectOBJECTS]).[Обозначение]";
             this.Tender.CustomerColumn.Expression = "Parent([CustomersTender]).[NameCust]";
@@ -6519,7 +6519,7 @@ namespace DBClass {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitExpressions() {
                 this.NameGIPColumn.Expression = "Parent([Users GIP_OBJECTS]).[Family]";
-                this.CodeOBJColumn.Expression = "ISNull([Nambe_Object], \'\') + \' - \' + ISNull([Titul], \'\')+\' - \'+ISNull([Block], \'\'" +
+                this.CodeOBJColumn.Expression = "ISNull([Nambe_Object], \'\') + \' - \' + ISNull([Titul], \'\')+\' - \'+ISNull([Stady], \'\'" +
                     ")";
                 this.StadyColumn.Expression = "Parent([Stady_projectOBJECTS]).[Обозначение]";
             }
@@ -6657,6 +6657,8 @@ namespace DBClass {
             
             private global::System.Data.DataColumn columnid_Parent;
             
+            private global::System.Data.DataColumn columnBlock;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public SostavDocDataTable() {
@@ -6772,6 +6774,14 @@ namespace DBClass {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BlockColumn {
+                get {
+                    return this.columnBlock;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -6807,7 +6817,7 @@ namespace DBClass {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public SostavDocRow AddSostavDocRow(OBJECTSRow parentOBJECTSRowByOBJECTSSostavDoc, string Mark, System.DateTime Data_plan, System.DateTime Data_fakt, bool GIP_viz, bool Arhiv, System.DateTime Data_GIP_viz, string Notes, int id_Parent) {
+            public SostavDocRow AddSostavDocRow(OBJECTSRow parentOBJECTSRowByOBJECTSSostavDoc, string Mark, System.DateTime Data_plan, System.DateTime Data_fakt, bool GIP_viz, bool Arhiv, System.DateTime Data_GIP_viz, string Notes, int id_Parent, string Block) {
                 SostavDocRow rowSostavDocRow = ((SostavDocRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -6819,7 +6829,8 @@ namespace DBClass {
                         Arhiv,
                         Data_GIP_viz,
                         Notes,
-                        id_Parent};
+                        id_Parent,
+                        Block};
                 if ((parentOBJECTSRowByOBJECTSSostavDoc != null)) {
                     columnValuesArray[1] = parentOBJECTSRowByOBJECTSSostavDoc[0];
                 }
@@ -6862,6 +6873,7 @@ namespace DBClass {
                 this.columnData_GIP_viz = base.Columns["Data_GIP_viz"];
                 this.columnNotes = base.Columns["Notes"];
                 this.columnid_Parent = base.Columns["id_Parent"];
+                this.columnBlock = base.Columns["Block"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6887,6 +6899,8 @@ namespace DBClass {
                 base.Columns.Add(this.columnNotes);
                 this.columnid_Parent = new global::System.Data.DataColumn("id_Parent", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnid_Parent);
+                this.columnBlock = new global::System.Data.DataColumn("Block", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBlock);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnIDSostavDoc}, true));
                 this.columnIDSostavDoc.AutoIncrement = true;
@@ -6897,6 +6911,7 @@ namespace DBClass {
                 this.columnGIP_viz.DefaultValue = ((bool)(false));
                 this.columnArhiv.DefaultValue = ((bool)(false));
                 this.columnNotes.MaxLength = 255;
+                this.columnBlock.MaxLength = 255;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -13279,6 +13294,22 @@ namespace DBClass {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Block {
+                get {
+                    try {
+                        return ((string)(this[this.tableSostavDoc.BlockColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Block\' в таблице \'SostavDoc\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSostavDoc.BlockColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public OBJECTSRow OBJECTSRow {
                 get {
                     return ((OBJECTSRow)(this.GetParentRow(this.Table.ParentRelations["OBJECTSSostavDoc"])));
@@ -13394,6 +13425,18 @@ namespace DBClass {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void Setid_ParentNull() {
                 this[this.tableSostavDoc.id_ParentColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsBlockNull() {
+                return this.IsNull(this.tableSostavDoc.BlockColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetBlockNull() {
+                this[this.tableSostavDoc.BlockColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -22403,10 +22446,11 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("Data_GIP_viz", "Data_GIP_viz");
             tableMapping.ColumnMappings.Add("Notes", "Notes");
             tableMapping.ColumnMappings.Add("id_Parent", "id_Parent");
+            tableMapping.ColumnMappings.Add("Block", "Block");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM `SostavDoc` WHERE ((`IDSostavDoc` = ?) AND ((? = 1 AND `IDOBJ` IS NULL) OR (`IDOBJ` = ?)) AND ((? = 1 AND `Mark` IS NULL) OR (`Mark` = ?)) AND ((? = 1 AND `Data_plan` IS NULL) OR (`Data_plan` = ?)) AND ((? = 1 AND `Data_fakt` IS NULL) OR (`Data_fakt` = ?)) AND ((? = 1 AND `GIP_viz` IS NULL) OR (`GIP_viz` = ?)) AND ((? = 1 AND `Arhiv` IS NULL) OR (`Arhiv` = ?)) AND ((? = 1 AND `Data_GIP_viz` IS NULL) OR (`Data_GIP_viz` = ?)) AND ((? = 1 AND `Notes` IS NULL) OR (`Notes` = ?)) AND ((? = 1 AND `id_Parent` IS NULL) OR (`id_Parent` = ?)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM `SostavDoc` WHERE ((`IDSostavDoc` = ?) AND ((? = 1 AND `IDOBJ` IS NULL) OR (`IDOBJ` = ?)) AND ((? = 1 AND `Mark` IS NULL) OR (`Mark` = ?)) AND ((? = 1 AND `Data_plan` IS NULL) OR (`Data_plan` = ?)) AND ((? = 1 AND `Data_fakt` IS NULL) OR (`Data_fakt` = ?)) AND ((? = 1 AND `GIP_viz` IS NULL) OR (`GIP_viz` = ?)) AND ((? = 1 AND `Arhiv` IS NULL) OR (`Arhiv` = ?)) AND ((? = 1 AND `Data_GIP_viz` IS NULL) OR (`Data_GIP_viz` = ?)) AND ((? = 1 AND `Notes` IS NULL) OR (`Notes` = ?)) AND ((? = 1 AND `id_Parent` IS NULL) OR (`id_Parent` = ?)) AND ((? = 1 AND `Block` IS NULL) OR (`Block` = ?)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_IDSostavDoc", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "IDSostavDoc", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_IDOBJ", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "IDOBJ", global::System.Data.DataRowVersion.Original, true, null));
@@ -22427,10 +22471,13 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Notes", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Notes", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_id_Parent", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_Parent", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_id_Parent", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_Parent", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Block", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Block", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Block", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Block", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.InsertCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO `SostavDoc` (`IDOBJ`, `Mark`, `Data_plan`, `Data_fakt`, `GIP_viz`, `A" +
-                "rhiv`, `Data_GIP_viz`, `Notes`, `id_Parent`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                "rhiv`, `Data_GIP_viz`, `Notes`, `id_Parent`, `Block`) VALUES (?, ?, ?, ?, ?, ?, " +
+                "?, ?, ?, ?)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IDOBJ", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "IDOBJ", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Mark", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Mark", global::System.Data.DataRowVersion.Current, false, null));
@@ -22441,9 +22488,10 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Data_GIP_viz", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Data_GIP_viz", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Notes", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Notes", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("id_Parent", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_Parent", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Block", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Block", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE `SostavDoc` SET `IDOBJ` = ?, `Mark` = ?, `Data_plan` = ?, `Data_fakt` = ?, `GIP_viz` = ?, `Arhiv` = ?, `Data_GIP_viz` = ?, `Notes` = ?, `id_Parent` = ? WHERE ((`IDSostavDoc` = ?) AND ((? = 1 AND `IDOBJ` IS NULL) OR (`IDOBJ` = ?)) AND ((? = 1 AND `Mark` IS NULL) OR (`Mark` = ?)) AND ((? = 1 AND `Data_plan` IS NULL) OR (`Data_plan` = ?)) AND ((? = 1 AND `Data_fakt` IS NULL) OR (`Data_fakt` = ?)) AND ((? = 1 AND `GIP_viz` IS NULL) OR (`GIP_viz` = ?)) AND ((? = 1 AND `Arhiv` IS NULL) OR (`Arhiv` = ?)) AND ((? = 1 AND `Data_GIP_viz` IS NULL) OR (`Data_GIP_viz` = ?)) AND ((? = 1 AND `Notes` IS NULL) OR (`Notes` = ?)) AND ((? = 1 AND `id_Parent` IS NULL) OR (`id_Parent` = ?)))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE `SostavDoc` SET `IDOBJ` = ?, `Mark` = ?, `Data_plan` = ?, `Data_fakt` = ?, `GIP_viz` = ?, `Arhiv` = ?, `Data_GIP_viz` = ?, `Notes` = ?, `id_Parent` = ?, `Block` = ? WHERE ((`IDSostavDoc` = ?) AND ((? = 1 AND `IDOBJ` IS NULL) OR (`IDOBJ` = ?)) AND ((? = 1 AND `Mark` IS NULL) OR (`Mark` = ?)) AND ((? = 1 AND `Data_plan` IS NULL) OR (`Data_plan` = ?)) AND ((? = 1 AND `Data_fakt` IS NULL) OR (`Data_fakt` = ?)) AND ((? = 1 AND `GIP_viz` IS NULL) OR (`GIP_viz` = ?)) AND ((? = 1 AND `Arhiv` IS NULL) OR (`Arhiv` = ?)) AND ((? = 1 AND `Data_GIP_viz` IS NULL) OR (`Data_GIP_viz` = ?)) AND ((? = 1 AND `Notes` IS NULL) OR (`Notes` = ?)) AND ((? = 1 AND `id_Parent` IS NULL) OR (`id_Parent` = ?)) AND ((? = 1 AND `Block` IS NULL) OR (`Block` = ?)))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IDOBJ", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "IDOBJ", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Mark", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Mark", global::System.Data.DataRowVersion.Current, false, null));
@@ -22454,6 +22502,7 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Data_GIP_viz", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Data_GIP_viz", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Notes", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Notes", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("id_Parent", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_Parent", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Block", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Block", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_IDSostavDoc", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "IDSostavDoc", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_IDOBJ", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "IDOBJ", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_IDOBJ", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "IDOBJ", global::System.Data.DataRowVersion.Original, false, null));
@@ -22473,6 +22522,8 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Notes", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Notes", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_id_Parent", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_Parent", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_id_Parent", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id_Parent", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Block", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Block", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Block", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Block", global::System.Data.DataRowVersion.Original, false, null));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -22489,7 +22540,7 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT        IDSostavDoc, IDOBJ, Mark, Data_plan, Data_fakt, GIP_viz, Arhiv, Dat" +
-                "a_GIP_viz, Notes, id_Parent\r\nFROM            SostavDoc";
+                "a_GIP_viz, Notes, id_Parent, Block\r\nFROM            SostavDoc";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -22550,7 +22601,7 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_IDSostavDoc, int Original_IDOBJ, string Original_Mark, global::System.Nullable<global::System.DateTime> Original_Data_plan, global::System.Nullable<global::System.DateTime> Original_Data_fakt, bool Original_GIP_viz, bool Original_Arhiv, global::System.Nullable<global::System.DateTime> Original_Data_GIP_viz, string Original_Notes, global::System.Nullable<int> Original_id_Parent) {
+        public virtual int Delete(int Original_IDSostavDoc, int Original_IDOBJ, string Original_Mark, global::System.Nullable<global::System.DateTime> Original_Data_plan, global::System.Nullable<global::System.DateTime> Original_Data_fakt, bool Original_GIP_viz, bool Original_Arhiv, global::System.Nullable<global::System.DateTime> Original_Data_GIP_viz, string Original_Notes, global::System.Nullable<int> Original_id_Parent, string Original_Block) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_IDSostavDoc));
             this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
             this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_IDOBJ));
@@ -22605,6 +22656,14 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
                 this.Adapter.DeleteCommand.Parameters[17].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[18].Value = global::System.DBNull.Value;
             }
+            if ((Original_Block == null)) {
+                this.Adapter.DeleteCommand.Parameters[19].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[20].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[19].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[20].Value = ((string)(Original_Block));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -22625,7 +22684,7 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int IDOBJ, string Mark, global::System.Nullable<global::System.DateTime> Data_plan, global::System.Nullable<global::System.DateTime> Data_fakt, bool GIP_viz, bool Arhiv, global::System.Nullable<global::System.DateTime> Data_GIP_viz, string Notes, global::System.Nullable<int> id_Parent) {
+        public virtual int Insert(int IDOBJ, string Mark, global::System.Nullable<global::System.DateTime> Data_plan, global::System.Nullable<global::System.DateTime> Data_fakt, bool GIP_viz, bool Arhiv, global::System.Nullable<global::System.DateTime> Data_GIP_viz, string Notes, global::System.Nullable<int> id_Parent, string Block) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((int)(IDOBJ));
             if ((Mark == null)) {
                 throw new global::System.ArgumentNullException("Mark");
@@ -22665,6 +22724,12 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
             else {
                 this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
+            if ((Block == null)) {
+                this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[9].Value = ((string)(Block));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -22695,6 +22760,7 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
                     global::System.Nullable<global::System.DateTime> Data_GIP_viz, 
                     string Notes, 
                     global::System.Nullable<int> id_Parent, 
+                    string Block, 
                     int Original_IDSostavDoc, 
                     int Original_IDOBJ, 
                     string Original_Mark, 
@@ -22704,7 +22770,8 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
                     bool Original_Arhiv, 
                     global::System.Nullable<global::System.DateTime> Original_Data_GIP_viz, 
                     string Original_Notes, 
-                    global::System.Nullable<int> Original_id_Parent) {
+                    global::System.Nullable<int> Original_id_Parent, 
+                    string Original_Block) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(IDOBJ));
             if ((Mark == null)) {
                 throw new global::System.ArgumentNullException("Mark");
@@ -22744,59 +22811,73 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_IDSostavDoc));
-            this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(0));
-            this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(Original_IDOBJ));
+            if ((Block == null)) {
+                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Block));
+            }
+            this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Original_IDSostavDoc));
+            this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
+            this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(Original_IDOBJ));
             if ((Original_Mark == null)) {
                 throw new global::System.ArgumentNullException("Original_Mark");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Original_Mark));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Original_Mark));
             }
             if ((Original_Data_plan.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((System.DateTime)(Original_Data_plan.Value));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((System.DateTime)(Original_Data_plan.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
             }
             if ((Original_Data_fakt.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((System.DateTime)(Original_Data_fakt.Value));
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((System.DateTime)(Original_Data_fakt.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(0));
-            this.Adapter.UpdateCommand.Parameters[19].Value = ((bool)(Original_GIP_viz));
-            this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(0));
-            this.Adapter.UpdateCommand.Parameters[21].Value = ((bool)(Original_Arhiv));
+            this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(0));
+            this.Adapter.UpdateCommand.Parameters[20].Value = ((bool)(Original_GIP_viz));
+            this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(0));
+            this.Adapter.UpdateCommand.Parameters[22].Value = ((bool)(Original_Arhiv));
             if ((Original_Data_GIP_viz.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[23].Value = ((System.DateTime)(Original_Data_GIP_viz.Value));
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((System.DateTime)(Original_Data_GIP_viz.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[23].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[24].Value = global::System.DBNull.Value;
             }
             if ((Original_Notes == null)) {
-                this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[25].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[26].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[25].Value = ((string)(Original_Notes));
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((string)(Original_Notes));
             }
             if ((Original_id_Parent.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[27].Value = ((int)(Original_id_Parent.Value));
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[28].Value = ((int)(Original_id_Parent.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[27].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[28].Value = global::System.DBNull.Value;
+            }
+            if ((Original_Block == null)) {
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[30].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[30].Value = ((string)(Original_Block));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 

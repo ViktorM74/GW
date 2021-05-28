@@ -30,8 +30,6 @@ namespace ObjectClass
         private void InitializeComponent()
         {
             this.label28 = new System.Windows.Forms.Label();
-            this.tb_BlockObject = new System.Windows.Forms.TextBox();
-            this.label26 = new System.Windows.Forms.Label();
             this.tb_TitleObject = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
             this.tb_CodeObject = new System.Windows.Forms.TextBox();
@@ -42,8 +40,8 @@ namespace ObjectClass
             this.tb_NameUObject = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panelButton = new System.Windows.Forms.Panel();
-            this.btn_Save = new System.Windows.Forms.Button();
             this.btn_Close = new System.Windows.Forms.Button();
+            this.btn_Save = new System.Windows.Forms.Button();
             this.tb_GIPObject = new System.Windows.Forms.ComboBox();
             this.panelComments = new System.Windows.Forms.Panel();
             this.tb_CommentsObj = new System.Windows.Forms.RichTextBox();
@@ -61,23 +59,6 @@ namespace ObjectClass
             this.label28.Size = new System.Drawing.Size(29, 13);
             this.label28.TabIndex = 18;
             this.label28.Text = "ГИП";
-            // 
-            // tb_BlockObject
-            // 
-            this.tb_BlockObject.BackColor = System.Drawing.SystemColors.Window;
-            this.tb_BlockObject.Location = new System.Drawing.Point(386, 107);
-            this.tb_BlockObject.Name = "tb_BlockObject";
-            this.tb_BlockObject.Size = new System.Drawing.Size(136, 20);
-            this.tb_BlockObject.TabIndex = 15;
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(383, 90);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(32, 13);
-            this.label26.TabIndex = 10;
-            this.label26.Text = "Блок";
             // 
             // tb_TitleObject
             // 
@@ -168,6 +149,17 @@ namespace ObjectClass
             this.panelButton.Size = new System.Drawing.Size(126, 351);
             this.panelButton.TabIndex = 20;
             // 
+            // btn_Close
+            // 
+            this.btn_Close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_Close.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btn_Close.Location = new System.Drawing.Point(12, 53);
+            this.btn_Close.Name = "btn_Close";
+            this.btn_Close.Size = new System.Drawing.Size(102, 33);
+            this.btn_Close.TabIndex = 0;
+            this.btn_Close.Text = "Закрыть";
+            this.btn_Close.UseVisualStyleBackColor = true;
+            // 
             // btn_Save
             // 
             this.btn_Save.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -179,17 +171,6 @@ namespace ObjectClass
             this.btn_Save.TabIndex = 0;
             this.btn_Save.Text = "Сохранить";
             this.btn_Save.UseVisualStyleBackColor = true;
-            // 
-            // btn_Close
-            // 
-            this.btn_Close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_Close.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btn_Close.Location = new System.Drawing.Point(12, 53);
-            this.btn_Close.Name = "btn_Close";
-            this.btn_Close.Size = new System.Drawing.Size(102, 33);
-            this.btn_Close.TabIndex = 0;
-            this.btn_Close.Text = "Закрыть";
-            this.btn_Close.UseVisualStyleBackColor = true;
             // 
             // tb_GIPObject
             // 
@@ -235,7 +216,7 @@ namespace ObjectClass
             this.cb_Stadia.Size = new System.Drawing.Size(151, 21);
             this.cb_Stadia.TabIndex = 21;
             // 
-            // Form_editObject
+            // Form_Object
             // 
             this.AcceptButton = this.btn_Save;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -248,8 +229,6 @@ namespace ObjectClass
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panelButton);
             this.Controls.Add(this.label28);
-            this.Controls.Add(this.tb_BlockObject);
-            this.Controls.Add(this.label26);
             this.Controls.Add(this.tb_TitleObject);
             this.Controls.Add(this.label25);
             this.Controls.Add(this.tb_CodeObject);
@@ -261,7 +240,7 @@ namespace ObjectClass
             this.Controls.Add(this.tb_NameUObject);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.Name = "Form_editObject";
+            this.Name = "Form_Object";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Редактор данных объекта";
             this.panelButton.ResumeLayout(false);
@@ -273,8 +252,6 @@ namespace ObjectClass
 
         #endregion
         private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.TextBox tb_BlockObject;
-        private System.Windows.Forms.Label label26;
         private System.Windows.Forms.TextBox tb_TitleObject;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.TextBox tb_CodeObject;

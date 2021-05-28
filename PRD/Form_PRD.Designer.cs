@@ -44,6 +44,8 @@ namespace PRD
             this.group_Mark_project = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lb_blok = new System.Windows.Forms.Label();
+            this.tb_blok = new System.Windows.Forms.TextBox();
             this.group_Mark_project.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -68,7 +70,7 @@ namespace PRD
             // lb_Data_plan
             // 
             this.lb_Data_plan.AutoSize = true;
-            this.lb_Data_plan.Location = new System.Drawing.Point(115, 22);
+            this.lb_Data_plan.Location = new System.Drawing.Point(279, 22);
             this.lb_Data_plan.Name = "lb_Data_plan";
             this.lb_Data_plan.Size = new System.Drawing.Size(80, 13);
             this.lb_Data_plan.TabIndex = 0;
@@ -76,7 +78,7 @@ namespace PRD
             // 
             // dtp_Data_plan
             // 
-            this.dtp_Data_plan.Location = new System.Drawing.Point(118, 38);
+            this.dtp_Data_plan.Location = new System.Drawing.Point(282, 38);
             this.dtp_Data_plan.Name = "dtp_Data_plan";
             this.dtp_Data_plan.Size = new System.Drawing.Size(151, 20);
             this.dtp_Data_plan.TabIndex = 2;
@@ -165,6 +167,8 @@ namespace PRD
             // 
             this.group_Mark_project.Controls.Add(this.dtp_Data_plan);
             this.group_Mark_project.Controls.Add(this.lb_Data_plan);
+            this.group_Mark_project.Controls.Add(this.tb_blok);
+            this.group_Mark_project.Controls.Add(this.lb_blok);
             this.group_Mark_project.Controls.Add(this.tb_Mark);
             this.group_Mark_project.Controls.Add(this.lb_Mark);
             this.group_Mark_project.Controls.Add(this.tb_Notes);
@@ -208,6 +212,22 @@ namespace PRD
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Исполнение";
             // 
+            // lb_blok
+            // 
+            this.lb_blok.AutoSize = true;
+            this.lb_blok.Location = new System.Drawing.Point(115, 22);
+            this.lb_blok.Name = "lb_blok";
+            this.lb_blok.Size = new System.Drawing.Size(32, 13);
+            this.lb_blok.TabIndex = 0;
+            this.lb_blok.Text = "Блок";
+            // 
+            // tb_blok
+            // 
+            this.tb_blok.Location = new System.Drawing.Point(118, 38);
+            this.tb_blok.Name = "tb_blok";
+            this.tb_blok.Size = new System.Drawing.Size(74, 20);
+            this.tb_blok.TabIndex = 1;
+            // 
             // Form_PRD
             // 
             this.AcceptButton = this.btn_Save;
@@ -249,5 +269,7 @@ namespace PRD
         private System.Windows.Forms.GroupBox group_Mark_project;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.TextBox tb_blok;
+        private System.Windows.Forms.Label lb_blok;
     }
 }

@@ -20,6 +20,7 @@ namespace PRD
             chb_Arhiv.DataBindings.Add("Checked", DB_Cmd.bndSostavObj, "Arhiv");
             dtp_Data_GIP_viz.DataBindings.Add("Text", DB_Cmd.bndSostavObj, "Data_GIP_viz");
             dtp_Data_fakt.DataBindings.Add("Text", DB_Cmd.bndSostavObj, "Data_fakt");
+            tb_blok.DataBindings.Add("Text", DB_Cmd.bndSostavObj, "Block");
         }
 
         private void btn_Save_Click(object sender, EventArgs e)

@@ -22,7 +22,7 @@ namespace TreeFoldersClass
             tree.Nodes[0].Expand();
         }
 
-        public void CreateTree(TreeView tree)
+        private void CreateTree(TreeView tree)
         {
             // Создаем корневой узел
             TreeNode nodeDrive = new TreeNode(startPath);
