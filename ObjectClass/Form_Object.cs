@@ -13,7 +13,7 @@ namespace ObjectClass
             tb_NameObject.DataBindings.Add("Text", DB_Cmd.bndObject, "Name_object");
             tb_CodeObject.DataBindings.Add("Text", DB_Cmd.bndObject, "Nambe_Object");
             tb_TitleObject.DataBindings.Add("Text", DB_Cmd.bndObject, "Titul");
-            tb_BlockObject.DataBindings.Add("Text", DB_Cmd.bndObject, "Block");
+            //tb_BlockObject.DataBindings.Add("Text", DB_Cmd.bndObject, "Block");
             tb_CommentsObj.DataBindings.Add("Text", DB_Cmd.bndObject, "Comments");
 
             // Stadia

@@ -140,6 +140,7 @@ namespace DBClass
             //MarkProject
             bndMark.DataSource = DB_Cmd.dsDB;
             bndMark.DataMember = "Mark_project";
+           
 
             //History
             bndHistory.DataSource = DB_Cmd.dsDB;
@@ -153,6 +154,7 @@ namespace DBClass
             //SostavObj
             bndSostavObj.DataSource = bndObject;
             bndSostavObj.DataMember = "OBJECTSSostavDoc";
+            bndSostavObj.Sort = "Block ASC";
 
             //Otdel_SNHP
             bndOtdel_SNHP.DataSource = DB_Cmd.dsDB;
@@ -1474,22 +1476,31 @@ namespace DBClass
         #endregion Update-Delete
 
         #region DRAG
-        public static void AddDocumentToDB()
+        public static void AddDocumentToDB(List<string> listFolderDBPath)
         {
-        
+            foreach (string file in listFolderDBPath)
+            {
+                string path = file;
+                string name = Path.GetFileNameWithoutExtension(file);
+                DateTime date = File.GetLastWriteTime(file);
+
+                AddDoc();
+                ((DataRowView)bndDocument.Current).Row["NameDoc"] = name;
+                ((DataRowView)bndDocument.Current).Row["DataDoc"] = date;
+                ((DataRowView)bndDocument.Current).Row["PathDoc"] = path;
+            }
+
+            SaveDoc();
         }
 
         public static void AddDocDragDrop(List<string> ListFiles, string el, BindingSource bnd, int Group)
         {
-            String name;
-            DateTime date;
-            String path;
-           
+                
             foreach (string file in ListFiles)
             {
-                path = el;
-                name = System.IO.Path.GetFileNameWithoutExtension(el);
-                date = System.IO.File.GetLastWriteTime(el);
+                string path = el;
+                string name = Path.GetFileNameWithoutExtension(el);
+                DateTime date = File.GetLastWriteTime(el);
            
                 AddDoc();
                 ((DataRowView)bnd.Current).Row["NameDoc"] = name;

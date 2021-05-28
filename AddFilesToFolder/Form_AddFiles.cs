@@ -5,7 +5,7 @@ using FileAction;
 using System.IO;
 using TreeFoldersClass;
 using Distinary;
-
+using DBClass;
 
 namespace AddFilesToFolder
 {
@@ -126,17 +126,24 @@ namespace AddFilesToFolder
             return result;
         }
 
+        private string Set_pth(TreeNode node)
+        {
+            string path = node.FullPath; // получаем путь вывделенного в дереве каталога
+
+            if (pathRoot != path) //Проверяем, не выбран ли корневой каталог
+                path = path.Remove(0, pathRoot.Length + 1); //Если нет, то удаляем название корневого каталога из пути
+            else
+                path = ""; // Если да, то очищаем путь до корневого каталога
+            return path;
+        }
+
         /// <summary>
         /// Создать новый каталог в указанном
         /// </summary>
         private void MenuItemNewFolder_Click(object sender, EventArgs e)
         {
-            string pth = treeViewFolder.SelectedNode.FullPath; // получаем путь вывделенного в дереве каталога
             bool t = false;
-            if (nameRoot.Length != pth.Length) //Проверяем, не выбран ли корневой каталог
-                pth = pth.Remove(0, nameRoot.Length + 1); //Если нет, то удаляем название корневого каталога из пути
-            else
-                pth = ""; // Если да, то очищаем путь до корневого каталога
+            string pth = Set_pth(treeViewFolder.SelectedNode);
             string pthL = Path.Combine(pathL, pth); // rootPathLocal Получаем путь для локальной папки
             string pthS = Path.Combine(pathS, pth); // rootPathServer Получаем путь для сетевой папки
 
@@ -168,15 +175,16 @@ namespace AddFilesToFolder
                 treeViewFolder.Select();
             }
         }
+
+  
+
         /// <summary>
         /// Переименовывает указанный каталог 
         /// </summary>
         private void MenuItemReName_Click(object sender, EventArgs e)
         {
-            string pth = treeViewFolder.SelectedNode.FullPath;
-
             bool t = false;
-            pth = pth.Remove(0, nameRoot.Length + 1);
+            string pth = Set_pth(treeViewFolder.SelectedNode);
             string pthL = Path.Combine(pathL, pth); // rootPathLocal
             string pthS = Path.Combine(pathS, pth); // rootPathServer
 
@@ -209,9 +217,8 @@ namespace AddFilesToFolder
         /// </summary>
         private void MenuItemDeleteFolder_Click(object sender, EventArgs e)
         {
-            string pth = treeViewFolder.SelectedNode.FullPath;
             bool t = false;
-            pth = pth.Remove(0, nameRoot.Length + 1);
+            string pth = Set_pth(treeViewFolder.SelectedNode);
             string pthL = Path.Combine(pathL, pth); // rootPathLocal
             string pthS = Path.Combine(pathS, pth); // rootPathServer
 
@@ -275,8 +282,9 @@ namespace AddFilesToFolder
 
         private void CreateTreeNodeFolder()
         {
-            TreeFolders.GetTreeDir(treeViewFolder, pathRoot); //Создает дерево узлов
-            treeViewFolder.Nodes[0].Text = nameRoot; //Устанавливает имя первого узла
+            //TreeFolders.GetTreeDir(treeViewFolder, pathRoot); //Создает дерево узлов
+            TreeDirectory.FillDirNodes(treeViewFolder, pathRoot);
+            //treeViewFolder.Nodes[0].Text = nameRoot; //Устанавливает имя первого узла
             treeViewFolder.CheckBoxes = true; //Разрешает CheckBox в узлах
         }
 
@@ -290,7 +298,10 @@ namespace AddFilesToFolder
             foreach (TreeNode node in nodes)
             {
                 if (node.Checked)
+                {
                     list.Add(node);
+                }
+                    
 
                 CheckedNode(node.Nodes, list);
             }
@@ -329,30 +340,26 @@ namespace AddFilesToFolder
 
             foreach (TreeNode n in listfolder) // перебор папок
             {
-                string sp;
-                if (n.FullPath == nameRoot)
-                    sp = "";
-                else
-                   sp = (n.FullPath).Remove(0, nameRoot.Length + 1);
+                string pth = Set_pth(n);
 
                 if (Napr == 2) // в два направления
                 {
-                    listFolders.Add(Path.Combine(pathL, sp));
-                    listFolders.Add(Path.Combine(pathS, sp));
+                    listFolders.Add(Path.Combine(pathL, pth));
+                    listFolders.Add(Path.Combine(pathS, pth));
 
-                    listFileDBPath.Add(Path.Combine(pathL, sp));
+                    listFileDBPath.Add(Path.Combine(pathL, pth));
                 }
                 if (Napr == 1) // только на сервер
                 {
-                    listFolders.Add(Path.Combine(pathS, sp));
+                    listFolders.Add(Path.Combine(pathS, pth));
 
-                    listFileDBPath.Add(Path.Combine(pathS, sp));
+                    listFileDBPath.Add(Path.Combine(pathS, pth));
                 }
                 if (Napr == 0) // только локально
                 {
-                    listFolders.Add(Path.Combine(pathL, sp));
+                    listFolders.Add(Path.Combine(pathL, pth));
 
-                    listFileDBPath.Add(Path.Combine(pathL, sp));
+                    listFileDBPath.Add(Path.Combine(pathL, pth));
                 }
             }
         }
@@ -491,7 +498,9 @@ namespace AddFilesToFolder
                 }
 
                 FileA.CopyListFiles(fileList, listFolders);
-                    //TODO: Добавить регистрация в базе по списку listFileDBPath
+                //TODO: Добавить регистрация в базе по списку listFileDBPath
+                DB_Cmd.AddDocumentToDB(listFileDBPath);
+
                 return true;
             }
             catch (Exception e)
@@ -537,6 +546,16 @@ namespace AddFilesToFolder
                 MessageBox.Show(e.Message);
                 return false;
             }
+        }
+
+        private void treeViewFolder_BeforeExpand(object sender, TreeViewCancelEventArgs e)
+        {
+            TreeDirectory.BeforeExpand(sender, e);
+        }
+
+        private void treeViewFolder_BeforeSelect(object sender, TreeViewCancelEventArgs e)
+        {
+            TreeDirectory.BeforeSelect(sender, e);
         }
     }
 }

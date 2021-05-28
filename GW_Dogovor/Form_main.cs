@@ -336,7 +336,7 @@ namespace GW_Dogovor
             tb_NameObject.DataBindings.Add("Text", DB_Cmd.bndObject, "Name_object");
             tb_CodeObject.DataBindings.Add("Text", DB_Cmd.bndObject, "Nambe_Object");
             tb_TitleObject.DataBindings.Add("Text", DB_Cmd.bndObject, "Titul");
-            tb_BlockObject.DataBindings.Add("Text", DB_Cmd.bndObject, "Block");
+            //tb_BlockObject.DataBindings.Add("Text", DB_Cmd.bndObject, "Block");
             tb_Obj_std.DataBindings.Add("Text", DB_Cmd.bndObject, "Stady");
 
             //GIP
@@ -350,6 +350,7 @@ namespace GW_Dogovor
             //Mark
             grid_GrafMark.AutoGenerateColumns = false;
             grid_GrafMark.DataSource = DB_Cmd.bndSostavObj;
+            grid_GrafMark.Columns["blok_mark"].DataPropertyName = "Block";
             grid_GrafMark.Columns["Mark_name"].DataPropertyName = "Mark";
             grid_GrafMark.Columns["Mark_date_plan"].DataPropertyName = "Data_plan";
             grid_GrafMark.Columns["Mark_GIP"].DataPropertyName = "GIP_viz";
@@ -895,109 +896,105 @@ namespace GW_Dogovor
             
         }
 
-        private void DragDropDocuments(object sender, DragEventArgs e, int typeDocument)
-        {
-            // сформированная по индивидуальному выбору строка сохранения файла или папки 
-            //List<ListFile> listNew = new List<ListFile>();
-            List<string> listNewFolder = new List<string>(); // список путей для копирования
-            List<string> listFileDBPath = new List<string>();
-            List<string> ListFiles = new List<string>(); // список полных путей передаваемых файлов(папок)
-            List<string> aPathWorkDir = new List<string>(); // Головные папки - локальная и серверная + папка категории
-            int SubFolderIndex = 0;
+        //private void DragDropDocuments(object sender, DragEventArgs e, int typeDocument)
+        //{
+        //    // сформированная по индивидуальному выбору строка сохранения файла или папки 
+        //    //List<ListFile> listNew = new List<ListFile>();
+        //    List<string> listNewFolder = new List<string>(); // список путей для копирования
+        //    List<string> listFileDBPath = new List<string>();
+        //    List<string> ListFiles = new List<string>(); // список полных путей передаваемых файлов(папок)
+        //    List<string> aPathWorkDir = new List<string>(); // Головные папки - локальная и серверная + папка категории
+        //    int SubFolderIndex = 0;
 
-            // Здесь определить Active Tab, по сути головная папка для сохранения
-            //0-ИД; 1-Письма; 2-Задания; 3-Тендер; 4-Договор; 5-График; 6- Объект; 7- Изыскания; 8- Штамп; 9- Разное; 10- Основные положения; 11- Входящие; 12- Исходящие
-            // Здесь определить Таб по сути головная папка для сохранения
-            if (tabControlMain.SelectedIndex == 0 && tabDocuments.SelectedIndex == 0)
-                {
-                    SubFolderIndex = 0; // Исходные данные
+        //    // Здесь определить Active Tab, по сути головная папка для сохранения
+        //    //0-ИД; 1-Письма; 2-Задания; 3-Тендер; 4-Договор; 5-График; 6- Объект; 7- Изыскания; 8- Штамп; 9- Разное; 10- Основные положения; 11- Входящие; 12- Исходящие
+        //    // Здесь определить Таб по сути головная папка для сохранения
+        //    if (tabControlMain.SelectedIndex == 0 && tabDocuments.SelectedIndex == 0)
+        //        {
+        //            SubFolderIndex = 0; // Исходные данные
                    
-                }
-                if (tabControlMain.SelectedIndex == 0 && tabDocuments.SelectedIndex == 1)
-                {
-                    SubFolderIndex = 2; // Задания (объект)
+        //        }
+        //        if (tabControlMain.SelectedIndex == 0 && tabDocuments.SelectedIndex == 1)
+        //        {
+        //            SubFolderIndex = 2; // Задания (объект)
                    
-                }
-                if (tabControlMain.SelectedIndex == 0 && tabDocuments.SelectedIndex == 2)
-                {
-                    SubFolderIndex = 1; // Письма на контроле (объект)
+        //        }
+        //        if (tabControlMain.SelectedIndex == 0 && tabDocuments.SelectedIndex == 2)
+        //        {
+        //            SubFolderIndex = 1; // Письма на контроле (объект)
                     
-                }
+        //        }
 
 
 
-            aPathWorkDir.Add(Path.Combine(link_LocalFld.Text, Libr.NameFld[SubFolderIndex]));
-            aPathWorkDir.Add(Path.Combine(link_ServetFld.Text, Libr.NameFld[SubFolderIndex]));
-            //* Здесь определить Таб
+        //    aPathWorkDir.Add(Path.Combine(link_LocalFld.Text, Libr.NameFld[SubFolderIndex]));
+        //    aPathWorkDir.Add(Path.Combine(link_ServetFld.Text, Libr.NameFld[SubFolderIndex]));
+        //    //* Здесь определить Таб
 
-            ListFiles = DDFile_Class.GetListFiles(e);
+        //    ListFiles = DDFile_Class.GetListFiles(e);
 
-            Form_AddFiles fs = new Form_AddFiles(aPathWorkDir[0], aPathWorkDir[1]);
-           if (fs.ShowDialog() == DialogResult.OK)
-            {
-                fs.GetPathFolders(listNewFolder, listFileDBPath); // получаем список путей для сохранения
-            }
-            // сохраняем файлы из списка            
-            foreach (string el in listNewFolder)
-            {
-                FileA.CopyListFiles(ListFiles, el);
-            }
-            /// метод сохранения в базу данных записей из ListName по пути path
-            /// входные ListFiles (список файлов), ListNewFolderL (список локальных путей), GroupFile(группа документов) 
-            foreach (string el in listFileDBPath)
-            {
-                DB_Cmd.AddDocDragDrop(ListFiles, el, DB_Cmd.bndDocument, SubFolderIndex);
-            }
+        //    Form_AddFiles fs = new Form_AddFiles(aPathWorkDir[0], aPathWorkDir[1]);
+        //   if (fs.ShowDialog() == DialogResult.OK)
+        //    {
+        //        fs.GetPathFolders(listNewFolder, listFileDBPath); // получаем список путей для сохранения
+        //    }
+        //    // сохраняем файлы из списка            
+        //    foreach (string el in listNewFolder)
+        //    {
+        //        FileA.CopyListFiles(ListFiles, el);
+        //    }
+        //    /// метод сохранения в базу данных записей из ListName по пути path
+        //    /// входные ListFiles (список файлов), ListNewFolderL (список локальных путей), GroupFile(группа документов) 
+        //    foreach (string el in listFileDBPath)
+        //    {
+        //        DB_Cmd.AddDocDragDrop(ListFiles, el, DB_Cmd.bndDocument, SubFolderIndex);
+        //    }
             
             
 
-            /// метод сохранения в базу данных записей из ListName по пути path
+        //    /// метод сохранения в базу данных записей из ListName по пути path
 
-        }
-        private void ShowListFile(List<ListFile> listNew)
-        {
-            Form_Message msf = new Form_Message();
+        //}
+        //private void ShowListFile(List<ListFile> listNew)
+        //{
+        //    Form_Message msf = new Form_Message();
 
-            foreach (ListFile l in listNew)
-            {
-                msf.listView1.Items.Add("ДАННЫЕ ФАЙЛА");
-                msf.listView1.Items.Add(l.Name);
-                msf.listView1.Items.Add(l.OldPath);
-                msf.listView1.Items.Add("НОВЫЙ ПУТЬ ДЛЯ СОХРАНЕНИЯ");
-                foreach (string s1 in l.NewPathFile.pathLocal)
-                {
-                    msf.listView1.Items.Add(s1);
-                }
-                foreach (string s2 in l.NewPathFile.pathServer)
-                {
-                    msf.listView1.Items.Add(s2);
-                }
-                msf.listView1.Items.Add("");
-            }
+        //    foreach (ListFile l in listNew)
+        //    {
+        //        msf.listView1.Items.Add("ДАННЫЕ ФАЙЛА");
+        //        msf.listView1.Items.Add(l.Name);
+        //        msf.listView1.Items.Add(l.OldPath);
+        //        msf.listView1.Items.Add("НОВЫЙ ПУТЬ ДЛЯ СОХРАНЕНИЯ");
+        //        foreach (string s1 in l.NewPathFile.pathLocal)
+        //        {
+        //            msf.listView1.Items.Add(s1);
+        //        }
+        //        foreach (string s2 in l.NewPathFile.pathServer)
+        //        {
+        //            msf.listView1.Items.Add(s2);
+        //        }
+        //        msf.listView1.Items.Add("");
+        //    }
 
-            msf.ShowDialog();
-        }
-        private void ShowListFile(List<string> listNew)
-        {
-            Form_Message msf = new Form_Message();
+        //    msf.ShowDialog();
+        //}
+        //private void ShowListFile(List<string> listNew)
+        //{
+        //    Form_Message msf = new Form_Message();
 
 
 
-            foreach (string l in listNew)
-            {
-                msf.listView1.Items.Add(l);
+        //    foreach (string l in listNew)
+        //    {
+        //        msf.listView1.Items.Add(l);
    
-            }
+        //    }
 
-            msf.ShowDialog();
-        }
+        //    msf.ShowDialog();
+        //}
    
 
         #region DRAG Documents
-        private void gridDocument_DragEnter(object sender, DragEventArgs e)
-        {
-            _DragEnter(sender, e);
-        }
         private void gridDocument_DragDrop(object sender, DragEventArgs e)
         {
             _DragDrop(sender, e, 2, "Основные положения");
