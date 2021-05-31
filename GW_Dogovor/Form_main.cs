@@ -1,4 +1,5 @@
-﻿using DBClass;
+﻿#region Using
+using DBClass;
 using DBClass._bsp_snhpDataSetTableAdapters;
 using DocTYPELibrary;
 using GW_Dogovor.Properties;
@@ -27,6 +28,7 @@ using feature_сlass;
 using System.ComponentModel;
 using PRD;
 using Zadania;
+#endregion Using
 
 namespace GW_Dogovor
 {

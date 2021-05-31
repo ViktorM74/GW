@@ -39,6 +39,7 @@ namespace DBClass
         public static OtdelTableAdapter adpOtdel = new OtdelTableAdapter();
         public static Users_GIPTableAdapter adpGIP = new Users_GIPTableAdapter();
         public static Otdel_SNHPTableAdapter adpOtdel_SNHP = new Otdel_SNHPTableAdapter();
+        public static Doc_GroupTableAdapter adpDoc_Group = new Doc_GroupTableAdapter();
         #endregion TableAdapters
 
         #region BindingSources
@@ -62,6 +63,7 @@ namespace DBClass
         public static BindingSource bndHistory = new BindingSource();
         public static BindingSource bndOtdel = new BindingSource();
         public static BindingSource bndOtdel_SNHP = new BindingSource();
+        public static BindingSource bndDoc_Group = new BindingSource();
         #endregion BindingSources
 
         /// <summary>
@@ -73,6 +75,46 @@ namespace DBClass
             GreateTableManager_1();
             DBFills();
             InitializeBindingSources();
+        }
+
+        private static void DBFills()
+        {
+            adpProject.Fill(dsDB.Project);
+            adpCustomer.Fill(dsDB.Customers);
+            adpDocument.Fill(dsDB.Documents);
+            adpTypeDocument.Fill(dsDB.Documets_type);
+            //Dogovor
+            adpDogovor.Fill(dsDB.Dogovor);
+            //Tender
+            adpTender.Fill(dsDB.Tender);
+            //CalendarPlan
+            adpCPlan.Fill(dsDB.CalendarPlan);
+            //DopSoglashenia
+            adpDDogovor.Fill(dsDB.DopSoglashenia);
+            //Events
+            adpEvent.Fill(dsDB.Events);
+            //Stady_project
+            adpStadyPrj.Fill(dsDB.Stady_project);
+            //Act
+            adpAct.Fill(dsDB.Act);
+            //OBJECT
+            adpObject.Fill(dsDB.OBJECTS);
+            //SostavDoc
+            adpSostavD.Fill(dsDB.SostavDoc);
+            //Mark_project
+            adpMark.Fill(dsDB.Mark_project);
+            //Zadania
+            adpZadania.Fill(dsDB.Zadania);
+            //History
+            adpHistory.Fill(dsDB.History);
+            //Otdel
+            adpOtdel.Fill(dsDB.Otdel);
+            //GIP
+            adpGIP.Fill(dsDB.Users_GIP);
+            //Otdel_SNHP
+            adpOtdel_SNHP.Fill(dsDB.Otdel_SNHP);
+            //Doc_Group
+            adpDoc_Group.Fill(dsDB.Doc_Group);
         }
 
         public static void InitializeBindingSources()
@@ -90,6 +132,7 @@ namespace DBClass
             bndDocument.Sort = "DataDoc";
             bndTypeDoc.DataSource = DB_Cmd.dsDB;
             bndTypeDoc.DataMember = "Documets_type";
+            bndTypeDoc.Sort = "Name_doc";
             
             //Tender
             bndTender.DataSource = bndProject;
@@ -160,44 +203,11 @@ namespace DBClass
             bndOtdel_SNHP.DataSource = DB_Cmd.dsDB;
             bndOtdel_SNHP.DataMember = "Otdel_SNHP";
 
-        }
+            //Doc_Group
+            bndDoc_Group.DataSource = DB_Cmd.dsDB;
+            bndDoc_Group.DataMember = "Doc_Group";
+            bndDoc_Group.Sort = "Name_group";
 
-        private static void DBFills()
-        {
-            adpProject.Fill(dsDB.Project);
-            adpCustomer.Fill(dsDB.Customers);
-            adpDocument.Fill(dsDB.Documents);
-            adpTypeDocument.Fill(dsDB.Documets_type);
-            //Dogovor
-            adpDogovor.Fill(dsDB.Dogovor);
-            //Tender
-            adpTender.Fill(dsDB.Tender);
-            //CalendarPlan
-            adpCPlan.Fill(dsDB.CalendarPlan);
-            //DopSoglashenia
-            adpDDogovor.Fill(dsDB.DopSoglashenia);
-            //Events
-            adpEvent.Fill(dsDB.Events);
-            //Stady_project
-            adpStadyPrj.Fill(dsDB.Stady_project);
-            //Act
-            adpAct.Fill(dsDB.Act);
-            //OBJECT
-            adpObject.Fill(dsDB.OBJECTS);
-            //SostavDoc
-            adpSostavD.Fill(dsDB.SostavDoc);
-            //Mark_project
-            adpMark.Fill(dsDB.Mark_project);
-            //Zadania
-            adpZadania.Fill(dsDB.Zadania);
-            //History
-            adpHistory.Fill(dsDB.History);
-            //Otdel
-            adpOtdel.Fill(dsDB.Otdel);
-            //GIP
-            adpGIP.Fill(dsDB.Users_GIP);
-            //Otdel_SNHP
-            adpOtdel_SNHP.Fill(dsDB.Otdel_SNHP);
         }
 
         /// <summary>
