@@ -58,6 +58,8 @@ namespace AddFilesToFolder
             this.contextMenuListFiles = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.удалитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.очиститьСписокToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.открытьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.contextMenuSave.SuspendLayout();
             this.gb_Napravlenie.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -83,30 +85,32 @@ namespace AddFilesToFolder
             // contextMenuSave
             // 
             this.contextMenuSave.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.открытьToolStripMenuItem,
+            this.toolStripMenuItem1,
             this.MenuItemNewFolder,
             this.MenuItemReName,
             this.MenuItemDeleteFolder});
             this.contextMenuSave.Name = "contextMenuSave";
-            this.contextMenuSave.Size = new System.Drawing.Size(162, 70);
+            this.contextMenuSave.Size = new System.Drawing.Size(181, 120);
             // 
             // MenuItemNewFolder
             // 
             this.MenuItemNewFolder.Name = "MenuItemNewFolder";
-            this.MenuItemNewFolder.Size = new System.Drawing.Size(161, 22);
+            this.MenuItemNewFolder.Size = new System.Drawing.Size(180, 22);
             this.MenuItemNewFolder.Text = "Создать папку";
             this.MenuItemNewFolder.Click += new System.EventHandler(this.MenuItemNewFolder_Click);
             // 
             // MenuItemReName
             // 
             this.MenuItemReName.Name = "MenuItemReName";
-            this.MenuItemReName.Size = new System.Drawing.Size(161, 22);
+            this.MenuItemReName.Size = new System.Drawing.Size(180, 22);
             this.MenuItemReName.Text = "Переименовать";
             this.MenuItemReName.Click += new System.EventHandler(this.MenuItemReName_Click);
             // 
             // MenuItemDeleteFolder
             // 
             this.MenuItemDeleteFolder.Name = "MenuItemDeleteFolder";
-            this.MenuItemDeleteFolder.Size = new System.Drawing.Size(161, 22);
+            this.MenuItemDeleteFolder.Size = new System.Drawing.Size(180, 22);
             this.MenuItemDeleteFolder.Text = "Удалить папку";
             this.MenuItemDeleteFolder.Click += new System.EventHandler(this.MenuItemDeleteFolder_Click);
             // 
@@ -340,6 +344,18 @@ namespace AddFilesToFolder
             this.очиститьСписокToolStripMenuItem.Text = "Очистить список";
             this.очиститьСписокToolStripMenuItem.Click += new System.EventHandler(this.очиститьСписокToolStripMenuItem_Click);
             // 
+            // открытьToolStripMenuItem
+            // 
+            this.открытьToolStripMenuItem.Name = "открытьToolStripMenuItem";
+            this.открытьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.открытьToolStripMenuItem.Text = "Открыть";
+            this.открытьToolStripMenuItem.Click += new System.EventHandler(this.открытьToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
+            // 
             // Form_AddFiles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -406,5 +422,7 @@ namespace AddFilesToFolder
         private System.Windows.Forms.ToolStripMenuItem удалитьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem очиститьСписокToolStripMenuItem;
         private System.Windows.Forms.CheckBox chb_CopyToNewFolder;
+        private System.Windows.Forms.ToolStripMenuItem открытьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
     }
 }

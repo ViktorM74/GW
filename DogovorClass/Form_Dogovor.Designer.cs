@@ -57,14 +57,14 @@ namespace DogovorClass
             // 
             // tb_NumDog
             // 
-            this.tb_NumDog.Location = new System.Drawing.Point(12, 20);
+            this.tb_NumDog.Location = new System.Drawing.Point(9, 20);
             this.tb_NumDog.Name = "tb_NumDog";
             this.tb_NumDog.Size = new System.Drawing.Size(100, 20);
             this.tb_NumDog.TabIndex = 7;
             // 
             // tb_NameDog
             // 
-            this.tb_NameDog.Location = new System.Drawing.Point(12, 56);
+            this.tb_NameDog.Location = new System.Drawing.Point(9, 56);
             this.tb_NameDog.Multiline = true;
             this.tb_NameDog.Name = "tb_NameDog";
             this.tb_NameDog.Size = new System.Drawing.Size(525, 70);
@@ -126,7 +126,7 @@ namespace DogovorClass
             // 
             // tb_SostavDog
             // 
-            this.tb_SostavDog.Location = new System.Drawing.Point(12, 192);
+            this.tb_SostavDog.Location = new System.Drawing.Point(9, 192);
             this.tb_SostavDog.Multiline = true;
             this.tb_SostavDog.Name = "tb_SostavDog";
             this.tb_SostavDog.Size = new System.Drawing.Size(525, 59);
@@ -153,7 +153,7 @@ namespace DogovorClass
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(13, 133);
+            this.label5.Location = new System.Drawing.Point(9, 133);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(129, 13);
             this.label5.TabIndex = 25;
@@ -171,13 +171,13 @@ namespace DogovorClass
             "закрыт"});
             this.cb_StatusDog.Location = new System.Drawing.Point(249, 20);
             this.cb_StatusDog.Name = "cb_StatusDog";
-            this.cb_StatusDog.Size = new System.Drawing.Size(162, 21);
+            this.cb_StatusDog.Size = new System.Drawing.Size(147, 21);
             this.cb_StatusDog.TabIndex = 29;
             // 
             // cb_StadiaDog
             // 
             this.cb_StadiaDog.FormattingEnabled = true;
-            this.cb_StadiaDog.Location = new System.Drawing.Point(16, 149);
+            this.cb_StadiaDog.Location = new System.Drawing.Point(9, 149);
             this.cb_StadiaDog.Name = "cb_StadiaDog";
             this.cb_StadiaDog.Size = new System.Drawing.Size(184, 21);
             this.cb_StadiaDog.TabIndex = 30;
@@ -193,7 +193,6 @@ namespace DogovorClass
             // btn_SaveDogovor
             // 
             this.btn_SaveDogovor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_SaveDogovor.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btn_SaveDogovor.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn_SaveDogovor.Location = new System.Drawing.Point(570, 13);
             this.btn_SaveDogovor.Name = "btn_SaveDogovor";
@@ -201,17 +200,18 @@ namespace DogovorClass
             this.btn_SaveDogovor.TabIndex = 31;
             this.btn_SaveDogovor.Text = "Сохранить";
             this.btn_SaveDogovor.UseVisualStyleBackColor = true;
+            this.btn_SaveDogovor.Click += new System.EventHandler(this.btn_SaveDogovor_Click);
             // 
             // btn_CloseDogovor
             // 
             this.btn_CloseDogovor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_CloseDogovor.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btn_CloseDogovor.Location = new System.Drawing.Point(570, 52);
             this.btn_CloseDogovor.Name = "btn_CloseDogovor";
             this.btn_CloseDogovor.Size = new System.Drawing.Size(95, 33);
             this.btn_CloseDogovor.TabIndex = 31;
             this.btn_CloseDogovor.Text = "Закрыть";
             this.btn_CloseDogovor.UseVisualStyleBackColor = true;
+            this.btn_CloseDogovor.Click += new System.EventHandler(this.btn_CloseDogovor_Click);
             // 
             // dtp_DateDog
             // 
@@ -222,15 +222,15 @@ namespace DogovorClass
             // 
             // dtp_ToDateDog
             // 
-            this.dtp_ToDateDog.Location = new System.Drawing.Point(417, 21);
+            this.dtp_ToDateDog.Location = new System.Drawing.Point(406, 20);
             this.dtp_ToDateDog.Name = "dtp_ToDateDog";
-            this.dtp_ToDateDog.Size = new System.Drawing.Size(120, 20);
+            this.dtp_ToDateDog.Size = new System.Drawing.Size(128, 20);
             this.dtp_ToDateDog.TabIndex = 33;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(417, 133);
+            this.label1.Location = new System.Drawing.Point(403, 133);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(45, 13);
             this.label1.TabIndex = 24;
@@ -245,9 +245,9 @@ namespace DogovorClass
             "RUB",
             "USD",
             "EUR"});
-            this.cb_Valute.Location = new System.Drawing.Point(420, 149);
+            this.cb_Valute.Location = new System.Drawing.Point(406, 149);
             this.cb_Valute.Name = "cb_Valute";
-            this.cb_Valute.Size = new System.Drawing.Size(117, 21);
+            this.cb_Valute.Size = new System.Drawing.Size(128, 21);
             this.cb_Valute.TabIndex = 29;
             // 
             // panelNotes
@@ -271,11 +271,9 @@ namespace DogovorClass
             // 
             // Form_Dogovor
             // 
-            this.AcceptButton = this.btn_SaveDogovor;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.CancelButton = this.btn_CloseDogovor;
             this.ClientSize = new System.Drawing.Size(677, 377);
             this.Controls.Add(this.panelNotes);
             this.Controls.Add(this.dtp_ToDateDog);

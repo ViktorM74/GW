@@ -29,28 +29,29 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle64 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle65 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle66 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_main));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle67 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle68 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle69 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle70 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle71 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle72 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle73 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle74 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle75 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle76 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle77 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle78 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle79 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle80 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle81 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle82 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle83 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle84 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.lbl_BasePath = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
@@ -93,12 +94,6 @@
             this.tabDocuments = new System.Windows.Forms.TabControl();
             this.tabPageISHDoc = new System.Windows.Forms.TabPage();
             this.gridDocument = new System.Windows.Forms.DataGridView();
-            this.NameDoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nambe_Doc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataDoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PathDoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnPath = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabPageMailControl = new System.Windows.Forms.TabPage();
             this.grid_MailControl = new System.Windows.Forms.DataGridView();
             this.ObjectCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -196,6 +191,31 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tab_CPlan = new System.Windows.Forms.TabPage();
+            this.grid_CPlan = new System.Windows.Forms.DataGridView();
+            this.id_DDog = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Num_sort = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Num_Etap = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Name_Etap = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.day = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nachalo_Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Konec_Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Summ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Valute = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StatusCPlan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bndNavigator_KP_Dog = new System.Windows.Forms.BindingNavigator(this.components);
+            this.bindingNavigatorCountItem1 = new System.Windows.Forms.ToolStripLabel();
+            this.bindingNavigatorMoveFirstItem1 = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMovePreviousItem1 = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorPositionItem1 = new System.Windows.Forms.ToolStripTextBox();
+            this.bindingNavigatorSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorMoveNextItem1 = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMoveLastItem1 = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.tbtn_Edit_ItemCPlan = new System.Windows.Forms.ToolStripButton();
+            this.tab_Act = new System.Windows.Forms.TabPage();
             this.bndNavigatorDogovor = new System.Windows.Forms.BindingNavigator(this.components);
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripButton11 = new System.Windows.Forms.ToolStripButton();
@@ -254,6 +274,9 @@
             this.btn_edit_CP = new System.Windows.Forms.ToolStripButton();
             this.btn_add_CP = new System.Windows.Forms.ToolStripButton();
             this.btn_delete_CP = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator21 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton9 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton10 = new System.Windows.Forms.ToolStripButton();
             this.bndNavigatorDDog = new System.Windows.Forms.BindingNavigator(this.components);
             this.toolStripLabel4 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
@@ -309,6 +332,9 @@
             this.tbtn_EditMark = new System.Windows.Forms.ToolStripButton();
             this.tbtn_AddMark = new System.Windows.Forms.ToolStripButton();
             this.tbtn_DeleteMark = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator19 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel5 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
             this.tabPageGrafZadaniaObject = new System.Windows.Forms.TabPage();
             this.grid_GrafZ = new System.Windows.Forms.DataGridView();
             this.zadania_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -329,6 +355,9 @@
             this.tbtn_edit_Zadania = new System.Windows.Forms.ToolStripButton();
             this.tbtn_add_Zadania = new System.Windows.Forms.ToolStripButton();
             this.tbtn_delete_Zadania = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator20 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel6 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripComboBox2 = new System.Windows.Forms.ToolStripComboBox();
             this.tabPageZadaniaObject = new System.Windows.Forms.TabPage();
             this.grid_Z = new System.Windows.Forms.DataGridView();
             this.bndNavigator_Zadania_file = new System.Windows.Forms.BindingNavigator(this.components);
@@ -343,6 +372,8 @@
             this.bindingNavigatorSeparator17 = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorAddNewItem4 = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorDeleteItem4 = new System.Windows.Forms.ToolStripButton();
+            this.tabPageRKD = new System.Windows.Forms.TabPage();
+            this.tabPageIz = new System.Windows.Forms.TabPage();
             this.bndNavigatorObject = new System.Windows.Forms.BindingNavigator(this.components);
             this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripButton18 = new System.Windows.Forms.ToolStripButton();
@@ -402,39 +433,14 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.tbNameProject = new System.Windows.Forms.TextBox();
             this.tb_num_dog = new System.Windows.Forms.TextBox();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tab_CPlan = new System.Windows.Forms.TabPage();
-            this.tab_Act = new System.Windows.Forms.TabPage();
-            this.grid_CPlan = new System.Windows.Forms.DataGridView();
-            this.id_DDog = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Num_sort = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Num_Etap = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Name_Etap = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.day = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nachalo_Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Konec_Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Summ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Valute = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StatusCPlan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bndNavigator_KP_Dog = new System.Windows.Forms.BindingNavigator(this.components);
-            this.bindingNavigatorCountItem1 = new System.Windows.Forms.ToolStripLabel();
-            this.bindingNavigatorMoveFirstItem1 = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMovePreviousItem1 = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorPositionItem1 = new System.Windows.Forms.ToolStripTextBox();
-            this.bindingNavigatorSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorMoveNextItem1 = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMoveLastItem1 = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.tbtn_Edit_ItemCPlan = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator19 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripLabel5 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
-            this.toolStripSeparator20 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripLabel6 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripComboBox2 = new System.Windows.Forms.ToolStripComboBox();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPageKMD = new System.Windows.Forms.TabPage();
+            this.Obj_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NameDoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nambe_Doc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataDoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PathDoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnPath = new System.Windows.Forms.DataGridViewButtonColumn();
             this.statusStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
@@ -473,6 +479,11 @@
             this.splitContainerDog.SuspendLayout();
             this.panelDogovorComments.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid_DogovorDoc)).BeginInit();
+            this.tabControl1.SuspendLayout();
+            this.tab_CPlan.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grid_CPlan)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bndNavigator_KP_Dog)).BeginInit();
+            this.bndNavigator_KP_Dog.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bndNavigatorDogovor)).BeginInit();
             this.bndNavigatorDogovor.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -524,11 +535,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.grid_ProjectCode)).BeginInit();
             this.cMenuTop.SuspendLayout();
             this.panel5.SuspendLayout();
-            this.tabControl1.SuspendLayout();
-            this.tab_CPlan.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grid_CPlan)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bndNavigator_KP_Dog)).BeginInit();
-            this.bndNavigator_KP_Dog.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip
@@ -956,6 +962,7 @@
             this.gridDocument.AllowUserToResizeRows = false;
             this.gridDocument.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridDocument.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Obj_name,
             this.NameDoc,
             this.Nambe_Doc,
             this.DataDoc,
@@ -974,55 +981,6 @@
             this.gridDocument.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridDocument_CellContentClick_1);
             this.gridDocument.DragDrop += new System.Windows.Forms.DragEventHandler(this.gridDocument_DragDrop);
             this.gridDocument.DragEnter += new System.Windows.Forms.DragEventHandler(this._DragEnter);
-            // 
-            // NameDoc
-            // 
-            this.NameDoc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.NameDoc.HeaderText = "Название";
-            this.NameDoc.Name = "NameDoc";
-            this.NameDoc.ReadOnly = true;
-            this.NameDoc.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.NameDoc.Width = 335;
-            // 
-            // Nambe_Doc
-            // 
-            this.Nambe_Doc.HeaderText = "№ ";
-            this.Nambe_Doc.Name = "Nambe_Doc";
-            this.Nambe_Doc.ReadOnly = true;
-            this.Nambe_Doc.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // DataDoc
-            // 
-            dataGridViewCellStyle64.Format = "d";
-            dataGridViewCellStyle64.NullValue = null;
-            this.DataDoc.DefaultCellStyle = dataGridViewCellStyle64;
-            this.DataDoc.HeaderText = "Дата";
-            this.DataDoc.Name = "DataDoc";
-            this.DataDoc.ReadOnly = true;
-            this.DataDoc.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // Status
-            // 
-            this.Status.HeaderText = "Статус";
-            this.Status.Name = "Status";
-            this.Status.ReadOnly = true;
-            this.Status.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // PathDoc
-            // 
-            this.PathDoc.HeaderText = "Путь к файлу";
-            this.PathDoc.Name = "PathDoc";
-            this.PathDoc.ReadOnly = true;
-            this.PathDoc.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // btnPath
-            // 
-            this.btnPath.HeaderText = "***";
-            this.btnPath.Name = "btnPath";
-            this.btnPath.ReadOnly = true;
-            this.btnPath.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.btnPath.Text = "***";
-            this.btnPath.Width = 25;
             // 
             // tabPageMailControl
             // 
@@ -1084,9 +1042,9 @@
             // 
             // dataGridViewTextBoxColumn4
             // 
-            dataGridViewCellStyle65.Format = "d";
-            dataGridViewCellStyle65.NullValue = null;
-            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle65;
+            dataGridViewCellStyle2.Format = "d";
+            dataGridViewCellStyle2.NullValue = null;
+            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewTextBoxColumn4.HeaderText = "Дата";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
@@ -1172,9 +1130,9 @@
             // 
             // dataGridViewTextBoxColumn9
             // 
-            dataGridViewCellStyle66.Format = "d";
-            dataGridViewCellStyle66.NullValue = null;
-            this.dataGridViewTextBoxColumn9.DefaultCellStyle = dataGridViewCellStyle66;
+            dataGridViewCellStyle3.Format = "d";
+            dataGridViewCellStyle3.NullValue = null;
+            this.dataGridViewTextBoxColumn9.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewTextBoxColumn9.HeaderText = "Дата";
             this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
             this.dataGridViewTextBoxColumn9.ReadOnly = true;
@@ -1610,11 +1568,11 @@
             // 
             // Delete
             // 
-            dataGridViewCellStyle67.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle67.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle67.NullValue = null;
-            dataGridViewCellStyle67.Padding = new System.Windows.Forms.Padding(3);
-            this.Delete.DefaultCellStyle = dataGridViewCellStyle67;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.NullValue = null;
+            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(3);
+            this.Delete.DefaultCellStyle = dataGridViewCellStyle4;
             this.Delete.HeaderText = "Удалить";
             this.Delete.Image = global::GW_Dogovor.Properties.Resources.Delete;
             this.Delete.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
@@ -1888,11 +1846,11 @@
             // 
             // dDelDoc
             // 
-            dataGridViewCellStyle68.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle68.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle68.NullValue = null;
-            dataGridViewCellStyle68.Padding = new System.Windows.Forms.Padding(3);
-            this.dDelDoc.DefaultCellStyle = dataGridViewCellStyle68;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.NullValue = null;
+            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(3);
+            this.dDelDoc.DefaultCellStyle = dataGridViewCellStyle5;
             this.dDelDoc.HeaderText = "Удалить";
             this.dDelDoc.Image = global::GW_Dogovor.Properties.Resources.Delete;
             this.dDelDoc.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
@@ -2031,6 +1989,264 @@
             this.label4.Size = new System.Drawing.Size(107, 13);
             this.label4.TabIndex = 3;
             this.label4.Text = "Название договора";
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tab_CPlan);
+            this.tabControl1.Controls.Add(this.tab_Act);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(836, 219);
+            this.tabControl1.TabIndex = 1;
+            // 
+            // tab_CPlan
+            // 
+            this.tab_CPlan.Controls.Add(this.grid_CPlan);
+            this.tab_CPlan.Controls.Add(this.bndNavigator_KP_Dog);
+            this.tab_CPlan.Location = new System.Drawing.Point(4, 22);
+            this.tab_CPlan.Name = "tab_CPlan";
+            this.tab_CPlan.Padding = new System.Windows.Forms.Padding(3);
+            this.tab_CPlan.Size = new System.Drawing.Size(828, 193);
+            this.tab_CPlan.TabIndex = 0;
+            this.tab_CPlan.Text = "Календарный план";
+            this.tab_CPlan.UseVisualStyleBackColor = true;
+            // 
+            // grid_CPlan
+            // 
+            this.grid_CPlan.AllowUserToAddRows = false;
+            this.grid_CPlan.AllowUserToDeleteRows = false;
+            this.grid_CPlan.AllowUserToResizeColumns = false;
+            this.grid_CPlan.AllowUserToResizeRows = false;
+            this.grid_CPlan.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.grid_CPlan.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
+            this.grid_CPlan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grid_CPlan.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.id_DDog,
+            this.Num_sort,
+            this.Num_Etap,
+            this.Name_Etap,
+            this.day,
+            this.Nachalo_Data,
+            this.Konec_Data,
+            this.Summ,
+            this.Valute,
+            this.StatusCPlan});
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grid_CPlan.DefaultCellStyle = dataGridViewCellStyle10;
+            this.grid_CPlan.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grid_CPlan.Location = new System.Drawing.Point(3, 28);
+            this.grid_CPlan.Name = "grid_CPlan";
+            this.grid_CPlan.ReadOnly = true;
+            this.grid_CPlan.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.grid_CPlan.Size = new System.Drawing.Size(822, 162);
+            this.grid_CPlan.TabIndex = 2;
+            // 
+            // id_DDog
+            // 
+            this.id_DDog.HeaderText = "ДС";
+            this.id_DDog.Name = "id_DDog";
+            this.id_DDog.ReadOnly = true;
+            this.id_DDog.Width = 40;
+            // 
+            // Num_sort
+            // 
+            this.Num_sort.HeaderText = "Num_sort";
+            this.Num_sort.Name = "Num_sort";
+            this.Num_sort.ReadOnly = true;
+            this.Num_sort.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.Num_sort.Visible = false;
+            this.Num_sort.Width = 5;
+            // 
+            // Num_Etap
+            // 
+            this.Num_Etap.HeaderText = "№";
+            this.Num_Etap.Name = "Num_Etap";
+            this.Num_Etap.ReadOnly = true;
+            this.Num_Etap.Width = 60;
+            // 
+            // Name_Etap
+            // 
+            this.Name_Etap.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Name_Etap.DefaultCellStyle = dataGridViewCellStyle6;
+            this.Name_Etap.HeaderText = "Название";
+            this.Name_Etap.Name = "Name_Etap";
+            this.Name_Etap.ReadOnly = true;
+            // 
+            // day
+            // 
+            this.day.HeaderText = "Дни";
+            this.day.Name = "day";
+            this.day.ReadOnly = true;
+            this.day.Width = 50;
+            // 
+            // Nachalo_Data
+            // 
+            dataGridViewCellStyle7.Format = "D";
+            dataGridViewCellStyle7.NullValue = null;
+            this.Nachalo_Data.DefaultCellStyle = dataGridViewCellStyle7;
+            this.Nachalo_Data.HeaderText = "Начало";
+            this.Nachalo_Data.Name = "Nachalo_Data";
+            this.Nachalo_Data.ReadOnly = true;
+            // 
+            // Konec_Data
+            // 
+            dataGridViewCellStyle8.Format = "D";
+            dataGridViewCellStyle8.NullValue = null;
+            this.Konec_Data.DefaultCellStyle = dataGridViewCellStyle8;
+            this.Konec_Data.HeaderText = "Окончание";
+            this.Konec_Data.Name = "Konec_Data";
+            this.Konec_Data.ReadOnly = true;
+            // 
+            // Summ
+            // 
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle9.Format = "N2";
+            dataGridViewCellStyle9.NullValue = null;
+            this.Summ.DefaultCellStyle = dataGridViewCellStyle9;
+            this.Summ.HeaderText = "Сумма";
+            this.Summ.Name = "Summ";
+            this.Summ.ReadOnly = true;
+            // 
+            // Valute
+            // 
+            this.Valute.HeaderText = "Валюта";
+            this.Valute.Name = "Valute";
+            this.Valute.ReadOnly = true;
+            this.Valute.Width = 60;
+            // 
+            // StatusCPlan
+            // 
+            this.StatusCPlan.HeaderText = "Статус";
+            this.StatusCPlan.Name = "StatusCPlan";
+            this.StatusCPlan.ReadOnly = true;
+            this.StatusCPlan.Width = 60;
+            // 
+            // bndNavigator_KP_Dog
+            // 
+            this.bndNavigator_KP_Dog.AddNewItem = null;
+            this.bndNavigator_KP_Dog.CountItem = this.bindingNavigatorCountItem1;
+            this.bndNavigator_KP_Dog.DeleteItem = null;
+            this.bndNavigator_KP_Dog.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bindingNavigatorMoveFirstItem1,
+            this.bindingNavigatorMovePreviousItem1,
+            this.bindingNavigatorSeparator3,
+            this.bindingNavigatorPositionItem1,
+            this.bindingNavigatorCountItem1,
+            this.bindingNavigatorSeparator4,
+            this.bindingNavigatorMoveNextItem1,
+            this.bindingNavigatorMoveLastItem1,
+            this.bindingNavigatorSeparator5,
+            this.tbtn_Edit_ItemCPlan});
+            this.bndNavigator_KP_Dog.Location = new System.Drawing.Point(3, 3);
+            this.bndNavigator_KP_Dog.MoveFirstItem = this.bindingNavigatorMoveFirstItem1;
+            this.bndNavigator_KP_Dog.MoveLastItem = this.bindingNavigatorMoveLastItem1;
+            this.bndNavigator_KP_Dog.MoveNextItem = this.bindingNavigatorMoveNextItem1;
+            this.bndNavigator_KP_Dog.MovePreviousItem = this.bindingNavigatorMovePreviousItem1;
+            this.bndNavigator_KP_Dog.Name = "bndNavigator_KP_Dog";
+            this.bndNavigator_KP_Dog.PositionItem = this.bindingNavigatorPositionItem1;
+            this.bndNavigator_KP_Dog.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.bndNavigator_KP_Dog.Size = new System.Drawing.Size(822, 25);
+            this.bndNavigator_KP_Dog.TabIndex = 3;
+            this.bndNavigator_KP_Dog.Text = "bindingNavigator1";
+            // 
+            // bindingNavigatorCountItem1
+            // 
+            this.bindingNavigatorCountItem1.Name = "bindingNavigatorCountItem1";
+            this.bindingNavigatorCountItem1.Size = new System.Drawing.Size(43, 22);
+            this.bindingNavigatorCountItem1.Text = "для {0}";
+            this.bindingNavigatorCountItem1.ToolTipText = "Общее число элементов";
+            // 
+            // bindingNavigatorMoveFirstItem1
+            // 
+            this.bindingNavigatorMoveFirstItem1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveFirstItem1.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem1.Image")));
+            this.bindingNavigatorMoveFirstItem1.Name = "bindingNavigatorMoveFirstItem1";
+            this.bindingNavigatorMoveFirstItem1.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveFirstItem1.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveFirstItem1.Text = "Переместить в начало";
+            // 
+            // bindingNavigatorMovePreviousItem1
+            // 
+            this.bindingNavigatorMovePreviousItem1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMovePreviousItem1.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem1.Image")));
+            this.bindingNavigatorMovePreviousItem1.Name = "bindingNavigatorMovePreviousItem1";
+            this.bindingNavigatorMovePreviousItem1.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMovePreviousItem1.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMovePreviousItem1.Text = "Переместить назад";
+            // 
+            // bindingNavigatorSeparator3
+            // 
+            this.bindingNavigatorSeparator3.Name = "bindingNavigatorSeparator3";
+            this.bindingNavigatorSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
+            // bindingNavigatorPositionItem1
+            // 
+            this.bindingNavigatorPositionItem1.AccessibleName = "Положение";
+            this.bindingNavigatorPositionItem1.AutoSize = false;
+            this.bindingNavigatorPositionItem1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.bindingNavigatorPositionItem1.Name = "bindingNavigatorPositionItem1";
+            this.bindingNavigatorPositionItem1.Size = new System.Drawing.Size(50, 23);
+            this.bindingNavigatorPositionItem1.Text = "0";
+            this.bindingNavigatorPositionItem1.ToolTipText = "Текущее положение";
+            // 
+            // bindingNavigatorSeparator4
+            // 
+            this.bindingNavigatorSeparator4.Name = "bindingNavigatorSeparator4";
+            this.bindingNavigatorSeparator4.Size = new System.Drawing.Size(6, 25);
+            // 
+            // bindingNavigatorMoveNextItem1
+            // 
+            this.bindingNavigatorMoveNextItem1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveNextItem1.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem1.Image")));
+            this.bindingNavigatorMoveNextItem1.Name = "bindingNavigatorMoveNextItem1";
+            this.bindingNavigatorMoveNextItem1.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveNextItem1.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveNextItem1.Text = "Переместить вперед";
+            // 
+            // bindingNavigatorMoveLastItem1
+            // 
+            this.bindingNavigatorMoveLastItem1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveLastItem1.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem1.Image")));
+            this.bindingNavigatorMoveLastItem1.Name = "bindingNavigatorMoveLastItem1";
+            this.bindingNavigatorMoveLastItem1.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveLastItem1.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveLastItem1.Text = "Переместить в конец";
+            // 
+            // bindingNavigatorSeparator5
+            // 
+            this.bindingNavigatorSeparator5.Name = "bindingNavigatorSeparator5";
+            this.bindingNavigatorSeparator5.Size = new System.Drawing.Size(6, 25);
+            // 
+            // tbtn_Edit_ItemCPlan
+            // 
+            this.tbtn_Edit_ItemCPlan.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tbtn_Edit_ItemCPlan.Enabled = false;
+            this.tbtn_Edit_ItemCPlan.Image = global::GW_Dogovor.Properties.Resources.Modify;
+            this.tbtn_Edit_ItemCPlan.Name = "tbtn_Edit_ItemCPlan";
+            this.tbtn_Edit_ItemCPlan.RightToLeftAutoMirrorImage = true;
+            this.tbtn_Edit_ItemCPlan.Size = new System.Drawing.Size(23, 22);
+            this.tbtn_Edit_ItemCPlan.Text = "Изменить";
+            this.tbtn_Edit_ItemCPlan.Visible = false;
+            this.tbtn_Edit_ItemCPlan.Click += new System.EventHandler(this.tbtn_Edit_ItemCPlan_Click);
+            // 
+            // tab_Act
+            // 
+            this.tab_Act.Location = new System.Drawing.Point(4, 22);
+            this.tab_Act.Name = "tab_Act";
+            this.tab_Act.Padding = new System.Windows.Forms.Padding(3);
+            this.tab_Act.Size = new System.Drawing.Size(828, 193);
+            this.tab_Act.TabIndex = 1;
+            this.tab_Act.Text = "Акты";
+            this.tab_Act.UseVisualStyleBackColor = true;
             // 
             // bndNavigatorDogovor
             // 
@@ -2320,11 +2536,11 @@
             // 
             // dataGridViewImageColumn1
             // 
-            dataGridViewCellStyle69.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle69.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle69.NullValue = null;
-            dataGridViewCellStyle69.Padding = new System.Windows.Forms.Padding(3);
-            this.dataGridViewImageColumn1.DefaultCellStyle = dataGridViewCellStyle69;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle11.NullValue = null;
+            dataGridViewCellStyle11.Padding = new System.Windows.Forms.Padding(3);
+            this.dataGridViewImageColumn1.DefaultCellStyle = dataGridViewCellStyle11;
             this.dataGridViewImageColumn1.HeaderText = "Удалить";
             this.dataGridViewImageColumn1.Image = global::GW_Dogovor.Properties.Resources.Delete;
             this.dataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
@@ -2448,8 +2664,8 @@
             // name_ds
             // 
             this.name_ds.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle70.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.name_ds.DefaultCellStyle = dataGridViewCellStyle70;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.name_ds.DefaultCellStyle = dataGridViewCellStyle12;
             this.name_ds.HeaderText = "Название этапа";
             this.name_ds.Name = "name_ds";
             this.name_ds.ReadOnly = true;
@@ -2463,18 +2679,18 @@
             // 
             // nachalo_ds
             // 
-            dataGridViewCellStyle71.Format = "D";
-            dataGridViewCellStyle71.NullValue = null;
-            this.nachalo_ds.DefaultCellStyle = dataGridViewCellStyle71;
+            dataGridViewCellStyle13.Format = "D";
+            dataGridViewCellStyle13.NullValue = null;
+            this.nachalo_ds.DefaultCellStyle = dataGridViewCellStyle13;
             this.nachalo_ds.HeaderText = "Начало";
             this.nachalo_ds.Name = "nachalo_ds";
             this.nachalo_ds.ReadOnly = true;
             // 
             // konec_ds
             // 
-            dataGridViewCellStyle72.Format = "D";
-            dataGridViewCellStyle72.NullValue = null;
-            this.konec_ds.DefaultCellStyle = dataGridViewCellStyle72;
+            dataGridViewCellStyle14.Format = "D";
+            dataGridViewCellStyle14.NullValue = null;
+            this.konec_ds.DefaultCellStyle = dataGridViewCellStyle14;
             this.konec_ds.HeaderText = "Окончание";
             this.konec_ds.Name = "konec_ds";
             this.konec_ds.ReadOnly = true;
@@ -2482,10 +2698,10 @@
             // summ_ds
             // 
             this.summ_ds.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle73.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle73.Format = "N2";
-            dataGridViewCellStyle73.NullValue = null;
-            this.summ_ds.DefaultCellStyle = dataGridViewCellStyle73;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle15.Format = "N2";
+            dataGridViewCellStyle15.NullValue = null;
+            this.summ_ds.DefaultCellStyle = dataGridViewCellStyle15;
             this.summ_ds.HeaderText = "Сумма";
             this.summ_ds.Name = "summ_ds";
             this.summ_ds.ReadOnly = true;
@@ -2521,7 +2737,10 @@
             this.bindingNavigatorSeparator8,
             this.btn_edit_CP,
             this.btn_add_CP,
-            this.btn_delete_CP});
+            this.btn_delete_CP,
+            this.toolStripSeparator21,
+            this.toolStripButton9,
+            this.toolStripButton10});
             this.bndNavigator_KP_Dop.Location = new System.Drawing.Point(3, 16);
             this.bndNavigator_KP_Dop.MoveFirstItem = this.bindingNavigatorMoveFirstItem2;
             this.bndNavigator_KP_Dop.MoveLastItem = this.bindingNavigatorMoveLastItem2;
@@ -2630,6 +2849,29 @@
             this.btn_delete_CP.Size = new System.Drawing.Size(23, 22);
             this.btn_delete_CP.Text = "Удалить";
             this.btn_delete_CP.Click += new System.EventHandler(this.btn_delete_CP_Click);
+            // 
+            // toolStripSeparator21
+            // 
+            this.toolStripSeparator21.Name = "toolStripSeparator21";
+            this.toolStripSeparator21.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripButton9
+            // 
+            this.toolStripButton9.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton9.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton9.Image")));
+            this.toolStripButton9.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton9.Name = "toolStripButton9";
+            this.toolStripButton9.Size = new System.Drawing.Size(47, 22);
+            this.toolStripButton9.Text = "в Excel";
+            // 
+            // toolStripButton10
+            // 
+            this.toolStripButton10.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton10.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton10.Image")));
+            this.toolStripButton10.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton10.Name = "toolStripButton10";
+            this.toolStripButton10.Size = new System.Drawing.Size(53, 22);
+            this.toolStripButton10.Text = "из Excel";
             // 
             // bndNavigatorDDog
             // 
@@ -2948,8 +3190,9 @@
             this.tabControlGrafics.Controls.Add(this.tabPageGrafMarkObject);
             this.tabControlGrafics.Controls.Add(this.tabPageGrafZadaniaObject);
             this.tabControlGrafics.Controls.Add(this.tabPageZadaniaObject);
-            this.tabControlGrafics.Controls.Add(this.tabPage1);
-            this.tabControlGrafics.Controls.Add(this.tabPage2);
+            this.tabControlGrafics.Controls.Add(this.tabPageRKD);
+            this.tabControlGrafics.Controls.Add(this.tabPageIz);
+            this.tabControlGrafics.Controls.Add(this.tabPageKMD);
             this.tabControlGrafics.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlGrafics.Location = new System.Drawing.Point(0, 0);
             this.tabControlGrafics.Name = "tabControlGrafics";
@@ -3014,9 +3257,9 @@
             // 
             // Mark_date_plan
             // 
-            dataGridViewCellStyle74.Format = "D";
-            dataGridViewCellStyle74.NullValue = null;
-            this.Mark_date_plan.DefaultCellStyle = dataGridViewCellStyle74;
+            dataGridViewCellStyle16.Format = "D";
+            dataGridViewCellStyle16.NullValue = null;
+            this.Mark_date_plan.DefaultCellStyle = dataGridViewCellStyle16;
             this.Mark_date_plan.HeaderText = "Дата по плану";
             this.Mark_date_plan.Name = "Mark_date_plan";
             this.Mark_date_plan.ReadOnly = true;
@@ -3032,9 +3275,9 @@
             // 
             // Mark_date_GIP
             // 
-            dataGridViewCellStyle75.Format = "D";
-            dataGridViewCellStyle75.NullValue = null;
-            this.Mark_date_GIP.DefaultCellStyle = dataGridViewCellStyle75;
+            dataGridViewCellStyle17.Format = "D";
+            dataGridViewCellStyle17.NullValue = null;
+            this.Mark_date_GIP.DefaultCellStyle = dataGridViewCellStyle17;
             this.Mark_date_GIP.HeaderText = "Дата подписи";
             this.Mark_date_GIP.Name = "Mark_date_GIP";
             this.Mark_date_GIP.ReadOnly = true;
@@ -3050,9 +3293,9 @@
             // 
             // Mark_data_fakt
             // 
-            dataGridViewCellStyle76.Format = "D";
-            dataGridViewCellStyle76.NullValue = null;
-            this.Mark_data_fakt.DefaultCellStyle = dataGridViewCellStyle76;
+            dataGridViewCellStyle18.Format = "D";
+            dataGridViewCellStyle18.NullValue = null;
+            this.Mark_data_fakt.DefaultCellStyle = dataGridViewCellStyle18;
             this.Mark_data_fakt.HeaderText = "Дата по факту";
             this.Mark_data_fakt.Name = "Mark_data_fakt";
             this.Mark_data_fakt.ReadOnly = true;
@@ -3195,6 +3438,24 @@
             this.tbtn_DeleteMark.Text = "Удалить";
             this.tbtn_DeleteMark.Click += new System.EventHandler(this.tbtn_DeleteMark_Click);
             // 
+            // toolStripSeparator19
+            // 
+            this.toolStripSeparator19.Name = "toolStripSeparator19";
+            this.toolStripSeparator19.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripLabel5
+            // 
+            this.toolStripLabel5.Name = "toolStripLabel5";
+            this.toolStripLabel5.Size = new System.Drawing.Size(37, 22);
+            this.toolStripLabel5.Text = "Блок:";
+            // 
+            // toolStripComboBox1
+            // 
+            this.toolStripComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.toolStripComboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Standard;
+            this.toolStripComboBox1.Name = "toolStripComboBox1";
+            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 25);
+            // 
             // tabPageGrafZadaniaObject
             // 
             this.tabPageGrafZadaniaObject.Controls.Add(this.grid_GrafZ);
@@ -3247,18 +3508,18 @@
             // 
             // zadania_plan
             // 
-            dataGridViewCellStyle77.Format = "D";
-            dataGridViewCellStyle77.NullValue = null;
-            this.zadania_plan.DefaultCellStyle = dataGridViewCellStyle77;
+            dataGridViewCellStyle19.Format = "D";
+            dataGridViewCellStyle19.NullValue = null;
+            this.zadania_plan.DefaultCellStyle = dataGridViewCellStyle19;
             this.zadania_plan.HeaderText = "Дата по плану";
             this.zadania_plan.Name = "zadania_plan";
             this.zadania_plan.ReadOnly = true;
             // 
             // zadania_fakt
             // 
-            dataGridViewCellStyle78.Format = "D";
-            dataGridViewCellStyle78.NullValue = null;
-            this.zadania_fakt.DefaultCellStyle = dataGridViewCellStyle78;
+            dataGridViewCellStyle20.Format = "D";
+            dataGridViewCellStyle20.NullValue = null;
+            this.zadania_fakt.DefaultCellStyle = dataGridViewCellStyle20;
             this.zadania_fakt.HeaderText = "Дата по факту";
             this.zadania_fakt.Name = "zadania_fakt";
             this.zadania_fakt.ReadOnly = true;
@@ -3394,6 +3655,24 @@
             this.tbtn_delete_Zadania.Text = "Удалить";
             this.tbtn_delete_Zadania.Click += new System.EventHandler(this.tbtn_delete_Zadania_Click);
             // 
+            // toolStripSeparator20
+            // 
+            this.toolStripSeparator20.Name = "toolStripSeparator20";
+            this.toolStripSeparator20.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripLabel6
+            // 
+            this.toolStripLabel6.Name = "toolStripLabel6";
+            this.toolStripLabel6.Size = new System.Drawing.Size(37, 22);
+            this.toolStripLabel6.Text = "Блок:";
+            // 
+            // toolStripComboBox2
+            // 
+            this.toolStripComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.toolStripComboBox2.FlatStyle = System.Windows.Forms.FlatStyle.Standard;
+            this.toolStripComboBox2.Name = "toolStripComboBox2";
+            this.toolStripComboBox2.Size = new System.Drawing.Size(121, 25);
+            // 
             // tabPageZadaniaObject
             // 
             this.tabPageZadaniaObject.Controls.Add(this.grid_Z);
@@ -3528,6 +3807,26 @@
             this.bindingNavigatorDeleteItem4.RightToLeftAutoMirrorImage = true;
             this.bindingNavigatorDeleteItem4.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorDeleteItem4.Text = "Удалить";
+            // 
+            // tabPageRKD
+            // 
+            this.tabPageRKD.Location = new System.Drawing.Point(4, 22);
+            this.tabPageRKD.Name = "tabPageRKD";
+            this.tabPageRKD.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageRKD.Size = new System.Drawing.Size(746, 330);
+            this.tabPageRKD.TabIndex = 3;
+            this.tabPageRKD.Text = "РКД";
+            this.tabPageRKD.UseVisualStyleBackColor = true;
+            // 
+            // tabPageIz
+            // 
+            this.tabPageIz.Location = new System.Drawing.Point(4, 22);
+            this.tabPageIz.Name = "tabPageIz";
+            this.tabPageIz.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageIz.Size = new System.Drawing.Size(746, 330);
+            this.tabPageIz.TabIndex = 4;
+            this.tabPageIz.Text = "Изыскания";
+            this.tabPageIz.UseVisualStyleBackColor = true;
             // 
             // bndNavigatorObject
             // 
@@ -4070,11 +4369,11 @@
             // 
             // dataGridViewImageColumn2
             // 
-            dataGridViewCellStyle79.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle79.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle79.NullValue = null;
-            dataGridViewCellStyle79.Padding = new System.Windows.Forms.Padding(3);
-            this.dataGridViewImageColumn2.DefaultCellStyle = dataGridViewCellStyle79;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle21.NullValue = null;
+            dataGridViewCellStyle21.Padding = new System.Windows.Forms.Padding(3);
+            this.dataGridViewImageColumn2.DefaultCellStyle = dataGridViewCellStyle21;
             this.dataGridViewImageColumn2.HeaderText = "Удалить";
             this.dataGridViewImageColumn2.Image = global::GW_Dogovor.Properties.Resources.Delete;
             this.dataGridViewImageColumn2.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
@@ -4085,11 +4384,11 @@
             // 
             // dataGridViewImageColumn3
             // 
-            dataGridViewCellStyle80.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle80.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle80.NullValue = null;
-            dataGridViewCellStyle80.Padding = new System.Windows.Forms.Padding(3);
-            this.dataGridViewImageColumn3.DefaultCellStyle = dataGridViewCellStyle80;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle22.NullValue = null;
+            dataGridViewCellStyle22.Padding = new System.Windows.Forms.Padding(3);
+            this.dataGridViewImageColumn3.DefaultCellStyle = dataGridViewCellStyle22;
             this.dataGridViewImageColumn3.HeaderText = "Удалить";
             this.dataGridViewImageColumn3.Image = global::GW_Dogovor.Properties.Resources.Delete;
             this.dataGridViewImageColumn3.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
@@ -4144,306 +4443,69 @@
             this.tb_num_dog.Text = "NUM DOGOVOR";
             this.tb_num_dog.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.tab_CPlan);
-            this.tabControl1.Controls.Add(this.tab_Act);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(836, 219);
-            this.tabControl1.TabIndex = 1;
-            // 
-            // tab_CPlan
-            // 
-            this.tab_CPlan.Controls.Add(this.grid_CPlan);
-            this.tab_CPlan.Controls.Add(this.bndNavigator_KP_Dog);
-            this.tab_CPlan.Location = new System.Drawing.Point(4, 22);
-            this.tab_CPlan.Name = "tab_CPlan";
-            this.tab_CPlan.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_CPlan.Size = new System.Drawing.Size(828, 193);
-            this.tab_CPlan.TabIndex = 0;
-            this.tab_CPlan.Text = "Календарный план";
-            this.tab_CPlan.UseVisualStyleBackColor = true;
-            // 
-            // tab_Act
-            // 
-            this.tab_Act.Location = new System.Drawing.Point(4, 22);
-            this.tab_Act.Name = "tab_Act";
-            this.tab_Act.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_Act.Size = new System.Drawing.Size(828, 193);
-            this.tab_Act.TabIndex = 1;
-            this.tab_Act.Text = "Акты";
-            this.tab_Act.UseVisualStyleBackColor = true;
-            // 
-            // grid_CPlan
-            // 
-            this.grid_CPlan.AllowUserToAddRows = false;
-            this.grid_CPlan.AllowUserToDeleteRows = false;
-            this.grid_CPlan.AllowUserToResizeColumns = false;
-            this.grid_CPlan.AllowUserToResizeRows = false;
-            this.grid_CPlan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grid_CPlan.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.id_DDog,
-            this.Num_sort,
-            this.Num_Etap,
-            this.Name_Etap,
-            this.day,
-            this.Nachalo_Data,
-            this.Konec_Data,
-            this.Summ,
-            this.Valute,
-            this.StatusCPlan});
-            this.grid_CPlan.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grid_CPlan.Location = new System.Drawing.Point(3, 28);
-            this.grid_CPlan.Name = "grid_CPlan";
-            this.grid_CPlan.ReadOnly = true;
-            this.grid_CPlan.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grid_CPlan.Size = new System.Drawing.Size(822, 162);
-            this.grid_CPlan.TabIndex = 2;
-            // 
-            // id_DDog
-            // 
-            this.id_DDog.HeaderText = "ДС";
-            this.id_DDog.Name = "id_DDog";
-            this.id_DDog.ReadOnly = true;
-            this.id_DDog.Width = 40;
-            // 
-            // Num_sort
-            // 
-            this.Num_sort.HeaderText = "Num_sort";
-            this.Num_sort.Name = "Num_sort";
-            this.Num_sort.ReadOnly = true;
-            this.Num_sort.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.Num_sort.Visible = false;
-            this.Num_sort.Width = 5;
-            // 
-            // Num_Etap
-            // 
-            this.Num_Etap.HeaderText = "№";
-            this.Num_Etap.Name = "Num_Etap";
-            this.Num_Etap.ReadOnly = true;
-            this.Num_Etap.Width = 60;
-            // 
-            // Name_Etap
-            // 
-            this.Name_Etap.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle81.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Name_Etap.DefaultCellStyle = dataGridViewCellStyle81;
-            this.Name_Etap.HeaderText = "Название";
-            this.Name_Etap.Name = "Name_Etap";
-            this.Name_Etap.ReadOnly = true;
-            // 
-            // day
-            // 
-            this.day.HeaderText = "Дни";
-            this.day.Name = "day";
-            this.day.ReadOnly = true;
-            this.day.Width = 50;
-            // 
-            // Nachalo_Data
-            // 
-            dataGridViewCellStyle82.Format = "D";
-            dataGridViewCellStyle82.NullValue = null;
-            this.Nachalo_Data.DefaultCellStyle = dataGridViewCellStyle82;
-            this.Nachalo_Data.HeaderText = "Начало";
-            this.Nachalo_Data.Name = "Nachalo_Data";
-            this.Nachalo_Data.ReadOnly = true;
-            // 
-            // Konec_Data
-            // 
-            dataGridViewCellStyle83.Format = "D";
-            dataGridViewCellStyle83.NullValue = null;
-            this.Konec_Data.DefaultCellStyle = dataGridViewCellStyle83;
-            this.Konec_Data.HeaderText = "Окончание";
-            this.Konec_Data.Name = "Konec_Data";
-            this.Konec_Data.ReadOnly = true;
-            // 
-            // Summ
-            // 
-            dataGridViewCellStyle84.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle84.Format = "N2";
-            dataGridViewCellStyle84.NullValue = null;
-            this.Summ.DefaultCellStyle = dataGridViewCellStyle84;
-            this.Summ.HeaderText = "Сумма";
-            this.Summ.Name = "Summ";
-            this.Summ.ReadOnly = true;
-            // 
-            // Valute
-            // 
-            this.Valute.HeaderText = "Валюта";
-            this.Valute.Name = "Valute";
-            this.Valute.ReadOnly = true;
-            this.Valute.Width = 60;
-            // 
-            // StatusCPlan
-            // 
-            this.StatusCPlan.HeaderText = "Статус";
-            this.StatusCPlan.Name = "StatusCPlan";
-            this.StatusCPlan.ReadOnly = true;
-            this.StatusCPlan.Width = 60;
-            // 
-            // bndNavigator_KP_Dog
-            // 
-            this.bndNavigator_KP_Dog.AddNewItem = null;
-            this.bndNavigator_KP_Dog.CountItem = this.bindingNavigatorCountItem1;
-            this.bndNavigator_KP_Dog.DeleteItem = null;
-            this.bndNavigator_KP_Dog.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.bindingNavigatorMoveFirstItem1,
-            this.bindingNavigatorMovePreviousItem1,
-            this.bindingNavigatorSeparator3,
-            this.bindingNavigatorPositionItem1,
-            this.bindingNavigatorCountItem1,
-            this.bindingNavigatorSeparator4,
-            this.bindingNavigatorMoveNextItem1,
-            this.bindingNavigatorMoveLastItem1,
-            this.bindingNavigatorSeparator5,
-            this.tbtn_Edit_ItemCPlan});
-            this.bndNavigator_KP_Dog.Location = new System.Drawing.Point(3, 3);
-            this.bndNavigator_KP_Dog.MoveFirstItem = this.bindingNavigatorMoveFirstItem1;
-            this.bndNavigator_KP_Dog.MoveLastItem = this.bindingNavigatorMoveLastItem1;
-            this.bndNavigator_KP_Dog.MoveNextItem = this.bindingNavigatorMoveNextItem1;
-            this.bndNavigator_KP_Dog.MovePreviousItem = this.bindingNavigatorMovePreviousItem1;
-            this.bndNavigator_KP_Dog.Name = "bndNavigator_KP_Dog";
-            this.bndNavigator_KP_Dog.PositionItem = this.bindingNavigatorPositionItem1;
-            this.bndNavigator_KP_Dog.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.bndNavigator_KP_Dog.Size = new System.Drawing.Size(822, 25);
-            this.bndNavigator_KP_Dog.TabIndex = 3;
-            this.bndNavigator_KP_Dog.Text = "bindingNavigator1";
-            // 
-            // bindingNavigatorCountItem1
-            // 
-            this.bindingNavigatorCountItem1.Name = "bindingNavigatorCountItem1";
-            this.bindingNavigatorCountItem1.Size = new System.Drawing.Size(43, 22);
-            this.bindingNavigatorCountItem1.Text = "для {0}";
-            this.bindingNavigatorCountItem1.ToolTipText = "Общее число элементов";
-            // 
-            // bindingNavigatorMoveFirstItem1
-            // 
-            this.bindingNavigatorMoveFirstItem1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveFirstItem1.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem1.Image")));
-            this.bindingNavigatorMoveFirstItem1.Name = "bindingNavigatorMoveFirstItem1";
-            this.bindingNavigatorMoveFirstItem1.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveFirstItem1.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveFirstItem1.Text = "Переместить в начало";
-            // 
-            // bindingNavigatorMovePreviousItem1
-            // 
-            this.bindingNavigatorMovePreviousItem1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMovePreviousItem1.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem1.Image")));
-            this.bindingNavigatorMovePreviousItem1.Name = "bindingNavigatorMovePreviousItem1";
-            this.bindingNavigatorMovePreviousItem1.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMovePreviousItem1.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMovePreviousItem1.Text = "Переместить назад";
-            // 
-            // bindingNavigatorSeparator3
-            // 
-            this.bindingNavigatorSeparator3.Name = "bindingNavigatorSeparator3";
-            this.bindingNavigatorSeparator3.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorPositionItem1
-            // 
-            this.bindingNavigatorPositionItem1.AccessibleName = "Положение";
-            this.bindingNavigatorPositionItem1.AutoSize = false;
-            this.bindingNavigatorPositionItem1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.bindingNavigatorPositionItem1.Name = "bindingNavigatorPositionItem1";
-            this.bindingNavigatorPositionItem1.Size = new System.Drawing.Size(50, 23);
-            this.bindingNavigatorPositionItem1.Text = "0";
-            this.bindingNavigatorPositionItem1.ToolTipText = "Текущее положение";
-            // 
-            // bindingNavigatorSeparator4
-            // 
-            this.bindingNavigatorSeparator4.Name = "bindingNavigatorSeparator4";
-            this.bindingNavigatorSeparator4.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorMoveNextItem1
-            // 
-            this.bindingNavigatorMoveNextItem1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveNextItem1.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem1.Image")));
-            this.bindingNavigatorMoveNextItem1.Name = "bindingNavigatorMoveNextItem1";
-            this.bindingNavigatorMoveNextItem1.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveNextItem1.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveNextItem1.Text = "Переместить вперед";
-            // 
-            // bindingNavigatorMoveLastItem1
-            // 
-            this.bindingNavigatorMoveLastItem1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveLastItem1.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem1.Image")));
-            this.bindingNavigatorMoveLastItem1.Name = "bindingNavigatorMoveLastItem1";
-            this.bindingNavigatorMoveLastItem1.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveLastItem1.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveLastItem1.Text = "Переместить в конец";
-            // 
-            // bindingNavigatorSeparator5
-            // 
-            this.bindingNavigatorSeparator5.Name = "bindingNavigatorSeparator5";
-            this.bindingNavigatorSeparator5.Size = new System.Drawing.Size(6, 25);
-            // 
-            // tbtn_Edit_ItemCPlan
-            // 
-            this.tbtn_Edit_ItemCPlan.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tbtn_Edit_ItemCPlan.Image = global::GW_Dogovor.Properties.Resources.Modify;
-            this.tbtn_Edit_ItemCPlan.Name = "tbtn_Edit_ItemCPlan";
-            this.tbtn_Edit_ItemCPlan.RightToLeftAutoMirrorImage = true;
-            this.tbtn_Edit_ItemCPlan.Size = new System.Drawing.Size(23, 22);
-            this.tbtn_Edit_ItemCPlan.Text = "Изменить";
-            // 
-            // toolStripSeparator19
-            // 
-            this.toolStripSeparator19.Name = "toolStripSeparator19";
-            this.toolStripSeparator19.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripLabel5
-            // 
-            this.toolStripLabel5.Name = "toolStripLabel5";
-            this.toolStripLabel5.Size = new System.Drawing.Size(37, 22);
-            this.toolStripLabel5.Text = "Блок:";
-            // 
-            // toolStripComboBox1
-            // 
-            this.toolStripComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.toolStripComboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Standard;
-            this.toolStripComboBox1.Name = "toolStripComboBox1";
-            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 25);
-            // 
-            // toolStripSeparator20
-            // 
-            this.toolStripSeparator20.Name = "toolStripSeparator20";
-            this.toolStripSeparator20.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripLabel6
-            // 
-            this.toolStripLabel6.Name = "toolStripLabel6";
-            this.toolStripLabel6.Size = new System.Drawing.Size(37, 22);
-            this.toolStripLabel6.Text = "Блок:";
-            // 
-            // toolStripComboBox2
-            // 
-            this.toolStripComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.toolStripComboBox2.FlatStyle = System.Windows.Forms.FlatStyle.Standard;
-            this.toolStripComboBox2.Name = "toolStripComboBox2";
-            this.toolStripComboBox2.Size = new System.Drawing.Size(121, 25);
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(746, 330);
-            this.tabPage1.TabIndex = 3;
-            this.tabPage1.Text = "РКД";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(746, 330);
-            this.tabPage2.TabIndex = 4;
-            this.tabPage2.Text = "Изыскания";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            // tabPageKMD
+            // 
+            this.tabPageKMD.Location = new System.Drawing.Point(4, 22);
+            this.tabPageKMD.Name = "tabPageKMD";
+            this.tabPageKMD.Size = new System.Drawing.Size(746, 330);
+            this.tabPageKMD.TabIndex = 5;
+            this.tabPageKMD.Text = "КМД";
+            this.tabPageKMD.UseVisualStyleBackColor = true;
+            // 
+            // Obj_name
+            // 
+            this.Obj_name.HeaderText = "Объект";
+            this.Obj_name.Name = "Obj_name";
+            this.Obj_name.ReadOnly = true;
+            // 
+            // NameDoc
+            // 
+            this.NameDoc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.NameDoc.HeaderText = "Название";
+            this.NameDoc.Name = "NameDoc";
+            this.NameDoc.ReadOnly = true;
+            this.NameDoc.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.NameDoc.Width = 335;
+            // 
+            // Nambe_Doc
+            // 
+            this.Nambe_Doc.HeaderText = "№ ";
+            this.Nambe_Doc.Name = "Nambe_Doc";
+            this.Nambe_Doc.ReadOnly = true;
+            this.Nambe_Doc.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // DataDoc
+            // 
+            dataGridViewCellStyle1.Format = "d";
+            dataGridViewCellStyle1.NullValue = null;
+            this.DataDoc.DefaultCellStyle = dataGridViewCellStyle1;
+            this.DataDoc.HeaderText = "Дата";
+            this.DataDoc.Name = "DataDoc";
+            this.DataDoc.ReadOnly = true;
+            this.DataDoc.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // Status
+            // 
+            this.Status.HeaderText = "Статус";
+            this.Status.Name = "Status";
+            this.Status.ReadOnly = true;
+            this.Status.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // PathDoc
+            // 
+            this.PathDoc.HeaderText = "Путь к файлу";
+            this.PathDoc.Name = "PathDoc";
+            this.PathDoc.ReadOnly = true;
+            this.PathDoc.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // btnPath
+            // 
+            this.btnPath.HeaderText = "***";
+            this.btnPath.Name = "btnPath";
+            this.btnPath.ReadOnly = true;
+            this.btnPath.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.btnPath.Text = "***";
+            this.btnPath.Width = 25;
             // 
             // Form_main
             // 
@@ -4512,6 +4574,13 @@
             this.splitContainerDog.ResumeLayout(false);
             this.panelDogovorComments.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grid_DogovorDoc)).EndInit();
+            this.tabControl1.ResumeLayout(false);
+            this.tab_CPlan.ResumeLayout(false);
+            this.tab_CPlan.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grid_CPlan)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bndNavigator_KP_Dog)).EndInit();
+            this.bndNavigator_KP_Dog.ResumeLayout(false);
+            this.bndNavigator_KP_Dog.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bndNavigatorDogovor)).EndInit();
             this.bndNavigatorDogovor.ResumeLayout(false);
             this.bndNavigatorDogovor.PerformLayout();
@@ -4582,13 +4651,6 @@
             this.cMenuTop.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
-            this.tab_CPlan.ResumeLayout(false);
-            this.tab_CPlan.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grid_CPlan)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bndNavigator_KP_Dog)).EndInit();
-            this.bndNavigator_KP_Dog.ResumeLayout(false);
-            this.bndNavigator_KP_Dog.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4833,12 +4895,6 @@
         private System.Windows.Forms.RichTextBox tb_CommentDog;
         private System.Windows.Forms.Panel panelDDogNotes;
         private System.Windows.Forms.RichTextBox tb_NotesDD;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NameDoc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nambe_Doc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DataDoc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Status;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PathDoc;
-        private System.Windows.Forms.DataGridViewButtonColumn btnPath;
         private System.Windows.Forms.DataGridViewTextBoxColumn NameTDoc;
         private System.Windows.Forms.DataGridViewTextBoxColumn StatudTDoc;
         private System.Windows.Forms.DataGridViewTextBoxColumn PathTDoc;
@@ -4977,8 +5033,19 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator20;
         private System.Windows.Forms.ToolStripLabel toolStripLabel6;
         private System.Windows.Forms.ToolStripComboBox toolStripComboBox2;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabPageRKD;
+        private System.Windows.Forms.TabPage tabPageIz;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator21;
+        private System.Windows.Forms.ToolStripButton toolStripButton9;
+        private System.Windows.Forms.ToolStripButton toolStripButton10;
+        private System.Windows.Forms.TabPage tabPageKMD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Obj_name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NameDoc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nambe_Doc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DataDoc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Status;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PathDoc;
+        private System.Windows.Forms.DataGridViewButtonColumn btnPath;
     }
 }
 

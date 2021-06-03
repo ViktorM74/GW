@@ -20,23 +20,23 @@ namespace DBClass
 
         #region DataBaseLoad
         #region TableAdapters
-        public static ProjectTableAdapter adpProject = new ProjectTableAdapter();
-        public static CustomersTableAdapter adpCustomer = new CustomersTableAdapter();
-        public static DocumentsTableAdapter adpDocument = new DocumentsTableAdapter();
-        public static Documets_typeTableAdapter adpTypeDocument = new Documets_typeTableAdapter();
-        public static DogovorTableAdapter adpDogovor = new DogovorTableAdapter();
-        public static TenderTableAdapter adpTender = new TenderTableAdapter();
-        public static CalendarPlanTableAdapter adpCPlan = new CalendarPlanTableAdapter();
-        public static DopSoglasheniaTableAdapter adpDDogovor = new DopSoglasheniaTableAdapter();
-        public static EventsTableAdapter adpEvent = new EventsTableAdapter();
-        public static Stady_projectTableAdapter adpStadyPrj = new Stady_projectTableAdapter();
-        public static ActTableAdapter adpAct = new ActTableAdapter();
-        public static OBJECTSTableAdapter adpObject = new OBJECTSTableAdapter();
-        public static SostavDocTableAdapter adpSostavD = new SostavDocTableAdapter();
-        public static Mark_projectTableAdapter adpMark = new Mark_projectTableAdapter();
-        public static ZadaniaTableAdapter adpZadania = new ZadaniaTableAdapter();
-        public static HistoryTableAdapter adpHistory = new HistoryTableAdapter();
-        public static OtdelTableAdapter adpOtdel = new OtdelTableAdapter();
+        public static ProjectTableAdapter adpProject = new ProjectTableAdapter(); //+
+        public static CustomersTableAdapter adpCustomer = new CustomersTableAdapter(); //+
+        public static DocumentsTableAdapter adpDocument = new DocumentsTableAdapter(); //+
+        public static Documets_typeTableAdapter adpTypeDocument = new Documets_typeTableAdapter(); //+
+        public static DogovorTableAdapter adpDogovor = new DogovorTableAdapter(); //+
+        public static TenderTableAdapter adpTender = new TenderTableAdapter(); //+
+        public static CalendarPlanTableAdapter adpCPlan = new CalendarPlanTableAdapter(); //+
+        public static DopSoglasheniaTableAdapter adpDDogovor = new DopSoglasheniaTableAdapter(); //+
+        public static EventsTableAdapter adpEvent = new EventsTableAdapter(); //+
+        public static Stady_projectTableAdapter adpStadyPrj = new Stady_projectTableAdapter(); //+
+        public static ActTableAdapter adpAct = new ActTableAdapter(); //+
+        public static OBJECTSTableAdapter adpObject = new OBJECTSTableAdapter(); //+
+        public static SostavDocTableAdapter adpSostavD = new SostavDocTableAdapter(); //+
+        public static Mark_projectTableAdapter adpMark = new Mark_projectTableAdapter(); //+
+        public static ZadaniaTableAdapter adpZadania = new ZadaniaTableAdapter(); //+
+        public static HistoryTableAdapter adpHistory = new HistoryTableAdapter(); //+
+        public static OtdelTableAdapter adpOtdel = new OtdelTableAdapter(); //+
         public static Users_GIPTableAdapter adpGIP = new Users_GIPTableAdapter();
         public static Otdel_SNHPTableAdapter adpOtdel_SNHP = new Otdel_SNHPTableAdapter();
         public static Doc_GroupTableAdapter adpDoc_Group = new Doc_GroupTableAdapter();
@@ -129,7 +129,8 @@ namespace DBClass
             //Ish Documents
             bndDocument.DataSource = bndProject; //привязка по связи к Проекту
             bndDocument.DataMember = "ProjectDocuments";
-            bndDocument.Sort = "DataDoc";
+            bndDocument.Sort = "Object_id, Doc_Type, DataDoc";
+
             bndTypeDoc.DataSource = DB_Cmd.dsDB;
             bndTypeDoc.DataMember = "Documets_type";
             bndTypeDoc.Sort = "Name_doc";
@@ -219,8 +220,8 @@ namespace DBClass
             tableManager.CustomersTableAdapter = adpCustomer;
             tableManager.DocumentsTableAdapter = adpDocument;
             tableManager.Documets_typeTableAdapter = adpTypeDocument;
-            tableManager.TenderTableAdapter = adpTender;
             tableManager.DogovorTableAdapter = adpDogovor;
+            tableManager.TenderTableAdapter = adpTender;
             tableManager.DopSoglasheniaTableAdapter = adpDDogovor;
             tableManager.CalendarPlanTableAdapter = adpCPlan;
             tableManager.ActTableAdapter = adpAct;
@@ -229,7 +230,12 @@ namespace DBClass
             tableManager.ZadaniaTableAdapter = adpZadania;
             tableManager.HistoryTableAdapter = adpHistory;
             tableManager.EventsTableAdapter = adpEvent;
-            
+            tableManager.Stady_projectTableAdapter = adpStadyPrj;
+            tableManager.Mark_projectTableAdapter = adpMark;
+            tableManager.OtdelTableAdapter = adpOtdel;
+            tableManager.Otdel_SNHPTableAdapter = adpOtdel_SNHP;
+            tableManager.Doc_GroupTableAdapter = adpDoc_Group;
+
             
             tableManager.BackupDataSetBeforeUpdate = true;
             tableManager.UpdateOrder = TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
@@ -481,9 +487,16 @@ namespace DBClass
         #endregion
 
         #region Dogovor
-        public static void SaveDogovor()
+        public static void SaveDogovor(string linkFolder)
         {
             int position = bndDogovor.Position;
+
+            if (linkFolder != null)
+            {
+                string newPath = Path.Combine(Path.Combine(linkFolder, "Договор"), DateTime.Now.ToString("yyyy.MM.dd"));
+                FileA.CreateFolder(newPath);
+                ((DataRowView)bndDogovor.Current).Row["path"] = newPath;
+            }
 
             try
             {
@@ -511,7 +524,7 @@ namespace DBClass
             bndDogovor.Position = position;
         }
 
-        public static object AddDogovor(string linkFolder)
+        public static object AddDogovor()
         {
             object newobj;
 
@@ -525,13 +538,6 @@ namespace DBClass
                 ((DataRowView)DB_Cmd.bndDogovor.Current).Row["id_Tender"] = ((DataRowView)DB_Cmd.bndTender.Current).Row["ID_Teder"];
                 ((DataRowView)DB_Cmd.bndDogovor.Current).Row["IDStady"] = ((DataRowView)DB_Cmd.bndTender.Current).Row["IDStadia"];
                 ((DataRowView)DB_Cmd.bndDogovor.Current).Row["Sostav"] = ((DataRowView)DB_Cmd.bndTender.Current).Row["Sostav"];
-
-                if (linkFolder != "")
-                {
-                    string newPath = Path.Combine(Path.Combine(linkFolder, "Договор"), DateTime.Now.ToString("yyyy.MM.dd"));
-                    FileA.CreateFolder(newPath);
-                    ((DataRowView)bndDogovor.Current).Row["path"] = newPath;
-                }
 
                 return newobj;
             }
@@ -635,18 +641,23 @@ namespace DBClass
             try
             {
                 //Автозаполнение поля для правильной сортировки Num_sort
-                if (bndCalendarPlanDD.Count != 0)
-                     ((DataRowView)bndCalendarPlanDD.Current).Row["Num_sort"] = feature.NormalizeNumSort(((DataRowView)bndCalendarPlanDD.Current).Row["Num_Etap"].ToString());
-                                
+                
+                
+                              
                 bndCalendarPlanDD.EndEdit();
-
                 tableManager.UpdateAll(dsDB);
 
-                
+                if (bndCalendarPlanDD.Count != 0)
+                    ((DataRowView)bndCalendarPlanDD.Current).Row["Num_sort"] = feature.NormalizeNumSort(((DataRowView)bndCalendarPlanDD.Current).Row["Num_Etap"].ToString());
+
+                bndCalendarPlanDD.EndEdit();
+                tableManager.UpdateAll(dsDB);
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Сохранение вызвало ошибку: " + ex.Message);
+                bndCalendarPlan.ResetBindings(false);
                
             }
             finally
@@ -769,8 +780,6 @@ namespace DBClass
             }
         }
 
- 
-
         public static void DeleteCalendarPlan()
         {
             DataRowView rw = bndCalendarPlan.Current as DataRowView;
@@ -790,7 +799,7 @@ namespace DBClass
             }
         }
 
-        #endregion
+        #endregion CalendarPlan
 
         #region DopSoglashenia
         public static void SaveDopSoglashenia()

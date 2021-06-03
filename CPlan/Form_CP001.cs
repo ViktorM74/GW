@@ -29,6 +29,7 @@ namespace CPlan
             cb_Valute.DataBindings.Add("Text", DB_Cmd.bndCalendarPlanDD, "V");
             tb_Comments.DataBindings.Add("Text", DB_Cmd.bndCalendarPlanDD, "Comments");
             lb_Sort.DataBindings.Add("Text", DB_Cmd.bndCalendarPlanDD, "Num_sort");
+            chk_visable_CP.DataBindings.Add("Checked", DB_Cmd.bndCalendarPlan, "ViewCPDog");
 
             cb_DD.DataSource = DB_Cmd.bndDopDogovor; // источник данных
             cb_DD.DisplayMember = "Nambe_DS"; // отображаемое значение
@@ -50,6 +51,7 @@ namespace CPlan
 
         private void btn_UpdateItem_Click(object sender, System.EventArgs e)
         {
+            this.Validate();
             DB_Cmd.SaveCalendarPlanDD();
             Close();
         }
@@ -57,6 +59,7 @@ namespace CPlan
         private void btn_addItem_Click(object sender, System.EventArgs e)
         {
             //DB_Cmd.SaveCalendarPlanDD();
+            this.Validate();
             DB_Cmd.AddCalendarPlanDD();
         }
 
