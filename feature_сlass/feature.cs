@@ -23,11 +23,12 @@ namespace feature_сlass
         /// Вывод числа с учетом разделителей разрядности
         public static void TextBoxCurrency(TextBox tb)
         {
-            if (!tb.Focused)
-            {
-                double sd = Convert.ToDouble(tb.Text);
-                tb.Text = sd.ToString("N2", CultureInfo.CreateSpecificCulture("ru-RU"));
-            }
+               if (!tb.Focused)
+                if (tb.Text != "")
+                {
+                        double sd = Convert.ToDouble(tb.Text);
+                        tb.Text = sd.ToString("N2", CultureInfo.CreateSpecificCulture("ru-RU"));
+                }
         }
 
         ///Нормализация строки(числа) с дополнением нулями слева

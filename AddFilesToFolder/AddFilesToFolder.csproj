@@ -62,6 +62,10 @@
       <Project>{97113185-9850-4937-8619-f7e47323260f}</Project>
       <Name>Distinary</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DocumentsClass\DocumentsClass.csproj">
+      <Project>{7b9c85b3-29d2-4d83-a62d-785d052c6247}</Project>
+      <Name>DocumentsClass</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FileAction\FileAction.csproj">
       <Project>{85ebfd50-4585-49f5-b8fd-dd9235788d76}</Project>
       <Name>FileAction</Name>

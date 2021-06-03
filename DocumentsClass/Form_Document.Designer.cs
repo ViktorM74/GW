@@ -175,7 +175,6 @@ namespace DocumentsClass
             // btn_Save
             // 
             this.btn_Save.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_Save.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btn_Save.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn_Save.Location = new System.Drawing.Point(472, 23);
             this.btn_Save.Name = "btn_Save";
@@ -183,17 +182,18 @@ namespace DocumentsClass
             this.btn_Save.TabIndex = 15;
             this.btn_Save.Text = "Сохранить";
             this.btn_Save.UseVisualStyleBackColor = true;
+            this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
             // 
             // bt_Cancel
             // 
             this.bt_Cancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.bt_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.bt_Cancel.Location = new System.Drawing.Point(472, 58);
             this.bt_Cancel.Name = "bt_Cancel";
             this.bt_Cancel.Size = new System.Drawing.Size(89, 29);
             this.bt_Cancel.TabIndex = 15;
             this.bt_Cancel.Text = "Закрыть";
             this.bt_Cancel.UseVisualStyleBackColor = true;
+            this.bt_Cancel.Click += new System.EventHandler(this.bt_Cancel_Click);
             // 
             // dtp_DateDoc
             // 
@@ -204,12 +204,10 @@ namespace DocumentsClass
             this.dtp_DateDoc.TabIndex = 16;
             this.dtp_DateDoc.Value = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             // 
-            // Form_editDocument
+            // Form_Document
             // 
-            this.AcceptButton = this.btn_Save;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.bt_Cancel;
             this.ClientSize = new System.Drawing.Size(577, 478);
             this.Controls.Add(this.dtp_DateDoc);
             this.Controls.Add(this.bt_Cancel);
@@ -230,9 +228,10 @@ namespace DocumentsClass
             this.Controls.Add(this.lb_NameDoc);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
-            this.Name = "Form_editDocument";
+            this.Name = "Form_Document";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Редактор данных документа";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_Document_FormClosing);
             this.Load += new System.EventHandler(this.Form_docEdit_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

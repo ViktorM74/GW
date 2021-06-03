@@ -5,6 +5,11 @@ namespace DocumentsClass
 {
     public partial class Form_Document : Form
     {
+        public static string pathDoc
+        {
+            get; set;
+        }
+
         public Form_Document()
         {
             InitializeComponent();
@@ -41,6 +46,24 @@ namespace DocumentsClass
                 tb_PathDoc.Text = openDialog1.FileName;
             }
 
+        }
+
+        private void Form_Document_FormClosing(object sender, FormClosingEventArgs e)
+        {
+           this.Tag = tb_PathDoc.Text;
+        }
+
+        private void btn_Save_Click(object sender, System.EventArgs e)
+        {
+            this.Validate();
+            DB_Cmd.SaveDoc();
+            Close();
+        }
+
+        private void bt_Cancel_Click(object sender, System.EventArgs e)
+        {
+            this.Validate();
+            DB_Cmd.CancelDoc();
         }
     }
 }

@@ -29,29 +29,29 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle89 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle90 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle91 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_main));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle92 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle93 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle98 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle94 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle95 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle96 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle97 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle99 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle100 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle101 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle102 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle103 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle104 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle105 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle106 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle107 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle108 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle109 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle110 = new System.Windows.Forms.DataGridViewCellStyle();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.lbl_BasePath = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
@@ -94,6 +94,13 @@
             this.tabDocuments = new System.Windows.Forms.TabControl();
             this.tabPageISHDoc = new System.Windows.Forms.TabPage();
             this.gridDocument = new System.Windows.Forms.DataGridView();
+            this.Obj_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NameDoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nambe_Doc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataDoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PathDoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnPath = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabPageMailControl = new System.Windows.Forms.TabPage();
             this.grid_MailControl = new System.Windows.Forms.DataGridView();
             this.ObjectCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -374,6 +381,7 @@
             this.bindingNavigatorDeleteItem4 = new System.Windows.Forms.ToolStripButton();
             this.tabPageRKD = new System.Windows.Forms.TabPage();
             this.tabPageIz = new System.Windows.Forms.TabPage();
+            this.tabPageKMD = new System.Windows.Forms.TabPage();
             this.bndNavigatorObject = new System.Windows.Forms.BindingNavigator(this.components);
             this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripButton18 = new System.Windows.Forms.ToolStripButton();
@@ -433,14 +441,6 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.tbNameProject = new System.Windows.Forms.TextBox();
             this.tb_num_dog = new System.Windows.Forms.TextBox();
-            this.tabPageKMD = new System.Windows.Forms.TabPage();
-            this.Obj_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NameDoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nambe_Doc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataDoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PathDoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnPath = new System.Windows.Forms.DataGridViewButtonColumn();
             this.statusStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
@@ -709,14 +709,16 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.AutoScroll = true;
             this.splitContainer1.Panel1.Controls.Add(this.flowLayoutPanel1);
             this.splitContainer1.Panel1MinSize = 126;
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.AutoScroll = true;
             this.splitContainer1.Panel2.Controls.Add(this.tabControlMain);
             this.splitContainer1.Size = new System.Drawing.Size(1212, 557);
-            this.splitContainer1.SplitterDistance = 228;
+            this.splitContainer1.SplitterDistance = 249;
             this.splitContainer1.SplitterIncrement = 3;
             this.splitContainer1.SplitterWidth = 8;
             this.splitContainer1.TabIndex = 4;
@@ -742,7 +744,7 @@
             this.flowLayoutPanel1.MaximumSize = new System.Drawing.Size(700, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(10);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(228, 557);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(249, 557);
             this.flowLayoutPanel1.TabIndex = 23;
             this.flowLayoutPanel1.WrapContents = false;
             // 
@@ -915,17 +917,17 @@
             this.tabControlMain.Name = "tabControlMain";
             this.tabControlMain.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.tabControlMain.SelectedIndex = 0;
-            this.tabControlMain.Size = new System.Drawing.Size(976, 557);
+            this.tabControlMain.Size = new System.Drawing.Size(955, 557);
             this.tabControlMain.TabIndex = 0;
+            this.tabControlMain.SelectedIndexChanged += new System.EventHandler(this.tabControlMain_SelectedIndexChanged);
             this.tabControlMain.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabControlMain_Selected);
             // 
             // tab_IDocuments
             // 
             this.tab_IDocuments.Controls.Add(this.tabDocuments);
-            this.tab_IDocuments.Controls.Add(this.bndNvg_IshDoc);
             this.tab_IDocuments.Location = new System.Drawing.Point(4, 22);
             this.tab_IDocuments.Name = "tab_IDocuments";
-            this.tab_IDocuments.Size = new System.Drawing.Size(968, 531);
+            this.tab_IDocuments.Size = new System.Drawing.Size(947, 531);
             this.tab_IDocuments.TabIndex = 2;
             this.tab_IDocuments.Text = "Документы";
             this.tab_IDocuments.UseVisualStyleBackColor = true;
@@ -936,19 +938,20 @@
             this.tabDocuments.Controls.Add(this.tabPageMailControl);
             this.tabDocuments.Controls.Add(this.tabPageZadania);
             this.tabDocuments.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabDocuments.Location = new System.Drawing.Point(0, 25);
+            this.tabDocuments.Location = new System.Drawing.Point(0, 0);
             this.tabDocuments.Name = "tabDocuments";
             this.tabDocuments.SelectedIndex = 0;
-            this.tabDocuments.Size = new System.Drawing.Size(968, 506);
+            this.tabDocuments.Size = new System.Drawing.Size(947, 531);
             this.tabDocuments.TabIndex = 2;
             // 
             // tabPageISHDoc
             // 
             this.tabPageISHDoc.Controls.Add(this.gridDocument);
+            this.tabPageISHDoc.Controls.Add(this.bndNvg_IshDoc);
             this.tabPageISHDoc.Location = new System.Drawing.Point(4, 22);
             this.tabPageISHDoc.Name = "tabPageISHDoc";
             this.tabPageISHDoc.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageISHDoc.Size = new System.Drawing.Size(960, 480);
+            this.tabPageISHDoc.Size = new System.Drawing.Size(939, 505);
             this.tabPageISHDoc.TabIndex = 0;
             this.tabPageISHDoc.Text = "Исходные документы";
             this.tabPageISHDoc.UseVisualStyleBackColor = true;
@@ -970,17 +973,72 @@
             this.PathDoc,
             this.btnPath});
             this.gridDocument.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridDocument.Location = new System.Drawing.Point(3, 3);
+            this.gridDocument.Location = new System.Drawing.Point(3, 28);
             this.gridDocument.MultiSelect = false;
             this.gridDocument.Name = "gridDocument";
             this.gridDocument.ReadOnly = true;
             this.gridDocument.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.gridDocument.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridDocument.Size = new System.Drawing.Size(954, 474);
+            this.gridDocument.Size = new System.Drawing.Size(933, 474);
             this.gridDocument.TabIndex = 2;
             this.gridDocument.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridDocument_CellContentClick_1);
             this.gridDocument.DragDrop += new System.Windows.Forms.DragEventHandler(this.gridDocument_DragDrop);
             this.gridDocument.DragEnter += new System.Windows.Forms.DragEventHandler(this._DragEnter);
+            // 
+            // Obj_name
+            // 
+            this.Obj_name.HeaderText = "Объект";
+            this.Obj_name.Name = "Obj_name";
+            this.Obj_name.ReadOnly = true;
+            // 
+            // NameDoc
+            // 
+            this.NameDoc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.NameDoc.HeaderText = "Название";
+            this.NameDoc.Name = "NameDoc";
+            this.NameDoc.ReadOnly = true;
+            this.NameDoc.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.NameDoc.Width = 335;
+            // 
+            // Nambe_Doc
+            // 
+            this.Nambe_Doc.HeaderText = "№ ";
+            this.Nambe_Doc.Name = "Nambe_Doc";
+            this.Nambe_Doc.ReadOnly = true;
+            this.Nambe_Doc.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // DataDoc
+            // 
+            dataGridViewCellStyle89.Format = "d";
+            dataGridViewCellStyle89.NullValue = null;
+            this.DataDoc.DefaultCellStyle = dataGridViewCellStyle89;
+            this.DataDoc.HeaderText = "Дата";
+            this.DataDoc.Name = "DataDoc";
+            this.DataDoc.ReadOnly = true;
+            this.DataDoc.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // Status
+            // 
+            this.Status.HeaderText = "Статус";
+            this.Status.Name = "Status";
+            this.Status.ReadOnly = true;
+            this.Status.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // PathDoc
+            // 
+            this.PathDoc.HeaderText = "Путь к файлу";
+            this.PathDoc.Name = "PathDoc";
+            this.PathDoc.ReadOnly = true;
+            this.PathDoc.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // btnPath
+            // 
+            this.btnPath.HeaderText = "***";
+            this.btnPath.Name = "btnPath";
+            this.btnPath.ReadOnly = true;
+            this.btnPath.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.btnPath.Text = "***";
+            this.btnPath.Width = 25;
             // 
             // tabPageMailControl
             // 
@@ -988,7 +1046,7 @@
             this.tabPageMailControl.Location = new System.Drawing.Point(4, 22);
             this.tabPageMailControl.Name = "tabPageMailControl";
             this.tabPageMailControl.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageMailControl.Size = new System.Drawing.Size(960, 480);
+            this.tabPageMailControl.Size = new System.Drawing.Size(939, 505);
             this.tabPageMailControl.TabIndex = 1;
             this.tabPageMailControl.Text = "Письма на контроле";
             this.tabPageMailControl.UseVisualStyleBackColor = true;
@@ -1015,7 +1073,7 @@
             this.grid_MailControl.Name = "grid_MailControl";
             this.grid_MailControl.ReadOnly = true;
             this.grid_MailControl.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grid_MailControl.Size = new System.Drawing.Size(954, 474);
+            this.grid_MailControl.Size = new System.Drawing.Size(933, 499);
             this.grid_MailControl.TabIndex = 3;
             this.grid_MailControl.DragDrop += new System.Windows.Forms.DragEventHandler(this.grid_MailControl_DragDrop);
             this.grid_MailControl.DragEnter += new System.Windows.Forms.DragEventHandler(this._DragEnter);
@@ -1042,9 +1100,9 @@
             // 
             // dataGridViewTextBoxColumn4
             // 
-            dataGridViewCellStyle2.Format = "d";
-            dataGridViewCellStyle2.NullValue = null;
-            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle90.Format = "d";
+            dataGridViewCellStyle90.NullValue = null;
+            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle90;
             this.dataGridViewTextBoxColumn4.HeaderText = "Дата";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
@@ -1076,7 +1134,7 @@
             this.tabPageZadania.Location = new System.Drawing.Point(4, 22);
             this.tabPageZadania.Name = "tabPageZadania";
             this.tabPageZadania.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageZadania.Size = new System.Drawing.Size(960, 480);
+            this.tabPageZadania.Size = new System.Drawing.Size(939, 480);
             this.tabPageZadania.TabIndex = 2;
             this.tabPageZadania.Text = "Задания";
             this.tabPageZadania.UseVisualStyleBackColor = true;
@@ -1103,7 +1161,7 @@
             this.grid_Zadania.Name = "grid_Zadania";
             this.grid_Zadania.ReadOnly = true;
             this.grid_Zadania.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grid_Zadania.Size = new System.Drawing.Size(954, 474);
+            this.grid_Zadania.Size = new System.Drawing.Size(933, 474);
             this.grid_Zadania.TabIndex = 3;
             this.grid_Zadania.DragDrop += new System.Windows.Forms.DragEventHandler(this.grid_Zadania_DragDrop);
             this.grid_Zadania.DragEnter += new System.Windows.Forms.DragEventHandler(this._DragEnter);
@@ -1130,9 +1188,9 @@
             // 
             // dataGridViewTextBoxColumn9
             // 
-            dataGridViewCellStyle3.Format = "d";
-            dataGridViewCellStyle3.NullValue = null;
-            this.dataGridViewTextBoxColumn9.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle91.Format = "d";
+            dataGridViewCellStyle91.NullValue = null;
+            this.dataGridViewTextBoxColumn9.DefaultCellStyle = dataGridViewCellStyle91;
             this.dataGridViewTextBoxColumn9.HeaderText = "Дата";
             this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
             this.dataGridViewTextBoxColumn9.ReadOnly = true;
@@ -1177,14 +1235,14 @@
             this.bndNav_AddDoc,
             this.bndNav_DeleteDoc,
             this.toolStripSeparator16});
-            this.bndNvg_IshDoc.Location = new System.Drawing.Point(0, 0);
+            this.bndNvg_IshDoc.Location = new System.Drawing.Point(3, 3);
             this.bndNvg_IshDoc.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.bndNvg_IshDoc.MoveLastItem = this.bindingNavigatorMoveLastItem;
             this.bndNvg_IshDoc.MoveNextItem = this.bindingNavigatorMoveNextItem;
             this.bndNvg_IshDoc.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.bndNvg_IshDoc.Name = "bndNvg_IshDoc";
             this.bndNvg_IshDoc.PositionItem = this.bindingNavigatorPositionItem;
-            this.bndNvg_IshDoc.Size = new System.Drawing.Size(968, 25);
+            this.bndNvg_IshDoc.Size = new System.Drawing.Size(933, 25);
             this.bndNvg_IshDoc.TabIndex = 0;
             this.bndNvg_IshDoc.Text = "Навигатор исходных данных";
             // 
@@ -1264,6 +1322,7 @@
             this.bndNav_EditDoc.Name = "bndNav_EditDoc";
             this.bndNav_EditDoc.Size = new System.Drawing.Size(23, 22);
             this.bndNav_EditDoc.Text = "Изменить";
+            this.bndNav_EditDoc.Click += new System.EventHandler(this.bndNav_EditDoc_Click);
             // 
             // bndNav_AddDoc
             // 
@@ -1273,6 +1332,7 @@
             this.bndNav_AddDoc.RightToLeftAutoMirrorImage = true;
             this.bndNav_AddDoc.Size = new System.Drawing.Size(23, 22);
             this.bndNav_AddDoc.Text = "Добавить";
+            this.bndNav_AddDoc.Click += new System.EventHandler(this.bndNav_AddDoc_Click);
             // 
             // bndNav_DeleteDoc
             // 
@@ -1282,6 +1342,7 @@
             this.bndNav_DeleteDoc.RightToLeftAutoMirrorImage = true;
             this.bndNav_DeleteDoc.Size = new System.Drawing.Size(23, 22);
             this.bndNav_DeleteDoc.Text = "Удалить";
+            this.bndNav_DeleteDoc.Click += new System.EventHandler(this.bndNav_DeleteDoc_Click);
             // 
             // toolStripSeparator16
             // 
@@ -1294,7 +1355,7 @@
             this.tab_Tender.Controls.Add(this.bndNavigatorTender);
             this.tab_Tender.Location = new System.Drawing.Point(4, 22);
             this.tab_Tender.Name = "tab_Tender";
-            this.tab_Tender.Size = new System.Drawing.Size(968, 531);
+            this.tab_Tender.Size = new System.Drawing.Size(947, 531);
             this.tab_Tender.TabIndex = 3;
             this.tab_Tender.Text = "Тендер";
             this.tab_Tender.UseVisualStyleBackColor = true;
@@ -1330,7 +1391,7 @@
             // splitContainerTender.Panel2
             // 
             this.splitContainerTender.Panel2.Controls.Add(this.groupBox2);
-            this.splitContainerTender.Size = new System.Drawing.Size(968, 506);
+            this.splitContainerTender.Size = new System.Drawing.Size(947, 506);
             this.splitContainerTender.SplitterDistance = 400;
             this.splitContainerTender.SplitterWidth = 10;
             this.splitContainerTender.TabIndex = 3;
@@ -1503,7 +1564,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(558, 506);
+            this.groupBox2.Size = new System.Drawing.Size(537, 506);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Перечень документов конкурсного предложения";
@@ -1526,7 +1587,7 @@
             this.grid_TenderDoc.Location = new System.Drawing.Point(3, 16);
             this.grid_TenderDoc.Name = "grid_TenderDoc";
             this.grid_TenderDoc.ReadOnly = true;
-            this.grid_TenderDoc.Size = new System.Drawing.Size(552, 487);
+            this.grid_TenderDoc.Size = new System.Drawing.Size(531, 487);
             this.grid_TenderDoc.TabIndex = 0;
             this.grid_TenderDoc.TabStop = false;
             this.grid_TenderDoc.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_TenderDoc_CellContentClick);
@@ -1568,11 +1629,11 @@
             // 
             // Delete
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.NullValue = null;
-            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(3);
-            this.Delete.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle92.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle92.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle92.NullValue = null;
+            dataGridViewCellStyle92.Padding = new System.Windows.Forms.Padding(3);
+            this.Delete.DefaultCellStyle = dataGridViewCellStyle92;
             this.Delete.HeaderText = "Удалить";
             this.Delete.Image = global::GW_Dogovor.Properties.Resources.Delete;
             this.Delete.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
@@ -1607,10 +1668,9 @@
             this.bndNavigatorTender.MovePreviousItem = this.toolStripButton5;
             this.bndNavigatorTender.Name = "bndNavigatorTender";
             this.bndNavigatorTender.PositionItem = this.toolStripTextBox1;
-            this.bndNavigatorTender.Size = new System.Drawing.Size(968, 25);
+            this.bndNavigatorTender.Size = new System.Drawing.Size(947, 25);
             this.bndNavigatorTender.TabIndex = 1;
             this.bndNavigatorTender.Text = "Навигатор исходных данных";
-            this.bndNavigatorTender.RefreshItems += new System.EventHandler(this.bndNavigatorTender_RefreshItems);
             // 
             // toolStripLabel1
             // 
@@ -1718,7 +1778,7 @@
             this.tab_Dogovor.Location = new System.Drawing.Point(4, 22);
             this.tab_Dogovor.Name = "tab_Dogovor";
             this.tab_Dogovor.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_Dogovor.Size = new System.Drawing.Size(968, 531);
+            this.tab_Dogovor.Size = new System.Drawing.Size(947, 531);
             this.tab_Dogovor.TabIndex = 0;
             this.tab_Dogovor.Text = "Договор";
             this.tab_Dogovor.UseVisualStyleBackColor = true;
@@ -1758,7 +1818,7 @@
             // splitContainerDog.Panel2
             // 
             this.splitContainerDog.Panel2.Controls.Add(this.tabControl1);
-            this.splitContainerDog.Size = new System.Drawing.Size(836, 500);
+            this.splitContainerDog.Size = new System.Drawing.Size(815, 500);
             this.splitContainerDog.SplitterDistance = 277;
             this.splitContainerDog.TabIndex = 6;
             // 
@@ -1803,7 +1863,7 @@
             // splitter1
             // 
             this.splitter1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.splitter1.Location = new System.Drawing.Point(591, 0);
+            this.splitter1.Location = new System.Drawing.Point(570, 0);
             this.splitter1.Name = "splitter1";
             this.splitter1.Size = new System.Drawing.Size(5, 277);
             this.splitter1.TabIndex = 5;
@@ -1821,7 +1881,7 @@
             this.dRunDoc,
             this.dDelDoc});
             this.grid_DogovorDoc.Dock = System.Windows.Forms.DockStyle.Right;
-            this.grid_DogovorDoc.Location = new System.Drawing.Point(596, 0);
+            this.grid_DogovorDoc.Location = new System.Drawing.Point(575, 0);
             this.grid_DogovorDoc.Name = "grid_DogovorDoc";
             this.grid_DogovorDoc.ReadOnly = true;
             this.grid_DogovorDoc.RowHeadersVisible = false;
@@ -1846,11 +1906,11 @@
             // 
             // dDelDoc
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.NullValue = null;
-            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(3);
-            this.dDelDoc.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle93.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle93.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle93.NullValue = null;
+            dataGridViewCellStyle93.Padding = new System.Windows.Forms.Padding(3);
+            this.dDelDoc.DefaultCellStyle = dataGridViewCellStyle93;
             this.dDelDoc.HeaderText = "Удалить";
             this.dDelDoc.Image = global::GW_Dogovor.Properties.Resources.Delete;
             this.dDelDoc.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
@@ -1998,7 +2058,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(836, 219);
+            this.tabControl1.Size = new System.Drawing.Size(815, 219);
             this.tabControl1.TabIndex = 1;
             // 
             // tab_CPlan
@@ -2008,7 +2068,7 @@
             this.tab_CPlan.Location = new System.Drawing.Point(4, 22);
             this.tab_CPlan.Name = "tab_CPlan";
             this.tab_CPlan.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_CPlan.Size = new System.Drawing.Size(828, 193);
+            this.tab_CPlan.Size = new System.Drawing.Size(807, 193);
             this.tab_CPlan.TabIndex = 0;
             this.tab_CPlan.Text = "Календарный план";
             this.tab_CPlan.UseVisualStyleBackColor = true;
@@ -2033,20 +2093,20 @@
             this.Summ,
             this.Valute,
             this.StatusCPlan});
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grid_CPlan.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle98.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle98.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle98.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle98.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle98.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle98.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle98.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grid_CPlan.DefaultCellStyle = dataGridViewCellStyle98;
             this.grid_CPlan.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grid_CPlan.Location = new System.Drawing.Point(3, 28);
             this.grid_CPlan.Name = "grid_CPlan";
             this.grid_CPlan.ReadOnly = true;
             this.grid_CPlan.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grid_CPlan.Size = new System.Drawing.Size(822, 162);
+            this.grid_CPlan.Size = new System.Drawing.Size(801, 162);
             this.grid_CPlan.TabIndex = 2;
             // 
             // id_DDog
@@ -2075,8 +2135,8 @@
             // Name_Etap
             // 
             this.Name_Etap.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Name_Etap.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle94.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Name_Etap.DefaultCellStyle = dataGridViewCellStyle94;
             this.Name_Etap.HeaderText = "Название";
             this.Name_Etap.Name = "Name_Etap";
             this.Name_Etap.ReadOnly = true;
@@ -2090,28 +2150,28 @@
             // 
             // Nachalo_Data
             // 
-            dataGridViewCellStyle7.Format = "D";
-            dataGridViewCellStyle7.NullValue = null;
-            this.Nachalo_Data.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle95.Format = "D";
+            dataGridViewCellStyle95.NullValue = null;
+            this.Nachalo_Data.DefaultCellStyle = dataGridViewCellStyle95;
             this.Nachalo_Data.HeaderText = "Начало";
             this.Nachalo_Data.Name = "Nachalo_Data";
             this.Nachalo_Data.ReadOnly = true;
             // 
             // Konec_Data
             // 
-            dataGridViewCellStyle8.Format = "D";
-            dataGridViewCellStyle8.NullValue = null;
-            this.Konec_Data.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle96.Format = "D";
+            dataGridViewCellStyle96.NullValue = null;
+            this.Konec_Data.DefaultCellStyle = dataGridViewCellStyle96;
             this.Konec_Data.HeaderText = "Окончание";
             this.Konec_Data.Name = "Konec_Data";
             this.Konec_Data.ReadOnly = true;
             // 
             // Summ
             // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle9.Format = "N2";
-            dataGridViewCellStyle9.NullValue = null;
-            this.Summ.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle97.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle97.Format = "N2";
+            dataGridViewCellStyle97.NullValue = null;
+            this.Summ.DefaultCellStyle = dataGridViewCellStyle97;
             this.Summ.HeaderText = "Сумма";
             this.Summ.Name = "Summ";
             this.Summ.ReadOnly = true;
@@ -2154,7 +2214,7 @@
             this.bndNavigator_KP_Dog.Name = "bndNavigator_KP_Dog";
             this.bndNavigator_KP_Dog.PositionItem = this.bindingNavigatorPositionItem1;
             this.bndNavigator_KP_Dog.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.bndNavigator_KP_Dog.Size = new System.Drawing.Size(822, 25);
+            this.bndNavigator_KP_Dog.Size = new System.Drawing.Size(801, 25);
             this.bndNavigator_KP_Dog.TabIndex = 3;
             this.bndNavigator_KP_Dog.Text = "bindingNavigator1";
             // 
@@ -2243,7 +2303,7 @@
             this.tab_Act.Location = new System.Drawing.Point(4, 22);
             this.tab_Act.Name = "tab_Act";
             this.tab_Act.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_Act.Size = new System.Drawing.Size(828, 193);
+            this.tab_Act.Size = new System.Drawing.Size(807, 193);
             this.tab_Act.TabIndex = 1;
             this.tab_Act.Text = "Акты";
             this.tab_Act.UseVisualStyleBackColor = true;
@@ -2273,7 +2333,7 @@
             this.bndNavigatorDogovor.MovePreviousItem = this.toolStripButton12;
             this.bndNavigatorDogovor.Name = "bndNavigatorDogovor";
             this.bndNavigatorDogovor.PositionItem = this.toolStripTextBox2;
-            this.bndNavigatorDogovor.Size = new System.Drawing.Size(836, 25);
+            this.bndNavigatorDogovor.Size = new System.Drawing.Size(815, 25);
             this.bndNavigatorDogovor.TabIndex = 5;
             this.bndNavigatorDogovor.Text = "Навигатор исходных данных";
             // 
@@ -2419,7 +2479,7 @@
             this.tab_DDogovor.Location = new System.Drawing.Point(4, 22);
             this.tab_DDogovor.Name = "tab_DDogovor";
             this.tab_DDogovor.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_DDogovor.Size = new System.Drawing.Size(968, 531);
+            this.tab_DDogovor.Size = new System.Drawing.Size(947, 531);
             this.tab_DDogovor.TabIndex = 4;
             this.tab_DDogovor.Text = "Доп. соглашения";
             this.tab_DDogovor.UseVisualStyleBackColor = true;
@@ -2451,7 +2511,7 @@
             // splitContainerDDog.Panel2
             // 
             this.splitContainerDDog.Panel2.Controls.Add(this.groupBox1);
-            this.splitContainerDDog.Size = new System.Drawing.Size(836, 500);
+            this.splitContainerDDog.Size = new System.Drawing.Size(815, 500);
             this.splitContainerDDog.SplitterDistance = 185;
             this.splitContainerDDog.TabIndex = 9;
             // 
@@ -2494,7 +2554,7 @@
             // splitter2
             // 
             this.splitter2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.splitter2.Location = new System.Drawing.Point(591, 0);
+            this.splitter2.Location = new System.Drawing.Point(570, 0);
             this.splitter2.Name = "splitter2";
             this.splitter2.Size = new System.Drawing.Size(5, 185);
             this.splitter2.TabIndex = 5;
@@ -2512,7 +2572,7 @@
             this.dataGridViewButtonColumn1,
             this.dataGridViewImageColumn1});
             this.grid_DocumentDD.Dock = System.Windows.Forms.DockStyle.Right;
-            this.grid_DocumentDD.Location = new System.Drawing.Point(596, 0);
+            this.grid_DocumentDD.Location = new System.Drawing.Point(575, 0);
             this.grid_DocumentDD.Name = "grid_DocumentDD";
             this.grid_DocumentDD.ReadOnly = true;
             this.grid_DocumentDD.Size = new System.Drawing.Size(240, 185);
@@ -2536,11 +2596,11 @@
             // 
             // dataGridViewImageColumn1
             // 
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle11.NullValue = null;
-            dataGridViewCellStyle11.Padding = new System.Windows.Forms.Padding(3);
-            this.dataGridViewImageColumn1.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle99.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle99.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle99.NullValue = null;
+            dataGridViewCellStyle99.Padding = new System.Windows.Forms.Padding(3);
+            this.dataGridViewImageColumn1.DefaultCellStyle = dataGridViewCellStyle99;
             this.dataGridViewImageColumn1.HeaderText = "Удалить";
             this.dataGridViewImageColumn1.Image = global::GW_Dogovor.Properties.Resources.Delete;
             this.dataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
@@ -2618,7 +2678,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(836, 311);
+            this.groupBox1.Size = new System.Drawing.Size(815, 311);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Календарный план";
@@ -2642,7 +2702,7 @@
             this.grid_CPlanDD.Location = new System.Drawing.Point(3, 41);
             this.grid_CPlanDD.Name = "grid_CPlanDD";
             this.grid_CPlanDD.ReadOnly = true;
-            this.grid_CPlanDD.Size = new System.Drawing.Size(830, 267);
+            this.grid_CPlanDD.Size = new System.Drawing.Size(809, 267);
             this.grid_CPlanDD.TabIndex = 0;
             this.grid_CPlanDD.DoubleClick += new System.EventHandler(this.btn_edit_CP_Click);
             // 
@@ -2664,8 +2724,8 @@
             // name_ds
             // 
             this.name_ds.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.name_ds.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle100.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.name_ds.DefaultCellStyle = dataGridViewCellStyle100;
             this.name_ds.HeaderText = "Название этапа";
             this.name_ds.Name = "name_ds";
             this.name_ds.ReadOnly = true;
@@ -2679,18 +2739,18 @@
             // 
             // nachalo_ds
             // 
-            dataGridViewCellStyle13.Format = "D";
-            dataGridViewCellStyle13.NullValue = null;
-            this.nachalo_ds.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle101.Format = "D";
+            dataGridViewCellStyle101.NullValue = null;
+            this.nachalo_ds.DefaultCellStyle = dataGridViewCellStyle101;
             this.nachalo_ds.HeaderText = "Начало";
             this.nachalo_ds.Name = "nachalo_ds";
             this.nachalo_ds.ReadOnly = true;
             // 
             // konec_ds
             // 
-            dataGridViewCellStyle14.Format = "D";
-            dataGridViewCellStyle14.NullValue = null;
-            this.konec_ds.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle102.Format = "D";
+            dataGridViewCellStyle102.NullValue = null;
+            this.konec_ds.DefaultCellStyle = dataGridViewCellStyle102;
             this.konec_ds.HeaderText = "Окончание";
             this.konec_ds.Name = "konec_ds";
             this.konec_ds.ReadOnly = true;
@@ -2698,10 +2758,10 @@
             // summ_ds
             // 
             this.summ_ds.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle15.Format = "N2";
-            dataGridViewCellStyle15.NullValue = null;
-            this.summ_ds.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle103.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle103.Format = "N2";
+            dataGridViewCellStyle103.NullValue = null;
+            this.summ_ds.DefaultCellStyle = dataGridViewCellStyle103;
             this.summ_ds.HeaderText = "Сумма";
             this.summ_ds.Name = "summ_ds";
             this.summ_ds.ReadOnly = true;
@@ -2748,7 +2808,7 @@
             this.bndNavigator_KP_Dop.MovePreviousItem = this.bindingNavigatorMovePreviousItem2;
             this.bndNavigator_KP_Dop.Name = "bndNavigator_KP_Dop";
             this.bndNavigator_KP_Dop.PositionItem = this.bindingNavigatorPositionItem2;
-            this.bndNavigator_KP_Dop.Size = new System.Drawing.Size(830, 25);
+            this.bndNavigator_KP_Dop.Size = new System.Drawing.Size(809, 25);
             this.bndNavigator_KP_Dop.TabIndex = 1;
             this.bndNavigator_KP_Dop.Text = "bindingNavigator2";
             // 
@@ -2898,7 +2958,7 @@
             this.bndNavigatorDDog.MovePreviousItem = this.toolStripButton2;
             this.bndNavigatorDDog.Name = "bndNavigatorDDog";
             this.bndNavigatorDDog.PositionItem = this.toolStripTextBox4;
-            this.bndNavigatorDDog.Size = new System.Drawing.Size(836, 25);
+            this.bndNavigatorDDog.Size = new System.Drawing.Size(815, 25);
             this.bndNavigatorDDog.TabIndex = 8;
             this.bndNavigatorDDog.Text = "Навигатор исходных данных";
             // 
@@ -3040,7 +3100,7 @@
             this.tab_Object.Location = new System.Drawing.Point(4, 22);
             this.tab_Object.Name = "tab_Object";
             this.tab_Object.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_Object.Size = new System.Drawing.Size(968, 531);
+            this.tab_Object.Size = new System.Drawing.Size(947, 531);
             this.tab_Object.TabIndex = 1;
             this.tab_Object.Text = "Объект";
             this.tab_Object.UseVisualStyleBackColor = true;
@@ -3072,7 +3132,7 @@
             // splitContainerObject.Panel2
             // 
             this.splitContainerObject.Panel2.Controls.Add(this.tabControlGrafics);
-            this.splitContainerObject.Size = new System.Drawing.Size(754, 500);
+            this.splitContainerObject.Size = new System.Drawing.Size(733, 500);
             this.splitContainerObject.SplitterDistance = 140;
             this.splitContainerObject.TabIndex = 6;
             // 
@@ -3084,7 +3144,7 @@
             this.tb_ObjComment.Multiline = true;
             this.tb_ObjComment.Name = "tb_ObjComment";
             this.tb_ObjComment.ReadOnly = true;
-            this.tb_ObjComment.Size = new System.Drawing.Size(208, 106);
+            this.tb_ObjComment.Size = new System.Drawing.Size(187, 106);
             this.tb_ObjComment.TabIndex = 7;
             // 
             // label28
@@ -3197,7 +3257,7 @@
             this.tabControlGrafics.Location = new System.Drawing.Point(0, 0);
             this.tabControlGrafics.Name = "tabControlGrafics";
             this.tabControlGrafics.SelectedIndex = 0;
-            this.tabControlGrafics.Size = new System.Drawing.Size(754, 356);
+            this.tabControlGrafics.Size = new System.Drawing.Size(733, 356);
             this.tabControlGrafics.TabIndex = 0;
             // 
             // tabPageGrafMarkObject
@@ -3207,7 +3267,7 @@
             this.tabPageGrafMarkObject.Location = new System.Drawing.Point(4, 22);
             this.tabPageGrafMarkObject.Name = "tabPageGrafMarkObject";
             this.tabPageGrafMarkObject.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageGrafMarkObject.Size = new System.Drawing.Size(746, 330);
+            this.tabPageGrafMarkObject.Size = new System.Drawing.Size(725, 330);
             this.tabPageGrafMarkObject.TabIndex = 0;
             this.tabPageGrafMarkObject.Text = "График выпуска комплектов";
             this.tabPageGrafMarkObject.UseVisualStyleBackColor = true;
@@ -3231,7 +3291,7 @@
             this.grid_GrafMark.Location = new System.Drawing.Point(3, 28);
             this.grid_GrafMark.Name = "grid_GrafMark";
             this.grid_GrafMark.ReadOnly = true;
-            this.grid_GrafMark.Size = new System.Drawing.Size(740, 299);
+            this.grid_GrafMark.Size = new System.Drawing.Size(719, 299);
             this.grid_GrafMark.TabIndex = 0;
             this.grid_GrafMark.DoubleClick += new System.EventHandler(this.tbtn_EditMark_Click);
             // 
@@ -3257,9 +3317,9 @@
             // 
             // Mark_date_plan
             // 
-            dataGridViewCellStyle16.Format = "D";
-            dataGridViewCellStyle16.NullValue = null;
-            this.Mark_date_plan.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle104.Format = "D";
+            dataGridViewCellStyle104.NullValue = null;
+            this.Mark_date_plan.DefaultCellStyle = dataGridViewCellStyle104;
             this.Mark_date_plan.HeaderText = "Дата по плану";
             this.Mark_date_plan.Name = "Mark_date_plan";
             this.Mark_date_plan.ReadOnly = true;
@@ -3275,9 +3335,9 @@
             // 
             // Mark_date_GIP
             // 
-            dataGridViewCellStyle17.Format = "D";
-            dataGridViewCellStyle17.NullValue = null;
-            this.Mark_date_GIP.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle105.Format = "D";
+            dataGridViewCellStyle105.NullValue = null;
+            this.Mark_date_GIP.DefaultCellStyle = dataGridViewCellStyle105;
             this.Mark_date_GIP.HeaderText = "Дата подписи";
             this.Mark_date_GIP.Name = "Mark_date_GIP";
             this.Mark_date_GIP.ReadOnly = true;
@@ -3293,9 +3353,9 @@
             // 
             // Mark_data_fakt
             // 
-            dataGridViewCellStyle18.Format = "D";
-            dataGridViewCellStyle18.NullValue = null;
-            this.Mark_data_fakt.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle106.Format = "D";
+            dataGridViewCellStyle106.NullValue = null;
+            this.Mark_data_fakt.DefaultCellStyle = dataGridViewCellStyle106;
             this.Mark_data_fakt.HeaderText = "Дата по факту";
             this.Mark_data_fakt.Name = "Mark_data_fakt";
             this.Mark_data_fakt.ReadOnly = true;
@@ -3335,7 +3395,7 @@
             this.bndNavigator_Graph_Mark.MovePreviousItem = this.bindingNavigatorMovePreviousItem3;
             this.bndNavigator_Graph_Mark.Name = "bndNavigator_Graph_Mark";
             this.bndNavigator_Graph_Mark.PositionItem = this.bindingNavigatorPositionItem3;
-            this.bndNavigator_Graph_Mark.Size = new System.Drawing.Size(740, 25);
+            this.bndNavigator_Graph_Mark.Size = new System.Drawing.Size(719, 25);
             this.bndNavigator_Graph_Mark.TabIndex = 1;
             this.bndNavigator_Graph_Mark.Text = "bindingNavigator1";
             this.bndNavigator_Graph_Mark.Paint += new System.Windows.Forms.PaintEventHandler(this.bndNavigator_Graph_Mark_Paint);
@@ -3463,7 +3523,7 @@
             this.tabPageGrafZadaniaObject.Location = new System.Drawing.Point(4, 22);
             this.tabPageGrafZadaniaObject.Name = "tabPageGrafZadaniaObject";
             this.tabPageGrafZadaniaObject.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageGrafZadaniaObject.Size = new System.Drawing.Size(746, 330);
+            this.tabPageGrafZadaniaObject.Size = new System.Drawing.Size(725, 330);
             this.tabPageGrafZadaniaObject.TabIndex = 1;
             this.tabPageGrafZadaniaObject.Text = "График выдачи заданий";
             this.tabPageGrafZadaniaObject.UseVisualStyleBackColor = true;
@@ -3483,7 +3543,7 @@
             this.grid_GrafZ.Location = new System.Drawing.Point(3, 28);
             this.grid_GrafZ.Name = "grid_GrafZ";
             this.grid_GrafZ.ReadOnly = true;
-            this.grid_GrafZ.Size = new System.Drawing.Size(740, 299);
+            this.grid_GrafZ.Size = new System.Drawing.Size(719, 299);
             this.grid_GrafZ.TabIndex = 0;
             this.grid_GrafZ.DoubleClick += new System.EventHandler(this.tbtn_edit_Zadania_Click);
             // 
@@ -3508,18 +3568,18 @@
             // 
             // zadania_plan
             // 
-            dataGridViewCellStyle19.Format = "D";
-            dataGridViewCellStyle19.NullValue = null;
-            this.zadania_plan.DefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle107.Format = "D";
+            dataGridViewCellStyle107.NullValue = null;
+            this.zadania_plan.DefaultCellStyle = dataGridViewCellStyle107;
             this.zadania_plan.HeaderText = "Дата по плану";
             this.zadania_plan.Name = "zadania_plan";
             this.zadania_plan.ReadOnly = true;
             // 
             // zadania_fakt
             // 
-            dataGridViewCellStyle20.Format = "D";
-            dataGridViewCellStyle20.NullValue = null;
-            this.zadania_fakt.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle108.Format = "D";
+            dataGridViewCellStyle108.NullValue = null;
+            this.zadania_fakt.DefaultCellStyle = dataGridViewCellStyle108;
             this.zadania_fakt.HeaderText = "Дата по факту";
             this.zadania_fakt.Name = "zadania_fakt";
             this.zadania_fakt.ReadOnly = true;
@@ -3552,7 +3612,7 @@
             this.bndNavigator_Graph_Z.MovePreviousItem = this.bindingNavigatorMovePreviousItem4;
             this.bndNavigator_Graph_Z.Name = "bndNavigator_Graph_Z";
             this.bndNavigator_Graph_Z.PositionItem = this.bindingNavigatorPositionItem4;
-            this.bndNavigator_Graph_Z.Size = new System.Drawing.Size(740, 25);
+            this.bndNavigator_Graph_Z.Size = new System.Drawing.Size(719, 25);
             this.bndNavigator_Graph_Z.TabIndex = 1;
             this.bndNavigator_Graph_Z.Text = "bindingNavigator1";
             // 
@@ -3680,7 +3740,7 @@
             this.tabPageZadaniaObject.Location = new System.Drawing.Point(4, 22);
             this.tabPageZadaniaObject.Name = "tabPageZadaniaObject";
             this.tabPageZadaniaObject.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageZadaniaObject.Size = new System.Drawing.Size(746, 330);
+            this.tabPageZadaniaObject.Size = new System.Drawing.Size(725, 330);
             this.tabPageZadaniaObject.TabIndex = 2;
             this.tabPageZadaniaObject.Text = "Задания";
             this.tabPageZadaniaObject.UseVisualStyleBackColor = true;
@@ -3691,7 +3751,7 @@
             this.grid_Z.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grid_Z.Location = new System.Drawing.Point(3, 28);
             this.grid_Z.Name = "grid_Z";
-            this.grid_Z.Size = new System.Drawing.Size(740, 299);
+            this.grid_Z.Size = new System.Drawing.Size(719, 299);
             this.grid_Z.TabIndex = 0;
             // 
             // bndNavigator_Zadania_file
@@ -3718,7 +3778,7 @@
             this.bndNavigator_Zadania_file.MovePreviousItem = this.bindingNavigatorMovePreviousItem5;
             this.bndNavigator_Zadania_file.Name = "bndNavigator_Zadania_file";
             this.bndNavigator_Zadania_file.PositionItem = this.bindingNavigatorPositionItem5;
-            this.bndNavigator_Zadania_file.Size = new System.Drawing.Size(740, 25);
+            this.bndNavigator_Zadania_file.Size = new System.Drawing.Size(719, 25);
             this.bndNavigator_Zadania_file.TabIndex = 1;
             this.bndNavigator_Zadania_file.Text = "bindingNavigator1";
             // 
@@ -3813,7 +3873,7 @@
             this.tabPageRKD.Location = new System.Drawing.Point(4, 22);
             this.tabPageRKD.Name = "tabPageRKD";
             this.tabPageRKD.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageRKD.Size = new System.Drawing.Size(746, 330);
+            this.tabPageRKD.Size = new System.Drawing.Size(725, 330);
             this.tabPageRKD.TabIndex = 3;
             this.tabPageRKD.Text = "РКД";
             this.tabPageRKD.UseVisualStyleBackColor = true;
@@ -3823,10 +3883,19 @@
             this.tabPageIz.Location = new System.Drawing.Point(4, 22);
             this.tabPageIz.Name = "tabPageIz";
             this.tabPageIz.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageIz.Size = new System.Drawing.Size(746, 330);
+            this.tabPageIz.Size = new System.Drawing.Size(725, 330);
             this.tabPageIz.TabIndex = 4;
             this.tabPageIz.Text = "Изыскания";
             this.tabPageIz.UseVisualStyleBackColor = true;
+            // 
+            // tabPageKMD
+            // 
+            this.tabPageKMD.Location = new System.Drawing.Point(4, 22);
+            this.tabPageKMD.Name = "tabPageKMD";
+            this.tabPageKMD.Size = new System.Drawing.Size(725, 330);
+            this.tabPageKMD.TabIndex = 5;
+            this.tabPageKMD.Text = "КМД";
+            this.tabPageKMD.UseVisualStyleBackColor = true;
             // 
             // bndNavigatorObject
             // 
@@ -3854,7 +3923,7 @@
             this.bndNavigatorObject.MovePreviousItem = this.toolStripButton19;
             this.bndNavigatorObject.Name = "bndNavigatorObject";
             this.bndNavigatorObject.PositionItem = this.toolStripTextBox3;
-            this.bndNavigatorObject.Size = new System.Drawing.Size(754, 25);
+            this.bndNavigatorObject.Size = new System.Drawing.Size(733, 25);
             this.bndNavigatorObject.TabIndex = 5;
             this.bndNavigatorObject.Text = "Навигатор исходных данных";
             // 
@@ -4005,7 +4074,7 @@
             this.tab_Archive.Location = new System.Drawing.Point(4, 22);
             this.tab_Archive.Name = "tab_Archive";
             this.tab_Archive.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_Archive.Size = new System.Drawing.Size(968, 531);
+            this.tab_Archive.Size = new System.Drawing.Size(947, 531);
             this.tab_Archive.TabIndex = 5;
             this.tab_Archive.Text = "Архив";
             this.tab_Archive.UseVisualStyleBackColor = true;
@@ -4015,7 +4084,7 @@
             this.pnl_ViewArh.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_ViewArh.Location = new System.Drawing.Point(568, 54);
             this.pnl_ViewArh.Name = "pnl_ViewArh";
-            this.pnl_ViewArh.Size = new System.Drawing.Size(397, 474);
+            this.pnl_ViewArh.Size = new System.Drawing.Size(376, 474);
             this.pnl_ViewArh.TabIndex = 2;
             // 
             // grid_FileArh
@@ -4084,7 +4153,7 @@
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox3.Location = new System.Drawing.Point(3, 3);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(962, 51);
+            this.groupBox3.Size = new System.Drawing.Size(941, 51);
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Параметры сканирования";
@@ -4168,7 +4237,7 @@
             this.tab_Jornal.Location = new System.Drawing.Point(4, 22);
             this.tab_Jornal.Name = "tab_Jornal";
             this.tab_Jornal.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_Jornal.Size = new System.Drawing.Size(968, 531);
+            this.tab_Jornal.Size = new System.Drawing.Size(947, 531);
             this.tab_Jornal.TabIndex = 7;
             this.tab_Jornal.Text = "Журнал отправки";
             this.tab_Jornal.UseVisualStyleBackColor = true;
@@ -4179,7 +4248,7 @@
             this.grid_SrchResult.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grid_SrchResult.Location = new System.Drawing.Point(180, 3);
             this.grid_SrchResult.Name = "grid_SrchResult";
-            this.grid_SrchResult.Size = new System.Drawing.Size(785, 525);
+            this.grid_SrchResult.Size = new System.Drawing.Size(764, 525);
             this.grid_SrchResult.TabIndex = 2;
             // 
             // group_Srch
@@ -4369,11 +4438,11 @@
             // 
             // dataGridViewImageColumn2
             // 
-            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle21.NullValue = null;
-            dataGridViewCellStyle21.Padding = new System.Windows.Forms.Padding(3);
-            this.dataGridViewImageColumn2.DefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle109.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle109.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle109.NullValue = null;
+            dataGridViewCellStyle109.Padding = new System.Windows.Forms.Padding(3);
+            this.dataGridViewImageColumn2.DefaultCellStyle = dataGridViewCellStyle109;
             this.dataGridViewImageColumn2.HeaderText = "Удалить";
             this.dataGridViewImageColumn2.Image = global::GW_Dogovor.Properties.Resources.Delete;
             this.dataGridViewImageColumn2.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
@@ -4384,11 +4453,11 @@
             // 
             // dataGridViewImageColumn3
             // 
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle22.NullValue = null;
-            dataGridViewCellStyle22.Padding = new System.Windows.Forms.Padding(3);
-            this.dataGridViewImageColumn3.DefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle110.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle110.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle110.NullValue = null;
+            dataGridViewCellStyle110.Padding = new System.Windows.Forms.Padding(3);
+            this.dataGridViewImageColumn3.DefaultCellStyle = dataGridViewCellStyle110;
             this.dataGridViewImageColumn3.HeaderText = "Удалить";
             this.dataGridViewImageColumn3.Image = global::GW_Dogovor.Properties.Resources.Delete;
             this.dataGridViewImageColumn3.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
@@ -4443,70 +4512,6 @@
             this.tb_num_dog.Text = "NUM DOGOVOR";
             this.tb_num_dog.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // tabPageKMD
-            // 
-            this.tabPageKMD.Location = new System.Drawing.Point(4, 22);
-            this.tabPageKMD.Name = "tabPageKMD";
-            this.tabPageKMD.Size = new System.Drawing.Size(746, 330);
-            this.tabPageKMD.TabIndex = 5;
-            this.tabPageKMD.Text = "КМД";
-            this.tabPageKMD.UseVisualStyleBackColor = true;
-            // 
-            // Obj_name
-            // 
-            this.Obj_name.HeaderText = "Объект";
-            this.Obj_name.Name = "Obj_name";
-            this.Obj_name.ReadOnly = true;
-            // 
-            // NameDoc
-            // 
-            this.NameDoc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.NameDoc.HeaderText = "Название";
-            this.NameDoc.Name = "NameDoc";
-            this.NameDoc.ReadOnly = true;
-            this.NameDoc.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.NameDoc.Width = 335;
-            // 
-            // Nambe_Doc
-            // 
-            this.Nambe_Doc.HeaderText = "№ ";
-            this.Nambe_Doc.Name = "Nambe_Doc";
-            this.Nambe_Doc.ReadOnly = true;
-            this.Nambe_Doc.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // DataDoc
-            // 
-            dataGridViewCellStyle1.Format = "d";
-            dataGridViewCellStyle1.NullValue = null;
-            this.DataDoc.DefaultCellStyle = dataGridViewCellStyle1;
-            this.DataDoc.HeaderText = "Дата";
-            this.DataDoc.Name = "DataDoc";
-            this.DataDoc.ReadOnly = true;
-            this.DataDoc.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // Status
-            // 
-            this.Status.HeaderText = "Статус";
-            this.Status.Name = "Status";
-            this.Status.ReadOnly = true;
-            this.Status.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // PathDoc
-            // 
-            this.PathDoc.HeaderText = "Путь к файлу";
-            this.PathDoc.Name = "PathDoc";
-            this.PathDoc.ReadOnly = true;
-            this.PathDoc.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // btnPath
-            // 
-            this.btnPath.HeaderText = "***";
-            this.btnPath.Name = "btnPath";
-            this.btnPath.ReadOnly = true;
-            this.btnPath.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.btnPath.Text = "***";
-            this.btnPath.Width = 25;
-            // 
             // Form_main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4541,9 +4546,9 @@
             this.panelProjectComments.ResumeLayout(false);
             this.tabControlMain.ResumeLayout(false);
             this.tab_IDocuments.ResumeLayout(false);
-            this.tab_IDocuments.PerformLayout();
             this.tabDocuments.ResumeLayout(false);
             this.tabPageISHDoc.ResumeLayout(false);
+            this.tabPageISHDoc.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridDocument)).EndInit();
             this.tabPageMailControl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grid_MailControl)).EndInit();

@@ -6,6 +6,7 @@ using System.IO;
 using TreeFoldersClass;
 using Distinary;
 using DBClass;
+using DocumentsClass;
 
 namespace AddFilesToFolder
 {
@@ -402,34 +403,14 @@ namespace AddFilesToFolder
 
             if (ac)
             {
-                MessageBox.Show("Файлы успешно скопированы.");
-                Close();
+                Form_Document fe = new Form_Document();
+                fe.Show();
+                //this.Hide();
+                //string s = fe.Tag.ToString();
+                //FileA.RunPath(s);
+                this.Close();
             }
                 
-        }
-
-        private void AddNewFolderToSelectedFolder()
-        {
-            List<string> listFolders = new List<string>();
-            List<string> listFileDBPath = new List<string>();
-            string newNameFolder = "";
-            // генерируем имя новой папки
-            GenerateNewFolderName();
-            newNameFolder = tb_newNameFolder.Text;
-            // Получаем список выбранных узлов
-            GetPathFolders(listFolders, listFileDBPath);
-            if (listFolders.Count == 0)
-            {
-                throw new Exception("Вы не выбрали пути для копирования. Повторите операцию!");
-            }
-            // создать новые папки 
-            foreach(string p in listFolders)
-            {
-                FileA.CreateFolder(newNameFolder, p); // создаем new-папку для каждого выбранного узла
-            }
-            //добавляем узлы в TreeViewFolder
-            AddNewNodeToSelectedNodes(treeViewFolder.Nodes, newNameFolder);
-
         }
 
         private void btn_contextMenuNameFolder_Click(object sender, EventArgs e)
@@ -499,7 +480,7 @@ namespace AddFilesToFolder
 
                 FileA.CopyListFiles(fileList, listFolders);
                 //TODO: Добавить регистрация в базе по списку listFileDBPath
-                DB_Cmd.AddDocumentToDB(listFileDBPath);
+                AddDocToDB(fileList, listFileDBPath);
 
                 return true;
             }
@@ -508,6 +489,20 @@ namespace AddFilesToFolder
                 MessageBox.Show(e.Message);
                 return false;
             }
+        }
+
+        private static void AddDocToDB(List<string> fileList, List<string> listFileDBPath)
+        {
+            if (fileList.Count == 1)
+            {
+                FileInfo namefile = new FileInfo(fileList[0].ToString());
+                DirectoryInfo dir = new DirectoryInfo(listFileDBPath[0].ToString());
+                List<string> s = new List<string>();
+                s.Add(Path.Combine(dir.FullName, namefile.Name));
+                DB_Cmd.AddDocumentToDB(s);
+            }
+            else
+                DB_Cmd.AddDocumentToDB(listFileDBPath);
         }
 
         private bool CopySelectedFilesToNewFolder()
@@ -538,7 +533,8 @@ namespace AddFilesToFolder
                
                 FileA.CopyListFiles(fileList, listNewFolders);
                 //TODO: Добавить регистрация в базе по списку listFileDBPath
-               
+                AddDocToDB(fileList, listFileDBPath);
+
                 return true;
             }
             catch (Exception e)
