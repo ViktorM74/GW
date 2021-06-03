@@ -1,13 +1,18 @@
-﻿using System.Windows.Forms;
+﻿using System.IO;
+using System.Windows.Forms;
 using DBClass;
 
 namespace DogovorClass
 {
     public partial class Form_Dogovor : Form
     {
-        public Form_Dogovor()
+        string link_LocalFld = null;
+
+        public Form_Dogovor(string lnk)
         {
             InitializeComponent();
+
+            link_LocalFld = lnk;
 
             SetView();
         }
@@ -40,6 +45,28 @@ namespace DogovorClass
 
         }
 
+        private void btn_SaveDogovor_Click(object sender, System.EventArgs e)
+        {
+            string s = null;
+            Validate();
+            if (tb_NumDog.Text != null && tb_NumDog.Text != "")
+            {
+                s = Path.Combine(link_LocalFld, tb_NumDog.Text);
+                DB_Cmd.SaveDogovor(s);
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("Номер договора не может быть пустым!");
+            }
+            
+        }
 
+        private void btn_CloseDogovor_Click(object sender, System.EventArgs e)
+        {
+            Validate();
+            DB_Cmd.CancelDogovor();
+            Close();
+        }
     }
 }

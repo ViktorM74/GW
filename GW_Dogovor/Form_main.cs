@@ -218,6 +218,7 @@ namespace GW_Dogovor
             gridDocument.Columns["DataDoc"].DataPropertyName = "DataDoc";
             gridDocument.Columns["Status"].DataPropertyName = "Status";
             gridDocument.Columns["PathDoc"].DataPropertyName = "PathDoc";
+            gridDocument.Columns["Obj_name"].DataPropertyName = "Object";
             //this.gridDocument.Sort(this.gridDocument.Columns["DataDoc"], ListSortDirection.Ascending);
 
             bndNvg_IshDoc.BindingSource = DB_Cmd.bndDocument;
@@ -598,8 +599,57 @@ namespace GW_Dogovor
         }
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            Form_AddFiles fSel = new Form_AddFiles(link_LocalFld.Text, link_ServetFld.Text);
+            string loc_path = null;
+            string serv_path = null;
+            //TODO: Определить где, на какой вкладке, объекте находится пользователь. Сгенерировать путь
+            string pathUI = GetPositionUser();
+            if (pathUI != null)
+            {
+                loc_path = Path.Combine(link_LocalFld.Text, pathUI);
+                serv_path = Path.Combine(link_ServetFld.Text, pathUI);
+            }
+            else
+            {
+                loc_path = link_LocalFld.Text;
+                serv_path = link_ServetFld.Text;
+            }
+            Form_AddFiles fSel = new Form_AddFiles(loc_path, serv_path);
             fSel.ShowDialog();
+        }
+
+        private string GetPositionUser()
+        {
+            string pth = null;
+            switch (tabControlMain.SelectedIndex)
+            {
+                case 0:
+                    pth = null;
+                    break;
+                case 1:
+                    pth = DB_Cmd.GetCurrentValueField(DB_Cmd.bndTender, "Path");
+                    string s = feature.RemoveSubString(pth, link_LocalFld.Text);
+                    if (s != null)
+                    {
+                        pth = s;
+                    }
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+                case 6:
+                    break;
+                default:
+                    pth = null;
+                    break;
+            }
+
+
+            return pth;
         }
         private void tabControlMain_Selected(object sender, TabControlEventArgs e)
         {
@@ -652,18 +702,8 @@ namespace GW_Dogovor
         #region Dogovor
         private void EditDogovor()
         {
-            Form_Dogovor fе = new Form_Dogovor();
-
-            if (fе.ShowDialog() == DialogResult.OK)
-            {
-                fе.Validate();
-                DB_Cmd.SaveDogovor();
-            }
-            else
-            {
-                fе.Validate();
-                DB_Cmd.CancelDogovor();
-            }
+            Form_Dogovor fе = new Form_Dogovor(link_LocalFld.Text);
+            fе.ShowDialog();
         }
  
         #endregion
@@ -845,9 +885,9 @@ namespace GW_Dogovor
         }
         private void gridDocument_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 3)
+            if (e.ColumnIndex == 6)
             {
-                string p = gridDocument[2, e.RowIndex].Value.ToString(); // читаем путь
+                string p = gridDocument[5, e.RowIndex].Value.ToString(); // читаем путь
 
                 if (FileA.GetAtributesPath(p))
                     FileA.RunFile(p);
@@ -1183,14 +1223,14 @@ namespace GW_Dogovor
         private void tbtn_DeleteDog_Click(object sender, EventArgs e)
         {
             DB_Cmd.DeleteDogovor();
-            DB_Cmd.SaveDogovor();
+            DB_Cmd.SaveDogovor(null);
         }
 
         private void tbtn_AddDog_Click(object sender, EventArgs e)
         {
             int pos = DB_Cmd.bndDogovor.Position;
 
-            object newobject = DB_Cmd.AddDogovor(link_LocalFld.Text);
+            object newobject = DB_Cmd.AddDogovor();
 
             EditDogovor();
 
@@ -1211,11 +1251,11 @@ namespace GW_Dogovor
         //CPlan Tab Dogovor
         private void tbtn_Edit_ItemCPlan_Click(object sender, EventArgs e)
         {
-            Form_CPlan feCPlan = new Form_CPlan();
-            feCPlan.Show();
-            //DB_Cmd.InitializeBindingSources();
+            //Form_CPlan feCPlan = new Form_CPlan();
+            //feCPlan.Show();
+            ////DB_Cmd.InitializeBindingSources();
 
-            SetViewBindNavigators();
+            //SetViewBindNavigators();
         }
         #endregion Dogovor
 

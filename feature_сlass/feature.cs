@@ -81,6 +81,34 @@ namespace feature_сlass
 
             senderComboBox.DropDownWidth = width;
         }
+        /// <summary>
+        /// Удаляет подстроку из строки, если она содержится в строке
+        /// </summary>
+        /// <param name="str"></param>
+        /// <param name="sub"></param>
+        /// <returns></returns>
+        public static string RemoveSubString(string str, string sub)
+        {
+            string s = null;
+            
+            try
+            {
+                if (str == null)
+                    throw new Exception("Не задана строка для обработки");
+                if (sub == null)
+                    throw new Exception("Не задана подстрока для обработки");
+                if (str.Contains(sub))
+                {
+                   s = str.Remove(str.IndexOf(sub), sub.Length + 1);
+                }
+            } 
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+          
+            return s;
+        }
 
     }
 }

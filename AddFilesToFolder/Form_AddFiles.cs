@@ -557,5 +557,10 @@ namespace AddFilesToFolder
         {
             TreeDirectory.BeforeSelect(sender, e);
         }
+
+        private void открытьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FileA.RunFolder(treeViewFolder.SelectedNode.FullPath);
+        }
     }
 }

@@ -1093,6 +1093,7 @@ namespace DBClass {
             this.DopSoglashenia.NumDogColumn.Expression = "Parent([DogovorDopSoglashenia]).[Nambe_Dog]";
             this.Project.AreaStroyColumn.Expression = "Parent([CustomersProject]).[NameCust]";
             this.Documents.TYPEColumn.Expression = "Parent([Documets_typeDocuments]).[Name_doc]";
+            this.Documents.ObjectColumn.Expression = "Parent([OBJECTSDocuments]).[Nambe_Object]";
             this.OBJECTS.NameGIPColumn.Expression = "Parent([Users GIP_OBJECTS]).[Family]";
             this.OBJECTS.CodeOBJColumn.Expression = "ISNull([Nambe_Object], \'\') + \' - \' + ISNull([Titul], \'\')+\' - \'+ISNull([Stady], \'\'" +
                 ")";
@@ -1595,6 +1596,8 @@ namespace DBClass {
             
             private global::System.Data.DataColumn columnNumDD;
             
+            private global::System.Data.DataColumn columnViewCPDog;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public CalendarPlanDataTable() : 
@@ -1775,6 +1778,14 @@ namespace DBClass {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ViewCPDogColumn {
+                get {
+                    return this.columnViewCPDog;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1826,7 +1837,8 @@ namespace DBClass {
                         int StatGlob, 
                         bool Begin, 
                         string Status, 
-                        string NumDD) {
+                        string NumDD, 
+                        bool ViewCPDog) {
                 CalendarPlanRow rowCalendarPlanRow = ((CalendarPlanRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -1845,7 +1857,8 @@ namespace DBClass {
                         StatGlob,
                         Begin,
                         Status,
-                        NumDD};
+                        NumDD,
+                        ViewCPDog};
                 if ((parentDogovorRowByDogovorCalendarPlan != null)) {
                     columnValuesArray[1] = parentDogovorRowByDogovorCalendarPlan[0];
                 }
@@ -1859,7 +1872,23 @@ namespace DBClass {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public CalendarPlanRow AddCalendarPlanRow(DogovorRow parentDogovorRowByDogovorCalendarPlan, DopSoglasheniaRow parentDopSoglasheniaRowByDopSoglasheniaCalendarPlan, int ID_EtapRoot, string Num_Etap, string Name_Etap, System.DateTime Nachalo_Data, System.DateTime Konec_Data, int Days, string Comments, decimal Summ, string V, string Num_sort, int StatGlob, bool Begin, string Status) {
+            public CalendarPlanRow AddCalendarPlanRow(
+                        DogovorRow parentDogovorRowByDogovorCalendarPlan, 
+                        DopSoglasheniaRow parentDopSoglasheniaRowByDopSoglasheniaCalendarPlan, 
+                        int ID_EtapRoot, 
+                        string Num_Etap, 
+                        string Name_Etap, 
+                        System.DateTime Nachalo_Data, 
+                        System.DateTime Konec_Data, 
+                        int Days, 
+                        string Comments, 
+                        decimal Summ, 
+                        string V, 
+                        string Num_sort, 
+                        int StatGlob, 
+                        bool Begin, 
+                        string Status, 
+                        bool ViewCPDog) {
                 CalendarPlanRow rowCalendarPlanRow = ((CalendarPlanRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -1878,7 +1907,8 @@ namespace DBClass {
                         StatGlob,
                         Begin,
                         Status,
-                        null};
+                        null,
+                        ViewCPDog};
                 if ((parentDogovorRowByDogovorCalendarPlan != null)) {
                     columnValuesArray[1] = parentDogovorRowByDogovorCalendarPlan[0];
                 }
@@ -1931,6 +1961,7 @@ namespace DBClass {
                 this.columnBegin = base.Columns["Begin"];
                 this.columnStatus = base.Columns["Status"];
                 this.columnNumDD = base.Columns["NumDD"];
+                this.columnViewCPDog = base.Columns["ViewCPDog"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1970,6 +2001,8 @@ namespace DBClass {
                 base.Columns.Add(this.columnStatus);
                 this.columnNumDD = new global::System.Data.DataColumn("NumDD", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNumDD);
+                this.columnViewCPDog = new global::System.Data.DataColumn("ViewCPDog", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnViewCPDog);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID_Kplan}, true));
                 this.columnID_Kplan.AutoIncrement = true;
@@ -4172,6 +4205,8 @@ namespace DBClass {
             
             private global::System.Data.DataColumn columnMark_id;
             
+            private global::System.Data.DataColumn columnObject;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public DocumentsDataTable() : 
@@ -4352,6 +4387,14 @@ namespace DBClass {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ObjectColumn {
+                get {
+                    return this.columnObject;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -4403,7 +4446,8 @@ namespace DBClass {
                         bool Control, 
                         ProjectRow parentProjectRowByProjectDocuments, 
                         ZadaniaRow parentZadaniaRowByZadaniaDocuments, 
-                        SostavDocRow parentSostavDocRowBySostavDocDocuments) {
+                        SostavDocRow parentSostavDocRowBySostavDocDocuments, 
+                        string Object) {
                 DocumentsRow rowDocumentsRow = ((DocumentsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -4422,7 +4466,8 @@ namespace DBClass {
                         Control,
                         null,
                         null,
-                        null};
+                        null,
+                        Object};
                 if ((parentOBJECTSRowByOBJECTSDocuments != null)) {
                     columnValuesArray[5] = parentOBJECTSRowByOBJECTSDocuments[0];
                 }
@@ -4471,6 +4516,7 @@ namespace DBClass {
                         null,
                         null,
                         Control,
+                        null,
                         null,
                         null,
                         null};
@@ -4544,6 +4590,7 @@ namespace DBClass {
                 this.columnProject_id = base.Columns["Project_id"];
                 this.columnZadania_id = base.Columns["Zadania_id"];
                 this.columnMark_id = base.Columns["Mark_id"];
+                this.columnObject = base.Columns["Object"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4583,6 +4630,8 @@ namespace DBClass {
                 base.Columns.Add(this.columnZadania_id);
                 this.columnMark_id = new global::System.Data.DataColumn("Mark_id", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMark_id);
+                this.columnObject = new global::System.Data.DataColumn("Object", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnObject);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID_Doc}, true));
                 this.columnID_Doc.AutoIncrement = true;
@@ -4595,6 +4644,7 @@ namespace DBClass {
                 this.columnStatus.MaxLength = 255;
                 this.columnPathDoc.MaxLength = 536870910;
                 this.columnTYPE.ReadOnly = true;
+                this.columnObject.ReadOnly = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4619,6 +4669,7 @@ namespace DBClass {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitExpressions() {
                 this.TYPEColumn.Expression = "Parent([Documets_typeDocuments]).[Name_doc]";
+                this.ObjectColumn.Expression = "Parent([OBJECTSDocuments]).[Nambe_Object]";
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8880,8 +8931,7 @@ namespace DBClass {
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID_otdel}, false));
                 this.columnID_otdel.AutoIncrement = true;
-                this.columnID_otdel.AutoIncrementSeed = -1;
-                this.columnID_otdel.AutoIncrementStep = -1;
+                this.columnID_otdel.AutoIncrementSeed = 1;
                 this.columnID_otdel.AllowDBNull = false;
                 this.columnID_otdel.Unique = true;
                 this.columnКО.MaxLength = 6;
@@ -9165,8 +9215,7 @@ namespace DBClass {
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnid_group}, true));
                 this.columnid_group.AutoIncrement = true;
-                this.columnid_group.AutoIncrementSeed = -1;
-                this.columnid_group.AutoIncrementStep = -1;
+                this.columnid_group.AutoIncrementSeed = 1;
                 this.columnid_group.AllowDBNull = false;
                 this.columnid_group.Unique = true;
                 this.columnName_group.MaxLength = 255;
@@ -9879,6 +9928,22 @@ namespace DBClass {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool ViewCPDog {
+                get {
+                    try {
+                        return ((bool)(this[this.tableCalendarPlan.ViewCPDogColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'ViewCPDog\' в таблице \'CalendarPlan\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCalendarPlan.ViewCPDogColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public DogovorRow DogovorRow {
                 get {
                     return ((DogovorRow)(this.GetParentRow(this.Table.ParentRelations["DogovorCalendarPlan"])));
@@ -10089,6 +10154,18 @@ namespace DBClass {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetNumDDNull() {
                 this[this.tableCalendarPlan.NumDDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsViewCPDogNull() {
+                return this.IsNull(this.tableCalendarPlan.ViewCPDogColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetViewCPDogNull() {
+                this[this.tableCalendarPlan.ViewCPDogColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -11884,6 +11961,22 @@ namespace DBClass {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Object {
+                get {
+                    try {
+                        return ((string)(this[this.tableDocuments.ObjectColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Object\' в таблице \'Documents\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDocuments.ObjectColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public Documets_typeRow Documets_typeRow {
                 get {
                     return ((Documets_typeRow)(this.GetParentRow(this.Table.ParentRelations["Documets_typeDocuments"])));
@@ -12160,6 +12253,18 @@ namespace DBClass {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetMark_idNull() {
                 this[this.tableDocuments.Mark_idColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsObjectNull() {
+                return this.IsNull(this.tableDocuments.ObjectColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetObjectNull() {
+                this[this.tableDocuments.ObjectColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -16491,10 +16596,11 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("StatGlob", "StatGlob");
             tableMapping.ColumnMappings.Add("Begin", "Begin");
             tableMapping.ColumnMappings.Add("Status", "Status");
+            tableMapping.ColumnMappings.Add("ViewCPDog", "ViewCPDog");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM `CalendarPlan` WHERE ((`ID_Kplan` = ?) AND ((? = 1 AND `IDDog` IS NULL) OR (`IDDog` = ?)) AND ((? = 1 AND `ID_DopS` IS NULL) OR (`ID_DopS` = ?)) AND ((? = 1 AND `ID_EtapRoot` IS NULL) OR (`ID_EtapRoot` = ?)) AND ((? = 1 AND `Num_Etap` IS NULL) OR (`Num_Etap` = ?)) AND ((? = 1 AND `Nachalo_Data` IS NULL) OR (`Nachalo_Data` = ?)) AND ((? = 1 AND `Konec_Data` IS NULL) OR (`Konec_Data` = ?)) AND ((? = 1 AND `Days` IS NULL) OR (`Days` = ?)) AND ((? = 1 AND `Summ` IS NULL) OR (`Summ` = ?)) AND ((? = 1 AND `V` IS NULL) OR (`V` = ?)) AND ((? = 1 AND `Num_sort` IS NULL) OR (`Num_sort` = ?)) AND ((? = 1 AND `StatGlob` IS NULL) OR (`StatGlob` = ?)) AND ((? = 1 AND `Begin` IS NULL) OR (`Begin` = ?)) AND ((? = 1 AND `Status` IS NULL) OR (`Status` = ?)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM `CalendarPlan` WHERE ((`ID_Kplan` = ?) AND ((? = 1 AND `IDDog` IS NULL) OR (`IDDog` = ?)) AND ((? = 1 AND `ID_DopS` IS NULL) OR (`ID_DopS` = ?)) AND ((? = 1 AND `ID_EtapRoot` IS NULL) OR (`ID_EtapRoot` = ?)) AND ((? = 1 AND `Num_Etap` IS NULL) OR (`Num_Etap` = ?)) AND ((? = 1 AND `Nachalo_Data` IS NULL) OR (`Nachalo_Data` = ?)) AND ((? = 1 AND `Konec_Data` IS NULL) OR (`Konec_Data` = ?)) AND ((? = 1 AND `Days` IS NULL) OR (`Days` = ?)) AND ((? = 1 AND `Summ` IS NULL) OR (`Summ` = ?)) AND ((? = 1 AND `V` IS NULL) OR (`V` = ?)) AND ((? = 1 AND `Num_sort` IS NULL) OR (`Num_sort` = ?)) AND ((? = 1 AND `StatGlob` IS NULL) OR (`StatGlob` = ?)) AND ((? = 1 AND `Begin` IS NULL) OR (`Begin` = ?)) AND ((? = 1 AND `Status` IS NULL) OR (`Status` = ?)) AND ((? = 1 AND `ViewCPDog` IS NULL) OR (`ViewCPDog` = ?)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_ID_Kplan", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ID_Kplan", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_IDDog", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "IDDog", global::System.Data.DataRowVersion.Original, true, null));
@@ -16523,12 +16629,11 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Begin", global::System.Data.OleDb.OleDbType.Boolean, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Begin", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Status", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Status", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Status", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Status", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_ViewCPDog", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ViewCPDog", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_ViewCPDog", global::System.Data.OleDb.OleDbType.Boolean, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ViewCPDog", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.InsertCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO `CalendarPlan` (`IDDog`, `ID_DopS`, `ID_EtapRoot`, `Num_Etap`, `Name_" +
-                "Etap`, `Nachalo_Data`, `Konec_Data`, `Days`, `Comments`, `Summ`, `V`, `Num_sort`" +
-                ", `StatGlob`, `Begin`, `Status`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
-                "?, ?)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO `CalendarPlan` (`IDDog`, `ID_DopS`, `ID_EtapRoot`, `Num_Etap`, `Name_Etap`, `Nachalo_Data`, `Konec_Data`, `Days`, `Comments`, `Summ`, `V`, `Num_sort`, `StatGlob`, `Begin`, `Status`, `ViewCPDog`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IDDog", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "IDDog", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ID_DopS", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ID_DopS", global::System.Data.DataRowVersion.Current, false, null));
@@ -16545,9 +16650,10 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("StatGlob", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "StatGlob", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Begin", global::System.Data.OleDb.OleDbType.Boolean, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Begin", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Status", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Status", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ViewCPDog", global::System.Data.OleDb.OleDbType.Boolean, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ViewCPDog", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE `CalendarPlan` SET `IDDog` = ?, `ID_DopS` = ?, `ID_EtapRoot` = ?, `Num_Etap` = ?, `Name_Etap` = ?, `Nachalo_Data` = ?, `Konec_Data` = ?, `Days` = ?, `Comments` = ?, `Summ` = ?, `V` = ?, `Num_sort` = ?, `StatGlob` = ?, `Begin` = ?, `Status` = ? WHERE ((`ID_Kplan` = ?) AND ((? = 1 AND `IDDog` IS NULL) OR (`IDDog` = ?)) AND ((? = 1 AND `ID_DopS` IS NULL) OR (`ID_DopS` = ?)) AND ((? = 1 AND `ID_EtapRoot` IS NULL) OR (`ID_EtapRoot` = ?)) AND ((? = 1 AND `Num_Etap` IS NULL) OR (`Num_Etap` = ?)) AND ((? = 1 AND `Nachalo_Data` IS NULL) OR (`Nachalo_Data` = ?)) AND ((? = 1 AND `Konec_Data` IS NULL) OR (`Konec_Data` = ?)) AND ((? = 1 AND `Days` IS NULL) OR (`Days` = ?)) AND ((? = 1 AND `Summ` IS NULL) OR (`Summ` = ?)) AND ((? = 1 AND `V` IS NULL) OR (`V` = ?)) AND ((? = 1 AND `Num_sort` IS NULL) OR (`Num_sort` = ?)) AND ((? = 1 AND `StatGlob` IS NULL) OR (`StatGlob` = ?)) AND ((? = 1 AND `Begin` IS NULL) OR (`Begin` = ?)) AND ((? = 1 AND `Status` IS NULL) OR (`Status` = ?)))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE `CalendarPlan` SET `IDDog` = ?, `ID_DopS` = ?, `ID_EtapRoot` = ?, `Num_Etap` = ?, `Name_Etap` = ?, `Nachalo_Data` = ?, `Konec_Data` = ?, `Days` = ?, `Comments` = ?, `Summ` = ?, `V` = ?, `Num_sort` = ?, `StatGlob` = ?, `Begin` = ?, `Status` = ?, `ViewCPDog` = ? WHERE ((`ID_Kplan` = ?) AND ((? = 1 AND `IDDog` IS NULL) OR (`IDDog` = ?)) AND ((? = 1 AND `ID_DopS` IS NULL) OR (`ID_DopS` = ?)) AND ((? = 1 AND `ID_EtapRoot` IS NULL) OR (`ID_EtapRoot` = ?)) AND ((? = 1 AND `Num_Etap` IS NULL) OR (`Num_Etap` = ?)) AND ((? = 1 AND `Nachalo_Data` IS NULL) OR (`Nachalo_Data` = ?)) AND ((? = 1 AND `Konec_Data` IS NULL) OR (`Konec_Data` = ?)) AND ((? = 1 AND `Days` IS NULL) OR (`Days` = ?)) AND ((? = 1 AND `Summ` IS NULL) OR (`Summ` = ?)) AND ((? = 1 AND `V` IS NULL) OR (`V` = ?)) AND ((? = 1 AND `Num_sort` IS NULL) OR (`Num_sort` = ?)) AND ((? = 1 AND `StatGlob` IS NULL) OR (`StatGlob` = ?)) AND ((? = 1 AND `Begin` IS NULL) OR (`Begin` = ?)) AND ((? = 1 AND `Status` IS NULL) OR (`Status` = ?)) AND ((? = 1 AND `ViewCPDog` IS NULL) OR (`ViewCPDog` = ?)))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IDDog", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "IDDog", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ID_DopS", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ID_DopS", global::System.Data.DataRowVersion.Current, false, null));
@@ -16564,6 +16670,7 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("StatGlob", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "StatGlob", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Begin", global::System.Data.OleDb.OleDbType.Boolean, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Begin", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Status", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Status", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ViewCPDog", global::System.Data.OleDb.OleDbType.Boolean, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ViewCPDog", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_ID_Kplan", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ID_Kplan", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_IDDog", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "IDDog", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_IDDog", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "IDDog", global::System.Data.DataRowVersion.Original, false, null));
@@ -16591,6 +16698,8 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Begin", global::System.Data.OleDb.OleDbType.Boolean, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Begin", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Status", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Status", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Status", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Status", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_ViewCPDog", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ViewCPDog", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_ViewCPDog", global::System.Data.OleDb.OleDbType.Boolean, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ViewCPDog", global::System.Data.DataRowVersion.Original, false, null));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -16607,8 +16716,8 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT        ID_Kplan, IDDog, ID_DopS, ID_EtapRoot, Num_Etap, Name_Etap, Nachalo" +
-                "_Data, Konec_Data, Days, Comments, Summ, V, Num_sort, StatGlob, [Begin], Status\r" +
-                "\nFROM            CalendarPlan";
+                "_Data, Konec_Data, Days, Comments, Summ, V, Num_sort, StatGlob, [Begin], Status," +
+                " ViewCPDog\r\nFROM            CalendarPlan";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -16669,7 +16778,7 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_ID_Kplan, global::System.Nullable<int> Original_IDDog, global::System.Nullable<int> Original_ID_DopS, int Original_ID_EtapRoot, string Original_Num_Etap, global::System.Nullable<global::System.DateTime> Original_Nachalo_Data, global::System.Nullable<global::System.DateTime> Original_Konec_Data, global::System.Nullable<int> Original_Days, global::System.Nullable<decimal> Original_Summ, string Original_V, string Original_Num_sort, global::System.Nullable<int> Original_StatGlob, bool Original_Begin, string Original_Status) {
+        public virtual int Delete(int Original_ID_Kplan, global::System.Nullable<int> Original_IDDog, int Original_ID_DopS, int Original_ID_EtapRoot, string Original_Num_Etap, global::System.Nullable<global::System.DateTime> Original_Nachalo_Data, global::System.Nullable<global::System.DateTime> Original_Konec_Data, global::System.Nullable<int> Original_Days, global::System.Nullable<decimal> Original_Summ, string Original_V, string Original_Num_sort, int Original_StatGlob, bool Original_Begin, string Original_Status, bool Original_ViewCPDog) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_ID_Kplan));
             if ((Original_IDDog.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
@@ -16679,14 +16788,8 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            if ((Original_ID_DopS.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((int)(Original_ID_DopS.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
+            this.Adapter.DeleteCommand.Parameters[4].Value = ((int)(Original_ID_DopS));
             this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
             this.Adapter.DeleteCommand.Parameters[6].Value = ((int)(Original_ID_EtapRoot));
             if ((Original_Num_Etap == null)) {
@@ -16745,14 +16848,8 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
                 this.Adapter.DeleteCommand.Parameters[19].Value = ((object)(0));
                 this.Adapter.DeleteCommand.Parameters[20].Value = ((string)(Original_Num_sort));
             }
-            if ((Original_StatGlob.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[21].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[22].Value = ((int)(Original_StatGlob.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[21].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[22].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.DeleteCommand.Parameters[21].Value = ((object)(0));
+            this.Adapter.DeleteCommand.Parameters[22].Value = ((int)(Original_StatGlob));
             this.Adapter.DeleteCommand.Parameters[23].Value = ((object)(0));
             this.Adapter.DeleteCommand.Parameters[24].Value = ((bool)(Original_Begin));
             if ((Original_Status == null)) {
@@ -16763,6 +16860,8 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
                 this.Adapter.DeleteCommand.Parameters[25].Value = ((object)(0));
                 this.Adapter.DeleteCommand.Parameters[26].Value = ((string)(Original_Status));
             }
+            this.Adapter.DeleteCommand.Parameters[27].Value = ((object)(0));
+            this.Adapter.DeleteCommand.Parameters[28].Value = ((bool)(Original_ViewCPDog));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -16783,19 +16882,30 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(global::System.Nullable<int> IDDog, global::System.Nullable<int> ID_DopS, int ID_EtapRoot, string Num_Etap, string Name_Etap, global::System.Nullable<global::System.DateTime> Nachalo_Data, global::System.Nullable<global::System.DateTime> Konec_Data, global::System.Nullable<int> Days, string Comments, global::System.Nullable<decimal> Summ, string V, string Num_sort, global::System.Nullable<int> StatGlob, bool Begin, string Status) {
+        public virtual int Insert(
+                    global::System.Nullable<int> IDDog, 
+                    int ID_DopS, 
+                    int ID_EtapRoot, 
+                    string Num_Etap, 
+                    string Name_Etap, 
+                    global::System.Nullable<global::System.DateTime> Nachalo_Data, 
+                    global::System.Nullable<global::System.DateTime> Konec_Data, 
+                    global::System.Nullable<int> Days, 
+                    string Comments, 
+                    global::System.Nullable<decimal> Summ, 
+                    string V, 
+                    string Num_sort, 
+                    int StatGlob, 
+                    bool Begin, 
+                    string Status, 
+                    bool ViewCPDog) {
             if ((IDDog.HasValue == true)) {
                 this.Adapter.InsertCommand.Parameters[0].Value = ((int)(IDDog.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
-            if ((ID_DopS.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((int)(ID_DopS.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(ID_DopS));
             this.Adapter.InsertCommand.Parameters[2].Value = ((int)(ID_EtapRoot));
             if ((Num_Etap == null)) {
                 this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
@@ -16851,12 +16961,7 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
             else {
                 this.Adapter.InsertCommand.Parameters[11].Value = ((string)(Num_sort));
             }
-            if ((StatGlob.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[12].Value = ((int)(StatGlob.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[12].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.InsertCommand.Parameters[12].Value = ((int)(StatGlob));
             this.Adapter.InsertCommand.Parameters[13].Value = ((bool)(Begin));
             if ((Status == null)) {
                 this.Adapter.InsertCommand.Parameters[14].Value = global::System.DBNull.Value;
@@ -16864,6 +16969,7 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
             else {
                 this.Adapter.InsertCommand.Parameters[14].Value = ((string)(Status));
             }
+            this.Adapter.InsertCommand.Parameters[15].Value = ((bool)(ViewCPDog));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -16886,7 +16992,7 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
                     global::System.Nullable<int> IDDog, 
-                    global::System.Nullable<int> ID_DopS, 
+                    int ID_DopS, 
                     int ID_EtapRoot, 
                     string Num_Etap, 
                     string Name_Etap, 
@@ -16897,12 +17003,13 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
                     global::System.Nullable<decimal> Summ, 
                     string V, 
                     string Num_sort, 
-                    global::System.Nullable<int> StatGlob, 
+                    int StatGlob, 
                     bool Begin, 
                     string Status, 
+                    bool ViewCPDog, 
                     int Original_ID_Kplan, 
                     global::System.Nullable<int> Original_IDDog, 
-                    global::System.Nullable<int> Original_ID_DopS, 
+                    int Original_ID_DopS, 
                     int Original_ID_EtapRoot, 
                     string Original_Num_Etap, 
                     global::System.Nullable<global::System.DateTime> Original_Nachalo_Data, 
@@ -16911,21 +17018,17 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
                     global::System.Nullable<decimal> Original_Summ, 
                     string Original_V, 
                     string Original_Num_sort, 
-                    global::System.Nullable<int> Original_StatGlob, 
+                    int Original_StatGlob, 
                     bool Original_Begin, 
-                    string Original_Status) {
+                    string Original_Status, 
+                    bool Original_ViewCPDog) {
             if ((IDDog.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(IDDog.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
-            if ((ID_DopS.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(ID_DopS.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(ID_DopS));
             this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(ID_EtapRoot));
             if ((Num_Etap == null)) {
                 this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
@@ -16981,12 +17084,7 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Num_sort));
             }
-            if ((StatGlob.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(StatGlob.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(StatGlob));
             this.Adapter.UpdateCommand.Parameters[13].Value = ((bool)(Begin));
             if ((Status == null)) {
                 this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
@@ -16994,99 +17092,90 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Status));
             }
-            this.Adapter.UpdateCommand.Parameters[15].Value = ((int)(Original_ID_Kplan));
+            this.Adapter.UpdateCommand.Parameters[15].Value = ((bool)(ViewCPDog));
+            this.Adapter.UpdateCommand.Parameters[16].Value = ((int)(Original_ID_Kplan));
             if ((Original_IDDog.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((int)(Original_IDDog.Value));
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((int)(Original_IDDog.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
             }
-            if ((Original_ID_DopS.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((int)(Original_ID_DopS.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
-            }
-            this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(0));
-            this.Adapter.UpdateCommand.Parameters[21].Value = ((int)(Original_ID_EtapRoot));
+            this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(0));
+            this.Adapter.UpdateCommand.Parameters[20].Value = ((int)(Original_ID_DopS));
+            this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(0));
+            this.Adapter.UpdateCommand.Parameters[22].Value = ((int)(Original_ID_EtapRoot));
             if ((Original_Num_Etap == null)) {
-                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[23].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[24].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[23].Value = ((string)(Original_Num_Etap));
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((string)(Original_Num_Etap));
             }
             if ((Original_Nachalo_Data.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[25].Value = ((System.DateTime)(Original_Nachalo_Data.Value));
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((System.DateTime)(Original_Nachalo_Data.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[25].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[26].Value = global::System.DBNull.Value;
             }
             if ((Original_Konec_Data.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[27].Value = ((System.DateTime)(Original_Konec_Data.Value));
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[28].Value = ((System.DateTime)(Original_Konec_Data.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[27].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[28].Value = global::System.DBNull.Value;
             }
             if ((Original_Days.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[28].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[29].Value = ((int)(Original_Days.Value));
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[30].Value = ((int)(Original_Days.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[28].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[29].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[30].Value = global::System.DBNull.Value;
             }
             if ((Original_Summ.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[30].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[31].Value = ((decimal)(Original_Summ.Value));
+                this.Adapter.UpdateCommand.Parameters[31].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[32].Value = ((decimal)(Original_Summ.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[30].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[31].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[31].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[32].Value = global::System.DBNull.Value;
             }
             if ((Original_V == null)) {
-                this.Adapter.UpdateCommand.Parameters[32].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[33].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[33].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[34].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[32].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[33].Value = ((string)(Original_V));
+                this.Adapter.UpdateCommand.Parameters[33].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[34].Value = ((string)(Original_V));
             }
             if ((Original_Num_sort == null)) {
-                this.Adapter.UpdateCommand.Parameters[34].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[35].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[35].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[36].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[34].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[35].Value = ((string)(Original_Num_sort));
+                this.Adapter.UpdateCommand.Parameters[35].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[36].Value = ((string)(Original_Num_sort));
             }
-            if ((Original_StatGlob.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[36].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[37].Value = ((int)(Original_StatGlob.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[36].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[37].Value = global::System.DBNull.Value;
-            }
-            this.Adapter.UpdateCommand.Parameters[38].Value = ((object)(0));
-            this.Adapter.UpdateCommand.Parameters[39].Value = ((bool)(Original_Begin));
+            this.Adapter.UpdateCommand.Parameters[37].Value = ((object)(0));
+            this.Adapter.UpdateCommand.Parameters[38].Value = ((int)(Original_StatGlob));
+            this.Adapter.UpdateCommand.Parameters[39].Value = ((object)(0));
+            this.Adapter.UpdateCommand.Parameters[40].Value = ((bool)(Original_Begin));
             if ((Original_Status == null)) {
-                this.Adapter.UpdateCommand.Parameters[40].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[41].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[41].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[42].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[40].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[41].Value = ((string)(Original_Status));
+                this.Adapter.UpdateCommand.Parameters[41].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[42].Value = ((string)(Original_Status));
             }
+            this.Adapter.UpdateCommand.Parameters[43].Value = ((object)(0));
+            this.Adapter.UpdateCommand.Parameters[44].Value = ((bool)(Original_ViewCPDog));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
