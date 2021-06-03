@@ -51,6 +51,10 @@ namespace CPlan
 
         private void btn_UpdateItem_Click(object sender, System.EventArgs e)
         {
+            //Автозаполнение поля для правильной сортировки Num_sort
+            if (DB_Cmd.bndCalendarPlanDD.Count != 0)
+                ((DataRowView)DB_Cmd.bndCalendarPlanDD.Current).Row["Num_sort"] = feature.NormalizeNumSort(((DataRowView)DB_Cmd.bndCalendarPlanDD.Current).Row["Num_Etap"].ToString());
+
             this.Validate();
             DB_Cmd.SaveCalendarPlanDD();
             Close();

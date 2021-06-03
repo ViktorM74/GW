@@ -117,6 +117,26 @@ namespace DBClass
             adpDoc_Group.Fill(dsDB.Doc_Group);
         }
 
+        async public static void TabDocumentFill()
+        {
+            await Task.Run(()=> adpProject.Fill(dsDB.Project));
+            await Task.Run(() => adpDocument.Fill(dsDB.Documents));
+        }
+
+        async public static void TabTenderFill()
+        {
+            await Task.Run(() => adpProject.Fill(dsDB.Project));
+            await Task.Run(() => adpTender.Fill(dsDB.Tender));
+        }
+
+        async public static void TabDogovorFill()
+        {
+            await Task.Run(() => adpProject.Fill(dsDB.Project));
+            await Task.Run(() => adpDogovor.Fill(dsDB.Dogovor));
+            await Task.Run(() => adpCPlan.Fill(dsDB.CalendarPlan));
+            await Task.Run(() => adpAct.Fill(dsDB.Act));
+        }
+
         public static void InitializeBindingSources()
         {
             //Project
@@ -238,18 +258,26 @@ namespace DBClass
 
             
             tableManager.BackupDataSetBeforeUpdate = true;
-            tableManager.UpdateOrder = TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            tableManager.UpdateOrder = TableAdapterManager.UpdateOrderOption.UpdateInsertDelete;
         }
         #endregion DataBaseLoad
 
         public static string GetCurrentValueField(BindingSource bnd, string field)
         {
-            return ((DataRowView)bnd.Current).Row[field].ToString();
+           try
+            {
+                return ((DataRowView)bnd.Current).Row[field].ToString();
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         public static void SetCuurentValueField(BindingSource bnd, string field, string value)
         {
             ((DataRowView)bnd.Current).Row[field] = value;
+            
         }
 
         public static bool Save_BndDB(BindingSource bnd)
@@ -260,6 +288,8 @@ namespace DBClass
             {
                 bnd.EndEdit();
                 tableManager.UpdateAll(dsDB);
+                //position = bnd.Position;
+
                 return true;
             }
             catch (Exception ex)
@@ -307,6 +337,9 @@ namespace DBClass
             {
                 bndProject.EndEdit();
                 tableManager.UpdateAll(dsDB);
+                position = bndProject.Position -1;
+                adpProject.Fill(dsDB.Project);
+                
                 return true;
             }
             catch (Exception ex)
@@ -362,13 +395,15 @@ namespace DBClass
         #endregion Project
 
         #region Document
-
         public static void SaveDoc()
         {
             int position = bndDocument.Position;
             try
             {
                 bndDocument.EndEdit();
+                tableManager.UpdateAll(dsDB);
+                position = bndDocument.Position -1;
+                adpDocument.Fill(dsDB.Documents);
             }
             catch (Exception ex)
             {
@@ -377,10 +412,6 @@ namespace DBClass
             }
             finally
             {
-                adpDocument.Update(dsDB.Documents);
-                dsDB.Tables["Documents"].AcceptChanges();
-                adpDocument.Fill(dsDB.Documents);
-
                 bndDocument.Position = position;
             }
         }
@@ -421,17 +452,18 @@ namespace DBClass
 
             }
         }
-
-#endregion
+        #endregion Document
 
         #region TypeDocument
-
         public static void SaveTypeDoc()
         {
             int position = bndTypeDoc.Position;
             try
             {
                 bndTypeDoc.EndEdit();
+                adpTypeDocument.Update(dsDB.Documets_type);
+                position = bndTypeDoc.Position -1;
+                adpTypeDocument.Fill(dsDB.Documets_type);
             }
             catch (Exception ex)
             {
@@ -440,9 +472,7 @@ namespace DBClass
             }
             finally
             {
-                adpTypeDocument.Update(dsDB.Documets_type);
-                dsDB.Tables["Documets_type"].AcceptChanges();
-                adpTypeDocument.Fill(dsDB.Documets_type);
+               
 
                 bndTypeDoc.Position = position;
             }
@@ -484,7 +514,7 @@ namespace DBClass
 
             }
         }
-        #endregion
+        #endregion TypeDocument
 
         #region Dogovor
         public static void SaveDogovor(string linkFolder)
@@ -502,6 +532,9 @@ namespace DBClass
             {
                 bndDogovor.EndEdit();
                 tableManager.UpdateAll(dsDB);
+                
+                position = bndDogovor.Position -1;
+                adpDogovor.Fill(dsDB.Dogovor);
             }
             catch (Exception ex)
             {
@@ -511,6 +544,7 @@ namespace DBClass
             finally
             {
                 bndDogovor.Position = position;
+                
             }
         }
 
@@ -566,8 +600,7 @@ namespace DBClass
 
             }
         }
-
-        #endregion
+        #endregion Dogovor
 
         #region Tender
         public static void SaveTender()
@@ -577,6 +610,8 @@ namespace DBClass
             {
                 bndTender.EndEdit();
                 tableManager.UpdateAll(dsDB);
+                position = bndTender.Position -1;
+                adpTender.Fill(dsDB.Tender);
             }
             catch (Exception ex)
             {
@@ -631,34 +666,23 @@ namespace DBClass
 
             }
         }
-
-        #endregion
+        #endregion Tender
 
         #region CalendarPlanDD
         public static void SaveCalendarPlanDD()
         {
             int position = bndCalendarPlanDD.Position;
             try
-            {
-                //Автозаполнение поля для правильной сортировки Num_sort
-                
-                
-                              
+            {            
                 bndCalendarPlanDD.EndEdit();
                 tableManager.UpdateAll(dsDB);
-
-                if (bndCalendarPlanDD.Count != 0)
-                    ((DataRowView)bndCalendarPlanDD.Current).Row["Num_sort"] = feature.NormalizeNumSort(((DataRowView)bndCalendarPlanDD.Current).Row["Num_Etap"].ToString());
-
-                bndCalendarPlanDD.EndEdit();
-                tableManager.UpdateAll(dsDB);
-
+                position = bndCalendarPlanDD.Position -1;
+                adpCPlan.Fill(dsDB.CalendarPlan);
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Сохранение вызвало ошибку: " + ex.Message);
                 bndCalendarPlan.ResetBindings(false);
-               
             }
             finally
             {
@@ -670,6 +694,7 @@ namespace DBClass
         {
             bndCalendarPlanDD.EndEdit();
             tableManager.UpdateAll(dsDB);
+            adpCPlan.Fill(dsDB.CalendarPlan);
             bndCalendarPlanDD.ResetBindings(true);
         }
 
@@ -727,15 +752,16 @@ namespace DBClass
             int position = bndCalendarPlan.Position;
             try
             {
-                //Автозаполнение поля для правильной сортировки Num_sort
-                if (bndCalendarPlan.Count != 0)
-                 ((DataRowView)bndCalendarPlan.Current).Row["Num_sort"] = feature.NormalizeNumSort(((DataRowView)bndCalendarPlan.Current).Row["Num_Etap"].ToString());
+                ////Автозаполнение поля для правильной сортировки Num_sort
+                //if (bndCalendarPlan.Count != 0)
+                // ((DataRowView)bndCalendarPlan.Current).Row["Num_sort"] = feature.NormalizeNumSort(((DataRowView)bndCalendarPlan.Current).Row["Num_Etap"].ToString());
 
                 //StatGlob
 
                 bndCalendarPlan.EndEdit();
-
                 tableManager.UpdateAll(dsDB);
+                position = bndCalendarPlan.Position -1;
+                adpCPlan.Fill(dsDB.CalendarPlan);
 
             }
             catch (Exception ex)
@@ -798,7 +824,6 @@ namespace DBClass
 
             }
         }
-
         #endregion CalendarPlan
 
         #region DopSoglashenia
@@ -811,10 +836,10 @@ namespace DBClass
                     ((DataRowView)DB_Cmd.bndDopDogovor.Current).Row["Nambe_DS"] = feature.NormalizeNumSort(((DataRowView)DB_Cmd.bndDopDogovor.Current).Row["Nambe_DS"].ToString());
 
                 bndDopDogovor.EndEdit();
-
                 tableManager.UpdateAll(dsDB);
-                //adpDDogovor.Update(dsDB.DopSoglashenia);
-                //dsDB.Tables["DopSoglashenia"].AcceptChanges();
+                position = bndDopDogovor.Position -1;
+                adpDDogovor.Fill(dsDB.DopSoglashenia);
+               
             }
             catch (Exception ex)
             {
@@ -881,8 +906,7 @@ namespace DBClass
 
             }
         }
-
-        #endregion
+        #endregion DopSoglashenia
 
         #region Events
         public static void SaveEvents()
@@ -891,6 +915,9 @@ namespace DBClass
             try
             {
                 bndEvents.EndEdit();
+                adpEvent.Update(dsDB.Events);
+                position = bndEvents.Position -1;
+                adpEvent.Fill(dsDB.Events);
             }
             catch (Exception ex)
             {
@@ -899,9 +926,7 @@ namespace DBClass
             }
             finally
             {
-                adpEvent.Update(dsDB.Events);
-                dsDB.Tables["Events"].AcceptChanges();
-                adpEvent.Fill(dsDB.Events);
+                
 
                 bndEvents.Position = position;
             }
@@ -911,11 +936,8 @@ namespace DBClass
         {
             int position = bndEvents.Position;
 
+            bndEvents.CancelEdit();
             bndEvents.ResetBindings(false);
-
-            adpEvent.Update(dsDB.Events);
-            dsDB.Tables["Events"].AcceptChanges();
-            adpEvent.Fill(dsDB.Events);
 
             bndEvents.Position = position;
         }
@@ -943,8 +965,7 @@ namespace DBClass
 
             }
         }
-
-        #endregion
+        #endregion Events
 
         #region Stady_project
         public static void SaveStady_project()
@@ -953,6 +974,9 @@ namespace DBClass
             try
             {
                 bndStadia.EndEdit();
+                adpStadyPrj.Update(dsDB.Stady_project);
+                position = bndStadia.Position -1;
+                adpStadyPrj.Fill(dsDB.Stady_project);
             }
             catch (Exception ex)
             {
@@ -961,11 +985,7 @@ namespace DBClass
             }
             finally
             {
-                adpStadyPrj.Update(dsDB.Stady_project);
-                dsDB.Tables["Stady_project"].AcceptChanges();
-                adpStadyPrj.Fill(dsDB.Stady_project);
-
-                bndStadia.Position = position;
+                  bndStadia.Position = position;
             }
         }
 
@@ -973,12 +993,9 @@ namespace DBClass
         {
             int position = bndStadia.Position;
 
+            bndStadia.CancelEdit();
             bndStadia.ResetBindings(false);
-
-            adpStadyPrj.Update(dsDB.Stady_project);
-            dsDB.Tables["Stady_project"].AcceptChanges();
-            adpStadyPrj.Fill(dsDB.Stady_project);
-
+            
             bndStadia.Position = position;
         }
 
@@ -1005,8 +1022,7 @@ namespace DBClass
 
             }
         }
-
-        #endregion
+        #endregion Stady_project
 
         #region Act
         public static void SaveAct()
@@ -1015,6 +1031,9 @@ namespace DBClass
             try
             {
                 bndAct.EndEdit();
+                tableManager.UpdateAll(dsDB);
+                position = bndAct.Position -1;
+                adpAct.Fill(dsDB.Act);
             }
             catch (Exception ex)
             {
@@ -1023,10 +1042,6 @@ namespace DBClass
             }
             finally
             {
-                adpAct.Update(dsDB.Act);
-                dsDB.Tables["Act"].AcceptChanges();
-                adpAct.Fill(dsDB.Act);
-
                 bndAct.Position = position;
             }
         }
@@ -1035,12 +1050,8 @@ namespace DBClass
         {
             int position = bndAct.Position;
 
+            bndAct.CancelEdit();
             bndAct.ResetBindings(false);
-
-            adpAct.Update(dsDB.Act);
-            dsDB.Tables["Act"].AcceptChanges();
-            adpAct.Fill(dsDB.Act);
-
             bndAct.Position = position;
         }
 
@@ -1067,8 +1078,7 @@ namespace DBClass
 
             }
         }
-
-        #endregion
+        #endregion Act
 
         #region OBJECTS
         public static void SaveOBJECTS()
@@ -1077,6 +1087,9 @@ namespace DBClass
             try
             {
                 bndObject.EndEdit();
+                tableManager.UpdateAll(dsDB);
+                position = bndObject.Position -1;
+                adpObject.Fill(dsDB.OBJECTS);
             }
             catch (Exception ex)
             {
@@ -1085,11 +1098,7 @@ namespace DBClass
             }
             finally
             {
-                adpObject.Update(dsDB.OBJECTS);
-                dsDB.Tables["OBJECTS"].AcceptChanges();
-                adpObject.Fill(dsDB.OBJECTS);
-
-                bndObject.Position = position;
+               bndObject.Position = position;
             }
         }
 
@@ -1097,12 +1106,8 @@ namespace DBClass
         {
             int position = bndObject.Position;
 
+            bndObject.CancelEdit();
             bndObject.ResetBindings(false);
-
-            adpObject.Update(dsDB.OBJECTS);
-            dsDB.Tables["OBJECTS"].AcceptChanges();
-            adpObject.Fill(dsDB.OBJECTS);
-
             bndObject.Position = position;
         }
 
@@ -1139,8 +1144,7 @@ namespace DBClass
 
             }
         }
-
-        #endregion
+        #endregion OBJECTS
 
         #region SostavDoc
         public static void SaveSostavObj()
@@ -1150,7 +1154,8 @@ namespace DBClass
             {
                 bndSostavObj.EndEdit();
                 tableManager.UpdateAll(dsDB);
-              
+                position = bndSostavObj.Position -1;
+                adpSostavD.Fill(dsDB.SostavDoc);
             }
             catch (Exception ex)
             {
@@ -1197,8 +1202,7 @@ namespace DBClass
 
             }
         }
-
-        #endregion
+        #endregion SostavDoc
 
         #region Mark_project
         public static void SaveMark_project()
@@ -1208,6 +1212,7 @@ namespace DBClass
             {
                 bndMark.EndEdit();
                 tableManager.UpdateAll(dsDB);
+                position = bndMark.Position -1;
 
             }
             catch (Exception ex)
@@ -1255,7 +1260,6 @@ namespace DBClass
 
             }
         }
-
         #endregion Mark_project
 
         #region Zadania
@@ -1266,6 +1270,8 @@ namespace DBClass
             {
                 bndZadania.EndEdit();
                 tableManager.UpdateAll(dsDB);
+                position = bndZadania.Position -1;
+                adpZadania.Fill(dsDB.Zadania);
             }
             catch (Exception ex)
             {
@@ -1311,8 +1317,7 @@ namespace DBClass
 
             }
         }
-
-        #endregion
+        #endregion Zadania
 
         #region History
         public static void SaveHistory()
@@ -1321,6 +1326,9 @@ namespace DBClass
             try
             {
                 bndHistory.EndEdit();
+                adpHistory.Update(dsDB.History);
+                position = bndHistory.Position -1;
+                adpHistory.Fill(dsDB.History);
             }
             catch (Exception ex)
             {
@@ -1329,11 +1337,7 @@ namespace DBClass
             }
             finally
             {
-                adpHistory.Update(dsDB.History);
-                dsDB.Tables["History"].AcceptChanges();
-                adpHistory.Fill(dsDB.History);
-
-                bndHistory.Position = position;
+                 bndHistory.Position = position;
             }
         }
 
@@ -1341,12 +1345,8 @@ namespace DBClass
         {
             int position = bndHistory.Position;
 
+            bndHistory.CancelEdit();
             bndHistory.ResetBindings(false);
-
-            adpHistory.Update(dsDB.History);
-            dsDB.Tables["History"].AcceptChanges();
-            adpHistory.Fill(dsDB.History);
-
             bndHistory.Position = position;
         }
 
@@ -1373,8 +1373,7 @@ namespace DBClass
 
             }
         }
-
-        #endregion
+        #endregion History
 
         #region Otdel
         public static void SaveOtdel()
@@ -1384,6 +1383,7 @@ namespace DBClass
             {
                 bndOtdel.EndEdit();
                 adpOtdel.Update(dsDB.Otdel);
+                position = bndOtdel.Position -1;
             }
             catch (Exception ex)
             {
@@ -1392,9 +1392,6 @@ namespace DBClass
             }
             finally
             {
-                //dsDB.Tables["Otdel"].AcceptChanges();
-                //adpOtdel.Fill(dsDB.Otdel);
-
                 bndOtdel.Position = position;
             }
         }
@@ -1432,8 +1429,7 @@ namespace DBClass
 
             }
         }
-
-        #endregion
+        #endregion Otdel
 
         #region Otdel_SNHP
         public static void SaveOtdel_SNHP()
@@ -1443,6 +1439,7 @@ namespace DBClass
             {
                 bndOtdel_SNHP.EndEdit();
                 adpOtdel_SNHP.Update(dsDB.Otdel_SNHP);
+                position = bndOtdel_SNHP.Position -1;
             }
             catch (Exception ex)
             {
@@ -1451,9 +1448,6 @@ namespace DBClass
             }
             finally
             {
-                //dsDB.Tables["Otdel"].AcceptChanges();
-                //adpOtdel.Fill(dsDB.Otdel);
-
                 bndOtdel_SNHP.Position = position;
             }
         }
@@ -1500,7 +1494,7 @@ namespace DBClass
             foreach (string file in listFolderDBPath)
             {
                 string path = file;
-                string name = Path.GetFileNameWithoutExtension(file);
+                string name = Path.GetDirectoryName(file);
                 DateTime date = File.GetLastWriteTime(file);
 
                 AddDoc();
@@ -1570,11 +1564,11 @@ namespace DBClass
         /// <param name="newProject">Новый объект сразу после добавления</param>
         /// <param name="bnd">Управляющий BindingSource </param>
         /// <param name="nameField">Имя контрольного столбца</param>
-        public static void grid_SetOldPosition(int pos, object newProject, BindingSource bnd, string nameField)
+        public static void grid_SetOldPosition(int pos, object newObject, BindingSource bnd, string nameField)
         {
-            if (((DataRowView)newProject).Row.RowState != DataRowState.Detached)
+            if (((DataRowView)newObject).Row.RowState != DataRowState.Detached)
             {
-                string findID = ((DataRowView)newProject).Row[nameField].ToString();
+                string findID = ((DataRowView)newObject).Row[nameField].ToString();
                 if (findID != null)
                     bnd.Position = bnd.Find(nameField, findID);
             }

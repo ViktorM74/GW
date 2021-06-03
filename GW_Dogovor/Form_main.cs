@@ -70,7 +70,7 @@ namespace GW_Dogovor
                 SetViewDogovor();
                 SetViewDDog();
                 SetViewObject();
-                SetViewTabControl();
+                //SetViewTabControl();
                 SetViewBindNavigators();
             }
 
@@ -93,19 +93,6 @@ namespace GW_Dogovor
             {
                 Lib_doc_type libDocForm = new Lib_doc_type();
                 libDocForm.ShowDialog();
-            };
-
-            bndNav_DeleteDoc.Click += deleteDocument;
-
-            bndNav_AddDoc.Click += (s, a) =>
-            {
-                DB_Cmd.AddDoc();
-                EditDoc();
-            };
-
-            bndNav_EditDoc.Click += (s, a) =>
-            {
-                EditDoc();
             };
 
             tbtn_ViewProject.Click += ProjectPanelsVisable;
@@ -385,40 +372,7 @@ namespace GW_Dogovor
         #region FilterGrid
         private void SetViewTabControl() /// логика - вынести из UI
         {
-            //0-ИД; 1-Письма; 2-Задания; 3-Тендер; 4-Договор; 5-График; 6- Объект; 7- Изыскания; 8- Штамп; 9- Разное; 10- Основные положения; 11- Входящие; 12- Исходящие
-            switch (tabControlMain.SelectedIndex)
-            {
-                case 0: // Документы
-                    SelectedTypeDocuments();
-                    break;
-                case 1: // Тендер
-                    DB_Cmd.bndDocument.Filter = "(Project_id Not Is Null) AND (Tender_id Not Is Null) AND (Object_id Is Null) AND (Event_id Is Null) AND (Act_id Is Null)";
-                    break;
-                case 2: // Договор * добавить поле id_Dogovor
-                    DB_Cmd.bndDocument.Filter = "(Project_id Not Is Null) AND (Tender_id Not Is Null) AND (Object_id Is Null) AND (Event_id Is Null) AND (Act_id Is Null)";
-                    break;
-                case 3:
-
-                    break;
-                case 4:
-
-                    break;
-                case 5: // Архив
-                    //tb_PathArh.Text = Settings.Default.PathArhive;
-                    //if (Directory.Exists(tb_PathArh.Text))
-                    //            GetTreeDir(tree_Arh, tb_PathArh.Text);
-                    break;
-                case 6:
-
-                    break;
-                default:
-                    DB_Cmd.bndDocument.RemoveFilter();
-                    break;
-
-                    
-            }
-            
-            SetViewBindNavigators();
+           
 
         } // Фильтры для Документов
         private void SelectedTypeDocuments()
@@ -653,7 +607,7 @@ namespace GW_Dogovor
         }
         private void tabControlMain_Selected(object sender, TabControlEventArgs e)
         {
-            SetViewTabControl();
+           /////////
         }
         #endregion View
 
@@ -731,63 +685,28 @@ namespace GW_Dogovor
         private void EditDoc()
         {
             Form_Document fed = new Form_Document();
-            if (fed.ShowDialog() == DialogResult.OK)
-            {
-                fed.Validate();
-                DB_Cmd.SaveDoc();
-            }
-            else
-            {
-                fed.Validate();
-                DB_Cmd.CancelDoc();
-            }
+            fed.ShowDialog();
         }
        
-        private void DeleteDoc(string fld)
+        private void DeleteDoc()
         {
-            //   string pathDoc = ((DataRowView)bndDocument.Current).Row["PathDoc"].ToString();
-            //   string pathSecond = pathDoc.Remove(0, (int)link_LocalFld.Text.Length-1);
-            //   //удаляем физически
-            //try
-            //   {
-            //       string name = Path.GetFileName(pathDoc);
-            //       string PLocal = Path.Combine(link_LocalFld.Text, pathSecond);
-            //       string PServer = Path.Combine(link_ServetFld.Text, pathSecond);
-            //       FileA.DeleteDocument(name, PLocal, PServer);
-            //   }
-            //   catch (Exception ex)
-            //  {
-            //       MessageBox.Show(ex.Message);
-            //  }
+            string p = null;
+            string lp = link_LocalFld.Text;
+            string Sp = link_ServetFld.Text;
+            string pth = DB_Cmd.GetCurrentValueField(DB_Cmd.bndDocument, "PathDoc");
+            if (pth.Contains(lp))
+                p = pth.Remove(0, lp.Length + 1);
+            if (pth.Contains(Sp))
+                p = pth.Remove(0, Sp.Length + 1);
+            if (p != null && p != "")
+                FileA.DeleteDocument(p, lp, Sp);
 
-
-            //удаляем из базы
             DB_Cmd.DeleteDoc();
             DB_Cmd.SaveDoc();
 
         }
-        private void deleteDocument(object sender, EventArgs e)
-        {
-            //0-ИД; 1-Письма; 2-Задания; 3-Тендер; 4-Договор; 5-График; 6- Объект; 7- Изыскания; 8- Штамп; 9- Разное; 10- Основные положения; 11- Входящие; 12- Исходящие
 
-            switch (tabDocuments.SelectedIndex)
-            {
-                case 0:
-                    //DeleteDoc(Libr.NameFld[0]);
-                    break;
-                case 1:
-                    //DeleteDoc(Libr.NameFld[1]);
-                    break;
-                case 2:
-
-                    break;
-
-                default:
-                    //DeleteDoc(Libr.NameFld[0]);
-                    break;
-            }
-        }
-        #endregion
+        #endregion Document
 
         #region Object
         private void EditObject()
@@ -849,19 +768,7 @@ namespace GW_Dogovor
         #endregion Edit DB
 
         #region CellContentClick
-        private void gridDocument_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == 5)
-            {
-                string p = gridDocument[4, e.RowIndex].Value.ToString();
-
-                if (FileA.GetAtributesPath(p))
-                    FileA.RunFile(p);
-                else
-                    FileA.RunFolder(p);
-    
-            }
-        }
+     
         private void grid_TenderDoc_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             //MessageBox.Show(e.ColumnIndex.ToString());
@@ -880,9 +787,10 @@ namespace GW_Dogovor
             {
                 string DateFld = dtp_TenderData.Value.ToShortDateString();
                 string fld = Path.Combine("Тендер", DateFld);
-                DeleteDoc(fld);
+                DeleteDoc();
             }
         }
+
         private void gridDocument_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == 6)
@@ -938,104 +846,7 @@ namespace GW_Dogovor
             
         }
 
-        //private void DragDropDocuments(object sender, DragEventArgs e, int typeDocument)
-        //{
-        //    // сформированная по индивидуальному выбору строка сохранения файла или папки 
-        //    //List<ListFile> listNew = new List<ListFile>();
-        //    List<string> listNewFolder = new List<string>(); // список путей для копирования
-        //    List<string> listFileDBPath = new List<string>();
-        //    List<string> ListFiles = new List<string>(); // список полных путей передаваемых файлов(папок)
-        //    List<string> aPathWorkDir = new List<string>(); // Головные папки - локальная и серверная + папка категории
-        //    int SubFolderIndex = 0;
-
-        //    // Здесь определить Active Tab, по сути головная папка для сохранения
-        //    //0-ИД; 1-Письма; 2-Задания; 3-Тендер; 4-Договор; 5-График; 6- Объект; 7- Изыскания; 8- Штамп; 9- Разное; 10- Основные положения; 11- Входящие; 12- Исходящие
-        //    // Здесь определить Таб по сути головная папка для сохранения
-        //    if (tabControlMain.SelectedIndex == 0 && tabDocuments.SelectedIndex == 0)
-        //        {
-        //            SubFolderIndex = 0; // Исходные данные
-                   
-        //        }
-        //        if (tabControlMain.SelectedIndex == 0 && tabDocuments.SelectedIndex == 1)
-        //        {
-        //            SubFolderIndex = 2; // Задания (объект)
-                   
-        //        }
-        //        if (tabControlMain.SelectedIndex == 0 && tabDocuments.SelectedIndex == 2)
-        //        {
-        //            SubFolderIndex = 1; // Письма на контроле (объект)
-                    
-        //        }
-
-
-
-        //    aPathWorkDir.Add(Path.Combine(link_LocalFld.Text, Libr.NameFld[SubFolderIndex]));
-        //    aPathWorkDir.Add(Path.Combine(link_ServetFld.Text, Libr.NameFld[SubFolderIndex]));
-        //    //* Здесь определить Таб
-
-        //    ListFiles = DDFile_Class.GetListFiles(e);
-
-        //    Form_AddFiles fs = new Form_AddFiles(aPathWorkDir[0], aPathWorkDir[1]);
-        //   if (fs.ShowDialog() == DialogResult.OK)
-        //    {
-        //        fs.GetPathFolders(listNewFolder, listFileDBPath); // получаем список путей для сохранения
-        //    }
-        //    // сохраняем файлы из списка            
-        //    foreach (string el in listNewFolder)
-        //    {
-        //        FileA.CopyListFiles(ListFiles, el);
-        //    }
-        //    /// метод сохранения в базу данных записей из ListName по пути path
-        //    /// входные ListFiles (список файлов), ListNewFolderL (список локальных путей), GroupFile(группа документов) 
-        //    foreach (string el in listFileDBPath)
-        //    {
-        //        DB_Cmd.AddDocDragDrop(ListFiles, el, DB_Cmd.bndDocument, SubFolderIndex);
-        //    }
-            
-            
-
-        //    /// метод сохранения в базу данных записей из ListName по пути path
-
-        //}
-        //private void ShowListFile(List<ListFile> listNew)
-        //{
-        //    Form_Message msf = new Form_Message();
-
-        //    foreach (ListFile l in listNew)
-        //    {
-        //        msf.listView1.Items.Add("ДАННЫЕ ФАЙЛА");
-        //        msf.listView1.Items.Add(l.Name);
-        //        msf.listView1.Items.Add(l.OldPath);
-        //        msf.listView1.Items.Add("НОВЫЙ ПУТЬ ДЛЯ СОХРАНЕНИЯ");
-        //        foreach (string s1 in l.NewPathFile.pathLocal)
-        //        {
-        //            msf.listView1.Items.Add(s1);
-        //        }
-        //        foreach (string s2 in l.NewPathFile.pathServer)
-        //        {
-        //            msf.listView1.Items.Add(s2);
-        //        }
-        //        msf.listView1.Items.Add("");
-        //    }
-
-        //    msf.ShowDialog();
-        //}
-        //private void ShowListFile(List<string> listNew)
-        //{
-        //    Form_Message msf = new Form_Message();
-
-
-
-        //    foreach (string l in listNew)
-        //    {
-        //        msf.listView1.Items.Add(l);
-   
-        //    }
-
-        //    msf.ShowDialog();
-        //}
-   
-
+       
         #region DRAG Documents
         private void gridDocument_DragDrop(object sender, DragEventArgs e)
         {
@@ -1228,16 +1039,16 @@ namespace GW_Dogovor
 
         private void tbtn_AddDog_Click(object sender, EventArgs e)
         {
-            int pos = DB_Cmd.bndDogovor.Position;
+            //int pos = DB_Cmd.bndDogovor.Position;
 
             object newobject = DB_Cmd.AddDogovor();
 
             EditDogovor();
 
-            DB_Cmd.grid_SetOldPosition(pos, newobject, DB_Cmd.bndDogovor, "DogID");
+            //DB_Cmd.grid_SetOldPosition(pos, newobject, DB_Cmd.bndDogovor, "DogID");
 
             string s = "Для обеспечения целостности данных необходимо создать нулевое допсоглашение " +
-               "связанное с текущим договором. \r \n Если Вы согласны, то нажмите Ok!";
+               "связанное с текущим договором. \r\n Если Вы согласны, то нажмите Ok!";
 
             if (MessageBox.Show(s, "Автоматическое создание записи Дополнительного соглашения", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
@@ -1285,15 +1096,15 @@ namespace GW_Dogovor
         #region Project
         private void tbtn_AddProject_Click(object sender, EventArgs e)
         {
-            int pos = DB_Cmd.bndProject.Position;
+            //int pos = DB_Cmd.bndProject.Position;
             object newProject = DB_Cmd.AddProject();
 
             EditProject();
 
-            DB_Cmd.grid_SetOldPosition(pos, newProject, DB_Cmd.bndProject, "ID_project");
+            //DB_Cmd.grid_SetOldPosition(pos, newProject, DB_Cmd.bndProject, "ID_project");
 
-            string s = "Для обеспечения целостности данных \r\n необходимо создать тендер связанный с проектом. " +
-                "\r \n Если Вы согласны, то нажмите Ok!";
+            string s = "Для обеспечения целостности данных\r\nнеобходимо создать тендер связанный с проектом. " +
+                "\r\nЕсли Вы согласны, то нажмите Ok!";
 
             if (MessageBox.Show(s, "Автоматическое создание записи Тендера", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
@@ -1377,6 +1188,24 @@ namespace GW_Dogovor
 
         #endregion Zadania
 
+        #region Document
+        private void bndNav_EditDoc_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bndNav_AddDoc_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bndNav_DeleteDoc_Click(object sender, EventArgs e)
+        {
+            DeleteDoc();
+        }
+        #endregion Document
+
+
         #endregion BindingManager_button
 
         private void normalizeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1395,10 +1224,50 @@ namespace GW_Dogovor
             ConnectDB();
         }
 
-        private void bndNavigatorTender_RefreshItems(object sender, EventArgs e)
-        {
+       
 
+        private void tabControlMain_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //0-ИД; 1-Письма; 2-Задания; 3-Тендер; 4-Договор; 5-График; 6- Объект; 7- Изыскания; 8- Штамп; 9- Разное; 10- Основные положения; 11- Входящие; 12- Исходящие
+            switch (tabControlMain.SelectedIndex)
+            {
+                case 0: // Документы
+                    //DB_Cmd.TabDocumentFill();
+                    SelectedTypeDocuments();
+
+                    break;
+                case 1: // Тендер
+                    //DB_Cmd.TabTenderFill();
+                    DB_Cmd.bndDocument.Filter = "(Project_id Not Is Null) AND (Tender_id Not Is Null) AND (Object_id Is Null) AND (Event_id Is Null) AND (Act_id Is Null)";
+                    break;
+                case 2: // Договор * добавить поле id_Dogovor
+                    //DB_Cmd.TabDogovorFill();
+                    DB_Cmd.bndDocument.Filter = "(Project_id Not Is Null) AND (Tender_id Not Is Null) AND (Object_id Is Null) AND (Event_id Is Null) AND (Act_id Is Null)";
+                    break;
+                case 3:
+
+                    break;
+                case 4:
+
+                    break;
+                case 5: // Архив
+                    //tb_PathArh.Text = Settings.Default.PathArhive;
+                    //if (Directory.Exists(tb_PathArh.Text))
+                    //            GetTreeDir(tree_Arh, tb_PathArh.Text);
+                    break;
+                case 6:
+
+                    break;
+                default:
+                    DB_Cmd.bndDocument.RemoveFilter();
+                    break;
+
+            }
+
+            SetViewBindNavigators();
         }
+
+       
     }
 
 }

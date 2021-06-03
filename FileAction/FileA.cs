@@ -8,7 +8,16 @@ namespace FileAction
 {
     public class FileA
     {
-       // Запускает файл по указанному пути
+        public static bool RunPath(string path)
+        {
+            if (GetAtributesPath(path))
+              return  RunFile(path);
+            else
+               return  RunFolder(path);
+        }
+        
+        
+        // Запускает файл по указанному пути
         public static bool RunFile(string path)
         {
             if (File.Exists(path))
@@ -80,7 +89,7 @@ namespace FileAction
             }
             else
             {
-                MessageBox.Show("Путь не найден");
+                MessageBox.Show("Папка не найдена");
                 return false;
             }
         }
