@@ -50,7 +50,7 @@ namespace DocumentsClass
 
         private void Form_Document_FormClosing(object sender, FormClosingEventArgs e)
         {
-           this.Tag = tb_PathDoc.Text;
+            this.Tag = tb_PathDoc.Text;
         }
 
         private void btn_Save_Click(object sender, System.EventArgs e)

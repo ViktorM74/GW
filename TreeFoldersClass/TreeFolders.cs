@@ -1,16 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TreeFoldersClass
 {
     public class TreeFolders
     {
-        public String startPath { get; set; }
+        public String startPath
+        {
+            get; set;
+        }
 
 
         public static void GetTreeDir(TreeView tree, string root)
@@ -39,7 +38,7 @@ namespace TreeFoldersClass
         private void CreateFilesTree(TreeView tree, TreeNode node)
         {
             string pdir = tree.SelectedNode.FullPath.ToString();
-                     
+
             if (Directory.Exists(pdir))
             {
                 try
@@ -88,7 +87,7 @@ namespace TreeFoldersClass
                 TreeNode nodeDir = new TreeNode(dir.Name);
                 // Добавляем его как дочерний к текущему узлу
                 node.Nodes.Add(nodeDir);
-                
+
                 // Развертываем узел
                 nodeDir.Expand();
                 // Делаем дочерний узел текущим и спускаемся рекурсивно ниже
@@ -96,7 +95,7 @@ namespace TreeFoldersClass
             }
         }
         //////////
-      
+
         public static void SelectNodeByName(TreeView tree, int IndexNode)
         {
             foreach (TreeNode item in tree.Nodes)

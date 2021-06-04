@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Data;
-using System.Globalization;
 using System.Windows.Forms;
 using DBClass;
 using feature_сlass;

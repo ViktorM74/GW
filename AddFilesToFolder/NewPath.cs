@@ -1,40 +1,33 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AddFilesToFolder
 {
-    public class NewPath: IEnumerable, IEnumerator
+    public class NewPath : IEnumerable, IEnumerator
     {
         private List<string> pathLocalValue = new List<string>();
         private List<string> pathServerValue = new List<string>();
         int index = -1;
- 
+
         public List<string> pathLocal
         {
-            get
-            {
+            get {
                 return pathLocalValue;
             }
 
-            set
-            {
+            set {
                 pathLocalValue.Add(value.ToString());
             }
         }
 
         public List<string> pathServer
         {
-            get
-            {
+            get {
                 return pathServerValue;
             }
 
-            set
-            {
+            set {
                 pathServerValue.Add(value.ToString());
             }
         }
@@ -73,9 +66,18 @@ namespace AddFilesToFolder
 
     public class ListFile
     {
-        public string Name { get; set; }
-        public string Date { get; set; }
-        public string OldPath { get; set; }
+        public string Name
+        {
+            get; set;
+        }
+        public string Date
+        {
+            get; set;
+        }
+        public string OldPath
+        {
+            get; set;
+        }
 
         public NewPath NewPathFile = new NewPath();
         //NewPathFile { get; set; }

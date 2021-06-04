@@ -1,32 +1,25 @@
 ﻿#region Using
-using DBClass;
-using DBClass._bsp_snhpDataSetTableAdapters;
-using DocTYPELibrary;
-using GW_Dogovor.Properties;
-using Microsoft.SqlServer.Server;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using AddFilesToFolder;
+using CPlan;
+using DBClass;
+using DocTYPELibrary;
+using DocumentsClass;
+using DogovorClass;
+using DopSoglClass;
+using feature_сlass;
 using FileAction;
-using TreeFoldersClass;
-using System.Collections;
+using FolderManager;
+using GW_Dogovor.Properties;
+using ObjectClass;
+using PRD;
 using ProjectClass;
 using TenderClass;
-using Distinary;
-using AddFilesToFolder;
-using FolderManager;
-using ObjectClass;
-using DogovorClass;
-using DocumentsClass;
-using DopSoglClass;
-using CPlan;
-using feature_сlass;
-using System.ComponentModel;
-using PRD;
 using Zadania;
 #endregion Using
 
@@ -36,7 +29,7 @@ namespace GW_Dogovor
     {
         string tPathDB;
         bool R = false;
-      
+
 
         public Form_main()
         {
@@ -46,6 +39,8 @@ namespace GW_Dogovor
 
             tPathDB = seting.GetConnectionString();
 
+            this.WindowState = FormWindowState.Maximized;
+
             if (File.Exists(tPathDB))
             {
                 ConnectDB();
@@ -54,12 +49,15 @@ namespace GW_Dogovor
             }
             else
             {
-                ContactManager cmForm = new ContactManager();
-                if (cmForm.ShowDialog() == DialogResult.OK)
+                using (ContactManager cmForm = new ContactManager()) 
                 {
-                    MessageBox.Show("Для применения изменений перезапустите программу");
-                    R = true;
+                    if (cmForm.ShowDialog() == DialogResult.OK)
+                    {
+                        MessageBox.Show("Для применения изменений перезапустите программу");
+                        R = true;
+                    }
                 }
+                
             }
 
             void SetView()
@@ -76,102 +74,83 @@ namespace GW_Dogovor
 
         }
 
-        public void ConnectDB()
-        {
-            DB_Cmd.DBLoad();
-        }
+        public void ConnectDB() => DB_Cmd.DBLoad();
 
         private void Clk() // Все простые события Клик
         {
-            menuItem_PropertyConnect.Click += (s, a) =>
-            {
+            menuItem_PropertyConnect.Click += (s, a) => {
                 ContactManager cmForm = new ContactManager();
                 cmForm.ShowDialog();
             };
 
-            menuItem_TypeDoc.Click += (s, a) =>
-            {
+            menuItem_TypeDoc.Click += (s, a) => {
                 Lib_doc_type libDocForm = new Lib_doc_type();
                 libDocForm.ShowDialog();
             };
 
             tbtn_ViewProject.Click += ProjectPanelsVisable;
 
-            tbtn_AddFolders.Click += (s, a) =>
-            {
+            tbtn_AddFolders.Click += (s, a) => {
                 Form_FolderManager ff = new Form_FolderManager(link_LocalFld.Text, link_ServetFld.Text, false);
                 ff.ShowDialog();
             };
 
-            gridDocument.DoubleClick += (s, a) =>
-            {
+            gridDocument.DoubleClick += (s, a) => {
                 EditDoc();
             };
 
-            link_LocalFld.Click += (s, a) =>
-            {
+            link_LocalFld.Click += (s, a) => {
                 FileA.RunFolder(link_LocalFld.Text);
             };
 
-            link_ServetFld.Click += (s, a) =>
-            {
+            link_ServetFld.Click += (s, a) => {
                 FileA.RunFolder(link_ServetFld.Text);
             };
 
-            tmCopySelect.Click += (s, a) =>
-            {
+            tmCopySelect.Click += (s, a) => {
                 if (tbNameProject.SelectionLength > 0)
                     tbNameProject.Copy();
             };
 
-            tmOpenLocalFolder.Click += (s, a) =>
-            {
+            tmOpenLocalFolder.Click += (s, a) => {
                 FileA.RunFolder(link_LocalFld.Text);
             };
 
-            tmOpenServerFolder.Click += (s, a) =>
-            {
+            tmOpenServerFolder.Click += (s, a) => {
                 FileA.RunFolder(link_ServetFld.Text);
             };
 
-            tb_TndComents.DoubleClick += (s, a) =>
-            {
+            tb_TndComents.DoubleClick += (s, a) => {
                 dbEditText(DB_Cmd.bndTender, "Comments");
             };
 
-            tb_pNotes.DoubleClick += (s, a) =>
-            {
+            tb_pNotes.DoubleClick += (s, a) => {
                 dbEditText(DB_Cmd.bndProject, "Notes");
             };
 
-            tb_CommentDog.DoubleClick += (s, a) =>
-            {
+            tb_CommentDog.DoubleClick += (s, a) => {
                 dbEditText(DB_Cmd.bndDogovor, "Comments");
             };
 
-            tb_NotesDD.DoubleClick += (s, a) =>
-            {
+            tb_NotesDD.DoubleClick += (s, a) => {
                 dbEditText(DB_Cmd.bndDopDogovor, "Comments");
             };
 
-            tbtn_EditDDog.Click += (s, a) =>
-            {
+            tbtn_EditDDog.Click += (s, a) => {
                 EditDopDogovor();
             };
 
-            tbtn_AddDDog.Click += (s, a) =>
-            {
+            tbtn_AddDDog.Click += (s, a) => {
                 DB_Cmd.AddDopSoglashenia();
                 EditDopDogovor();
             };
 
-            tbtn_DeleteDDog.Click += (s, a) =>
-            {
+            tbtn_DeleteDDog.Click += (s, a) => {
                 DB_Cmd.DeleteDopSoglashenia();
                 DB_Cmd.SaveDopSoglashenia();
             };
 
-           
+
 
         }
 
@@ -181,7 +160,7 @@ namespace GW_Dogovor
         {
             tbNameProject.DataBindings.Add("Text", DB_Cmd.bndProject, "Name");
             tb_num_dog.DataBindings.Add("Text", DB_Cmd.bndDogovor, "Nambe_Dog");
-            
+
             tb_Code_object.DataBindings.Add("Text", DB_Cmd.bndProject, "Code_object");
             tb_pName.DataBindings.Add("Text", DB_Cmd.bndProject, "Name");
             tb_pNotes.DataBindings.Add("Text", DB_Cmd.bndProject, "Notes");
@@ -209,12 +188,12 @@ namespace GW_Dogovor
             //this.gridDocument.Sort(this.gridDocument.Columns["DataDoc"], ListSortDirection.Ascending);
 
             bndNvg_IshDoc.BindingSource = DB_Cmd.bndDocument;
-         
+
         }
         private void SetViewTender()
         {
             bndNavigatorTender.BindingSource = DB_Cmd.bndTender;
-            
+
             tb_TndCustomer.DataBindings.Add("Text", DB_Cmd.bndTender, "Customer");
             tb_TndName.DataBindings.Add("Text", DB_Cmd.bndTender, "Name_Tender");
             tb_TndStadia.DataBindings.Add("Text", DB_Cmd.bndTender, "Stadia");
@@ -229,7 +208,7 @@ namespace GW_Dogovor
             grid_TenderDoc.Columns["NameTDoc"].DataPropertyName = "NameDoc";
             grid_TenderDoc.Columns["StatudTDoc"].DataPropertyName = "Status";
             grid_TenderDoc.Columns["PathTDoc"].DataPropertyName = "PathDoc";
-           // Фильтр по ["Tender_id"] != null
+            // Фильтр по ["Tender_id"] != null
 
         }
         private void SetViewDogovor()
@@ -248,7 +227,7 @@ namespace GW_Dogovor
             // tb_spentSummDog
             // tb_remainedSummDog
             tb_CommentDog.DataBindings.Add("Text", DB_Cmd.bndDogovor, "Comments");
-            
+
             // grid Dogovor
             grid_Dogovor.AutoGenerateColumns = false;
             grid_Dogovor.DataSource = DB_Cmd.bndDogovor;
@@ -291,7 +270,7 @@ namespace GW_Dogovor
             tb_StatusDD.DataBindings.Add("Text", DB_Cmd.bndDopDogovor, "Status");
             tb_ToDateDD.DataBindings.Add("Text", DB_Cmd.bndDopDogovor, "Data_Konec");
             tb_NotesDD.DataBindings.Add("Text", DB_Cmd.bndDopDogovor, "Comments");
-           
+
 
             grid_DD.AutoGenerateColumns = false;
             grid_DD.DataSource = DB_Cmd.bndDopDogovor;
@@ -318,7 +297,7 @@ namespace GW_Dogovor
             bndNavigatorDDog.BindingSource = DB_Cmd.bndDopDogovor;
             bndNavigator_KP_Dop.BindingSource = DB_Cmd.bndCalendarPlanDD;
             //bndCalendarPlan.Filter = "";
-            
+
         }
         private void SetViewObject()
         {
@@ -353,11 +332,11 @@ namespace GW_Dogovor
             grid_GrafZ.AutoGenerateColumns = false;
             grid_GrafZ.DataSource = DB_Cmd.bndZadania;
             grid_GrafZ.Columns["zadania_name"].DataPropertyName = "Coments";
-            grid_GrafZ.Columns["zadania_otdel_out"].DataPropertyName = "Otdel_id_out"; 
+            grid_GrafZ.Columns["zadania_otdel_out"].DataPropertyName = "Otdel_id_out";
             grid_GrafZ.Columns["zadania_otdel_in"].DataPropertyName = "Otdel_id_in";
             grid_GrafZ.Columns["zadania_plan"].DataPropertyName = "Date_graf";
             grid_GrafZ.Columns["zadania_fakt"].DataPropertyName = "Date_fact";
-            
+
 
 
 
@@ -372,7 +351,7 @@ namespace GW_Dogovor
         #region FilterGrid
         private void SetViewTabControl() /// логика - вынести из UI
         {
-           
+
 
         } // Фильтры для Документов
         private void SelectedTypeDocuments()
@@ -521,7 +500,7 @@ namespace GW_Dogovor
             splitContainerTender.SplitterDistance = 450;
 
             SetViewForm();
-        } 
+        }
         private void SetFormView() // Сохраняем параметры Формы в конфиг
         {
             Settings.Default.Main_Location = this.Location;
@@ -607,13 +586,13 @@ namespace GW_Dogovor
         }
         private void tabControlMain_Selected(object sender, TabControlEventArgs e)
         {
-           /////////
+            /////////
         }
         #endregion View
 
         private void Form_main_Load(object sender, EventArgs e)
         {
-            if (!R) Close(); 
+            if (!R) Close();
             GetFormView();
             Clk();
             lbl_BasePath.Text = tPathDB;
@@ -648,7 +627,7 @@ namespace GW_Dogovor
         {
             Form_Tender fe = new Form_Tender();
             fe.ShowDialog();
-            
+
         }
 
         #endregion Tender
@@ -659,26 +638,16 @@ namespace GW_Dogovor
             Form_Dogovor fе = new Form_Dogovor(link_LocalFld.Text);
             fе.ShowDialog();
         }
- 
+
         #endregion
 
         #region DopDogovor
         private void EditDopDogovor()
         {
             Form_DopSogl fе = new Form_DopSogl();
-
-            if (fе.ShowDialog() == DialogResult.OK)
-            {
-                fе.Validate();
-                DB_Cmd.SaveDopSoglashenia();
-            }
-            else
-            {
-                fе.Validate();
-                DB_Cmd.CancelDopSoglashenia();
-            }
+            fе.ShowDialog();
         }
-         
+
         #endregion
 
         #region Document
@@ -687,7 +656,7 @@ namespace GW_Dogovor
             Form_Document fed = new Form_Document();
             fed.ShowDialog();
         }
-       
+
         private void DeleteDoc()
         {
             string p = null;
@@ -724,11 +693,11 @@ namespace GW_Dogovor
                 DB_Cmd.CancelOBJECTS();
             }
         }
-     
-       #endregion
+
+        #endregion
 
         #region Calendar Plan
-       
+
         #endregion
 
         #region EditText
@@ -768,7 +737,7 @@ namespace GW_Dogovor
         #endregion Edit DB
 
         #region CellContentClick
-     
+
         private void grid_TenderDoc_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             //MessageBox.Show(e.ColumnIndex.ToString());
@@ -823,14 +792,14 @@ namespace GW_Dogovor
                 string pServer = Path.Combine(link_ServetFld.Text, Name);
                 if (Narp == 0 || Narp == 2)
                     if (!Directory.Exists(link_LocalFld.Text))
-                         throw new Exception("Локальная папка не указана. Укажите локальную папку в свойствах проекта");
-            
+                        throw new Exception("Локальная папка не указана. Укажите локальную папку в свойствах проекта");
+
                 if (Narp == 1 || Narp == 2)
-                   if (!Directory.Exists(link_ServetFld.Text))
-                     throw new Exception("Серверная папка не указана. Укажите серверную папку в свойствах проекта");
-            
+                    if (!Directory.Exists(link_ServetFld.Text))
+                        throw new Exception("Серверная папка не указана. Укажите серверную папку в свойствах проекта");
+
                 //DragDropDocuments(sender, e, 0); // Исходные данные
-          
+
                 Form_AddFiles frm_Copyfiles = new Form_AddFiles(pLocal, pServer);
                 frm_Copyfiles.SetNapr(Narp);
                 foreach (string f in (string[])e.Data.GetData(DataFormats.FileDrop))
@@ -843,10 +812,10 @@ namespace GW_Dogovor
             {
                 MessageBox.Show(ex.Message);
             }
-            
+
         }
 
-       
+
         #region DRAG Documents
         private void gridDocument_DragDrop(object sender, DragEventArgs e)
         {
@@ -874,7 +843,7 @@ namespace GW_Dogovor
             List<string> pathDoc = new List<string>();
             List<string> nameDoc = new List<string>();
             List<string> newPathDoc = new List<string>();
-                        
+
             string DateFld = dtp_TenderData.Value.ToShortDateString();
             string newPathLocal = Path.Combine(link_LocalFld.Text, "Тендер", DateFld);
             string newPathServer = Path.Combine(link_ServetFld.Text, "Тендер", DateFld);
@@ -1004,6 +973,39 @@ namespace GW_Dogovor
         #endregion
 
         #region BindingManager_button
+        #region Project
+        private void tbtn_AddProject_Click(object sender, EventArgs e)
+        {
+            //int pos = DB_Cmd.bndProject.Position;
+            object newProject = DB_Cmd.AddProject();
+
+            EditProject(); // Вызов окна редактирования новой записи
+
+            string s = "Для обеспечения целостности данных\r\nнеобходимо создать тендер связанный с проектом. " +
+                 "\r\nЕсли Вы согласны, то нажмите Ok!";
+
+            if (MessageBox.Show(s, "Автоматическое создание записи Тендера", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                DB_Cmd.AddTender(link_LocalFld.Text);
+                EditTender();
+            }
+
+            SetViewBindNavigators();
+
+        }
+
+        private void tbtn_EditProject_Click(object sender, EventArgs e)
+        {
+            EditProject();
+        }
+
+        private void tbtn_DeleteProject_Click(object sender, EventArgs e)
+        {
+            DB_Cmd.DeleteProject();
+            DB_Cmd.SaveProject();
+        }
+        #endregion Project
+
         #region Tender
         private void tbtn_TndEdit_Click(object sender, EventArgs e)
         {
@@ -1092,41 +1094,6 @@ namespace GW_Dogovor
             fr.ShowDialog();
         }
         #endregion CPlan Tab DDog
-
-        #region Project
-        private void tbtn_AddProject_Click(object sender, EventArgs e)
-        {
-            //int pos = DB_Cmd.bndProject.Position;
-            object newProject = DB_Cmd.AddProject();
-
-            EditProject();
-
-            //DB_Cmd.grid_SetOldPosition(pos, newProject, DB_Cmd.bndProject, "ID_project");
-
-            string s = "Для обеспечения целостности данных\r\nнеобходимо создать тендер связанный с проектом. " +
-                "\r\nЕсли Вы согласны, то нажмите Ok!";
-
-            if (MessageBox.Show(s, "Автоматическое создание записи Тендера", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
-                DB_Cmd.AddTender(link_LocalFld.Text);
-                EditTender();
-            }
-
-            SetViewBindNavigators();
-
-        }
-
-        private void tbtn_EditProject_Click(object sender, EventArgs e)
-        {
-            EditProject();
-        }
-
-        private void tbtn_DeleteProject_Click(object sender, EventArgs e)
-        {
-            DB_Cmd.DeleteProject();
-            DB_Cmd.SaveProject();
-        }
-        #endregion Project
 
         #region Object
         private void tbtn_EditObj_Click(object sender, EventArgs e)
@@ -1224,8 +1191,6 @@ namespace GW_Dogovor
             ConnectDB();
         }
 
-       
-
         private void tabControlMain_SelectedIndexChanged(object sender, EventArgs e)
         {
             //0-ИД; 1-Письма; 2-Задания; 3-Тендер; 4-Договор; 5-График; 6- Объект; 7- Изыскания; 8- Штамп; 9- Разное; 10- Основные положения; 11- Входящие; 12- Исходящие
@@ -1266,8 +1231,6 @@ namespace GW_Dogovor
 
             SetViewBindNavigators();
         }
-
-       
     }
 
 }

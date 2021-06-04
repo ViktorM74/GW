@@ -31,8 +31,7 @@ namespace DBClass
 
         public bool IsConnection // свойство объекта
         {
-            get
-            {
+            get {
                 if (con.State == ConnectionState.Closed)
                 {
                     con.Open();

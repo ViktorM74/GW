@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Windows.Forms;
-using FileAction;
 using System.IO;
-using TreeFoldersClass;
-using Distinary;
+using System.Windows.Forms;
 using DBClass;
 using DocumentsClass;
+using FileAction;
+using TreeFoldersClass;
 
 namespace AddFilesToFolder
 {
@@ -37,20 +36,17 @@ namespace AddFilesToFolder
             textBox2.Text = pathS;
 
 
-            rb_All.Click += (a, s) =>
-            {
+            rb_All.Click += (a, s) => {
                 CheckedChange();
                 SetRootNode();
                 CreateTreeNodeFolder();
             };
-            rb_Loc.Click += (a, s) =>
-            {
+            rb_Loc.Click += (a, s) => {
                 CheckedChange();
                 SetRootNode();
                 CreateTreeNodeFolder();
             };
-            rb_Serv.Click += (a, s) =>
-            {
+            rb_Serv.Click += (a, s) => {
                 CheckedChange();
                 SetRootNode();
                 CreateTreeNodeFolder();
@@ -108,7 +104,7 @@ namespace AddFilesToFolder
                     break;
             }
 
-           
+
         }
 
         /// <summary>
@@ -177,7 +173,7 @@ namespace AddFilesToFolder
             }
         }
 
-  
+
 
         /// <summary>
         /// Переименовывает указанный каталог 
@@ -302,7 +298,7 @@ namespace AddFilesToFolder
                 {
                     list.Add(node);
                 }
-                    
+
 
                 CheckedNode(node.Nodes, list);
             }
@@ -320,7 +316,7 @@ namespace AddFilesToFolder
                     // добавить узлы в TreeNode 
                     TreeNode nd = node.Nodes.Insert(inode, newName);
                     nd.Expand();
-                   
+
                 }
                 AddNewNodeToSelectedNodes(node.Nodes, newName);
             }
@@ -394,7 +390,7 @@ namespace AddFilesToFolder
                 //AddNewFolderToSelectedFolder();
                 // добавляем новые папки в пути копирования и копируем файлы
                 ac = CopySelectedFilesToNewFolder();
-                
+
             }
             else
             {
@@ -410,7 +406,7 @@ namespace AddFilesToFolder
                 //FileA.RunPath(s);
                 this.Close();
             }
-                
+
         }
 
         private void btn_contextMenuNameFolder_Click(object sender, EventArgs e)
@@ -446,7 +442,7 @@ namespace AddFilesToFolder
         {
             foreach (string path in (string[])e.Data.GetData(DataFormats.FileDrop))
             {
-               listBoxFiles.Items.Add(path);
+                listBoxFiles.Items.Add(path);
             }
         }
 
@@ -467,7 +463,7 @@ namespace AddFilesToFolder
             List<string> listFileDBPath = new List<string>();
 
             GetPathFolders(listFolders, listFileDBPath);
-            
+
             try
             {
                 if (listFolders.Count == 0 || listFileDBPath.Count == 0)
@@ -525,12 +521,12 @@ namespace AddFilesToFolder
                 {
                     fileList.Add(fl);
                 }
-               
-                foreach(string p in listFolders)
+
+                foreach (string p in listFolders)
                 {
                     listNewFolders.Add(Path.Combine(p, tb_newNameFolder.Text));
                 }
-               
+
                 FileA.CopyListFiles(fileList, listNewFolders);
                 //TODO: Добавить регистрация в базе по списку listFileDBPath
                 AddDocToDB(fileList, listFileDBPath);

@@ -71,7 +71,7 @@ namespace ProjectClass
         {
             this.Validate();
             DB_Cmd.CancelProject();
-           
+
         }
 
         private void Form_Project_FormClosed(object sender, FormClosedEventArgs e)

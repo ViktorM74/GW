@@ -6,7 +6,7 @@ namespace CPlan
 {
     public partial class Form_CPlan : Form
     {
-       
+
         public Form_CPlan()
         {
             InitializeComponent();
@@ -41,7 +41,7 @@ namespace CPlan
             dgv_edit_CPlan.Columns["Valute"].DataPropertyName = "V";
             dgv_edit_CPlan.Columns["StatusCPlan"].DataPropertyName = "Status";
 
-           
+
         }
 
         private void btn_Add_Click_1(object sender, EventArgs e)

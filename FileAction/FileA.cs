@@ -11,12 +11,12 @@ namespace FileAction
         public static bool RunPath(string path)
         {
             if (GetAtributesPath(path))
-              return  RunFile(path);
+                return RunFile(path);
             else
-               return  RunFolder(path);
+                return RunFolder(path);
         }
-        
-        
+
+
         // Запускает файл по указанному пути
         public static bool RunFile(string path)
         {
@@ -175,7 +175,7 @@ namespace FileAction
                 foreach (string f in listF)
                 {
                     if (GetAtributesPath(f))
-                        foreach(string p in newPath)
+                        foreach (string p in newPath)
                             CopyFile(f, p);
                     else
                         foreach (string p in newPath)
@@ -236,7 +236,7 @@ namespace FileAction
         public static bool RenameDirectory(string dirPath, string newName)
         {
             DirectoryInfo dir = new DirectoryInfo(dirPath);
-            
+
             if (Directory.Exists(dir.FullName))
             {
                 string newpath = Path.Combine(dir.Parent.FullName, newName);

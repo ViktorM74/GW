@@ -31,7 +31,7 @@ namespace PRD
                     ((DataRowView)DB_Cmd.bndSostavObj.Current).Row["Data_GIP_viz"] = DateTime.Today;
                 else
                     ((DataRowView)DB_Cmd.bndSostavObj.Current).Row["Data_GIP_viz"] = dtp_Data_GIP_viz.Value;
-            }    
+            }
             else
                 ((DataRowView)DB_Cmd.bndSostavObj.Current).Row["Data_GIP_viz"] = DBNull.Value;
 
@@ -42,7 +42,7 @@ namespace PRD
                 else
                     ((DataRowView)DB_Cmd.bndSostavObj.Current).Row["Data_fakt"] = dtp_Data_fakt.Value;
             }
-            
+
             else
                 ((DataRowView)DB_Cmd.bndSostavObj.Current).Row["Data_fakt"] = DBNull.Value;
 
@@ -68,7 +68,7 @@ namespace PRD
             DateTime dt2 = (chb.Checked && chb.Value != chb.MinDate) ? chb.Value : DateTime.MinValue;
         }
 
- 
+
         private void dtp_Data_GIP_viz_CloseUp(object sender, EventArgs e)
         {
             chb_GIP_viz.Checked = true;

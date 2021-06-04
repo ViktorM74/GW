@@ -1,6 +1,8 @@
-﻿using System.IO;
+﻿using System.Data;
+using System.IO;
 using System.Windows.Forms;
 using DBClass;
+using FileAction;
 
 namespace DogovorClass
 {
@@ -48,10 +50,21 @@ namespace DogovorClass
         private void btn_SaveDogovor_Click(object sender, System.EventArgs e)
         {
             string s = null;
-            Validate();
+            this.Validate();
             if (tb_NumDog.Text != null && tb_NumDog.Text != "")
             {
                 s = Path.Combine(link_LocalFld, tb_NumDog.Text);
+
+                if (s != null)
+                {
+                    string nameDog = tb_NumDog.Text;
+                    nameDog = nameDog.Replace('/', '_').Replace('\\', '_').Replace('.', '_');
+
+                    string newPath = Path.Combine(Path.Combine(s, "Договор"), nameDog);
+                    FileA.CreateFolder(newPath);
+                    ((DataRowView)DB_Cmd.bndDogovor.Current).Row["path"] = newPath;
+                }
+
                 DB_Cmd.SaveDogovor(s);
                 Close();
             }
@@ -59,7 +72,7 @@ namespace DogovorClass
             {
                 MessageBox.Show("Номер договора не может быть пустым!");
             }
-            
+
         }
 
         private void btn_CloseDogovor_Click(object sender, System.EventArgs e)
