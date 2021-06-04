@@ -1,5 +1,5 @@
-﻿using DBClass;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
+using DBClass;
 
 namespace TenderClass
 {

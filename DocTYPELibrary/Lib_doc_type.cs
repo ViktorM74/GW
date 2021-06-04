@@ -1,8 +1,6 @@
-﻿using DBClass;
-using DBClass._bsp_snhpDataSetTableAdapters;
-using System;
-using System.Data;
+﻿using System;
 using System.Windows.Forms;
+using DBClass;
 
 namespace DocTYPELibrary
 {
@@ -25,7 +23,7 @@ namespace DocTYPELibrary
             lb_NameDoc.DataSource = DB_Cmd.bndTypeDoc;
             lb_NameDoc.DisplayMember = "Name_doc";
             lb_NameDoc.ValueMember = "DOCTypeID";
-         
+
             tb_Name_doc.DataBindings.Add("Text", DB_Cmd.bndTypeDoc, "Name_doc");
             tb_Notes.DataBindings.Add("Text", DB_Cmd.bndTypeDoc, "Notes");
             link_Path_to_template.DataBindings.Add("Text", DB_Cmd.bndTypeDoc, "Path_to_template");
@@ -36,7 +34,7 @@ namespace DocTYPELibrary
             cb_group.DataBindings.Add("SelectedValue", DB_Cmd.bndTypeDoc, "Doc_Group");
 
             bndNavigator_LibDoc.BindingSource = DB_Cmd.bndTypeDoc;
-            
+
         }
 
         private void btnBrowse_Click(object sender, EventArgs e)
@@ -61,21 +59,21 @@ namespace DocTYPELibrary
             Close();
         }
 
-       
+
 
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
-           DB_Cmd.AddTypeDoc();
+            DB_Cmd.AddTypeDoc();
         }
 
         private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
         {
-           DB_Cmd.DeleteTypeDoc();
+            DB_Cmd.DeleteTypeDoc();
         }
 
         private void bindingNavigatorSave_Click(object sender, EventArgs e)
         {
-           DB_Cmd.SaveTypeDoc();
+            DB_Cmd.SaveTypeDoc();
         }
     }
 }

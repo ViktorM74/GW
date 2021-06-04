@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
-using FileAction;
 using Distinary;
+using FileAction;
 
 namespace FolderManager
 {
@@ -14,12 +14,16 @@ namespace FolderManager
 
         public List<string> listLocal
         {
-            get { return listLocalValue; }
+            get {
+                return listLocalValue;
+            }
         }
 
         public List<string> listServer
         {
-            get { return listServerValue; }
+            get {
+                return listServerValue;
+            }
         }
 
         string pathLocal = "";
@@ -203,14 +207,14 @@ namespace FolderManager
                         name = Path.Combine(Libr.NameFld[1], Libr.NameFld[iTag]);
                     listLocalValue.Add(name);
                 }
-                    
+
                 if (ch_ServerFld.Checked)
                 {
                     if ((int)cb.Tag == 11 || (int)cb.Tag == 12)
                         name = Path.Combine(Libr.NameFld[1], Libr.NameFld[iTag]);
                     listServerValue.Add(name);
                 }
-                    
+
             }
         }
 

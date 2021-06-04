@@ -13,7 +13,7 @@ namespace TreeFoldersClass
             {
                 // Создаем корневой узел
                 TreeNode nodeRoot = new TreeNode(rootPath);
-               
+
                 //nodeRoot.Text = rootPath.Remove(0, rootPath.LastIndexOf("\\") + 1);
 
                 tree.Nodes.Add(nodeRoot);

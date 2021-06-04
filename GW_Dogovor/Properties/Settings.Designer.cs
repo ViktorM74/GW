@@ -61,7 +61,7 @@ namespace GW_Dogovor.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("40")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
         public int Splitter_position {
             get {
                 return ((int)(this["Splitter_position"]));

@@ -61,6 +61,10 @@
       <Project>{bd48b48a-f061-4885-9137-0d4b8430225c}</Project>
       <Name>DBClass</Name>
     </ProjectReference>
+    <ProjectReference Include="..\FileAction\FileAction.csproj">
+      <Project>{85ebfd50-4585-49f5-b8fd-dd9235788d76}</Project>
+      <Name>FileAction</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
