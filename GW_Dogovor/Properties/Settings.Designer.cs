@@ -130,5 +130,29 @@ namespace GW_Dogovor.Properties {
                 this["TextReloadProgramm"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Локальная папка не указана. Укажите локальную папку в свойствах проекта")]
+        public string NoPathLocal {
+            get {
+                return ((string)(this["NoPathLocal"]));
+            }
+            set {
+                this["NoPathLocal"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Серверная папка не указана. Укажите серверную папку в свойствах проекта")]
+        public string NoPathServer {
+            get {
+                return ((string)(this["NoPathServer"]));
+            }
+            set {
+                this["NoPathServer"] = value;
+            }
+        }
     }
 }

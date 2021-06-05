@@ -29,5 +29,11 @@
     <Setting Name="TextReloadProgramm" Type="System.String" Scope="User">
       <Value Profile="(Default)">Для применения изменений перезапустите программу</Value>
     </Setting>
+    <Setting Name="NoPathLocal" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Локальная папка не указана. Укажите локальную папку в свойствах проекта</Value>
+    </Setting>
+    <Setting Name="NoPathServer" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Серверная папка не указана. Укажите серверную папку в свойствах проекта</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

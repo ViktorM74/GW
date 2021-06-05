@@ -691,7 +691,6 @@ namespace DBClass
             finally
             {
                 bndCalendarPlanDD.Position = bndCalendarPlanDD.Find("ID_Kplan", Index);
-                ///System.ArgumentException: "Свойство 'ID_Kplan' для DataMember не найдено в DataSource
             }
         }
 
