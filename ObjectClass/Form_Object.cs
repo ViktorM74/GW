@@ -29,5 +29,19 @@ namespace ObjectClass
             tb_GIPObject.DataBindings.Add("SelectedValue", DB_Cmd.bndObject, "GIP");
 
         }
+
+        private void btn_Save_Click(object sender, System.EventArgs e)
+        {
+            this.Validate();
+            DB_Cmd.SaveOBJECTS();
+            Close();
+        }
+
+        private void btn_Close_Click(object sender, System.EventArgs e)
+        {
+            this.Validate();
+            DB_Cmd.CancelOBJECTS();
+            Close();
+        }
     }
 }

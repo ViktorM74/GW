@@ -474,7 +474,7 @@ namespace GW_Dogovor
                     DB_Cmd.bndDocument.DataSource = null;
                     DB_Cmd.bndDocument.DataSource = DB_Cmd.bndTender;
                     DB_Cmd.bndDocument.DataMember = "TenderDocuments";
-                    //DB_Cmd.bndDocument.Sort = "DataDoc";
+                    DB_Cmd.bndDocument.Sort = "DataDoc";
 
                     DB_Cmd.bndDocument.Filter = "(Project_id Not Is Null) AND (Tender_id Not Is Null)";
                     grid_TenderDoc.DataSource = DB_Cmd.bndDocument;
@@ -501,7 +501,7 @@ namespace GW_Dogovor
                     DB_Cmd.bndDocument.DataSource = null;
                     DB_Cmd.bndDocument.DataSource = DB_Cmd.bndDopDogovor;
                     DB_Cmd.bndDocument.DataMember = "DopSoglasheniaDocuments";
-                    //DB_Cmd.bndDocument.Sort = "DataDoc";
+                    DB_Cmd.bndDocument.Sort = "DataDoc";
 
                     DB_Cmd.bndDocument.Filter = "(Project_id Not Is Null) AND (Dogovor_id Not Is Null) AND (DD_id Not Is Null)";
                     grid_DocumentDD.DataSource = DB_Cmd.bndDocument;
@@ -820,8 +820,10 @@ namespace GW_Dogovor
                 loc_path = link_LocalFld.Text;
                 serv_path = link_ServetFld.Text;
             }
-            Form_AddFiles fSel = new Form_AddFiles(loc_path, serv_path);
-            fSel.ShowDialog();
+            using (Form_AddFiles fSel = new Form_AddFiles(loc_path, serv_path))
+            {
+                fSel.ShowDialog();
+            };
         }
 
         // Узнаём, где находится пользователь и формируем путь для сохранения файлов по Drag
@@ -878,8 +880,11 @@ namespace GW_Dogovor
         #region Project
         private void EditProject()
         {
-            Form_Project fed = new Form_Project();
-            fed.ShowDialog();
+            using (Form_Project fed = new Form_Project())
+            {
+                fed.ShowDialog();
+            }
+                
         }
 
         #region DoubleClik_EditProject
@@ -900,8 +905,11 @@ namespace GW_Dogovor
         #region Tender
         private void EditTender()
         {
-            Form_Tender fe = new Form_Tender();
-            fe.ShowDialog();
+            using (Form_Tender fe = new Form_Tender())
+            {
+                fe.ShowDialog();
+            }
+               
 
         }
 
@@ -910,8 +918,11 @@ namespace GW_Dogovor
         #region Dogovor
         private void EditDogovor()
         {
-            Form_Dogovor fе = new Form_Dogovor(link_LocalFld.Text);
-            fе.ShowDialog();
+            using (Form_Dogovor fе = new Form_Dogovor(link_LocalFld.Text))
+            {
+                fе.ShowDialog();
+
+            }
         }
 
         #endregion Dogovor
@@ -919,8 +930,11 @@ namespace GW_Dogovor
         #region DopDogovor
         private void EditDopDogovor()
         {
-            Form_DopSogl fе = new Form_DopSogl();
-            fе.ShowDialog();
+            using (Form_DopSogl fе = new Form_DopSogl())
+            {
+                fе.ShowDialog();
+            }
+            
         }
 
         #endregion DopDogovor
@@ -954,25 +968,17 @@ namespace GW_Dogovor
         #region Object
         private void EditObject()
         {
-            Form_Object fе = new Form_Object();
-
-            if (fе.ShowDialog() == DialogResult.OK)
+            using (Form_Object fе = new Form_Object())
             {
-                fе.Validate();
-                DB_Cmd.SaveOBJECTS();
-            }
-            else
-            {
-                fе.Validate();
-                DB_Cmd.CancelOBJECTS();
+                fе.ShowDialog();
             }
         }
 
-        #endregion
+        #endregion Object
 
         #region Calendar Plan
 
-        #endregion
+        #endregion Calendar Plan
 
         #region EditText
         private void dbEditText(BindingSource bnd, String fld)
@@ -997,8 +1003,11 @@ namespace GW_Dogovor
         #region Zadania
         private void EditZadania()
         {
-            Form_Zadania_Plan fеd = new Form_Zadania_Plan();
-            fеd.ShowDialog();
+            using (Form_Zadania_Plan fеd = new Form_Zadania_Plan())
+            {
+                fеd.ShowDialog();
+            }
+            
         }
 
         #endregion Zadania
@@ -1006,8 +1015,11 @@ namespace GW_Dogovor
         #region Mark
         private void EditSostavObj()
         {
-            Form_PRD fеd = new Form_PRD();
-            fеd.ShowDialog();
+            using (Form_PRD fеd = new Form_PRD())
+            {
+                fеd.ShowDialog();
+            }
+            
         }
         #endregion Mark
 
@@ -1069,25 +1081,26 @@ namespace GW_Dogovor
                 string pServer = Path.Combine(link_ServetFld.Text, Name);
                 if (Narp == 0 || Narp == 2)
                     if (!Directory.Exists(link_LocalFld.Text))
-                        throw new Exception("Локальная папка не указана. Укажите локальную папку в свойствах проекта");
+                        throw new Exception(Properties.Settings.Default.NoPathLocal);
 
                 if (Narp == 1 || Narp == 2)
                     if (!Directory.Exists(link_ServetFld.Text))
-                        throw new Exception("Серверная папка не указана. Укажите серверную папку в свойствах проекта");
+                        throw new Exception(Properties.Settings.Default.NoPathServer);
 
-                //DragDropDocuments(sender, e, 0); // Исходные данные
-
-                Form_AddFiles frm_Copyfiles = new Form_AddFiles(pLocal, pServer);
-                frm_Copyfiles.SetNapr(Narp);
-                foreach (string f in (string[])e.Data.GetData(DataFormats.FileDrop))
+                using (Form_AddFiles frm_Copyfiles = new Form_AddFiles(pLocal, pServer))
                 {
-                    frm_Copyfiles.ListFiles.Add(f); // передаем список файлов в модуль копирования
+
+                    frm_Copyfiles.SetNapr(Narp);
+                    foreach (string f in (string[])e.Data.GetData(DataFormats.FileDrop))
+                    {
+                        frm_Copyfiles.ListFiles.Add(f); // передаем список файлов в модуль копирования
+                    }
+                    frm_Copyfiles.ShowDialog();
                 }
-                frm_Copyfiles.ShowDialog();
             }
-            catch (Exception ex)
+            finally
             {
-                MessageBox.Show(ex.Message);
+                
             }
 
         }
@@ -1154,12 +1167,15 @@ namespace GW_Dogovor
         #region ARHIVE
         private void btn_BrouseArh_Click(object sender, EventArgs e)
         {
-            FolderBrowserDialog ofd = new FolderBrowserDialog();
-            if (ofd.ShowDialog() == DialogResult.OK)
+            using (FolderBrowserDialog ofd = new FolderBrowserDialog())
             {
-                tb_PathArh.Text = ofd.SelectedPath;
-                Settings.Default.PathArhive = tb_PathArh.Text;
-                Settings.Default.Save();
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    tb_PathArh.Text = ofd.SelectedPath;
+                    Settings.Default.PathArhive = tb_PathArh.Text;
+                    Settings.Default.Save();
+                }
+
             }
 
         }
@@ -1248,14 +1264,13 @@ namespace GW_Dogovor
             //}
         }
 
-        #endregion
+        #endregion ARHIVE
 
         #region BindingManager_button
         #region Project
         private void tbtn_AddProject_Click(object sender, EventArgs e)
         {
-            //int pos = DB_Cmd.bndProject.Position;
-            object newProject = DB_Cmd.AddProject();
+            DB_Cmd.AddProject();
 
             EditProject(); // Вызов окна редактирования новой записи
 
