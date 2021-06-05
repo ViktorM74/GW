@@ -2035,6 +2035,7 @@ namespace DBClass {
                 this.columnStatGlob.DefaultValue = ((int)(0));
                 this.columnStatus.MaxLength = 255;
                 this.columnNumDD.ReadOnly = true;
+                this.columnViewCPDog.DefaultValue = ((bool)(true));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

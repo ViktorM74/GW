@@ -16,8 +16,8 @@ namespace PRD
             tb_Mark.DataBindings.Add("Text", DB_Cmd.bndSostavObj, "Mark");
             dtp_Data_plan.DataBindings.Add("Text", DB_Cmd.bndSostavObj, "Data_plan");
             tb_Notes.DataBindings.Add("Text", DB_Cmd.bndSostavObj, "Notes");
-            chb_GIP_viz.DataBindings.Add("Checked", DB_Cmd.bndSostavObj, "GIP_viz");
-            chb_Arhiv.DataBindings.Add("Checked", DB_Cmd.bndSostavObj, "Arhiv");
+            chb_GIP_viz.DataBindings.Add("Checked", DB_Cmd.bndSostavObj, "GIP_viz", false, DataSourceUpdateMode.OnPropertyChanged);
+            chb_Arhiv.DataBindings.Add("Checked", DB_Cmd.bndSostavObj, "Arhiv", false, DataSourceUpdateMode.OnPropertyChanged);
             dtp_Data_GIP_viz.DataBindings.Add("Text", DB_Cmd.bndSostavObj, "Data_GIP_viz");
             dtp_Data_fakt.DataBindings.Add("Text", DB_Cmd.bndSostavObj, "Data_fakt");
             tb_blok.DataBindings.Add("Text", DB_Cmd.bndSostavObj, "Block");

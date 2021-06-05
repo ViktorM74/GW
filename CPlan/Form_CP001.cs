@@ -27,8 +27,8 @@ namespace CPlan
             tb_Summ.DataBindings.Add("Text", DB_Cmd.bndCalendarPlanDD, "Summ");
             cb_Valute.DataBindings.Add("Text", DB_Cmd.bndCalendarPlanDD, "V");
             tb_Comments.DataBindings.Add("Text", DB_Cmd.bndCalendarPlanDD, "Comments");
-            lb_Sort.DataBindings.Add("Text", DB_Cmd.bndCalendarPlanDD, "Num_sort");
-            chk_visable_CP.DataBindings.Add("Checked", DB_Cmd.bndCalendarPlan, "ViewCPDog");
+          
+            chk_visable_CP.DataBindings.Add("Checked", DB_Cmd.bndCalendarPlanDD, "ViewCPDog", false, DataSourceUpdateMode.OnPropertyChanged);
 
             cb_DD.DataSource = DB_Cmd.bndDopDogovor; // источник данных
             cb_DD.DisplayMember = "Nambe_DS"; // отображаемое значение

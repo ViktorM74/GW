@@ -262,7 +262,7 @@ namespace GW_Dogovor
             grid_CPlan.Columns["Valute"].DataPropertyName = "V";
             grid_CPlan.Columns["StatusCPlan"].DataPropertyName = "Status";
             grid_CPlan.Columns["id_DDog"].DataPropertyName = "NumDD";
-            grid_CPlan.Columns["Num_sort"].DataPropertyName = "Num_sort";
+         
 
             grid_CPlan.Columns["Name_Etap"].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             grid_CPlan.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
@@ -490,7 +490,9 @@ namespace GW_Dogovor
                     DB_Cmd.bndDocument.Filter = "(Project_id Not Is Null) AND (Dogovor_id Not Is Null)";
                     grid_DogovorDoc.DataSource = DB_Cmd.bndDocument;
 
-
+                    DB_Cmd.bndCalendarPlan.RemoveFilter();
+                    DB_Cmd.bndCalendarPlan.Filter = "(ViewCPDog = true)";
+                    grid_CPlan.DataSource = DB_Cmd.bndCalendarPlan;
 
                     break;
                 case 3: // Доп соглашения
