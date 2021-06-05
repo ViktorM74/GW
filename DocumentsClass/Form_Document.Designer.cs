@@ -46,6 +46,9 @@ namespace DocumentsClass
             this.btn_Save = new System.Windows.Forms.Button();
             this.bt_Cancel = new System.Windows.Forms.Button();
             this.dtp_DateDoc = new System.Windows.Forms.DateTimePicker();
+            this.lb_object = new System.Windows.Forms.Label();
+            this.cb_object = new System.Windows.Forms.ComboBox();
+            this.chb_control = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // lb_NameDoc
@@ -78,7 +81,7 @@ namespace DocumentsClass
             // lb_Notes
             // 
             this.lb_Notes.AutoSize = true;
-            this.lb_Notes.Location = new System.Drawing.Point(12, 164);
+            this.lb_Notes.Location = new System.Drawing.Point(9, 216);
             this.lb_Notes.Name = "lb_Notes";
             this.lb_Notes.Size = new System.Drawing.Size(57, 13);
             this.lb_Notes.TabIndex = 3;
@@ -148,9 +151,9 @@ namespace DocumentsClass
             // 
             // rtb_Notes
             // 
-            this.rtb_Notes.Location = new System.Drawing.Point(12, 181);
+            this.rtb_Notes.Location = new System.Drawing.Point(12, 232);
             this.rtb_Notes.Name = "rtb_Notes";
-            this.rtb_Notes.Size = new System.Drawing.Size(433, 218);
+            this.rtb_Notes.Size = new System.Drawing.Size(433, 180);
             this.rtb_Notes.TabIndex = 12;
             this.rtb_Notes.Text = "";
             // 
@@ -204,11 +207,41 @@ namespace DocumentsClass
             this.dtp_DateDoc.TabIndex = 16;
             this.dtp_DateDoc.Value = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             // 
+            // lb_object
+            // 
+            this.lb_object.AutoSize = true;
+            this.lb_object.Location = new System.Drawing.Point(14, 163);
+            this.lb_object.Name = "lb_object";
+            this.lb_object.Size = new System.Drawing.Size(45, 13);
+            this.lb_object.TabIndex = 17;
+            this.lb_object.Text = "Объект";
+            // 
+            // cb_object
+            // 
+            this.cb_object.FormattingEnabled = true;
+            this.cb_object.Location = new System.Drawing.Point(12, 179);
+            this.cb_object.Name = "cb_object";
+            this.cb_object.Size = new System.Drawing.Size(215, 21);
+            this.cb_object.TabIndex = 18;
+            // 
+            // chb_control
+            // 
+            this.chb_control.AutoSize = true;
+            this.chb_control.Location = new System.Drawing.Point(243, 179);
+            this.chb_control.Name = "chb_control";
+            this.chb_control.Size = new System.Drawing.Size(174, 17);
+            this.chb_control.TabIndex = 19;
+            this.chb_control.Text = "Контроль (только для писем)";
+            this.chb_control.UseVisualStyleBackColor = true;
+            // 
             // Form_Document
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(577, 478);
+            this.Controls.Add(this.chb_control);
+            this.Controls.Add(this.cb_object);
+            this.Controls.Add(this.lb_object);
             this.Controls.Add(this.dtp_DateDoc);
             this.Controls.Add(this.bt_Cancel);
             this.Controls.Add(this.btn_Save);
@@ -232,7 +265,6 @@ namespace DocumentsClass
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Редактор данных документа";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_Document_FormClosing);
-            this.Load += new System.EventHandler(this.Form_docEdit_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -257,5 +289,8 @@ namespace DocumentsClass
         private System.Windows.Forms.Button btn_Save;
         private System.Windows.Forms.Button bt_Cancel;
         private System.Windows.Forms.DateTimePicker dtp_DateDoc;
+        private System.Windows.Forms.Label lb_object;
+        private System.Windows.Forms.ComboBox cb_object;
+        private System.Windows.Forms.CheckBox chb_control;
     }
 }

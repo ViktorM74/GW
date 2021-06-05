@@ -39,8 +39,6 @@ namespace GW_Dogovor
 
             tPathDB = seting.GetConnectionString();
 
-            this.WindowState = FormWindowState.Maximized;
-
             if (File.Exists(tPathDB))
             {
                 ConnectDB();
@@ -53,7 +51,7 @@ namespace GW_Dogovor
                 {
                     if (cmForm.ShowDialog() == DialogResult.OK)
                     {
-                        MessageBox.Show("Для применения изменений перезапустите программу");
+                        MessageBox.Show(Settings.Default.TextReloadProgramm);
                         R = true;
                     }
                 }
@@ -68,37 +66,45 @@ namespace GW_Dogovor
                 SetViewDogovor();
                 SetViewDDog();
                 SetViewObject();
-                //SetViewTabControl();
                 SetViewBindNavigators();
+
+                SetFilterTabGrid();
             }
 
         }
 
-        public void ConnectDB() => DB_Cmd.DBLoad();
-
-        private void Clk() // Все простые события Клик
+        public static void ConnectDB() => DB_Cmd.DBLoad();
+     
+        // Все простые события Клик
+        private void Clk() 
         {
-            menuItem_PropertyConnect.Click += (s, a) => {
-                ContactManager cmForm = new ContactManager();
-                cmForm.ShowDialog();
-            };
+            menuItem_PropertyConnect.Click += (s, a) => 
+            { using (ContactManager cmForm = new ContactManager()) { cmForm.ShowDialog(); } };
 
-            menuItem_TypeDoc.Click += (s, a) => {
-                Lib_doc_type libDocForm = new Lib_doc_type();
-                libDocForm.ShowDialog();
-            };
+            menuItem_TypeDoc.Click += (s, a) => 
+            { using (Lib_doc_type libDocForm = new Lib_doc_type()) { libDocForm.ShowDialog(); } };
 
             tbtn_ViewProject.Click += ProjectPanelsVisable;
 
             tbtn_AddFolders.Click += (s, a) => {
-                Form_FolderManager ff = new Form_FolderManager(link_LocalFld.Text, link_ServetFld.Text, false);
-                ff.ShowDialog();
+                using (Form_FolderManager ff = new Form_FolderManager(link_LocalFld.Text, link_ServetFld.Text, false))
+                { ff.ShowDialog(); }
             };
+            
+            #region DoubleClikGRID
+            gridDocument.DoubleClick += (s, a) => { EditDoc(); };
+            grid_MailControl.DoubleClick += (s, a) => { EditDoc(); };
+            grid_Zadania.DoubleClick += (s, a) => { EditDoc(); };
+            grid_TenderDoc.DoubleClick += (s, a) => { EditDoc(); };
+            grid_DogovorDoc.DoubleClick += (s, a) => { EditDoc(); };
+            grid_DocumentDD.DoubleClick += (s, a) => { EditDoc(); };
+            grid_Z.DoubleClick += (s, a) => { EditDoc(); };
+            grid_RKD.DoubleClick += (s, a) => { EditDoc(); };
+            grid_Izysk.DoubleClick += (s, a) => { EditDoc(); };
+            grid_KMD.DoubleClick += (s, a) => { EditDoc(); };
+            #endregion DoubleClikGRID
 
-            gridDocument.DoubleClick += (s, a) => {
-                EditDoc();
-            };
-
+            #region FileAction
             link_LocalFld.Click += (s, a) => {
                 FileA.RunFolder(link_LocalFld.Text);
             };
@@ -119,7 +125,9 @@ namespace GW_Dogovor
             tmOpenServerFolder.Click += (s, a) => {
                 FileA.RunFolder(link_ServetFld.Text);
             };
+            #endregion FileAction
 
+            #region EditText
             tb_TndComents.DoubleClick += (s, a) => {
                 dbEditText(DB_Cmd.bndTender, "Comments");
             };
@@ -135,23 +143,7 @@ namespace GW_Dogovor
             tb_NotesDD.DoubleClick += (s, a) => {
                 dbEditText(DB_Cmd.bndDopDogovor, "Comments");
             };
-
-            tbtn_EditDDog.Click += (s, a) => {
-                EditDopDogovor();
-            };
-
-            tbtn_AddDDog.Click += (s, a) => {
-                DB_Cmd.AddDopSoglashenia();
-                EditDopDogovor();
-            };
-
-            tbtn_DeleteDDog.Click += (s, a) => {
-                DB_Cmd.DeleteDopSoglashenia();
-                DB_Cmd.SaveDopSoglashenia();
-            };
-
-
-
+            #endregion EditText
         }
 
         #region ViewForms 
@@ -172,22 +164,43 @@ namespace GW_Dogovor
             grid_ProjectCode.AutoGenerateColumns = false;
             grid_ProjectCode.DataSource = DB_Cmd.bndProject;
             grid_ProjectCode.Columns["Code_object"].DataPropertyName = "Code_object";
-            //this.grid_ProjectCode.Sort(this.grid_ProjectCode.Columns["Code_object"], ListSortDirection.Ascending);
+           
         }
         private void SetViewDataDocument()
         {
-            // Parent([Documets_typeDocuments]).[Name_doc]
+           
             gridDocument.AutoGenerateColumns = false;
             gridDocument.DataSource = DB_Cmd.bndDocument;
+            gridDocument.Columns["Obj_name"].DataPropertyName = "Object";
             gridDocument.Columns["NameDoc"].DataPropertyName = "NameDoc";
             gridDocument.Columns["Nambe_Doc"].DataPropertyName = "Nambe_Doc";
             gridDocument.Columns["DataDoc"].DataPropertyName = "DataDoc";
             gridDocument.Columns["Status"].DataPropertyName = "Status";
             gridDocument.Columns["PathDoc"].DataPropertyName = "PathDoc";
-            gridDocument.Columns["Obj_name"].DataPropertyName = "Object";
-            //this.gridDocument.Sort(this.gridDocument.Columns["DataDoc"], ListSortDirection.Ascending);
+        
+            bndNvg_Doc.BindingSource = DB_Cmd.bndDocument;
 
-            bndNvg_IshDoc.BindingSource = DB_Cmd.bndDocument;
+            grid_MailControl.AutoGenerateColumns = false;
+            grid_MailControl.DataSource = DB_Cmd.bndDocument;
+            grid_MailControl.Columns["ObjectCode"].DataPropertyName = "Object";
+            grid_MailControl.Columns["Mail_name"].DataPropertyName = "NameDoc";
+            grid_MailControl.Columns["mail_num"].DataPropertyName = "Nambe_Doc";
+            grid_MailControl.Columns["mail_date"].DataPropertyName = "DataDoc";
+            grid_MailControl.Columns["mail_stat"].DataPropertyName = "Status";
+            grid_MailControl.Columns["mail_path"].DataPropertyName = "PathDoc";
+          
+            bndNvg_Doc.BindingSource = DB_Cmd.bndDocument;
+
+            grid_Zadania.AutoGenerateColumns = false;
+            grid_Zadania.DataSource = DB_Cmd.bndDocument;
+            grid_Zadania.Columns["ObjectCodeZ"].DataPropertyName = "Object";
+            grid_Zadania.Columns["Zname"].DataPropertyName = "NameDoc";
+            grid_Zadania.Columns["Znum"].DataPropertyName = "Nambe_Doc";
+            grid_Zadania.Columns["Zdate"].DataPropertyName = "DataDoc";
+            grid_Zadania.Columns["Zstat"].DataPropertyName = "Status";
+            grid_Zadania.Columns["Zpath"].DataPropertyName = "PathDoc";
+          
+            bndNvg_Doc.BindingSource = DB_Cmd.bndDocument;
 
         }
         private void SetViewTender()
@@ -208,15 +221,13 @@ namespace GW_Dogovor
             grid_TenderDoc.Columns["NameTDoc"].DataPropertyName = "NameDoc";
             grid_TenderDoc.Columns["StatudTDoc"].DataPropertyName = "Status";
             grid_TenderDoc.Columns["PathTDoc"].DataPropertyName = "PathDoc";
-            // Фильтр по ["Tender_id"] != null
-
+          
         }
         private void SetViewDogovor()
         {
             bndNavigatorDogovor.BindingSource = DB_Cmd.bndDogovor;
             bndNavigator_KP_Dog.BindingSource = DB_Cmd.bndCalendarPlan;
-            //bndCalendarPlan.RemoveFilter();
-
+           
 
             tb_NumDog.DataBindings.Add("Text", DB_Cmd.bndDogovor, "Nambe_Dog");
             dtp_DateDog.DataBindings.Add("Text", DB_Cmd.bndDogovor, "DataOt");
@@ -257,11 +268,6 @@ namespace GW_Dogovor
             grid_CPlan.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
             grid_CPlan.Columns["Name_Etap"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
-            //this.grid_CPlan.Sort(this.grid_CPlan.Columns["Num_sort"], ListSortDirection.Ascending);
-
-            //grid_CPlan.EditingPanel.BorderStyle = BorderStyle.Fixed3D;
-
-
         }
         private void SetViewDDog()
         {
@@ -275,7 +281,7 @@ namespace GW_Dogovor
             grid_DD.AutoGenerateColumns = false;
             grid_DD.DataSource = DB_Cmd.bndDopDogovor;
             grid_DD.Columns["NumDD"].DataPropertyName = "Nambe_DS";
-            //this.grid_DD.Sort(this.grid_DD.Columns["NumDD"], ListSortDirection.Ascending);
+          
 
             grid_CPlanDD.AutoGenerateColumns = false;
             grid_CPlanDD.DataSource = DB_Cmd.bndCalendarPlanDD;
@@ -296,7 +302,7 @@ namespace GW_Dogovor
 
             bndNavigatorDDog.BindingSource = DB_Cmd.bndDopDogovor;
             bndNavigator_KP_Dop.BindingSource = DB_Cmd.bndCalendarPlanDD;
-            //bndCalendarPlan.Filter = "";
+           
 
         }
         private void SetViewObject()
@@ -305,7 +311,7 @@ namespace GW_Dogovor
             tb_NameObject.DataBindings.Add("Text", DB_Cmd.bndObject, "Name_object");
             tb_CodeObject.DataBindings.Add("Text", DB_Cmd.bndObject, "Nambe_Object");
             tb_TitleObject.DataBindings.Add("Text", DB_Cmd.bndObject, "Titul");
-            //tb_BlockObject.DataBindings.Add("Text", DB_Cmd.bndObject, "Block");
+         
             tb_Obj_std.DataBindings.Add("Text", DB_Cmd.bndObject, "Stady");
 
             //GIP
@@ -314,7 +320,7 @@ namespace GW_Dogovor
             grid_Object.AutoGenerateColumns = false;
             grid_Object.DataSource = DB_Cmd.bndObject;
             grid_Object.Columns["CodeObj"].DataPropertyName = "CodeOBJ";
-            //this.grid_Object.Sort(this.grid_Object.Columns["CodeObj"], ListSortDirection.Ascending);
+          
 
             //Mark
             grid_GrafMark.AutoGenerateColumns = false;
@@ -331,6 +337,7 @@ namespace GW_Dogovor
             //Graf_Zadania
             grid_GrafZ.AutoGenerateColumns = false;
             grid_GrafZ.DataSource = DB_Cmd.bndZadania;
+            grid_GrafZ.Columns["blok"].DataPropertyName = "Block";
             grid_GrafZ.Columns["zadania_name"].DataPropertyName = "Coments";
             grid_GrafZ.Columns["zadania_otdel_out"].DataPropertyName = "Otdel_id_out";
             grid_GrafZ.Columns["zadania_otdel_in"].DataPropertyName = "Otdel_id_in";
@@ -338,22 +345,194 @@ namespace GW_Dogovor
             grid_GrafZ.Columns["zadania_fakt"].DataPropertyName = "Date_fact";
 
 
-
-
             bndNavigatorObject.BindingSource = DB_Cmd.bndObject;
             bndNavigator_Graph_Mark.BindingSource = DB_Cmd.bndSostavObj;
             bndNavigator_Graph_Z.BindingSource = DB_Cmd.bndZadania;
-            //bndNavigator_Zadania_file.BindingSource = DB_Cmd.bndZadania;
+            bndNavigator_Zadania_file.BindingSource = DB_Cmd.bndDocument;
+            bndNavi_RKD.BindingSource = DB_Cmd.bndDocument;
+            bndNavi_Izysk.BindingSource = DB_Cmd.bndDocument;
+            bndNavi_KMD.BindingSource = DB_Cmd.bndDocument;
+
+            grid_Z.AutoGenerateColumns = false;
+            grid_RKD.AutoGenerateColumns = false;
+            grid_Izysk.AutoGenerateColumns = false;
+            grid_KMD.AutoGenerateColumns = false;
+
+            grid_Z.Columns["name_Zmail"].DataPropertyName = "NameDoc";
+            grid_Z.Columns["num_Zmail"].DataPropertyName = "Nambe_Doc";
+            grid_Z.Columns["date_Zmail"].DataPropertyName = "DataDoc";
+            grid_Z.Columns["stat_Zmail"].DataPropertyName = "Status";
+            grid_Z.Columns["path_Zmail"].DataPropertyName = "PathDoc";
+
+            grid_RKD.Columns["name_RKD"].DataPropertyName = "NameDoc";
+            grid_RKD.Columns["num_RKD"].DataPropertyName = "Nambe_Doc";
+            grid_RKD.Columns["date_RKD"].DataPropertyName = "DataDoc";
+            grid_RKD.Columns["stat_RKD"].DataPropertyName = "Status";
+            grid_RKD.Columns["path_RKD"].DataPropertyName = "PathDoc";
+
+            grid_Izysk.Columns["name_Iz"].DataPropertyName = "NameDoc";
+            grid_Izysk.Columns["num_Iz"].DataPropertyName = "Nambe_Doc";
+            grid_Izysk.Columns["date_Iz"].DataPropertyName = "DataDoc";
+            grid_Izysk.Columns["stat_Iz"].DataPropertyName = "Status";
+            grid_Izysk.Columns["path_Iz"].DataPropertyName = "PathDoc";
+
+            grid_KMD.Columns["name_KMD"].DataPropertyName = "NameDoc";
+            grid_KMD.Columns["num_KMD"].DataPropertyName = "Nambe_Doc";
+            grid_KMD.Columns["date_KMD"].DataPropertyName = "DataDoc";
+            grid_KMD.Columns["stat_KMD"].DataPropertyName = "Status";
+            grid_KMD.Columns["path_KMD"].DataPropertyName = "PathDoc";
+
 
         }
         #endregion Установка связей контролов с базой
 
         #region FilterGrid
-        private void SetViewTabControl() /// логика - вынести из UI
+
+        private void SetFilterTabGrid()
         {
+           void DocumentTabFilter()
+            {
+                DB_Cmd.bndDocument.RemoveSort();
+                DB_Cmd.bndDocument.RemoveFilter();
+                DB_Cmd.bndDocument.DataSource = null;
+                DB_Cmd.bndDocument.DataSource = DB_Cmd.bndProject;
+                DB_Cmd.bndDocument.DataMember = "ProjectDocuments";
+                DB_Cmd.bndDocument.Sort = "Object_id, Doc_Type, DataDoc";
+
+                switch (tabDocuments.SelectedIndex)
+                {
+                    case 0: // Исходные документы
+                        DB_Cmd.bndDocument.RemoveFilter();
+                        DB_Cmd.bndDocument.Filter = "(Project_id Not Is Null) AND (Control = false) AND (Zadania = false)";
+                        gridDocument.DataSource = DB_Cmd.bndDocument;
+                        break;
+                    case 1: // На контроле
+                        DB_Cmd.bndDocument.RemoveFilter();
+                        DB_Cmd.bndDocument.Filter = "(Project_id Not Is Null) AND (Control = true) AND (Zadania = false)";
+                        grid_MailControl.DataSource = DB_Cmd.bndDocument;
+                        break;
+                    case 2: // Задания
+                        DB_Cmd.bndDocument.RemoveFilter();
+                        DB_Cmd.bndDocument.Filter = "(Project_id Not Is Null) AND (Zadania = true)";
+                        grid_MailControl.DataSource = DB_Cmd.bndDocument;
+                        break;
+                    default:
+                        DB_Cmd.bndDocument.RemoveSort();
+                        DB_Cmd.bndDocument.RemoveFilter();
+                        break;
+
+                }
+            } 
+            
+            void ObjectTabFilter()
+            {
+                DB_Cmd.bndDocument.RemoveSort();
+                DB_Cmd.bndDocument.RemoveFilter();
+                DB_Cmd.bndDocument.DataSource = null;
+                DB_Cmd.bndDocument.DataSource = DB_Cmd.bndObject;
+                DB_Cmd.bndDocument.DataMember = "OBJECTSDocuments";
+                DB_Cmd.bndDocument.Sort = "DataDoc";
+
+                switch (tabControlGrafics.SelectedIndex)
+                {
+                    case 2: // Задания
+                        DB_Cmd.bndDocument.RemoveFilter();
+                        DB_Cmd.bndDocument.Filter = "(Object_id Not Is Null) AND (Zadania = true)";
+                        grid_Z.DataSource = DB_Cmd.bndDocument;
+                        break;
+                    case 3: // РКД
+                        DB_Cmd.bndDocument.RemoveFilter();
+                        DB_Cmd.bndDocument.Filter = "(Object_id Not Is Null) AND (RKD = true)";
+                        grid_RKD.DataSource = DB_Cmd.bndDocument;
+                        break;
+                    case 4: // Изыскания
+                        DB_Cmd.bndDocument.RemoveFilter();
+                        DB_Cmd.bndDocument.Filter = "(Object_id Not Is Null) AND (Izyskania = true)";
+                        grid_Izysk.DataSource = DB_Cmd.bndDocument;
+                        break;
+                    case 5: // КМД
+                        DB_Cmd.bndDocument.RemoveFilter();
+                        DB_Cmd.bndDocument.Filter = "(Object_id Not Is Null) AND (KMD = true)";
+                        grid_KMD.DataSource = DB_Cmd.bndDocument;
+                        break;
+                    default:
+                        DB_Cmd.bndDocument.RemoveSort();
+                        DB_Cmd.bndDocument.RemoveFilter();
+                        break;
+                }
+
+            }
+
+            switch (tabControlMain.SelectedIndex)
+            {
+                case 0: // Документы
+                    DocumentTabFilter();
+                    break;
+                case 1: // Тендер
+                    DB_Cmd.bndDocument.RemoveSort();
+                    DB_Cmd.bndDocument.RemoveFilter();
+                    DB_Cmd.bndDocument.DataSource = null;
+                    DB_Cmd.bndDocument.DataSource = DB_Cmd.bndTender;
+                    DB_Cmd.bndDocument.DataMember = "TenderDocuments";
+                    //DB_Cmd.bndDocument.Sort = "DataDoc";
+
+                    DB_Cmd.bndDocument.Filter = "(Project_id Not Is Null) AND (Tender_id Not Is Null)";
+                    grid_TenderDoc.DataSource = DB_Cmd.bndDocument;
+                    break;
+                case 2: // Договор
+                    DB_Cmd.bndDocument.RemoveSort();
+                    DB_Cmd.bndDocument.RemoveFilter();
+                    DB_Cmd.bndDocument.DataSource = null;
+                    DB_Cmd.bndDocument.DataSource = DB_Cmd.bndDogovor;
+                    DB_Cmd.bndDocument.DataMember = "DogovorDocuments";
+                    DB_Cmd.bndDocument.Sort = "DataDoc";
+
+                    DB_Cmd.bndDocument.Filter = "(Project_id Not Is Null) AND (Dogovor_id Not Is Null)";
+                    grid_DogovorDoc.DataSource = DB_Cmd.bndDocument;
 
 
-        } // Фильтры для Документов
+
+                    break;
+                case 3: // Доп соглашения
+                    DB_Cmd.bndDocument.RemoveSort();
+                    DB_Cmd.bndDocument.RemoveFilter();
+                    DB_Cmd.bndDocument.DataSource = null;
+                    DB_Cmd.bndDocument.DataSource = DB_Cmd.bndDopDogovor;
+                    DB_Cmd.bndDocument.DataMember = "DopSoglasheniaDocuments";
+                    //DB_Cmd.bndDocument.Sort = "DataDoc";
+
+                    DB_Cmd.bndDocument.Filter = "(Project_id Not Is Null) AND (Dogovor_id Not Is Null) AND (DD_id Not Is Null)";
+                    grid_DocumentDD.DataSource = DB_Cmd.bndDocument;
+
+
+
+                    break;
+                case 4: // Объект
+                    ObjectTabFilter();
+                    break;
+                default:
+                    DB_Cmd.bndDocument.RemoveSort();
+                    DB_Cmd.bndDocument.RemoveFilter();
+                    break;
+            }
+         
+        }
+
+        private void tabControlGrafics_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SetFilterTabGrid();
+        }
+
+        private void tabDocuments_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SetFilterTabGrid();
+         }
+
+        private void tabControlMain_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SetFilterTabGrid();
+        }
+
         private void SelectedTypeDocuments()
         {
             //0-ИД; 1-Письма; 2-Задания; 3-Тендер; 4-Договор; 5-График; 6- Объект; 7- Изыскания; 8- Штамп; 9- Разное; 10- Основные положения; 11- Входящие; 12- Исходящие
@@ -388,24 +567,110 @@ namespace GW_Dogovor
         #endregion FilterGrid
 
         #region View
-        private void bndNavigator_Graph_Mark_Paint(object sender, PaintEventArgs e)
+        #region View Buttons BindingNavigators
+        private void TabControlCount(DataGridView grid, BindingNavigator bndNav)
         {
-            if (grid_GrafMark.Rows.Count == 0)
+            if (grid.Rows.Count == 0)
             {
-                tbtn_EditMark.Enabled = false;
-                tbtn_DeleteMark.Enabled = false;
+                bndNav.Items[9].Enabled = false; //Button Edit
+                bndNav.Items[11].Enabled = false; //Button Delete
             }
             else
             {
-                tbtn_EditMark.Enabled = true;
-                tbtn_DeleteMark.Enabled = true;
+                bndNav.Items[9].Enabled = true;
+                bndNav.Items[11].Enabled = true;
             }
         }
+
+        private void bndNavigator_Graph_Mark_Paint(object sender, PaintEventArgs e)
+        {
+            TabControlCount(grid_GrafMark, bndNavigator_Graph_Mark);
+        }
+
+        private void bndNavigatorObject_Paint(object sender, PaintEventArgs e)
+        {
+            TabControlCount(grid_Object, bndNavigatorObject);
+        }
+
+        private void bndNavigator_Graph_Z_Paint(object sender, PaintEventArgs e)
+        {
+            TabControlCount(grid_GrafZ, bndNavigator_Graph_Z);
+        }
+       
+        private void bndNavigator_Zadania_file_Paint(object sender, PaintEventArgs e)
+        {
+            TabControlCount(grid_Z, bndNavigator_Zadania_file);
+        }
+
+        private void bndNavi_KMD_Paint(object sender, PaintEventArgs e)
+        {
+            TabControlCount(grid_KMD, bndNavi_KMD);
+        }
+
+        private void bndNavi_Izysk_Paint(object sender, PaintEventArgs e)
+        {
+            TabControlCount(grid_Izysk, bndNavi_Izysk);
+        }
+
+        private void bndNavi_RKD_Paint(object sender, PaintEventArgs e)
+        {
+            TabControlCount(grid_RKD, bndNavi_RKD);
+        }
+
+        private void bndNavigatorDDog_Paint(object sender, PaintEventArgs e)
+        {
+            TabControlCount(grid_DD, bndNavigatorDDog);
+        }
+
+        private void bndNavigator_KP_Dop_Paint(object sender, PaintEventArgs e)
+        {
+            TabControlCount(grid_CPlanDD, bndNavigator_KP_Dop);
+        }
+
+        private void bndNavigatorDogovor_Paint(object sender, PaintEventArgs e)
+        {
+            TabControlCount(grid_Dogovor, bndNavigatorDogovor);
+        }
+
+        private void bndNavigator_KP_Dog_Paint(object sender, PaintEventArgs e)
+        {
+            //TabControlCount(grid_CPlan, bndNavigator_KP_Dog);
+        }
+      
+        private void bndNav_Act_Paint(object sender, PaintEventArgs e)
+        {
+            TabControlCount(grid_Act, bndNav_Act);
+        }
+
+        private void bndNavigatorTender_Paint(object sender, PaintEventArgs e)
+        {
+            //TabControlCount(grid_Act, bndNav_Act);
+            if (DB_Cmd.bndTender.Count == 0)
+            {
+                bndNavigatorTender.Items[9].Enabled = false; //Button Edit
+                bndNavigatorTender.Items[11].Enabled = false; //Button Delete
+            }
+            else
+            {
+                bndNavigatorTender.Items[9].Enabled = true;
+                bndNavigatorTender.Items[11].Enabled = true;
+            }
+        }
+
+        private void bndNvg_IshDoc_Paint(object sender, PaintEventArgs e)
+        {
+            TabControlCount(gridDocument, bndNvg_Doc);
+        }
+
+
+
+        #endregion View Buttons BindingNavigators
+
         private void SetViewBindNavigators()
         {
             if (DB_Cmd.bndProject.Count != 0)
             {
-                bndNvg_IshDoc.Enabled = true;
+                bndNvg_Doc.Enabled = true;
                 bndNavigatorTender.Enabled = true;
                 if (DB_Cmd.bndTender.Count != 0)
                 {
@@ -453,10 +718,11 @@ namespace GW_Dogovor
             }
             else
             {
-                bndNvg_IshDoc.Enabled = false;
+                bndNvg_Doc.Enabled = false;
                 bndNavigatorTender.Enabled = false;
             }
         } // Активность Навигаторов
+
         private void ProjectPanelsVisable(object sender, EventArgs e)
         {
             Settings.Default.PanelsProjectView = !Settings.Default.PanelsProjectView;
@@ -489,14 +755,16 @@ namespace GW_Dogovor
                 this.Size = Settings.Default.Main_Size;
             }
 
-            this.splitContainer1.SplitterDistance = Settings.Default.Splitter_position;
-            splitter1.SplitPosition = Settings.Default.TabDogovorSplit_position;
-            splitter2.SplitPosition = Settings.Default.TabDDogSplit_position;
-            //if (Settings.Default.TabPage != null)
-            //{
+            if (Settings.Default.TabDogovorSplit_position != 0 &&
+                Settings.Default.TabDDogSplit_position != 0 &&
+                Settings.Default.Splitter_position != 0)
+            {
+                splitter1.SplitPosition = Settings.Default.TabDogovorSplit_position;
+                splitter2.SplitPosition = Settings.Default.TabDDogSplit_position;
+                this.splitContainer1.SplitterDistance = Settings.Default.Splitter_position;
+            }
             tabControlMain.SelectTab(Settings.Default.TabPage);
-            //}
-
+            
             splitContainerTender.SplitterDistance = 450;
 
             SetViewForm();
@@ -521,11 +789,15 @@ namespace GW_Dogovor
 
             Settings.Default.Save();
         }
+
+
         private void Form_main_FormClosing(object sender, FormClosingEventArgs e)
         {
             SetFormView();
             DB_Cmd.tableManager.UpdateAll(DB_Cmd.dsDB);
         }
+
+       
         private void grid_ProjectCode_SelectionChanged(object sender, EventArgs e)
         {
             SetViewBindNavigators();
@@ -550,6 +822,7 @@ namespace GW_Dogovor
             fSel.ShowDialog();
         }
 
+        // Узнаём, где находится пользователь и формируем путь для сохранения файлов по Drag
         private string GetPositionUser()
         {
             string pth = null;
@@ -639,7 +912,7 @@ namespace GW_Dogovor
             fе.ShowDialog();
         }
 
-        #endregion
+        #endregion Dogovor
 
         #region DopDogovor
         private void EditDopDogovor()
@@ -648,13 +921,12 @@ namespace GW_Dogovor
             fе.ShowDialog();
         }
 
-        #endregion
+        #endregion DopDogovor
 
         #region Document
         private void EditDoc()
         {
-            Form_Document fed = new Form_Document();
-            fed.ShowDialog();
+            using (Form_Document fed = new Form_Document()) { fed.ShowDialog(); }
         }
 
         private void DeleteDoc()
@@ -667,7 +939,7 @@ namespace GW_Dogovor
                 p = pth.Remove(0, lp.Length + 1);
             if (pth.Contains(Sp))
                 p = pth.Remove(0, Sp.Length + 1);
-            if (p != null && p != "")
+            if (!String.IsNullOrEmpty(p))
                 FileA.DeleteDocument(p, lp, Sp);
 
             DB_Cmd.DeleteDoc();
@@ -703,17 +975,20 @@ namespace GW_Dogovor
         #region EditText
         private void dbEditText(BindingSource bnd, String fld)
         {
-            FormEditText fe = new FormEditText(bnd, fld);
-            if (fe.ShowDialog() == DialogResult.OK)
+            using (FormEditText fe = new FormEditText(bnd, fld))
             {
-                fe.Validate();
-                DB_Cmd.Save_BndDB(bnd);
+                if (fe.ShowDialog() == DialogResult.OK)
+                {
+                    fe.Validate();
+                    DB_Cmd.Save_BndDB(bnd);
+                }
+                else
+                {
+                    fe.Validate();
+                    DB_Cmd.Cancel_BndDB(bnd);
+                }
             }
-            else
-            {
-                fe.Validate();
-                DB_Cmd.Cancel_BndDB(bnd);
-            }
+            
         }
         #endregion EditText
 
@@ -934,6 +1209,7 @@ namespace GW_Dogovor
                 MessageBox.Show("Error of run file");
             }
         }
+
         private void grid_FileArh_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
             //string fs = grid_FileArh[0, e.RowIndex].Value.ToString();
@@ -1158,12 +1434,13 @@ namespace GW_Dogovor
         #region Document
         private void bndNav_EditDoc_Click(object sender, EventArgs e)
         {
-
+            EditDoc();
         }
 
         private void bndNav_AddDoc_Click(object sender, EventArgs e)
         {
-
+            DB_Cmd.AddDoc();
+            EditDoc();
         }
 
         private void bndNav_DeleteDoc_Click(object sender, EventArgs e)
@@ -1171,6 +1448,25 @@ namespace GW_Dogovor
             DeleteDoc();
         }
         #endregion Document
+
+        #region DopSogl
+        private void tbtn_EditDDog_Click(object sender, EventArgs e)
+        {
+            EditDopDogovor();
+        }
+
+        private void tbtn_AddDDog_Click(object sender, EventArgs e)
+        {
+            DB_Cmd.AddDopSoglashenia();
+            EditDopDogovor();
+        }
+
+        private void tbtn_DeleteDDog_Click(object sender, EventArgs e)
+        {
+            DB_Cmd.DeleteDopSoglashenia();
+            DB_Cmd.SaveDopSoglashenia();
+        }
+        #endregion DopSogl
 
 
         #endregion BindingManager_button
@@ -1191,46 +1487,17 @@ namespace GW_Dogovor
             ConnectDB();
         }
 
-        private void tabControlMain_SelectedIndexChanged(object sender, EventArgs e)
+        private void gridDocument_Paint(object sender, PaintEventArgs e)
         {
-            //0-ИД; 1-Письма; 2-Задания; 3-Тендер; 4-Договор; 5-График; 6- Объект; 7- Изыскания; 8- Штамп; 9- Разное; 10- Основные положения; 11- Входящие; 12- Исходящие
-            switch (tabControlMain.SelectedIndex)
-            {
-                case 0: // Документы
-                    //DB_Cmd.TabDocumentFill();
-                    SelectedTypeDocuments();
-
-                    break;
-                case 1: // Тендер
-                    //DB_Cmd.TabTenderFill();
-                    DB_Cmd.bndDocument.Filter = "(Project_id Not Is Null) AND (Tender_id Not Is Null) AND (Object_id Is Null) AND (Event_id Is Null) AND (Act_id Is Null)";
-                    break;
-                case 2: // Договор * добавить поле id_Dogovor
-                    //DB_Cmd.TabDogovorFill();
-                    DB_Cmd.bndDocument.Filter = "(Project_id Not Is Null) AND (Tender_id Not Is Null) AND (Object_id Is Null) AND (Event_id Is Null) AND (Act_id Is Null)";
-                    break;
-                case 3:
-
-                    break;
-                case 4:
-
-                    break;
-                case 5: // Архив
-                    //tb_PathArh.Text = Settings.Default.PathArhive;
-                    //if (Directory.Exists(tb_PathArh.Text))
-                    //            GetTreeDir(tree_Arh, tb_PathArh.Text);
-                    break;
-                case 6:
-
-                    break;
-                default:
-                    DB_Cmd.bndDocument.RemoveFilter();
-                    break;
-
-            }
-
-            SetViewBindNavigators();
+            MessageBox.Show("DF");
         }
+
+        private void bndNvg_Doc_RefreshItems(object sender, EventArgs e)
+        {
+
+        }
+
+      
     }
 
 }

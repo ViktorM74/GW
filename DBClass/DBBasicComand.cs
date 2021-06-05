@@ -165,7 +165,7 @@ namespace DBClass
             //Dogovor
             bndDogovor.DataSource = bndProject;
             bndDogovor.DataMember = "ProjectDogovor";
-            bndDogovor.Sort = "Nambe_Dog";
+            //bndDogovor.Sort = "Nambe_Dog";
 
             bndCalendarPlan.DataSource = bndDogovor;
             bndCalendarPlan.DataMember = "DogovorCalendarPlan";
@@ -291,8 +291,7 @@ namespace DBClass
             {
                 bnd.EndEdit();
                 tableManager.UpdateAll(dsDB);
-                //position = bnd.Position;
-
+               
                 return true;
             }
             catch (Exception ex)
@@ -333,16 +332,16 @@ namespace DBClass
 
         private static int GetIndex(BindingSource bnd, string fld)
         {
-            //if (((DataRowView)bnd.Current).Row.RowState != DataRowState.Detached)
-            //{
-            int findID = (int)((DataRowView)bnd.Current).Row[fld];
-            //if (findID != null)
-            //    return bnd.Find(fld, findID) - 1;
-            //else
-            return findID;
-            //}
-            //else
-            //    return 0;
+            try
+            {
+                int findID = (int)((DataRowView)bnd.Current).Row[fld];
+                return bnd.Find(fld, findID) - 1;
+            }
+            catch 
+            {
+                return 0;
+            }
+           
         }
 
         #region Project
@@ -440,9 +439,9 @@ namespace DBClass
             bndDocument.Position = position;
         }
 
-        public static void AddDoc()
+        public static object AddDoc()
         {
-            bndDocument.AddNew();
+            return bndDocument.AddNew();
         }
 
         public static void DeleteDoc()
