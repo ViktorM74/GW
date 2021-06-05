@@ -1922,7 +1922,7 @@ FROM            Doc_Group</CommandText>
                 </xs:simpleType>
               </xs:element>
               <xs:element name="NumDD" msdata:ReadOnly="true" msdata:Expression="Parent([DopSoglasheniaCalendarPlan]).[Nambe_DS]" msprop:Generator_ColumnVarNameInTable="columnNumDD" msprop:Generator_ColumnPropNameInRow="NumDD" msprop:Generator_ColumnPropNameInTable="NumDDColumn" msprop:Generator_UserColumnName="NumDD" type="xs:string" minOccurs="0" />
-              <xs:element name="ViewCPDog" msprop:Generator_ColumnVarNameInTable="columnViewCPDog" msprop:Generator_ColumnPropNameInRow="ViewCPDog" msprop:Generator_ColumnPropNameInTable="ViewCPDogColumn" msprop:Generator_UserColumnName="ViewCPDog" type="xs:boolean" minOccurs="0" />
+              <xs:element name="ViewCPDog" msprop:Generator_ColumnVarNameInTable="columnViewCPDog" msprop:Generator_ColumnPropNameInRow="ViewCPDog" msprop:Generator_ColumnPropNameInTable="ViewCPDogColumn" msprop:Generator_UserColumnName="ViewCPDog" type="xs:boolean" default="true" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

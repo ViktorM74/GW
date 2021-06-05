@@ -36,10 +36,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -52,6 +48,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.lbl_BasePath = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
@@ -203,16 +203,6 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tab_CPlan = new System.Windows.Forms.TabPage();
             this.grid_CPlan = new System.Windows.Forms.DataGridView();
-            this.id_DDog = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Num_sort = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Num_Etap = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Name_Etap = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.day = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nachalo_Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Konec_Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Summ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Valute = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StatusCPlan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bndNavigator_KP_Dog = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorCountItem1 = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorMoveFirstItem1 = new System.Windows.Forms.ToolStripButton();
@@ -513,18 +503,27 @@
             this.stat_Zmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.path_Zmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.run_Zmail = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.id_DDog = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Num_Etap = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Name_Etap = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.day = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nachalo_Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Konec_Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Summ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Valute = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StatusCPlan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name_Iz = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.num_Iz = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.date_Iz = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.stat_Iz = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.path_Iz = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.run_Iz = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.run_Iz = new System.Windows.Forms.DataGridViewButtonColumn();
             this.name_KMD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.num_KMD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.date_KMD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.stat_KMD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.path_KMD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.run_KMD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.run_KMD = new System.Windows.Forms.DataGridViewButtonColumn();
             this.statusStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
@@ -2202,7 +2201,6 @@
             this.grid_CPlan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grid_CPlan.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id_DDog,
-            this.Num_sort,
             this.Num_Etap,
             this.Name_Etap,
             this.day,
@@ -2226,88 +2224,6 @@
             this.grid_CPlan.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grid_CPlan.Size = new System.Drawing.Size(805, 162);
             this.grid_CPlan.TabIndex = 2;
-            this.grid_CPlan.DoubleClick += new System.EventHandler(this.btn_edit_CP_Click);
-            // 
-            // id_DDog
-            // 
-            this.id_DDog.HeaderText = "ДС";
-            this.id_DDog.Name = "id_DDog";
-            this.id_DDog.ReadOnly = true;
-            this.id_DDog.Width = 40;
-            // 
-            // Num_sort
-            // 
-            this.Num_sort.HeaderText = "Num_sort";
-            this.Num_sort.Name = "Num_sort";
-            this.Num_sort.ReadOnly = true;
-            this.Num_sort.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.Num_sort.Visible = false;
-            this.Num_sort.Width = 5;
-            // 
-            // Num_Etap
-            // 
-            this.Num_Etap.HeaderText = "№";
-            this.Num_Etap.Name = "Num_Etap";
-            this.Num_Etap.ReadOnly = true;
-            this.Num_Etap.Width = 60;
-            // 
-            // Name_Etap
-            // 
-            this.Name_Etap.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Name_Etap.DefaultCellStyle = dataGridViewCellStyle6;
-            this.Name_Etap.HeaderText = "Название";
-            this.Name_Etap.Name = "Name_Etap";
-            this.Name_Etap.ReadOnly = true;
-            // 
-            // day
-            // 
-            this.day.HeaderText = "Дни";
-            this.day.Name = "day";
-            this.day.ReadOnly = true;
-            this.day.Width = 50;
-            // 
-            // Nachalo_Data
-            // 
-            dataGridViewCellStyle7.Format = "d";
-            dataGridViewCellStyle7.NullValue = null;
-            this.Nachalo_Data.DefaultCellStyle = dataGridViewCellStyle7;
-            this.Nachalo_Data.HeaderText = "Начало";
-            this.Nachalo_Data.Name = "Nachalo_Data";
-            this.Nachalo_Data.ReadOnly = true;
-            // 
-            // Konec_Data
-            // 
-            dataGridViewCellStyle8.Format = "d";
-            dataGridViewCellStyle8.NullValue = null;
-            this.Konec_Data.DefaultCellStyle = dataGridViewCellStyle8;
-            this.Konec_Data.HeaderText = "Окончание";
-            this.Konec_Data.Name = "Konec_Data";
-            this.Konec_Data.ReadOnly = true;
-            // 
-            // Summ
-            // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle9.Format = "N2";
-            dataGridViewCellStyle9.NullValue = null;
-            this.Summ.DefaultCellStyle = dataGridViewCellStyle9;
-            this.Summ.HeaderText = "Сумма";
-            this.Summ.Name = "Summ";
-            this.Summ.ReadOnly = true;
-            // 
-            // Valute
-            // 
-            this.Valute.HeaderText = "Валюта";
-            this.Valute.Name = "Valute";
-            this.Valute.ReadOnly = true;
-            this.Valute.Width = 60;
-            // 
-            // StatusCPlan
-            // 
-            this.StatusCPlan.HeaderText = "Статус";
-            this.StatusCPlan.Name = "StatusCPlan";
-            this.StatusCPlan.ReadOnly = true;
-            this.StatusCPlan.Width = 60;
             // 
             // bndNavigator_KP_Dog
             // 
@@ -2425,7 +2341,7 @@
             this.tab_Act.Location = new System.Drawing.Point(4, 22);
             this.tab_Act.Name = "tab_Act";
             this.tab_Act.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_Act.Size = new System.Drawing.Size(807, 193);
+            this.tab_Act.Size = new System.Drawing.Size(811, 193);
             this.tab_Act.TabIndex = 1;
             this.tab_Act.Text = "Акты";
             this.tab_Act.UseVisualStyleBackColor = true;
@@ -2436,7 +2352,7 @@
             this.grid_Act.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grid_Act.Location = new System.Drawing.Point(3, 28);
             this.grid_Act.Name = "grid_Act";
-            this.grid_Act.Size = new System.Drawing.Size(801, 162);
+            this.grid_Act.Size = new System.Drawing.Size(805, 162);
             this.grid_Act.TabIndex = 1;
             // 
             // bndNav_Act
@@ -2464,7 +2380,7 @@
             this.bndNav_Act.MovePreviousItem = this.bindingNavigatorMovePreviousItem6;
             this.bndNav_Act.Name = "bndNav_Act";
             this.bndNav_Act.PositionItem = this.bindingNavigatorPositionItem6;
-            this.bndNav_Act.Size = new System.Drawing.Size(801, 25);
+            this.bndNav_Act.Size = new System.Drawing.Size(805, 25);
             this.bndNav_Act.TabIndex = 0;
             this.bndNav_Act.Text = "bindingNavigator1";
             this.bndNav_Act.Paint += new System.Windows.Forms.PaintEventHandler(this.bndNav_Act_Paint);
@@ -5335,6 +5251,78 @@
             this.run_Zmail.ReadOnly = true;
             this.run_Zmail.Width = 25;
             // 
+            // id_DDog
+            // 
+            this.id_DDog.HeaderText = "ДС";
+            this.id_DDog.Name = "id_DDog";
+            this.id_DDog.ReadOnly = true;
+            this.id_DDog.Width = 40;
+            // 
+            // Num_Etap
+            // 
+            this.Num_Etap.HeaderText = "№";
+            this.Num_Etap.Name = "Num_Etap";
+            this.Num_Etap.ReadOnly = true;
+            this.Num_Etap.Width = 60;
+            // 
+            // Name_Etap
+            // 
+            this.Name_Etap.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Name_Etap.DefaultCellStyle = dataGridViewCellStyle6;
+            this.Name_Etap.HeaderText = "Название";
+            this.Name_Etap.Name = "Name_Etap";
+            this.Name_Etap.ReadOnly = true;
+            // 
+            // day
+            // 
+            this.day.HeaderText = "Дни";
+            this.day.Name = "day";
+            this.day.ReadOnly = true;
+            this.day.Width = 50;
+            // 
+            // Nachalo_Data
+            // 
+            dataGridViewCellStyle7.Format = "d";
+            dataGridViewCellStyle7.NullValue = null;
+            this.Nachalo_Data.DefaultCellStyle = dataGridViewCellStyle7;
+            this.Nachalo_Data.HeaderText = "Начало";
+            this.Nachalo_Data.Name = "Nachalo_Data";
+            this.Nachalo_Data.ReadOnly = true;
+            // 
+            // Konec_Data
+            // 
+            dataGridViewCellStyle8.Format = "d";
+            dataGridViewCellStyle8.NullValue = null;
+            this.Konec_Data.DefaultCellStyle = dataGridViewCellStyle8;
+            this.Konec_Data.HeaderText = "Окончание";
+            this.Konec_Data.Name = "Konec_Data";
+            this.Konec_Data.ReadOnly = true;
+            // 
+            // Summ
+            // 
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle9.Format = "N2";
+            dataGridViewCellStyle9.NullValue = null;
+            this.Summ.DefaultCellStyle = dataGridViewCellStyle9;
+            this.Summ.HeaderText = "Сумма";
+            this.Summ.Name = "Summ";
+            this.Summ.ReadOnly = true;
+            // 
+            // Valute
+            // 
+            this.Valute.HeaderText = "Валюта";
+            this.Valute.Name = "Valute";
+            this.Valute.ReadOnly = true;
+            this.Valute.Width = 60;
+            // 
+            // StatusCPlan
+            // 
+            this.StatusCPlan.HeaderText = "Статус";
+            this.StatusCPlan.Name = "StatusCPlan";
+            this.StatusCPlan.ReadOnly = true;
+            this.StatusCPlan.Width = 60;
+            // 
             // name_Iz
             // 
             this.name_Iz.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -5371,6 +5359,8 @@
             this.run_Iz.HeaderText = "***";
             this.run_Iz.Name = "run_Iz";
             this.run_Iz.ReadOnly = true;
+            this.run_Iz.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.run_Iz.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.run_Iz.Width = 25;
             // 
             // name_KMD
@@ -5409,6 +5399,8 @@
             this.run_KMD.HeaderText = "***";
             this.run_KMD.Name = "run_KMD";
             this.run_KMD.ReadOnly = true;
+            this.run_KMD.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.run_KMD.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.run_KMD.Width = 25;
             // 
             // Form_main
@@ -5913,16 +5905,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
         private System.Windows.Forms.DataGridViewTextBoxColumn PathDoc;
         private System.Windows.Forms.DataGridViewButtonColumn btnPath;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_DDog;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Num_sort;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Num_Etap;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Name_Etap;
-        private System.Windows.Forms.DataGridViewTextBoxColumn day;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nachalo_Data;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Konec_Data;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Summ;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Valute;
-        private System.Windows.Forms.DataGridViewTextBoxColumn StatusCPlan;
         private System.Windows.Forms.DataGridViewTextBoxColumn num_ds;
         private System.Windows.Forms.DataGridViewTextBoxColumn num_sort_ds;
         private System.Windows.Forms.DataGridViewTextBoxColumn name_ds;
@@ -6046,18 +6028,27 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn stat_Zmail;
         private System.Windows.Forms.DataGridViewTextBoxColumn path_Zmail;
         private System.Windows.Forms.DataGridViewButtonColumn run_Zmail;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_DDog;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Num_Etap;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Name_Etap;
+        private System.Windows.Forms.DataGridViewTextBoxColumn day;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nachalo_Data;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Konec_Data;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Summ;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Valute;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StatusCPlan;
         private System.Windows.Forms.DataGridViewTextBoxColumn name_Iz;
         private System.Windows.Forms.DataGridViewTextBoxColumn num_Iz;
         private System.Windows.Forms.DataGridViewTextBoxColumn date_Iz;
         private System.Windows.Forms.DataGridViewTextBoxColumn stat_Iz;
         private System.Windows.Forms.DataGridViewTextBoxColumn path_Iz;
-        private System.Windows.Forms.DataGridViewTextBoxColumn run_Iz;
+        private System.Windows.Forms.DataGridViewButtonColumn run_Iz;
         private System.Windows.Forms.DataGridViewTextBoxColumn name_KMD;
         private System.Windows.Forms.DataGridViewTextBoxColumn num_KMD;
         private System.Windows.Forms.DataGridViewTextBoxColumn date_KMD;
         private System.Windows.Forms.DataGridViewTextBoxColumn stat_KMD;
         private System.Windows.Forms.DataGridViewTextBoxColumn path_KMD;
-        private System.Windows.Forms.DataGridViewTextBoxColumn run_KMD;
+        private System.Windows.Forms.DataGridViewButtonColumn run_KMD;
     }
 }
 

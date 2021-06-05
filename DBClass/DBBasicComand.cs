@@ -165,11 +165,12 @@ namespace DBClass
             //Dogovor
             bndDogovor.DataSource = bndProject;
             bndDogovor.DataMember = "ProjectDogovor";
-            //bndDogovor.Sort = "Nambe_Dog";
+            bndDogovor.Sort = "Nambe_Dog";
 
             bndCalendarPlan.DataSource = bndDogovor;
             bndCalendarPlan.DataMember = "DogovorCalendarPlan";
             bndCalendarPlan.Sort = "Num_sort";
+            bndCalendarPlan.Filter = "(ViewCPDog Not Is Null)";
 
             bndAct.DataSource = bndCalendarPlan;
             bndAct.DataMember = "CalendarPlanAct";
@@ -184,6 +185,7 @@ namespace DBClass
             bndCalendarPlanDD.DataSource = bndDopDogovor;
             bndCalendarPlanDD.DataMember = "DopSoglasheniaCalendarPlan";
             bndCalendarPlanDD.Sort = "Num_sort";
+           
 
             //Object
             bndObject.DataSource = bndDogovor;
@@ -334,8 +336,7 @@ namespace DBClass
         {
             try
             {
-                int findID = (int)((DataRowView)bnd.Current).Row[fld];
-                return bnd.Find(fld, findID) - 1;
+                return (int)((DataRowView)bnd.Current).Row[fld];
             }
             catch 
             {
@@ -689,7 +690,7 @@ namespace DBClass
             }
             finally
             {
-                bndCalendarPlanDD.Position = bndCalendarPlan.Find("ID_Kplan", Index);
+                bndCalendarPlanDD.Position = bndCalendarPlanDD.Find("ID_Kplan", Index);
                 ///System.ArgumentException: "Свойство 'ID_Kplan' для DataMember не найдено в DataSource
             }
         }
