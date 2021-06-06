@@ -399,14 +399,12 @@ namespace AddFilesToFolder
 
             if (ac)
             {
-                Form_Document fe = new Form_Document();
-                fe.Show();
-                //this.Hide();
-                //string s = fe.Tag.ToString();
-                //FileA.RunPath(s);
-                this.Close();
+                string path = DB_Cmd.GetCurrentValueField(DB_Cmd.bndDocument, "PathDoc").ToString();
+                if (!String.IsNullOrEmpty(path))
+                                FileA.RunPath(path);
             }
 
+            Close();
         }
 
         private void btn_contextMenuNameFolder_Click(object sender, EventArgs e)

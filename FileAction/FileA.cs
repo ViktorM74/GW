@@ -227,8 +227,10 @@ namespace FileAction
                     DeleteFolder(p1);
             }
 
-            D(pLocal);
-            D(pServer);
+            if (!String.IsNullOrEmpty(pLocal))
+                      D(pLocal);
+            if (!String.IsNullOrEmpty(pServer))
+                      D(pServer);
 
         }
 

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.IO;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using AddFilesToFolder;
 using CPlan;
@@ -300,6 +301,11 @@ namespace GW_Dogovor
             grid_CPlanDD.Columns["name_ds"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
 
+            grid_DocumentDD.AutoGenerateColumns = false;
+            grid_DocumentDD.DataSource = DB_Cmd.bndDocument;
+            grid_DocumentDD.Columns["nameDoc_DS"].DataPropertyName = "NameDoc";
+
+
             bndNavigatorDDog.BindingSource = DB_Cmd.bndDopDogovor;
             bndNavigator_KP_Dop.BindingSource = DB_Cmd.bndCalendarPlanDD;
            
@@ -476,7 +482,7 @@ namespace GW_Dogovor
                     DB_Cmd.bndDocument.DataMember = "TenderDocuments";
                     DB_Cmd.bndDocument.Sort = "DataDoc";
 
-                    DB_Cmd.bndDocument.Filter = "(Project_id Not Is Null) AND (Tender_id Not Is Null)";
+                    DB_Cmd.bndDocument.Filter = "(Tender_id Not Is Null)";
                     grid_TenderDoc.DataSource = DB_Cmd.bndDocument;
                     break;
                 case 2: // Договор
@@ -487,7 +493,8 @@ namespace GW_Dogovor
                     DB_Cmd.bndDocument.DataMember = "DogovorDocuments";
                     DB_Cmd.bndDocument.Sort = "DataDoc";
 
-                    DB_Cmd.bndDocument.Filter = "(Project_id Not Is Null) AND (Dogovor_id Not Is Null)";
+                    DB_Cmd.bndDocument.Filter = "(Dogovor_id Not Is Null)";
+                    grid_DogovorDoc.AutoGenerateColumns = false;
                     grid_DogovorDoc.DataSource = DB_Cmd.bndDocument;
 
                     DB_Cmd.bndCalendarPlan.RemoveFilter();
@@ -503,10 +510,9 @@ namespace GW_Dogovor
                     DB_Cmd.bndDocument.DataMember = "DopSoglasheniaDocuments";
                     DB_Cmd.bndDocument.Sort = "DataDoc";
 
-                    DB_Cmd.bndDocument.Filter = "(Project_id Not Is Null) AND (Dogovor_id Not Is Null) AND (DD_id Not Is Null)";
+                    DB_Cmd.bndDocument.Filter = "(DD_id Not Is Null)";
+                    grid_DocumentDD.AutoGenerateColumns = false;
                     grid_DocumentDD.DataSource = DB_Cmd.bndDocument;
-
-
 
                     break;
                 case 4: // Объект
@@ -792,14 +798,12 @@ namespace GW_Dogovor
             Settings.Default.Save();
         }
 
-
         private void Form_main_FormClosing(object sender, FormClosingEventArgs e)
         {
             SetFormView();
             DB_Cmd.tableManager.UpdateAll(DB_Cmd.dsDB);
         }
 
-       
         private void grid_ProjectCode_SelectionChanged(object sender, EventArgs e)
         {
             SetViewBindNavigators();
@@ -836,7 +840,7 @@ namespace GW_Dogovor
                     pth = null;
                     break;
                 case 1:
-                    pth = DB_Cmd.GetCurrentValueField(DB_Cmd.bndTender, "Path");
+                    pth = DB_Cmd.GetCurrentValueField(DB_Cmd.bndTender, "Path").ToString();
                     string s = feature.RemoveSubString(pth, link_LocalFld.Text);
                     if (s != null)
                     {
@@ -942,24 +946,39 @@ namespace GW_Dogovor
         #region Document
         private void EditDoc()
         {
-            using (Form_Document fed = new Form_Document()) { fed.ShowDialog(); }
+            using (Form_Document fed = new Form_Document()) 
+            {
+               fed.ShowDialog(); 
+            }
         }
 
         private void DeleteDoc()
         {
-            string p = null;
-            string lp = link_LocalFld.Text;
-            string Sp = link_ServetFld.Text;
-            string pth = DB_Cmd.GetCurrentValueField(DB_Cmd.bndDocument, "PathDoc");
-            if (pth.Contains(lp))
-                p = pth.Remove(0, lp.Length + 1);
-            if (pth.Contains(Sp))
-                p = pth.Remove(0, Sp.Length + 1);
-            if (!String.IsNullOrEmpty(p))
-                FileA.DeleteDocument(p, lp, Sp);
+            // вносим изменения в БД
+            string pth = DB_Cmd.GetCurrentValueField(DB_Cmd.bndDocument, "PathDoc").ToString();
 
-            DB_Cmd.DeleteDoc();
-            DB_Cmd.SaveDoc();
+            bool delFile = DB_Cmd.DeleteDoc();
+            
+            if (delFile)
+            {
+                DB_Cmd.SaveDoc();
+
+                string p = null;
+                string lp = link_LocalFld.Text;
+                string Sp = link_ServetFld.Text;
+
+               
+                if (pth.Contains(lp))
+                    p = pth.Remove(0, lp.Length + 1);
+                else
+                    lp = null;
+                if (pth.Contains(Sp))
+                    p = pth.Remove(0, Sp.Length + 1);
+                else
+                    Sp = null;
+                if (!String.IsNullOrEmpty(p))
+                    FileA.DeleteDocument(p, lp, Sp);
+            }
 
         }
 
@@ -1029,37 +1048,78 @@ namespace GW_Dogovor
 
         private void grid_TenderDoc_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            //MessageBox.Show(e.ColumnIndex.ToString());
+            DocumentCellClickRun(e, 3);
 
-            if (e.ColumnIndex == 3)
+            DocumentCellClikDelete(e, 4);
+        }
+
+        private void DocumentCellClikDelete(DataGridViewCellEventArgs e, int field)
+        {
+            if (e.ColumnIndex == field)
             {
-                string p = grid_TenderDoc[2, e.RowIndex].Value.ToString(); // читаем путь
-
-                if (FileA.GetAtributesPath(p))
-                    FileA.RunFile(p);
-                else
-                    FileA.RunFolder(p);
-
-            }
-            if (e.ColumnIndex == 4)
-            {
-                string DateFld = dtp_TenderData.Value.ToShortDateString();
-                string fld = Path.Combine("Тендер", DateFld);
                 DeleteDoc();
             }
         }
 
         private void gridDocument_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 6)
+            DocumentCellClickRun(e, 6);
+        }
+
+        private void grid_MailControl_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DocumentCellClickRun(e, 6);
+        }
+
+        private void grid_Zadania_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DocumentCellClickRun(e, 6);
+        }
+
+        private void grid_DogovorDoc_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DocumentCellClickRun(e, 1);
+
+            DocumentCellClikDelete(e, 2);
+        }
+
+        private void grid_DocumentDD_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DocumentCellClickRun(e, 1);
+
+            DocumentCellClikDelete(e, 2);
+        }
+
+        private void grid_Z_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DocumentCellClickRun(e, 5);
+        }
+
+        private void grid_RKD_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DocumentCellClickRun(e, 5);
+        }
+
+        private void grid_Izysk_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DocumentCellClickRun(e, 5);
+        }
+
+        private void grid_KMD_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DocumentCellClickRun(e, 5);
+        }
+
+        private void DocumentCellClickRun(DataGridViewCellEventArgs e, int field)
+        {
+            if (e.ColumnIndex == field)
             {
-                string p = gridDocument[5, e.RowIndex].Value.ToString(); // читаем путь
+                string p = DB_Cmd.GetCurrentValueField(DB_Cmd.bndDocument, "PathDoc").ToString(); ; // читаем путь
 
                 if (FileA.GetAtributesPath(p))
                     FileA.RunFile(p);
                 else
                     FileA.RunFolder(p);
-
             }
         }
 
@@ -1073,94 +1133,143 @@ namespace GW_Dogovor
                 e.Effect = DragDropEffects.Copy;
         }
 
-        private void _DragDrop(object sender, DragEventArgs e, int Narp, string Name)
+        private void DragDropCopyFiles(DragEventArgs e, int Narp, string Name)
         {
-            try
+            if (MessageBox.Show("Вы хотите копировать выбранные файлы в рабочие папки?", "Выбор действия", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
             {
-                string pLocal = Path.Combine(link_LocalFld.Text, Name);
-                string pServer = Path.Combine(link_ServetFld.Text, Name);
-                if (Narp == 0 || Narp == 2)
-                    if (!Directory.Exists(link_LocalFld.Text))
-                        throw new Exception(Properties.Settings.Default.NoPathLocal);
-
-                if (Narp == 1 || Narp == 2)
-                    if (!Directory.Exists(link_ServetFld.Text))
-                        throw new Exception(Properties.Settings.Default.NoPathServer);
-
-                using (Form_AddFiles frm_Copyfiles = new Form_AddFiles(pLocal, pServer))
+                try
                 {
+                    string pLocal = Path.Combine(link_LocalFld.Text, Name);
+                    string pServer = Path.Combine(link_ServetFld.Text, Name);
+                    if (Narp == 0 || Narp == 2)
+                        if (!Directory.Exists(link_LocalFld.Text))
+                            throw new Exception(Properties.Settings.Default.NoPathLocal);
 
-                    frm_Copyfiles.SetNapr(Narp);
-                    foreach (string f in (string[])e.Data.GetData(DataFormats.FileDrop))
+                    if (Narp == 1 || Narp == 2)
+                        if (!Directory.Exists(link_ServetFld.Text))
+                            throw new Exception(Properties.Settings.Default.NoPathServer);
+
+                    using (Form_AddFiles frm_Copyfiles = new Form_AddFiles(pLocal, pServer))
                     {
-                        frm_Copyfiles.ListFiles.Add(f); // передаем список файлов в модуль копирования
+
+                        frm_Copyfiles.SetNapr(Narp);
+                        foreach (string f in (string[])e.Data.GetData(DataFormats.FileDrop))
+                        {
+                            frm_Copyfiles.ListFiles.Add(f); // передаем список файлов в модуль копирования
+                        }
+                        frm_Copyfiles.ShowDialog();
                     }
-                    frm_Copyfiles.ShowDialog();
+                }
+                finally
+                {
                 }
             }
-            finally
+        }
+
+        #region DRAG Documents
+        private void _DragDropDocument(object sender, DragEventArgs e, int Narp, string Name)
+        {
+            DB_Cmd.AddDoc();
+            if (tabDocuments.SelectedIndex == 1)
             {
-                
+                DB_Cmd.SetCuurentValueField(DB_Cmd.bndDocument, "Control", true);
+                DB_Cmd.SetCuurentValueField(DB_Cmd.bndDocument, "Doc_Type", 30);
             }
+            if (tabDocuments.SelectedIndex == 2)
+            {
+                DB_Cmd.SetCuurentValueField(DB_Cmd.bndDocument, "Doc_Type", 24);
+            }
+
+            EditDoc();
+
+            DragDropCopyFiles(e, Narp, Name);
 
         }
 
-
-        #region DRAG Documents
         private void gridDocument_DragDrop(object sender, DragEventArgs e)
         {
-            _DragDrop(sender, e, 2, "Основные положения");
+            _DragDropDocument(sender, e, 2, "Основные положения");
         }
         private void grid_MailControl_DragDrop(object sender, DragEventArgs e)
         {
-            _DragDrop(sender, e, 0, "Письма");
+            _DragDropDocument(sender, e, 0, "Письма");
         }
         private void grid_Zadania_DragDrop(object sender, DragEventArgs e)
         {
-            _DragDrop(sender, e, 1, "Задания");
+            _DragDropDocument(sender, e, 1, "Объекты");
         }
         #endregion DRAG Documents
-
-        #region DRAG Tender Documents "Тендер"
-        private void grid_TenderDoc_DragEnter(object sender, DragEventArgs e)
+        private void DragDropDoc(object sender, DragEventArgs e, int Narp, string Name)
         {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop))
-                e.Effect = DragDropEffects.Copy;
-        }
+            DB_Cmd.AddDoc();
+            if (tabControlMain.SelectedIndex == 4)
+            {
+                if (tabControlGrafics.SelectedIndex == 2)
+                {
+                    DB_Cmd.SetCuurentValueField(DB_Cmd.bndDocument, "Doc_Type", 24);
+                }
+                if (tabControlGrafics.SelectedIndex == 3)
+                {
+                    DB_Cmd.SetCuurentValueField(DB_Cmd.bndDocument, "Doc_Type", 33);
+                }
+                if (tabControlGrafics.SelectedIndex == 4)
+                {
+                    DB_Cmd.SetCuurentValueField(DB_Cmd.bndDocument, "Doc_Type", 31);
+                }
+                if (tabControlGrafics.SelectedIndex == 5)
+                {
+                    DB_Cmd.SetCuurentValueField(DB_Cmd.bndDocument, "Doc_Type", 34);
+                }
+            }
+                
+            EditDoc();
 
+            DragDropCopyFiles(e, Narp, Name);
+
+        }
         private void grid_TenderDoc_DragDrop(object sender, DragEventArgs e)
         {
-            List<string> pathDoc = new List<string>();
-            List<string> nameDoc = new List<string>();
-            List<string> newPathDoc = new List<string>();
-
-            string DateFld = dtp_TenderData.Value.ToShortDateString();
-            string newPathLocal = Path.Combine(link_LocalFld.Text, "Тендер", DateFld);
-            string newPathServer = Path.Combine(link_ServetFld.Text, "Тендер", DateFld);
-
-            foreach (string fobj in (string[])e.Data.GetData(DataFormats.FileDrop))
-            {
-                string n = Path.GetFileName(fobj);
-                nameDoc.Add(n); // список имен
-                pathDoc.Add(fobj); // список полных путей
-            }
-
-            /// тиражировать файлы в рабочий и сетевой каталог
-            ///
-            if (FileA.CopyListFiles(pathDoc, newPathLocal)) // && FileA.CopyListFiles(pathDoc, newPathServer)
-            {/// Переписать список из локального каталога
-             /// 
-                foreach (string nn in nameDoc)
-                {
-                    newPathDoc.Add(Path.Combine(newPathLocal, nn));
-                }
-                /// Записать данные в базу
-                /// 
-                DB_Cmd.AddTenderDragDrop(newPathDoc, DB_Cmd.bndDocument, (int)((DataRowView)DB_Cmd.bndTender.Current).Row["ID_Teder"]);
-            }
+            DragDropDoc(sender, e, 0, "Тендер");
+        }
+        private void grid_DogovorDoc_DragDrop(object sender, DragEventArgs e)
+        {
+            string nameDog = DB_Cmd.GetCurrentValueField(DB_Cmd.bndDogovor, "Nambe_Dog").ToString();
+            DragDropDoc(sender, e, 0, "Договор\\" + nameDog);
+        }
+        private void grid_DocumentDD_DragDrop(object sender, DragEventArgs e)
+        {
+            string nameDog = DB_Cmd.GetCurrentValueField(DB_Cmd.bndDogovor, "Nambe_Dog").ToString();
+            string nameDS = DB_Cmd.GetCurrentValueField(DB_Cmd.bndDopDogovor, "Nambe_DS").ToString();
+            DragDropDoc(sender, e, 0, "Договор\\" + nameDog  + "\\ДС\\" + nameDS);
         }
 
-        #endregion DRAG Tender Documents "Тендер"
+        private void grid_Z_DragDrop(object sender, DragEventArgs e)
+        {
+            string nameObj = DB_Cmd.GetCurrentValueField(DB_Cmd.bndObject, "CodeOBJ").ToString();
+            nameObj = nameObj.Replace(" ", "");
+            DragDropDoc(sender, e, 1, "Объекты\\" + nameObj + "\\Задания");
+        }
+
+        private void grid_RKD_DragDrop(object sender, DragEventArgs e)
+        {
+            string nameObj = DB_Cmd.GetCurrentValueField(DB_Cmd.bndObject, "CodeOBJ").ToString();
+            nameObj = nameObj.Replace(" ", "");
+            DragDropDoc(sender, e, 1, "Объекты\\" + nameObj + "\\РКД");
+        }
+
+        private void grid_Izysk_DragDrop(object sender, DragEventArgs e)
+        {
+            string nameObj = DB_Cmd.GetCurrentValueField(DB_Cmd.bndObject, "CodeOBJ").ToString();
+            nameObj = nameObj.Replace(" ", "");
+            DragDropDoc(sender, e, 1, "Объекты\\" + nameObj + "\\Изыскания");
+        }
+
+        private void grid_KMD_DragDrop(object sender, DragEventArgs e)
+        {
+            string nameObj = DB_Cmd.GetCurrentValueField(DB_Cmd.bndObject, "CodeOBJ").ToString();
+            nameObj = nameObj.Replace(" ", "");
+            DragDropDoc(sender, e, 1, "Объекты\\" + nameObj + "\\КМД");
+        }
 
         #endregion DRAG
 
@@ -1514,7 +1623,7 @@ namespace GW_Dogovor
 
         }
 
-      
+
     }
 
 }

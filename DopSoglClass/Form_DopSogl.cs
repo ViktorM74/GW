@@ -23,6 +23,7 @@ namespace DopSoglClass
             if (DB_Cmd.bndDopDogovor.Count != 0)
                 ((DataRowView)DB_Cmd.bndDopDogovor.Current).Row["Nambe_DS"] = feature.NormalizeNumSort(((DataRowView)DB_Cmd.bndDopDogovor.Current).Row["Nambe_DS"].ToString());
 
+
             this.Validate();
             DB_Cmd.SaveDopSoglashenia();
 

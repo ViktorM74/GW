@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using System.IO;
 using System.Windows.Forms;
 using DBClass;
@@ -51,11 +52,11 @@ namespace DogovorClass
         {
             string s = null;
             this.Validate();
-            if (tb_NumDog.Text != null && tb_NumDog.Text != "")
+            if (!String.IsNullOrEmpty(tb_NumDog.Text))
             {
-                s = Path.Combine(link_LocalFld, tb_NumDog.Text);
+                s = link_LocalFld;
 
-                if (s != null)
+                if (!String.IsNullOrEmpty(s))
                 {
                     string nameDog = tb_NumDog.Text;
                     nameDog = nameDog.Replace('/', '_').Replace('\\', '_').Replace('.', '_');

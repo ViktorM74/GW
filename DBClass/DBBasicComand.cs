@@ -267,11 +267,13 @@ namespace DBClass
         }
         #endregion DataBaseLoad
 
-        public static string GetCurrentValueField(BindingSource bnd, string field)
+        public static object GetCurrentValueField(BindingSource bnd, string field)
         {
             try
             {
-                return ((DataRowView)bnd.Current).Row[field].ToString();
+                if (bnd.Count != 0)
+                    return ((DataRowView)bnd.Current).Row[field];
+                    return null;
             }
             catch
             {
@@ -279,7 +281,7 @@ namespace DBClass
             }
         }
 
-        public static void SetCuurentValueField(BindingSource bnd, string field, string value)
+        public static void SetCuurentValueField(BindingSource bnd, string field, object value)
         {
             ((DataRowView)bnd.Current).Row[field] = value;
 
@@ -336,7 +338,10 @@ namespace DBClass
         {
             try
             {
+                if (bnd.Count > 0)
                 return (int)((DataRowView)bnd.Current).Row[fld];
+                else
+                    return 0;
             }
             catch 
             {
@@ -445,23 +450,25 @@ namespace DBClass
             return bndDocument.AddNew();
         }
 
-        public static void DeleteDoc()
+        public static bool DeleteDoc()
         {
             DataRowView rw = bndDocument.Current as DataRowView;
             string NameDelete = rw.Row["Namedoc"].ToString();
-            if (MessageBox.Show("Вы действитель хотите удалить " + NameDelete + "? \r\n ДЕЙСТВИЕ НЕВОЗМОЖНО ОТМЕНИТЬ!", "Удаление записи", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show("Вы действитель хотите удалить " + NameDelete.ToUpper() + "? \r\n ДЕЙСТВИЕ НЕВОЗМОЖНО ОТМЕНИТЬ!", "Удаление записи", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 try
                 {
                     bndDocument.RemoveCurrent();
+                    return true;
                 }
                 catch (Exception ex)
                 {
                     string exMessage = ex.Message.ToString();
                     MessageBox.Show("Удаление вызвало ошибку: " + exMessage, "Удаление", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-
+              
             }
+            return false;
         }
         #endregion Document
 
@@ -715,9 +722,9 @@ namespace DBClass
             if (DB_Cmd.bndDopDogovor.Count != 0)
             {
                 object obj = bndCalendarPlanDD.AddNew();
-                string idDog = GetCurrentValueField(bndDogovor, "DogID");
+                object idDog = GetCurrentValueField(bndDogovor, "DogID");
                 SetCuurentValueField(bndCalendarPlanDD, "IDDog", idDog);
-                SetCuurentValueField(bndCalendarPlanDD, "StatGlob", "0");
+                SetCuurentValueField(bndCalendarPlanDD, "StatGlob", 0);
                 return obj;
             }
             else
@@ -1490,60 +1497,17 @@ namespace DBClass
                 string name = Path.GetDirectoryName(file);
                 DateTime date = File.GetLastWriteTime(file);
 
-                AddDoc();
-                ((DataRowView)bndDocument.Current).Row["NameDoc"] = name;
-                ((DataRowView)bndDocument.Current).Row["DataDoc"] = date;
-                ((DataRowView)bndDocument.Current).Row["PathDoc"] = path;
-            }
-
-            SaveDoc();
-        }
-
-        public static void AddDocDragDrop(List<string> ListFiles, string el, BindingSource bnd, int Group)
-        {
-
-            foreach (string file in ListFiles)
-            {
-                string path = el;
-                string name = Path.GetFileNameWithoutExtension(el);
-                DateTime date = File.GetLastWriteTime(el);
-
-                AddDoc();
-                ((DataRowView)bnd.Current).Row["NameDoc"] = name;
-                ((DataRowView)bnd.Current).Row["DataDoc"] = date;
-                ((DataRowView)bnd.Current).Row["PathDoc"] = path;
-                ((DataRowView)bnd.Current).Row["Doc_Group"] = Group;
-                if ((Group == 1) || (Group == 11) || (Group == 12))
+                //AddDoc();
+                try
                 {
-                    ((DataRowView)bnd.Current).Row["Control"] = true;
+                    if (String.IsNullOrEmpty(((DataRowView)bndDocument.Current).Row["NameDoc"].ToString()))
+                        ((DataRowView)bndDocument.Current).Row["NameDoc"] = name;
+                    if (String.IsNullOrEmpty(((DataRowView)bndDocument.Current).Row["DataDoc"].ToString()))
+                        ((DataRowView)bndDocument.Current).Row["DataDoc"] = date;
                 }
-
-            }
-
-            SaveDoc();
-
-        }
-
-        public static void AddTenderDragDrop(List<string> ListPath, BindingSource bnd, int id)
-        {
-            String name;
-            string date;
-            String path;
-
-
-            foreach (string p in ListPath)
-            {
-                path = p;
-                name = System.IO.Path.GetFileNameWithoutExtension(p);
-                date = System.IO.File.GetLastWriteTime(p).ToShortDateString();
-
-                AddDoc();
-                ((DataRowView)bnd.Current).Row["NameDoc"] = name;
-                ((DataRowView)bnd.Current).Row["DataDoc"] = date;
-                ((DataRowView)bnd.Current).Row["PathDoc"] = path;
-                ((DataRowView)bnd.Current).Row["Tender_id"] = id;
-
-
+                finally { }
+                              
+                ((DataRowView)bndDocument.Current).Row["PathDoc"] = path;
             }
 
             SaveDoc();
