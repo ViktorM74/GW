@@ -68,9 +68,33 @@ namespace DBClass
         /// </summary>
         public static void DBLoad()
         {
-            GreateTableManager_1();
-            DBFills();
-            InitializeBindingSources();
+            try
+            {
+                GreateTableManager_1();
+            }
+            catch(Exception ex) 
+            { 
+                MessageBox.Show(ex.Message, "Ошибка загрузки TableManager", MessageBoxButtons.OK, MessageBoxIcon.Error); 
+            }
+
+            try
+            {
+                DBFills();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка загрузки DBFills", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            try
+            {
+                InitializeBindingSources();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка загрузки InitializeBindingSources", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
         private static void DBFills()
@@ -133,6 +157,14 @@ namespace DBClass
             await Task.Run(() => adpAct.Fill(dsDB.Act));
         }
 
+        public static void RebuildBndDocuments()
+        {
+            bndDocument.Dispose();
+            bndDocument = new BindingSource();
+            bndDocument.DataSource = bndProject; //привязка по связи к Проекту
+            bndDocument.DataMember = "ProjectDocuments";
+            bndDocument.Sort = "Object_id, Doc_Type, DataDoc";
+        }
         public static void InitializeBindingSources()
         {
             //Project

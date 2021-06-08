@@ -140,10 +140,12 @@ namespace DocumentsClass
             // 
             this.cb_Status.FormattingEnabled = true;
             this.cb_Status.Items.AddRange(new object[] {
-            "утвержден",
-            "отправлен",
+            "док. утвержден",
+            "док. отправлен",
+            "ответ отправлен",
             "в работе",
-            "на согласовании"});
+            "на согласовании",
+            "исполнен"});
             this.cb_Status.Location = new System.Drawing.Point(243, 129);
             this.cb_Status.Name = "cb_Status";
             this.cb_Status.Size = new System.Drawing.Size(202, 21);
@@ -161,7 +163,6 @@ namespace DocumentsClass
             // 
             this.tb_PathDoc.Location = new System.Drawing.Point(12, 432);
             this.tb_PathDoc.Name = "tb_PathDoc";
-            this.tb_PathDoc.ReadOnly = true;
             this.tb_PathDoc.Size = new System.Drawing.Size(400, 20);
             this.tb_PathDoc.TabIndex = 13;
             // 

@@ -1,4 +1,6 @@
-﻿using System;
+﻿// Не рекурсивный метод
+
+using System;
 using System.IO;
 using System.Windows.Forms;
 

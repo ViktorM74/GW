@@ -1,0 +1,46 @@
+ 
+ /// bndDocument (BindingSource)
+ private void SetTabGrid()
+        {
+            switch (tabControlMain.SelectedIndex)
+            {
+                case 1: 
+                    if (bndDocument.IsSorted)
+                        bndDocument.RemoveSort();
+                    bndDocument.RemoveFilter();
+                    bndDocument.DataSource = null;
+                    bndDocument.DataSource = bndTable1;
+                    bndDocument.DataMember = "Table1Documents";
+                    bndDocument.Sort = "DataDoc";
+
+                    break;
+                case 2:
+                    if (bndDocument.IsSorted)
+                        bndDocument.RemoveSort();
+                    bndDocument.RemoveFilter();
+                    bndDocument.DataSource = null;
+                    bndDocument.DataSource = bndTable2;
+                    bndDocument.DataMember = "Table2Documents";
+                    bndDocument.Sort = "DataDoc";
+
+                    break;
+                case 3:
+                    if (bndDocument.IsSorted)
+                        bndDocument.RemoveSort();
+                    bndDocument.RemoveFilter();
+                    bndDocument.DataSource = null;
+                    bndDocument.DataSource = bndTable3;
+                    bndDocument.DataMember = "Table3Documents";
+                    bndDocument.Sort = "DataDoc";
+
+                    break;
+                default:
+                    if (bndDocument.IsSorted)
+                         bndDocument.RemoveSort();
+                    
+                    break;
+            }
+         
+        }
+		
+		System.ArgumentException: "Строка сортировки содержит свойство, которое отсутствует в списке IBindingList."

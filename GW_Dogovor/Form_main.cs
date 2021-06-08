@@ -343,7 +343,7 @@ namespace GW_Dogovor
             //Graf_Zadania
             grid_GrafZ.AutoGenerateColumns = false;
             grid_GrafZ.DataSource = DB_Cmd.bndZadania;
-            grid_GrafZ.Columns["blok"].DataPropertyName = "Block";
+            grid_GrafZ.Columns["blok"].DataPropertyName = "Blok";
             grid_GrafZ.Columns["zadania_name"].DataPropertyName = "Coments";
             grid_GrafZ.Columns["zadania_otdel_out"].DataPropertyName = "Otdel_id_out";
             grid_GrafZ.Columns["zadania_otdel_in"].DataPropertyName = "Otdel_id_in";
@@ -396,14 +396,33 @@ namespace GW_Dogovor
 
         private void SetFilterTabGrid()
         {
-           void DocumentTabFilter()
+            // Предположение: Ошибка происходит при переключении ТАБ, если текущий объект "родитель" пустой (не имеет записей)
+            // Вариант проверки 1: 
+            // Проверить, существует ли объект или является пустым
+            //if (DB_Cmd.bndDocument.DataSource == null || ((BindingSource)DB_Cmd.bndDocument.DataSource).Count == 0) 
+            //{
+            //    //DB_Cmd.adpDocument.Fill(DB_Cmd.dsDB.Documents);
+            //    //return;
+            //}
+            if (((BindingSource)DB_Cmd.bndDocument.DataSource).Count == 0)
             {
-                DB_Cmd.bndDocument.RemoveSort();
+                //Психанул 
+                DB_Cmd.RebuildBndDocuments();
+            }
+
+            if (DB_Cmd.bndDocument.IsSorted && DB_Cmd.bndDocument.SupportsSorting)
+                    DB_Cmd.bndDocument.RemoveSort();
                 DB_Cmd.bndDocument.RemoveFilter();
+                DB_Cmd.bndDocument.DataMember = null;
                 DB_Cmd.bndDocument.DataSource = null;
+               
+           
+            void DocumentTabFilter()
+            {               
                 DB_Cmd.bndDocument.DataSource = DB_Cmd.bndProject;
                 DB_Cmd.bndDocument.DataMember = "ProjectDocuments";
                 DB_Cmd.bndDocument.Sort = "Object_id, Doc_Type, DataDoc";
+                DB_Cmd.bndDocument.ResetBindings(false);
 
                 switch (tabDocuments.SelectedIndex)
                 {
@@ -423,7 +442,6 @@ namespace GW_Dogovor
                         grid_MailControl.DataSource = DB_Cmd.bndDocument;
                         break;
                     default:
-                        DB_Cmd.bndDocument.RemoveSort();
                         DB_Cmd.bndDocument.RemoveFilter();
                         break;
 
@@ -432,12 +450,10 @@ namespace GW_Dogovor
             
             void ObjectTabFilter()
             {
-                DB_Cmd.bndDocument.RemoveSort();
-                DB_Cmd.bndDocument.RemoveFilter();
-                DB_Cmd.bndDocument.DataSource = null;
                 DB_Cmd.bndDocument.DataSource = DB_Cmd.bndObject;
                 DB_Cmd.bndDocument.DataMember = "OBJECTSDocuments";
                 DB_Cmd.bndDocument.Sort = "DataDoc";
+                DB_Cmd.bndDocument.ResetBindings(false);
 
                 switch (tabControlGrafics.SelectedIndex)
                 {
@@ -462,7 +478,6 @@ namespace GW_Dogovor
                         grid_KMD.DataSource = DB_Cmd.bndDocument;
                         break;
                     default:
-                        DB_Cmd.bndDocument.RemoveSort();
                         DB_Cmd.bndDocument.RemoveFilter();
                         break;
                 }
@@ -475,23 +490,19 @@ namespace GW_Dogovor
                     DocumentTabFilter();
                     break;
                 case 1: // Тендер
-                    DB_Cmd.bndDocument.RemoveSort();
-                    DB_Cmd.bndDocument.RemoveFilter();
-                    DB_Cmd.bndDocument.DataSource = null;
                     DB_Cmd.bndDocument.DataSource = DB_Cmd.bndTender;
                     DB_Cmd.bndDocument.DataMember = "TenderDocuments";
                     DB_Cmd.bndDocument.Sort = "DataDoc";
+                    DB_Cmd.bndDocument.ResetBindings(false);
 
                     DB_Cmd.bndDocument.Filter = "(Tender_id Not Is Null)";
                     grid_TenderDoc.DataSource = DB_Cmd.bndDocument;
                     break;
                 case 2: // Договор
-                    DB_Cmd.bndDocument.RemoveSort();
-                    DB_Cmd.bndDocument.RemoveFilter();
-                    DB_Cmd.bndDocument.DataSource = null;
                     DB_Cmd.bndDocument.DataSource = DB_Cmd.bndDogovor;
                     DB_Cmd.bndDocument.DataMember = "DogovorDocuments";
                     DB_Cmd.bndDocument.Sort = "DataDoc";
+                    DB_Cmd.bndDocument.ResetBindings(false);
 
                     DB_Cmd.bndDocument.Filter = "(Dogovor_id Not Is Null)";
                     grid_DogovorDoc.AutoGenerateColumns = false;
@@ -503,12 +514,10 @@ namespace GW_Dogovor
 
                     break;
                 case 3: // Доп соглашения
-                    DB_Cmd.bndDocument.RemoveSort();
-                    DB_Cmd.bndDocument.RemoveFilter();
-                    DB_Cmd.bndDocument.DataSource = null;
                     DB_Cmd.bndDocument.DataSource = DB_Cmd.bndDopDogovor;
                     DB_Cmd.bndDocument.DataMember = "DopSoglasheniaDocuments";
                     DB_Cmd.bndDocument.Sort = "DataDoc";
+                    DB_Cmd.bndDocument.ResetBindings(false);
 
                     DB_Cmd.bndDocument.Filter = "(DD_id Not Is Null)";
                     grid_DocumentDD.AutoGenerateColumns = false;
@@ -519,7 +528,6 @@ namespace GW_Dogovor
                     ObjectTabFilter();
                     break;
                 default:
-                    DB_Cmd.bndDocument.RemoveSort();
                     DB_Cmd.bndDocument.RemoveFilter();
                     break;
             }
@@ -534,44 +542,19 @@ namespace GW_Dogovor
         private void tabDocuments_SelectedIndexChanged(object sender, EventArgs e)
         {
             SetFilterTabGrid();
-         }
+        }
 
         private void tabControlMain_SelectedIndexChanged(object sender, EventArgs e)
         {
+           if (tabControlMain.SelectedIndex == 0 ||
+                tabControlMain.SelectedIndex == 1 ||
+                tabControlMain.SelectedIndex == 2 ||
+                tabControlMain.SelectedIndex == 3 ||
+                tabControlMain.SelectedIndex == 4 )
             SetFilterTabGrid();
         }
 
-        private void SelectedTypeDocuments()
-        {
-            //0-ИД; 1-Письма; 2-Задания; 3-Тендер; 4-Договор; 5-График; 6- Объект; 7- Изыскания; 8- Штамп; 9- Разное; 10- Основные положения; 11- Входящие; 12- Исходящие
-            if (tabControlMain.SelectedIndex == 0)
-            {
-                switch (tabDocuments.SelectedIndex)
-                {
-                    case 0: /// Исходные данные
-
-                        DB_Cmd.bndDocument.Filter = "(Project_id Not Is Null) AND (Tender_id Is Null) AND (Object_id Is Null) " +
-                            "AND (Event_id Is Null) AND (Act_id Is Null) AND (Control = false)";
-                        break;
-                    case 1: /// Письма на контроле
-
-                        DB_Cmd.bndDocument.Filter = "(Project_id Not Is Null) AND (Tender_id Is Null) AND (Object_id Is Null) " +
-                            "AND (Event_id Is Null) AND (Act_id Is Null) AND (Control = true)";
-                        break;
-                    case 2: /// Задания
-
-                        DB_Cmd.bndDocument.Filter = "(Project_id Not Is Null) AND (Tender_id Not Is Null) AND (Object_id Not Is Null) " +
-                           "AND (Event_id Is Null) AND (Act_id Is Null) AND (Control = false)";
-                        break;
-                    default: // Исходные данные
-
-                        DB_Cmd.bndDocument.Filter = "(Project_id Not Is Null) AND (Tender_id Is Null) AND (Object_id Is Null) " +
-                           "AND (Event_id Is Null) AND (Act_id Is Null) AND (Control = false)";
-                        break;
-                }
-            }
-
-        } // Фильтры для Документов вкладка Документы
+ 
         #endregion FilterGrid
 
         #region View
@@ -870,6 +853,12 @@ namespace GW_Dogovor
             /////////
         }
         #endregion View
+
+        private void GetListObjects()
+        {
+            
+        }
+
 
         private void Form_main_Load(object sender, EventArgs e)
         {
@@ -1246,28 +1235,28 @@ namespace GW_Dogovor
         private void grid_Z_DragDrop(object sender, DragEventArgs e)
         {
             string nameObj = DB_Cmd.GetCurrentValueField(DB_Cmd.bndObject, "CodeOBJ").ToString();
-            nameObj = nameObj.Replace(" ", "");
+            nameObj = nameObj.Replace(" ", "").Replace("\\", "_").Replace("/", "_");
             DragDropDoc(sender, e, 1, "Объекты\\" + nameObj + "\\Задания");
         }
 
         private void grid_RKD_DragDrop(object sender, DragEventArgs e)
         {
             string nameObj = DB_Cmd.GetCurrentValueField(DB_Cmd.bndObject, "CodeOBJ").ToString();
-            nameObj = nameObj.Replace(" ", "");
+            nameObj = nameObj.Replace(" ", "").Replace("\\", "_").Replace("/", "_"); ;
             DragDropDoc(sender, e, 1, "Объекты\\" + nameObj + "\\РКД");
         }
 
         private void grid_Izysk_DragDrop(object sender, DragEventArgs e)
         {
             string nameObj = DB_Cmd.GetCurrentValueField(DB_Cmd.bndObject, "CodeOBJ").ToString();
-            nameObj = nameObj.Replace(" ", "");
+            nameObj = nameObj.Replace(" ", "").Replace("\\", "_").Replace("/", "_"); ;
             DragDropDoc(sender, e, 1, "Объекты\\" + nameObj + "\\Изыскания");
         }
 
         private void grid_KMD_DragDrop(object sender, DragEventArgs e)
         {
             string nameObj = DB_Cmd.GetCurrentValueField(DB_Cmd.bndObject, "CodeOBJ").ToString();
-            nameObj = nameObj.Replace(" ", "");
+            nameObj = nameObj.Replace(" ", "").Replace("\\", "_").Replace("/", "_"); ;
             DragDropDoc(sender, e, 1, "Объекты\\" + nameObj + "\\КМД");
         }
 
@@ -1290,8 +1279,19 @@ namespace GW_Dogovor
         }
         private void btn_ScanArh_Click(object sender, EventArgs e)
         {
-            //GetTreeDir(tree_Arh, tb_PathArh.Text);
+            TreeFoldersClass.TreeDirectory.FillDirNodes(tree_Arh, tb_PathArh.Text);
         }
+
+        private void tree_Arh_BeforeExpand(object sender, TreeViewCancelEventArgs e)
+        {
+            TreeFoldersClass.TreeDirectory.BeforeExpand(sender, e);
+        }
+
+        private void tree_Arh_BeforeSelect(object sender, TreeViewCancelEventArgs e)
+        {
+            TreeFoldersClass.TreeDirectory.BeforeSelect(sender, e);
+        }
+
         private void tree_Arh_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             // Заполнять Грид файлами
@@ -1623,7 +1623,53 @@ namespace GW_Dogovor
 
         }
 
+        private void LocalInToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string path = link_LocalFld.Text;
+            string a_path = "Письма";
+            path = Path.Combine(path, a_path);
+            if (!File.Exists(path))
+                FileA.CreateFolder(path);
+            FileA.RunPath(path);
+        }
 
+        private void LocalOutMailMenuItem_Click(object sender, EventArgs e)
+        {
+            string path = link_LocalFld.Text;
+            string nameObj = DB_Cmd.GetCurrentValueField(DB_Cmd.bndObject, "CodeOBJ").ToString();
+            nameObj = nameObj.Replace(" ", "").Replace("\\", "_").Replace("/", "_"); ;
+            string a_path = "Исх";
+            path = Path.Combine(path, a_path);
+            path = Path.Combine(path, nameObj);
+            if (!File.Exists(path))
+                FileA.CreateFolder(path);
+            FileA.RunPath(path);
+        }
+
+        private void ServerInMailMenuItem1_Click(object sender, EventArgs e)
+        {
+            FileA.RunPath("\\\\Snhp03\\31 входящие документы");
+        }
+
+        private void ServerOutMailMenuItem1_Click(object sender, EventArgs e)
+        {
+            FileA.RunPath("\\\\Snhp03\\32 исходящие документы");
+        }
+
+        private void MailMenuItem_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (tabControlMain.SelectedIndex == 0)
+                if (tabDocuments.SelectedIndex == 1)
+                    ReplyInMenuItem.Enabled = true;
+                else
+                    ReplyInMenuItem.Enabled = false;
+
+            if (tabControlMain.SelectedIndex == 4)
+                if (DB_Cmd.bndObject.Count != 0)
+                    MailObjectMenuItem.Enabled = true;
+                else
+                    MailObjectMenuItem.Enabled = false;
+        }
     }
 
 }
