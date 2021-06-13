@@ -35,7 +35,7 @@ namespace DBClass
         {
             string connStr = GetConnectionString("DBClass.Properties.Settings.dbs_ConnectString");
             string[] s = GetParametrConnectionString(connStr);
-            return s[3];
+            return s[3]; // path db
         }
 
 

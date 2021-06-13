@@ -367,7 +367,8 @@
             this.tbtn_DeleteMark = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator19 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel5 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
+            this.cb_BlokFilterMark = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripButton25 = new System.Windows.Forms.ToolStripButton();
             this.tabPageGrafZadaniaObject = new System.Windows.Forms.TabPage();
             this.grid_GrafZ = new System.Windows.Forms.DataGridView();
             this.blok = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -391,7 +392,8 @@
             this.tbtn_delete_Zadania = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator20 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel6 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripComboBox2 = new System.Windows.Forms.ToolStripComboBox();
+            this.cb_BlockFilterZ = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripButton24 = new System.Windows.Forms.ToolStripButton();
             this.tabPageZadaniaObject = new System.Windows.Forms.TabPage();
             this.grid_Z = new System.Windows.Forms.DataGridView();
             this.name_Zmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -1553,6 +1555,7 @@
             this.cb_ObjetFilter.FlatStyle = System.Windows.Forms.FlatStyle.Standard;
             this.cb_ObjetFilter.Name = "cb_ObjetFilter";
             this.cb_ObjetFilter.Size = new System.Drawing.Size(121, 25);
+            this.cb_ObjetFilter.MouseDown += new System.Windows.Forms.MouseEventHandler(this.cb_ObjetFilter_MouseDown);
             // 
             // tab_Tender
             // 
@@ -2069,7 +2072,7 @@
             // splitter1
             // 
             this.splitter1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.splitter1.Location = new System.Drawing.Point(574, 0);
+            this.splitter1.Location = new System.Drawing.Point(550, 0);
             this.splitter1.Name = "splitter1";
             this.splitter1.Size = new System.Drawing.Size(5, 277);
             this.splitter1.TabIndex = 5;
@@ -2088,11 +2091,11 @@
             this.dRunDoc,
             this.dDelDoc});
             this.grid_DogovorDoc.Dock = System.Windows.Forms.DockStyle.Right;
-            this.grid_DogovorDoc.Location = new System.Drawing.Point(579, 0);
+            this.grid_DogovorDoc.Location = new System.Drawing.Point(555, 0);
             this.grid_DogovorDoc.Name = "grid_DogovorDoc";
             this.grid_DogovorDoc.ReadOnly = true;
             this.grid_DogovorDoc.RowHeadersVisible = false;
-            this.grid_DogovorDoc.Size = new System.Drawing.Size(240, 277);
+            this.grid_DogovorDoc.Size = new System.Drawing.Size(264, 277);
             this.grid_DogovorDoc.TabIndex = 2;
             this.grid_DogovorDoc.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_DogovorDoc_CellContentClick);
             this.grid_DogovorDoc.DragDrop += new System.Windows.Forms.DragEventHandler(this.grid_DogovorDoc_DragDrop);
@@ -3735,7 +3738,8 @@
             this.tbtn_DeleteMark,
             this.toolStripSeparator19,
             this.toolStripLabel5,
-            this.toolStripComboBox1});
+            this.cb_BlokFilterMark,
+            this.toolStripButton25});
             this.bndNavigator_Graph_Mark.Location = new System.Drawing.Point(3, 3);
             this.bndNavigator_Graph_Mark.MoveFirstItem = this.bindingNavigatorMoveFirstItem3;
             this.bndNavigator_Graph_Mark.MoveLastItem = this.bindingNavigatorMoveLastItem3;
@@ -3857,12 +3861,22 @@
             this.toolStripLabel5.Size = new System.Drawing.Size(37, 22);
             this.toolStripLabel5.Text = "Блок:";
             // 
-            // toolStripComboBox1
+            // cb_BlokFilterMark
             // 
-            this.toolStripComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.toolStripComboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Standard;
-            this.toolStripComboBox1.Name = "toolStripComboBox1";
-            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 25);
+            this.cb_BlokFilterMark.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_BlokFilterMark.FlatStyle = System.Windows.Forms.FlatStyle.Standard;
+            this.cb_BlokFilterMark.Name = "cb_BlokFilterMark";
+            this.cb_BlokFilterMark.Size = new System.Drawing.Size(121, 25);
+            this.cb_BlokFilterMark.MouseEnter += new System.EventHandler(this.toolStripComboBox1_MouseEnter);
+            // 
+            // toolStripButton25
+            // 
+            this.toolStripButton25.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton25.Image = global::GW_Dogovor.Properties.Resources.bindingNavigatorDeleteItem1_Image;
+            this.toolStripButton25.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton25.Name = "toolStripButton25";
+            this.toolStripButton25.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton25.Text = "toolStripButton25";
             // 
             // tabPageGrafZadaniaObject
             // 
@@ -3960,7 +3974,8 @@
             this.tbtn_delete_Zadania,
             this.toolStripSeparator20,
             this.toolStripLabel6,
-            this.toolStripComboBox2});
+            this.cb_BlockFilterZ,
+            this.toolStripButton24});
             this.bndNavigator_Graph_Z.Location = new System.Drawing.Point(3, 3);
             this.bndNavigator_Graph_Z.MoveFirstItem = this.bindingNavigatorMoveFirstItem4;
             this.bndNavigator_Graph_Z.MoveLastItem = this.bindingNavigatorMoveLastItem4;
@@ -4083,12 +4098,22 @@
             this.toolStripLabel6.Size = new System.Drawing.Size(37, 22);
             this.toolStripLabel6.Text = "Блок:";
             // 
-            // toolStripComboBox2
+            // cb_BlockFilterZ
             // 
-            this.toolStripComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.toolStripComboBox2.FlatStyle = System.Windows.Forms.FlatStyle.Standard;
-            this.toolStripComboBox2.Name = "toolStripComboBox2";
-            this.toolStripComboBox2.Size = new System.Drawing.Size(121, 25);
+            this.cb_BlockFilterZ.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_BlockFilterZ.FlatStyle = System.Windows.Forms.FlatStyle.Standard;
+            this.cb_BlockFilterZ.Name = "cb_BlockFilterZ";
+            this.cb_BlockFilterZ.Size = new System.Drawing.Size(121, 25);
+            this.cb_BlockFilterZ.MouseEnter += new System.EventHandler(this.cb_BlockFilterZ_MouseEnter);
+            // 
+            // toolStripButton24
+            // 
+            this.toolStripButton24.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton24.Image = global::GW_Dogovor.Properties.Resources.bindingNavigatorDeleteItem1_Image;
+            this.toolStripButton24.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton24.Name = "toolStripButton24";
+            this.toolStripButton24.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton24.Text = "toolStripButton24";
             // 
             // tabPageZadaniaObject
             // 
@@ -6002,10 +6027,10 @@
         private System.Windows.Forms.TabPage tab_Act;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator19;
         private System.Windows.Forms.ToolStripLabel toolStripLabel5;
-        private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
+        private System.Windows.Forms.ToolStripComboBox cb_BlokFilterMark;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator20;
         private System.Windows.Forms.ToolStripLabel toolStripLabel6;
-        private System.Windows.Forms.ToolStripComboBox toolStripComboBox2;
+        private System.Windows.Forms.ToolStripComboBox cb_BlockFilterZ;
         private System.Windows.Forms.TabPage tabPageRKD;
         private System.Windows.Forms.TabPage tabPageIz;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator21;
@@ -6182,6 +6207,8 @@
         private System.Windows.Forms.ToolStripMenuItem сетевыеПапкиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ServerInMailMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem ServerOutMailMenuItem1;
+        private System.Windows.Forms.ToolStripButton toolStripButton25;
+        private System.Windows.Forms.ToolStripButton toolStripButton24;
     }
 }
 

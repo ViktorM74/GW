@@ -38,6 +38,11 @@ namespace Zadania
             dtp_date_fakt.DataBindings.Add("Text", DB_Cmd.bndZadania, "Date_fact");
 
             tb_comments.DataBindings.Add("Text", DB_Cmd.bndZadania, "Coments");
+
+            cb_blok.Items.AddRange(DB_Cmd.GetListValueFields(DB_Cmd.bndZadania, "Blok").ToArray());
+            //cb_blok.DisplayMember = "Blok";
+            //cb_blok.ValueMember = "Blok";
+            cb_blok.DataBindings.Add("Text", DB_Cmd.bndZadania, "Blok");
         }
 
         private void btn_Save_Click(object sender, EventArgs e)

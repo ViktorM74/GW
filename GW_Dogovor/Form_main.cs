@@ -40,11 +40,28 @@ namespace GW_Dogovor
 
             tPathDB = seting.GetConnectionString();
 
+            DB_Cmd.ConnectString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + tPathDB;
+
             if (File.Exists(tPathDB))
             {
-                ConnectDB();
-                SetView();
-                R = true;
+                DB_Cmd.ReConnect();
+                if (DB_Cmd.DBLoad())
+                {
+                    SetView();
+                    R = true;
+                }
+                else
+                {
+                    using (ContactManager cmForm = new ContactManager()) 
+                    {
+                        if (cmForm.ShowDialog() == DialogResult.OK)
+                        {
+                            MessageBox.Show(Settings.Default.TextReloadProgramm);
+                            R = false;
+                        }
+                    }
+                }
+                
             }
             else
             {
@@ -53,7 +70,7 @@ namespace GW_Dogovor
                     if (cmForm.ShowDialog() == DialogResult.OK)
                     {
                         MessageBox.Show(Settings.Default.TextReloadProgramm);
-                        R = true;
+                        R = false;
                     }
                 }
                 
@@ -73,8 +90,6 @@ namespace GW_Dogovor
             }
 
         }
-
-        public static void ConnectDB() => DB_Cmd.DBLoad();
      
         // Все простые события Клик
         private void Clk() 
@@ -854,9 +869,24 @@ namespace GW_Dogovor
         }
         #endregion View
 
-        private void GetListObjects()
+
+
+        private void cb_ObjetFilter_MouseDown(object sender, MouseEventArgs e)
         {
-            
+            cb_ObjetFilter.Items.Clear();
+            cb_ObjetFilter.Items.AddRange(DB_Cmd.GetListValueFields(DB_Cmd.bndDocument, "Object").ToArray());
+        }
+
+        private void toolStripComboBox1_MouseEnter(object sender, EventArgs e)
+        {
+            cb_BlokFilterMark.Items.Clear();
+            cb_BlokFilterMark.Items.AddRange(DB_Cmd.GetListValueFields(DB_Cmd.bndSostavObj, "Block").ToArray());
+        }
+
+        private void cb_BlockFilterZ_MouseEnter(object sender, EventArgs e)
+        {
+            cb_BlockFilterZ.Items.Clear();
+            cb_BlockFilterZ.Items.AddRange(DB_Cmd.GetListValueFields(DB_Cmd.bndZadania, "Blok").ToArray());
         }
 
 
@@ -1610,7 +1640,7 @@ namespace GW_Dogovor
 
         private void tbtn_RefreshAll_Click(object sender, EventArgs e)
         {
-            ConnectDB();
+            DB_Cmd.DBLoad();
         }
 
         private void gridDocument_Paint(object sender, PaintEventArgs e)
@@ -1670,6 +1700,8 @@ namespace GW_Dogovor
                 else
                     MailObjectMenuItem.Enabled = false;
         }
+
+ 
     }
 
 }

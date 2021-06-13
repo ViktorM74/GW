@@ -20,7 +20,12 @@ namespace PRD
             chb_Arhiv.DataBindings.Add("Checked", DB_Cmd.bndSostavObj, "Arhiv", false, DataSourceUpdateMode.OnPropertyChanged);
             dtp_Data_GIP_viz.DataBindings.Add("Text", DB_Cmd.bndSostavObj, "Data_GIP_viz");
             dtp_Data_fakt.DataBindings.Add("Text", DB_Cmd.bndSostavObj, "Data_fakt");
-            tb_blok.DataBindings.Add("Text", DB_Cmd.bndSostavObj, "Block");
+
+
+            cb_blok.Items.AddRange(DB_Cmd.GetListValueFields(DB_Cmd.bndSostavObj, "Block").ToArray());
+            //cb_blok.DisplayMember = "Block";
+            //cb_blok.ValueMember = "Block";
+            cb_blok.DataBindings.Add("Text", DB_Cmd.bndSostavObj, "Block");
         }
 
         private void btn_Save_Click(object sender, EventArgs e)

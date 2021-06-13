@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.OleDb;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -11,6 +12,8 @@ namespace DBClass
 {
     public class DB_Cmd
     {
+        public static string ConnectString { get; set; }
+
         public static _bsp_snhpDataSet dsDB = new _bsp_snhpDataSet();
         public static TableAdapterManager tableManager = new TableAdapterManager();
 
@@ -62,24 +65,83 @@ namespace DBClass
         public static BindingSource bndDoc_Group = new BindingSource();
         #endregion BindingSources
 
+        public static bool ReConnect()
+        {
+            bool b = false;
+            void Connect(OleDbConnection con)
+            {               
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                    b = false;
+                }
+                con.ConnectionString = ConnectString + ";Jet OLEDB:Database Password=aspid;";
+                if (con.State == ConnectionState.Closed)
+                {
+                    try
+                    {
+                        con.Open();
+                        b = true;
+                    }
+                    catch(Exception ex)
+                    {
+                        b = false;
+                    }
+
+                }
+                
+            }
+
+            Connect(adpProject.Connection);
+            Connect(adpCustomer.Connection);
+            Connect(adpDocument.Connection);
+            Connect(adpTypeDocument.Connection);
+            Connect(adpDogovor.Connection);
+            Connect(adpTender.Connection);
+            Connect(adpCPlan.Connection);
+            Connect(adpDDogovor.Connection);
+            Connect(adpEvent.Connection);
+            Connect(adpStadyPrj.Connection);
+            Connect(adpAct.Connection);
+            Connect(adpObject.Connection);
+            Connect(adpSostavD.Connection);
+            Connect(adpMark.Connection);
+            Connect(adpZadania.Connection);
+            Connect(adpHistory.Connection);
+            Connect(adpOtdel.Connection);
+            Connect(adpGIP.Connection);
+            Connect(adpOtdel_SNHP.Connection);
+            Connect(adpDoc_Group.Connection);
+
+            return b;
+        }
+
+
         /// <summary>
         /// Загрузка данных в DataSet
         /// Связывание TableAdapters
         /// </summary>
-        public static void DBLoad()
+        public static bool DBLoad()
         {
+            bool result = false;
+            bool gt = false;
+            bool dbf = false; 
+            bool ibs = false;
+
             try
             {
                 GreateTableManager_1();
+                gt = true;
             }
             catch(Exception ex) 
             { 
-                MessageBox.Show(ex.Message, "Ошибка загрузки TableManager", MessageBoxButtons.OK, MessageBoxIcon.Error); 
+                MessageBox.Show(ex.Message, "Ошибка загрузки TableManager", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             try
             {
                 DBFills();
+                dbf = true;
             }
             catch (Exception ex)
             {
@@ -89,11 +151,18 @@ namespace DBClass
             try
             {
                 InitializeBindingSources();
+                ibs = true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Ошибка загрузки InitializeBindingSources", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            if (gt && dbf && ibs)
+            {
+                result = true;
+            }
+
+            return result;
             
         }
 
@@ -1556,6 +1625,20 @@ namespace DBClass
             {
                 bnd.Filter = "";
             }
+        }
+
+        public static List<string> GetListValueFields(BindingSource bnd, string field)
+        {
+            List<string> lst = new List<string>();
+            lst.Clear();
+
+            foreach (DataRowView rv in bnd)
+            {
+                string s = rv[field].ToString();
+                if (!lst.Contains(s))
+                    lst.Add(s);
+            }
+            return lst;
         }
     }
 }

@@ -47,7 +47,8 @@ namespace DBClass
         {
             //string connectstring = string.Format("Provider={0};Data Source={1};Jet OLEDB:Database Password={3};", textBoxProvider.Text, textBoxDataSource.Text, textBoxPassword.Text);
             tPathDB = textBox1.Text;
-            string connectstring = string.Format("Provider={0};Data Source={1}", tProvider, tPathDB);
+           
+            string connectstring = string.Format("Provider={0};Data Source={1};", tProvider, tPathDB);
             try
             {
                 MSAccessHelper helper = new MSAccessHelper(connectstring);
@@ -65,7 +66,8 @@ namespace DBClass
         private void button2_Click(object sender, EventArgs e)
         {
             tPathDB = textBox1.Text;
-            string connectstring = string.Format("Provider={0};Data Source={1}", tProvider, tPathDB);
+        
+            string connectstring = string.Format("Provider={0};Data Source={1}; Jet OLEDB:Database Password={2};", tProvider, tPathDB);
             try
             {
                 MSAccessHelper helper = new MSAccessHelper(connectstring);
