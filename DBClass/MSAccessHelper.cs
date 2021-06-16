@@ -26,7 +26,7 @@ namespace DBClass
 
         public MSAccessHelper(string connectionStr)
         {
-            con = new OleDbConnection(connectionStr);
+            con = new OleDbConnection(connectionStr + ";Jet OLEDB:Database Password=aspid;");
         }
 
         public bool IsConnection // свойство объекта

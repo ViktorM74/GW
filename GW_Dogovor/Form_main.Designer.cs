@@ -1142,7 +1142,7 @@
             this.tabPageISHDoc.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageISHDoc.Size = new System.Drawing.Size(943, 480);
             this.tabPageISHDoc.TabIndex = 0;
-            this.tabPageISHDoc.Text = "Исходные документы";
+            this.tabPageISHDoc.Text = "Документы";
             this.tabPageISHDoc.UseVisualStyleBackColor = true;
             // 
             // gridDocument
@@ -1656,7 +1656,6 @@
             // dtp_TenderData
             // 
             this.dtp_TenderData.CalendarMonthBackground = System.Drawing.SystemColors.Control;
-            this.dtp_TenderData.Checked = false;
             this.dtp_TenderData.Enabled = false;
             this.dtp_TenderData.Location = new System.Drawing.Point(215, 162);
             this.dtp_TenderData.Name = "dtp_TenderData";
@@ -1715,7 +1714,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(217, 184);
+            this.label8.Location = new System.Drawing.Point(212, 184);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(29, 13);
             this.label8.TabIndex = 0;
@@ -1733,7 +1732,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(217, 143);
+            this.label6.Location = new System.Drawing.Point(212, 143);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(142, 13);
             this.label6.TabIndex = 0;
@@ -2349,6 +2348,7 @@
             this.day.HeaderText = "Дни";
             this.day.Name = "day";
             this.day.ReadOnly = true;
+            this.day.Visible = false;
             this.day.Width = 50;
             // 
             // Nachalo_Data
@@ -6155,15 +6155,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn zadania_otdel_in;
         private System.Windows.Forms.DataGridViewTextBoxColumn zadania_plan;
         private System.Windows.Forms.DataGridViewTextBoxColumn zadania_fakt;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_DDog;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Num_Etap;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Name_Etap;
-        private System.Windows.Forms.DataGridViewTextBoxColumn day;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nachalo_Data;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Konec_Data;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Summ;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Valute;
-        private System.Windows.Forms.DataGridViewTextBoxColumn StatusCPlan;
         private System.Windows.Forms.DataGridViewTextBoxColumn NameTDoc;
         private System.Windows.Forms.DataGridViewTextBoxColumn StatudTDoc;
         private System.Windows.Forms.DataGridViewTextBoxColumn PathTDoc;
@@ -6209,6 +6200,15 @@
         private System.Windows.Forms.ToolStripMenuItem ServerOutMailMenuItem1;
         private System.Windows.Forms.ToolStripButton toolStripButton25;
         private System.Windows.Forms.ToolStripButton toolStripButton24;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_DDog;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Num_Etap;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Name_Etap;
+        private System.Windows.Forms.DataGridViewTextBoxColumn day;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nachalo_Data;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Konec_Data;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Summ;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Valute;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StatusCPlan;
     }
 }
 

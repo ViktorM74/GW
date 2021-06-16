@@ -67,7 +67,7 @@ namespace DBClass
         {
             tPathDB = textBox1.Text;
         
-            string connectstring = string.Format("Provider={0};Data Source={1}; Jet OLEDB:Database Password={2};", tProvider, tPathDB);
+            string connectstring = string.Format("Provider={0};Data Source={1}", tProvider, tPathDB);
             try
             {
                 MSAccessHelper helper = new MSAccessHelper(connectstring);

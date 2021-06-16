@@ -19,6 +19,7 @@ namespace PRD
             chb_GIP_viz.DataBindings.Add("Checked", DB_Cmd.bndSostavObj, "GIP_viz", false, DataSourceUpdateMode.OnPropertyChanged);
             chb_Arhiv.DataBindings.Add("Checked", DB_Cmd.bndSostavObj, "Arhiv", false, DataSourceUpdateMode.OnPropertyChanged);
             dtp_Data_GIP_viz.DataBindings.Add("Text", DB_Cmd.bndSostavObj, "Data_GIP_viz");
+           
             dtp_Data_fakt.DataBindings.Add("Text", DB_Cmd.bndSostavObj, "Data_fakt");
 
 
@@ -32,8 +33,9 @@ namespace PRD
         {
             if (chb_GIP_viz.Checked)
             {
-                if (!dateGipSet)
-                    ((DataRowView)DB_Cmd.bndSostavObj.Current).Row["Data_GIP_viz"] = DateTime.Today;
+                //if (!dateGipSet) // true если User выбрал дату из календаря
+                if (dtp_Data_GIP_viz.Value == null)
+                     ((DataRowView)DB_Cmd.bndSostavObj.Current).Row["Data_GIP_viz"] = DateTime.Today;
                 else
                     ((DataRowView)DB_Cmd.bndSostavObj.Current).Row["Data_GIP_viz"] = dtp_Data_GIP_viz.Value;
             }
@@ -42,7 +44,7 @@ namespace PRD
 
             if (chb_Arhiv.Checked)
             {
-                if (!dateArhivSet)
+                if (dtp_Data_fakt.Value == null)
                     ((DataRowView)DB_Cmd.bndSostavObj.Current).Row["Data_fakt"] = DateTime.Today;
                 else
                     ((DataRowView)DB_Cmd.bndSostavObj.Current).Row["Data_fakt"] = dtp_Data_fakt.Value;
@@ -53,6 +55,7 @@ namespace PRD
 
 
             DB_Cmd.SaveSostavObj();
+           
             Close();
         }
 

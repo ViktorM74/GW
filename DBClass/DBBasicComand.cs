@@ -83,9 +83,10 @@ namespace DBClass
                         con.Open();
                         b = true;
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         b = false;
+                        
                     }
 
                 }
