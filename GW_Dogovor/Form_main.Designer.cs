@@ -29,30 +29,30 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle57 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle58 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle59 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_main));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle60 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle47 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle65 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle61 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle62 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle63 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle64 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle66 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle48 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle49 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle50 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle51 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle52 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle53 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle54 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle55 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle56 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle67 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle68 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle69 = new System.Windows.Forms.DataGridViewCellStyle();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.lbl_BasePath = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
@@ -1163,7 +1163,6 @@
             this.btnPath});
             this.gridDocument.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridDocument.Location = new System.Drawing.Point(3, 3);
-            this.gridDocument.MultiSelect = false;
             this.gridDocument.Name = "gridDocument";
             this.gridDocument.ReadOnly = true;
             this.gridDocument.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -1198,9 +1197,9 @@
             // 
             // DataDoc
             // 
-            dataGridViewCellStyle1.Format = "d";
-            dataGridViewCellStyle1.NullValue = null;
-            this.DataDoc.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle57.Format = "d";
+            dataGridViewCellStyle57.NullValue = null;
+            this.DataDoc.DefaultCellStyle = dataGridViewCellStyle57;
             this.DataDoc.HeaderText = "Дата";
             this.DataDoc.Name = "DataDoc";
             this.DataDoc.ReadOnly = true;
@@ -1258,7 +1257,6 @@
             this.mail_run});
             this.grid_MailControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grid_MailControl.Location = new System.Drawing.Point(3, 3);
-            this.grid_MailControl.MultiSelect = false;
             this.grid_MailControl.Name = "grid_MailControl";
             this.grid_MailControl.ReadOnly = true;
             this.grid_MailControl.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -1290,9 +1288,9 @@
             // 
             // mail_date
             // 
-            dataGridViewCellStyle2.Format = "d";
-            dataGridViewCellStyle2.NullValue = null;
-            this.mail_date.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle58.Format = "d";
+            dataGridViewCellStyle58.NullValue = null;
+            this.mail_date.DefaultCellStyle = dataGridViewCellStyle58;
             this.mail_date.HeaderText = "Дата";
             this.mail_date.Name = "mail_date";
             this.mail_date.ReadOnly = true;
@@ -1347,7 +1345,6 @@
             this.Zrun});
             this.grid_Zadania.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grid_Zadania.Location = new System.Drawing.Point(3, 3);
-            this.grid_Zadania.MultiSelect = false;
             this.grid_Zadania.Name = "grid_Zadania";
             this.grid_Zadania.ReadOnly = true;
             this.grid_Zadania.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -1379,9 +1376,9 @@
             // 
             // Zdate
             // 
-            dataGridViewCellStyle3.Format = "d";
-            dataGridViewCellStyle3.NullValue = null;
-            this.Zdate.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle59.Format = "d";
+            dataGridViewCellStyle59.NullValue = null;
+            this.Zdate.DefaultCellStyle = dataGridViewCellStyle59;
             this.Zdate.HeaderText = "Дата";
             this.Zdate.Name = "Zdate";
             this.Zdate.ReadOnly = true;
@@ -1794,6 +1791,7 @@
             this.grid_TenderDoc.Location = new System.Drawing.Point(3, 16);
             this.grid_TenderDoc.Name = "grid_TenderDoc";
             this.grid_TenderDoc.ReadOnly = true;
+            this.grid_TenderDoc.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grid_TenderDoc.Size = new System.Drawing.Size(535, 487);
             this.grid_TenderDoc.TabIndex = 0;
             this.grid_TenderDoc.TabStop = false;
@@ -1836,11 +1834,11 @@
             // 
             // Delete
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.NullValue = null;
-            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(3);
-            this.Delete.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle60.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle60.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle60.NullValue = null;
+            dataGridViewCellStyle60.Padding = new System.Windows.Forms.Padding(3);
+            this.Delete.DefaultCellStyle = dataGridViewCellStyle60;
             this.Delete.HeaderText = "Удалить";
             this.Delete.Image = global::GW_Dogovor.Properties.Resources.Delete;
             this.Delete.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
@@ -2094,6 +2092,7 @@
             this.grid_DogovorDoc.Name = "grid_DogovorDoc";
             this.grid_DogovorDoc.ReadOnly = true;
             this.grid_DogovorDoc.RowHeadersVisible = false;
+            this.grid_DogovorDoc.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grid_DogovorDoc.Size = new System.Drawing.Size(264, 277);
             this.grid_DogovorDoc.TabIndex = 2;
             this.grid_DogovorDoc.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_DogovorDoc_CellContentClick);
@@ -2118,11 +2117,11 @@
             // 
             // dDelDoc
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.NullValue = null;
-            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(3);
-            this.dDelDoc.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle47.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle47.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle47.NullValue = null;
+            dataGridViewCellStyle47.Padding = new System.Windows.Forms.Padding(3);
+            this.dDelDoc.DefaultCellStyle = dataGridViewCellStyle47;
             this.dDelDoc.HeaderText = "Удалить";
             this.dDelDoc.Image = global::GW_Dogovor.Properties.Resources.Delete;
             this.dDelDoc.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
@@ -2304,14 +2303,14 @@
             this.Summ,
             this.Valute,
             this.StatusCPlan});
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grid_CPlan.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle65.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle65.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle65.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle65.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle65.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle65.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle65.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grid_CPlan.DefaultCellStyle = dataGridViewCellStyle65;
             this.grid_CPlan.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grid_CPlan.Location = new System.Drawing.Point(3, 28);
             this.grid_CPlan.Name = "grid_CPlan";
@@ -2337,8 +2336,8 @@
             // Name_Etap
             // 
             this.Name_Etap.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Name_Etap.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle61.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Name_Etap.DefaultCellStyle = dataGridViewCellStyle61;
             this.Name_Etap.HeaderText = "Название";
             this.Name_Etap.Name = "Name_Etap";
             this.Name_Etap.ReadOnly = true;
@@ -2353,28 +2352,28 @@
             // 
             // Nachalo_Data
             // 
-            dataGridViewCellStyle7.Format = "d";
-            dataGridViewCellStyle7.NullValue = null;
-            this.Nachalo_Data.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle62.Format = "d";
+            dataGridViewCellStyle62.NullValue = null;
+            this.Nachalo_Data.DefaultCellStyle = dataGridViewCellStyle62;
             this.Nachalo_Data.HeaderText = "Начало";
             this.Nachalo_Data.Name = "Nachalo_Data";
             this.Nachalo_Data.ReadOnly = true;
             // 
             // Konec_Data
             // 
-            dataGridViewCellStyle8.Format = "d";
-            dataGridViewCellStyle8.NullValue = null;
-            this.Konec_Data.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle63.Format = "d";
+            dataGridViewCellStyle63.NullValue = null;
+            this.Konec_Data.DefaultCellStyle = dataGridViewCellStyle63;
             this.Konec_Data.HeaderText = "Окончание";
             this.Konec_Data.Name = "Konec_Data";
             this.Konec_Data.ReadOnly = true;
             // 
             // Summ
             // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle9.Format = "N2";
-            dataGridViewCellStyle9.NullValue = null;
-            this.Summ.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle64.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle64.Format = "N2";
+            dataGridViewCellStyle64.NullValue = null;
+            this.Summ.DefaultCellStyle = dataGridViewCellStyle64;
             this.Summ.HeaderText = "Сумма";
             this.Summ.Name = "Summ";
             this.Summ.ReadOnly = true;
@@ -2520,6 +2519,7 @@
             this.grid_Act.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grid_Act.Location = new System.Drawing.Point(3, 28);
             this.grid_Act.Name = "grid_Act";
+            this.grid_Act.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grid_Act.Size = new System.Drawing.Size(805, 162);
             this.grid_Act.TabIndex = 1;
             // 
@@ -2941,11 +2941,11 @@
             // 
             // delDoc_DS
             // 
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle11.NullValue = null;
-            dataGridViewCellStyle11.Padding = new System.Windows.Forms.Padding(3);
-            this.delDoc_DS.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle66.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle66.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle66.NullValue = null;
+            dataGridViewCellStyle66.Padding = new System.Windows.Forms.Padding(3);
+            this.delDoc_DS.DefaultCellStyle = dataGridViewCellStyle66;
             this.delDoc_DS.HeaderText = "Удалить";
             this.delDoc_DS.Image = global::GW_Dogovor.Properties.Resources.Delete;
             this.delDoc_DS.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
@@ -3047,6 +3047,7 @@
             this.grid_CPlanDD.Location = new System.Drawing.Point(3, 41);
             this.grid_CPlanDD.Name = "grid_CPlanDD";
             this.grid_CPlanDD.ReadOnly = true;
+            this.grid_CPlanDD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grid_CPlanDD.Size = new System.Drawing.Size(813, 267);
             this.grid_CPlanDD.TabIndex = 0;
             this.grid_CPlanDD.DoubleClick += new System.EventHandler(this.btn_edit_CP_Click);
@@ -3069,8 +3070,8 @@
             // name_ds
             // 
             this.name_ds.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.name_ds.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle48.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.name_ds.DefaultCellStyle = dataGridViewCellStyle48;
             this.name_ds.HeaderText = "Название этапа";
             this.name_ds.Name = "name_ds";
             this.name_ds.ReadOnly = true;
@@ -3084,18 +3085,18 @@
             // 
             // nachalo_ds
             // 
-            dataGridViewCellStyle13.Format = "d";
-            dataGridViewCellStyle13.NullValue = null;
-            this.nachalo_ds.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle49.Format = "d";
+            dataGridViewCellStyle49.NullValue = null;
+            this.nachalo_ds.DefaultCellStyle = dataGridViewCellStyle49;
             this.nachalo_ds.HeaderText = "Начало";
             this.nachalo_ds.Name = "nachalo_ds";
             this.nachalo_ds.ReadOnly = true;
             // 
             // konec_ds
             // 
-            dataGridViewCellStyle14.Format = "d";
-            dataGridViewCellStyle14.NullValue = null;
-            this.konec_ds.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle50.Format = "d";
+            dataGridViewCellStyle50.NullValue = null;
+            this.konec_ds.DefaultCellStyle = dataGridViewCellStyle50;
             this.konec_ds.HeaderText = "Окончание";
             this.konec_ds.Name = "konec_ds";
             this.konec_ds.ReadOnly = true;
@@ -3103,10 +3104,10 @@
             // summ_ds
             // 
             this.summ_ds.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle15.Format = "N2";
-            dataGridViewCellStyle15.NullValue = null;
-            this.summ_ds.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle51.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle51.Format = "N2";
+            dataGridViewCellStyle51.NullValue = null;
+            this.summ_ds.DefaultCellStyle = dataGridViewCellStyle51;
             this.summ_ds.HeaderText = "Сумма";
             this.summ_ds.Name = "summ_ds";
             this.summ_ds.ReadOnly = true;
@@ -3642,6 +3643,7 @@
             this.grid_GrafMark.Location = new System.Drawing.Point(3, 28);
             this.grid_GrafMark.Name = "grid_GrafMark";
             this.grid_GrafMark.ReadOnly = true;
+            this.grid_GrafMark.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grid_GrafMark.Size = new System.Drawing.Size(723, 299);
             this.grid_GrafMark.TabIndex = 0;
             this.grid_GrafMark.DoubleClick += new System.EventHandler(this.tbtn_EditMark_Click);
@@ -3668,9 +3670,9 @@
             // 
             // Mark_date_plan
             // 
-            dataGridViewCellStyle16.Format = "d";
-            dataGridViewCellStyle16.NullValue = null;
-            this.Mark_date_plan.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle52.Format = "d";
+            dataGridViewCellStyle52.NullValue = null;
+            this.Mark_date_plan.DefaultCellStyle = dataGridViewCellStyle52;
             this.Mark_date_plan.HeaderText = "Дата по плану";
             this.Mark_date_plan.Name = "Mark_date_plan";
             this.Mark_date_plan.ReadOnly = true;
@@ -3686,9 +3688,9 @@
             // 
             // Mark_date_GIP
             // 
-            dataGridViewCellStyle17.Format = "d";
-            dataGridViewCellStyle17.NullValue = null;
-            this.Mark_date_GIP.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle53.Format = "d";
+            dataGridViewCellStyle53.NullValue = null;
+            this.Mark_date_GIP.DefaultCellStyle = dataGridViewCellStyle53;
             this.Mark_date_GIP.HeaderText = "Дата подписи";
             this.Mark_date_GIP.Name = "Mark_date_GIP";
             this.Mark_date_GIP.ReadOnly = true;
@@ -3704,9 +3706,9 @@
             // 
             // Mark_data_fakt
             // 
-            dataGridViewCellStyle18.Format = "d";
-            dataGridViewCellStyle18.NullValue = null;
-            this.Mark_data_fakt.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle54.Format = "d";
+            dataGridViewCellStyle54.NullValue = null;
+            this.Mark_data_fakt.DefaultCellStyle = dataGridViewCellStyle54;
             this.Mark_data_fakt.HeaderText = "Дата по факту";
             this.Mark_data_fakt.Name = "Mark_data_fakt";
             this.Mark_data_fakt.ReadOnly = true;
@@ -3906,6 +3908,7 @@
             this.grid_GrafZ.Location = new System.Drawing.Point(3, 28);
             this.grid_GrafZ.Name = "grid_GrafZ";
             this.grid_GrafZ.ReadOnly = true;
+            this.grid_GrafZ.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grid_GrafZ.Size = new System.Drawing.Size(723, 299);
             this.grid_GrafZ.TabIndex = 0;
             this.grid_GrafZ.DoubleClick += new System.EventHandler(this.tbtn_edit_Zadania_Click);
@@ -3938,18 +3941,18 @@
             // 
             // zadania_plan
             // 
-            dataGridViewCellStyle19.Format = "d";
-            dataGridViewCellStyle19.NullValue = null;
-            this.zadania_plan.DefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle55.Format = "d";
+            dataGridViewCellStyle55.NullValue = null;
+            this.zadania_plan.DefaultCellStyle = dataGridViewCellStyle55;
             this.zadania_plan.HeaderText = "Дата по плану";
             this.zadania_plan.Name = "zadania_plan";
             this.zadania_plan.ReadOnly = true;
             // 
             // zadania_fakt
             // 
-            dataGridViewCellStyle20.Format = "d";
-            dataGridViewCellStyle20.NullValue = null;
-            this.zadania_fakt.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle56.Format = "d";
+            dataGridViewCellStyle56.NullValue = null;
+            this.zadania_fakt.DefaultCellStyle = dataGridViewCellStyle56;
             this.zadania_fakt.HeaderText = "Дата по факту";
             this.zadania_fakt.Name = "zadania_fakt";
             this.zadania_fakt.ReadOnly = true;
@@ -4144,6 +4147,7 @@
             this.grid_Z.Location = new System.Drawing.Point(3, 28);
             this.grid_Z.Name = "grid_Z";
             this.grid_Z.ReadOnly = true;
+            this.grid_Z.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grid_Z.Size = new System.Drawing.Size(723, 299);
             this.grid_Z.TabIndex = 0;
             this.grid_Z.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_Z_CellContentClick);
@@ -4345,6 +4349,7 @@
             this.grid_RKD.Location = new System.Drawing.Point(3, 28);
             this.grid_RKD.Name = "grid_RKD";
             this.grid_RKD.ReadOnly = true;
+            this.grid_RKD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grid_RKD.Size = new System.Drawing.Size(723, 299);
             this.grid_RKD.TabIndex = 1;
             this.grid_RKD.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_RKD_CellContentClick);
@@ -4546,6 +4551,7 @@
             this.grid_Izysk.Location = new System.Drawing.Point(3, 28);
             this.grid_Izysk.Name = "grid_Izysk";
             this.grid_Izysk.ReadOnly = true;
+            this.grid_Izysk.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grid_Izysk.Size = new System.Drawing.Size(723, 299);
             this.grid_Izysk.TabIndex = 1;
             this.grid_Izysk.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_Izysk_CellContentClick);
@@ -4748,6 +4754,7 @@
             this.grid_KMD.Location = new System.Drawing.Point(0, 25);
             this.grid_KMD.Name = "grid_KMD";
             this.grid_KMD.ReadOnly = true;
+            this.grid_KMD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grid_KMD.Size = new System.Drawing.Size(729, 305);
             this.grid_KMD.TabIndex = 1;
             this.grid_KMD.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_KMD_CellContentClick);
@@ -5111,8 +5118,8 @@
             this.grid_FileArh.AllowUserToDeleteRows = false;
             this.grid_FileArh.AllowUserToResizeColumns = false;
             this.grid_FileArh.AllowUserToResizeRows = false;
-            dataGridViewCellStyle21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.grid_FileArh.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle67.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.grid_FileArh.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle67;
             this.grid_FileArh.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grid_FileArh.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.FileName,
@@ -5477,11 +5484,11 @@
             // 
             // dataGridViewImageColumn2
             // 
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle22.NullValue = null;
-            dataGridViewCellStyle22.Padding = new System.Windows.Forms.Padding(3);
-            this.dataGridViewImageColumn2.DefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle68.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle68.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle68.NullValue = null;
+            dataGridViewCellStyle68.Padding = new System.Windows.Forms.Padding(3);
+            this.dataGridViewImageColumn2.DefaultCellStyle = dataGridViewCellStyle68;
             this.dataGridViewImageColumn2.HeaderText = "Удалить";
             this.dataGridViewImageColumn2.Image = global::GW_Dogovor.Properties.Resources.Delete;
             this.dataGridViewImageColumn2.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
@@ -5492,11 +5499,11 @@
             // 
             // dataGridViewImageColumn3
             // 
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle23.NullValue = null;
-            dataGridViewCellStyle23.Padding = new System.Windows.Forms.Padding(3);
-            this.dataGridViewImageColumn3.DefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle69.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle69.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle69.NullValue = null;
+            dataGridViewCellStyle69.Padding = new System.Windows.Forms.Padding(3);
+            this.dataGridViewImageColumn3.DefaultCellStyle = dataGridViewCellStyle69;
             this.dataGridViewImageColumn3.HeaderText = "Удалить";
             this.dataGridViewImageColumn3.Image = global::GW_Dogovor.Properties.Resources.Delete;
             this.dataGridViewImageColumn3.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;

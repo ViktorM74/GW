@@ -1,4 +1,5 @@
-﻿
+﻿using DateTimePickerNullable;
+
 namespace PRD
 {
     partial class Form_PRD
@@ -42,10 +43,10 @@ namespace PRD
             this.btn_Save = new System.Windows.Forms.Button();
             this.btn_Cancel = new System.Windows.Forms.Button();
             this.group_Mark_project = new System.Windows.Forms.GroupBox();
+            this.cb_blok = new System.Windows.Forms.ComboBox();
             this.lb_blok = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.cb_blok = new System.Windows.Forms.ComboBox();
             this.group_Mark_project.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -78,10 +79,12 @@ namespace PRD
             // 
             // dtp_Data_plan
             // 
+            this.dtp_Data_plan.Checked = false;
             this.dtp_Data_plan.Location = new System.Drawing.Point(282, 38);
             this.dtp_Data_plan.Name = "dtp_Data_plan";
             this.dtp_Data_plan.Size = new System.Drawing.Size(151, 20);
             this.dtp_Data_plan.TabIndex = 2;
+            this.dtp_Data_plan.ValueChanged += new System.EventHandler(this.dtp_Data_plan_ValueChanged);
             // 
             // dtp_Data_fakt
             // 
@@ -90,6 +93,7 @@ namespace PRD
             this.dtp_Data_fakt.Size = new System.Drawing.Size(195, 20);
             this.dtp_Data_fakt.TabIndex = 2;
             this.dtp_Data_fakt.CloseUp += new System.EventHandler(this.dtp_Data_fakt_CloseUp);
+            this.dtp_Data_fakt.ValueChanged += new System.EventHandler(this.dtp_Data_fakt_ValueChanged);
             // 
             // chb_GIP_viz
             // 
@@ -118,6 +122,7 @@ namespace PRD
             this.dtp_Data_GIP_viz.Size = new System.Drawing.Size(195, 20);
             this.dtp_Data_GIP_viz.TabIndex = 2;
             this.dtp_Data_GIP_viz.CloseUp += new System.EventHandler(this.dtp_Data_GIP_viz_CloseUp);
+            this.dtp_Data_GIP_viz.ValueChanged += new System.EventHandler(this.dtp_Data_GIP_viz_ValueChanged);
             // 
             // lb_Notes
             // 
@@ -182,6 +187,14 @@ namespace PRD
             this.group_Mark_project.TabStop = false;
             this.group_Mark_project.Text = "Марка / Комплект";
             // 
+            // cb_blok
+            // 
+            this.cb_blok.FormattingEnabled = true;
+            this.cb_blok.Location = new System.Drawing.Point(118, 37);
+            this.cb_blok.Name = "cb_blok";
+            this.cb_blok.Size = new System.Drawing.Size(93, 21);
+            this.cb_blok.TabIndex = 3;
+            // 
             // lb_blok
             // 
             this.lb_blok.AutoSize = true;
@@ -220,14 +233,6 @@ namespace PRD
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Исполнение";
-            // 
-            // cb_blok
-            // 
-            this.cb_blok.FormattingEnabled = true;
-            this.cb_blok.Location = new System.Drawing.Point(118, 37);
-            this.cb_blok.Name = "cb_blok";
-            this.cb_blok.Size = new System.Drawing.Size(93, 21);
-            this.cb_blok.TabIndex = 3;
             // 
             // Form_PRD
             // 

@@ -58,6 +58,8 @@ namespace GW_Dogovor
                         {
                             MessageBox.Show(Settings.Default.TextReloadProgramm);
                             R = false;
+                            Application.Restart();
+
                         }
                     }
                 }
@@ -71,6 +73,7 @@ namespace GW_Dogovor
                     {
                         MessageBox.Show(Settings.Default.TextReloadProgramm);
                         R = false;
+                        Application.Restart();
                     }
                 }
                 
@@ -95,7 +98,7 @@ namespace GW_Dogovor
         private void Clk() 
         {
             menuItem_PropertyConnect.Click += (s, a) => 
-            { using (ContactManager cmForm = new ContactManager()) { cmForm.ShowDialog(); } };
+            { using (ContactManager cmForm = new ContactManager()) { cmForm.ShowDialog(); Application.Restart(); } };
 
             menuItem_TypeDoc.Click += (s, a) => 
             { using (Lib_doc_type libDocForm = new Lib_doc_type()) { libDocForm.ShowDialog(); } };

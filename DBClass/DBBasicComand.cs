@@ -70,26 +70,26 @@ namespace DBClass
             bool b = false;
             void Connect(OleDbConnection con)
             {               
-                if (con.State == ConnectionState.Open)
-                {
-                    con.Close();
-                    b = false;
-                }
+                //if (con.State == ConnectionState.Open)
+                //{
+                //    con.Close();
+                //    b = false;
+                //}
                 con.ConnectionString = ConnectString + ";Jet OLEDB:Database Password=aspid;";
-                if (con.State == ConnectionState.Closed)
-                {
-                    try
-                    {
-                        con.Open();
-                        b = true;
-                    }
-                    catch (Exception ex)
-                    {
-                        b = false;
+                //if (con.State == ConnectionState.Closed)
+                //{
+                //    try
+                //    {
+                //        con.Open();
+                //        b = true;
+                //    }
+                //    catch (Exception ex)
+                //    {
+                //        b = false;
                         
-                    }
+                //    }
 
-                }
+                //}
                 
             }
 

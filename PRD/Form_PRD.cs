@@ -7,20 +7,18 @@ namespace PRD
 {
     public partial class Form_PRD : Form
     {
-        bool dateGipSet = false;
-        bool dateArhivSet = false;
         public Form_PRD()
         {
             InitializeComponent();
 
             tb_Mark.DataBindings.Add("Text", DB_Cmd.bndSostavObj, "Mark");
-            dtp_Data_plan.DataBindings.Add("Text", DB_Cmd.bndSostavObj, "Data_plan");
             tb_Notes.DataBindings.Add("Text", DB_Cmd.bndSostavObj, "Notes");
             chb_GIP_viz.DataBindings.Add("Checked", DB_Cmd.bndSostavObj, "GIP_viz", false, DataSourceUpdateMode.OnPropertyChanged);
             chb_Arhiv.DataBindings.Add("Checked", DB_Cmd.bndSostavObj, "Arhiv", false, DataSourceUpdateMode.OnPropertyChanged);
-            dtp_Data_GIP_viz.DataBindings.Add("Text", DB_Cmd.bndSostavObj, "Data_GIP_viz");
-           
-            dtp_Data_fakt.DataBindings.Add("Text", DB_Cmd.bndSostavObj, "Data_fakt");
+
+            dtp_Data_plan.DataBindings.Add("Text", DB_Cmd.bndSostavObj, "Data_plan", false, DataSourceUpdateMode.OnPropertyChanged, "");
+            dtp_Data_GIP_viz.DataBindings.Add("Text", DB_Cmd.bndSostavObj, "Data_GIP_viz", false, DataSourceUpdateMode.OnPropertyChanged, "");
+            dtp_Data_fakt.DataBindings.Add("Text", DB_Cmd.bndSostavObj, "Data_fakt", false, DataSourceUpdateMode.OnPropertyChanged, "");
 
 
             cb_blok.Items.AddRange(DB_Cmd.GetListValueFields(DB_Cmd.bndSostavObj, "Block").ToArray());
@@ -35,7 +33,8 @@ namespace PRD
             {
                 //if (!dateGipSet) // true если User выбрал дату из календаря
                 if (dtp_Data_GIP_viz.Value == null)
-                     ((DataRowView)DB_Cmd.bndSostavObj.Current).Row["Data_GIP_viz"] = DateTime.Today;
+                    //dtp_Data_GIP_viz.Value = DateTime.Today;
+                    ((DataRowView)DB_Cmd.bndSostavObj.Current).Row["Data_GIP_viz"] = DateTime.Today;
                 else
                     ((DataRowView)DB_Cmd.bndSostavObj.Current).Row["Data_GIP_viz"] = dtp_Data_GIP_viz.Value;
             }
@@ -80,13 +79,43 @@ namespace PRD
         private void dtp_Data_GIP_viz_CloseUp(object sender, EventArgs e)
         {
             chb_GIP_viz.Checked = true;
-            dateGipSet = true;
+           
         }
 
         private void dtp_Data_fakt_CloseUp(object sender, EventArgs e)
         {
             chb_Arhiv.Checked = true;
-            dateArhivSet = true;
+           
         }
+
+        private void dtp_Data_plan_ValueChanged(object sender, EventArgs e)
+        {
+            DateIsNullControl(sender, e, "Data_plan");
+
+        }
+        private void dtp_Data_GIP_viz_ValueChanged(object sender, EventArgs e)
+        {
+            DateIsNullControl(sender, e, "Data_GIP_viz");
+        }
+        private void dtp_Data_fakt_ValueChanged(object sender, EventArgs e)
+        {
+            DateIsNullControl(sender, e, "Data_fakt");
+        }
+
+
+        private static void DateIsNullControl(object sender, EventArgs e, string field)
+        {
+                //if (DB_Cmd.GetCurrentValueField(DB_Cmd.bndSostavObj, field) == DBNull.Value)
+                //if (((DateTimePicker)sender).Value == DateTime.MinValue)
+                //{
+                //    ((DateTimePicker)sender).CustomFormat = " ";
+                //    ((DateTimePicker)sender).Format = DateTimePickerFormat.Custom;
+                //}
+                //else
+                //{
+                //    ((DateTimePicker)sender).Format = DateTimePickerFormat.Short;
+                //}
+        }
+
     }
 }
