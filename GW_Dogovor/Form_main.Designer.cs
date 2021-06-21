@@ -29,30 +29,30 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle57 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle58 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle59 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_main));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle60 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle47 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle65 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle61 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle62 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle63 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle64 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle66 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle48 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle49 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle50 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle51 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle52 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle53 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle54 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle55 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle56 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle67 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle68 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle69 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.lbl_BasePath = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
@@ -1197,9 +1197,9 @@
             // 
             // DataDoc
             // 
-            dataGridViewCellStyle57.Format = "d";
-            dataGridViewCellStyle57.NullValue = null;
-            this.DataDoc.DefaultCellStyle = dataGridViewCellStyle57;
+            dataGridViewCellStyle1.Format = "d";
+            dataGridViewCellStyle1.NullValue = null;
+            this.DataDoc.DefaultCellStyle = dataGridViewCellStyle1;
             this.DataDoc.HeaderText = "Дата";
             this.DataDoc.Name = "DataDoc";
             this.DataDoc.ReadOnly = true;
@@ -1288,9 +1288,9 @@
             // 
             // mail_date
             // 
-            dataGridViewCellStyle58.Format = "d";
-            dataGridViewCellStyle58.NullValue = null;
-            this.mail_date.DefaultCellStyle = dataGridViewCellStyle58;
+            dataGridViewCellStyle2.Format = "d";
+            dataGridViewCellStyle2.NullValue = null;
+            this.mail_date.DefaultCellStyle = dataGridViewCellStyle2;
             this.mail_date.HeaderText = "Дата";
             this.mail_date.Name = "mail_date";
             this.mail_date.ReadOnly = true;
@@ -1376,9 +1376,9 @@
             // 
             // Zdate
             // 
-            dataGridViewCellStyle59.Format = "d";
-            dataGridViewCellStyle59.NullValue = null;
-            this.Zdate.DefaultCellStyle = dataGridViewCellStyle59;
+            dataGridViewCellStyle3.Format = "d";
+            dataGridViewCellStyle3.NullValue = null;
+            this.Zdate.DefaultCellStyle = dataGridViewCellStyle3;
             this.Zdate.HeaderText = "Дата";
             this.Zdate.Name = "Zdate";
             this.Zdate.ReadOnly = true;
@@ -1471,7 +1471,6 @@
             // 
             this.bindingNavigatorPositionItem.AccessibleName = "Положение";
             this.bindingNavigatorPositionItem.AutoSize = false;
-            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
             this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
             this.bindingNavigatorPositionItem.Text = "0";
@@ -1834,11 +1833,11 @@
             // 
             // Delete
             // 
-            dataGridViewCellStyle60.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle60.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle60.NullValue = null;
-            dataGridViewCellStyle60.Padding = new System.Windows.Forms.Padding(3);
-            this.Delete.DefaultCellStyle = dataGridViewCellStyle60;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.NullValue = null;
+            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(3);
+            this.Delete.DefaultCellStyle = dataGridViewCellStyle4;
             this.Delete.HeaderText = "Удалить";
             this.Delete.Image = global::GW_Dogovor.Properties.Resources.Delete;
             this.Delete.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
@@ -1912,7 +1911,6 @@
             // 
             this.toolStripTextBox1.AccessibleName = "Положение";
             this.toolStripTextBox1.AutoSize = false;
-            this.toolStripTextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBox1.Name = "toolStripTextBox1";
             this.toolStripTextBox1.Size = new System.Drawing.Size(50, 23);
             this.toolStripTextBox1.Text = "0";
@@ -2117,11 +2115,11 @@
             // 
             // dDelDoc
             // 
-            dataGridViewCellStyle47.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle47.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle47.NullValue = null;
-            dataGridViewCellStyle47.Padding = new System.Windows.Forms.Padding(3);
-            this.dDelDoc.DefaultCellStyle = dataGridViewCellStyle47;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.NullValue = null;
+            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(3);
+            this.dDelDoc.DefaultCellStyle = dataGridViewCellStyle5;
             this.dDelDoc.HeaderText = "Удалить";
             this.dDelDoc.Image = global::GW_Dogovor.Properties.Resources.Delete;
             this.dDelDoc.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
@@ -2303,14 +2301,14 @@
             this.Summ,
             this.Valute,
             this.StatusCPlan});
-            dataGridViewCellStyle65.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle65.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle65.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle65.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle65.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle65.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle65.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grid_CPlan.DefaultCellStyle = dataGridViewCellStyle65;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grid_CPlan.DefaultCellStyle = dataGridViewCellStyle10;
             this.grid_CPlan.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grid_CPlan.Location = new System.Drawing.Point(3, 28);
             this.grid_CPlan.Name = "grid_CPlan";
@@ -2336,8 +2334,8 @@
             // Name_Etap
             // 
             this.Name_Etap.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle61.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Name_Etap.DefaultCellStyle = dataGridViewCellStyle61;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Name_Etap.DefaultCellStyle = dataGridViewCellStyle6;
             this.Name_Etap.HeaderText = "Название";
             this.Name_Etap.Name = "Name_Etap";
             this.Name_Etap.ReadOnly = true;
@@ -2352,28 +2350,28 @@
             // 
             // Nachalo_Data
             // 
-            dataGridViewCellStyle62.Format = "d";
-            dataGridViewCellStyle62.NullValue = null;
-            this.Nachalo_Data.DefaultCellStyle = dataGridViewCellStyle62;
+            dataGridViewCellStyle7.Format = "d";
+            dataGridViewCellStyle7.NullValue = null;
+            this.Nachalo_Data.DefaultCellStyle = dataGridViewCellStyle7;
             this.Nachalo_Data.HeaderText = "Начало";
             this.Nachalo_Data.Name = "Nachalo_Data";
             this.Nachalo_Data.ReadOnly = true;
             // 
             // Konec_Data
             // 
-            dataGridViewCellStyle63.Format = "d";
-            dataGridViewCellStyle63.NullValue = null;
-            this.Konec_Data.DefaultCellStyle = dataGridViewCellStyle63;
+            dataGridViewCellStyle8.Format = "d";
+            dataGridViewCellStyle8.NullValue = null;
+            this.Konec_Data.DefaultCellStyle = dataGridViewCellStyle8;
             this.Konec_Data.HeaderText = "Окончание";
             this.Konec_Data.Name = "Konec_Data";
             this.Konec_Data.ReadOnly = true;
             // 
             // Summ
             // 
-            dataGridViewCellStyle64.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle64.Format = "N2";
-            dataGridViewCellStyle64.NullValue = null;
-            this.Summ.DefaultCellStyle = dataGridViewCellStyle64;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle9.Format = "N2";
+            dataGridViewCellStyle9.NullValue = null;
+            this.Summ.DefaultCellStyle = dataGridViewCellStyle9;
             this.Summ.HeaderText = "Сумма";
             this.Summ.Name = "Summ";
             this.Summ.ReadOnly = true;
@@ -2455,7 +2453,6 @@
             // 
             this.bindingNavigatorPositionItem1.AccessibleName = "Положение";
             this.bindingNavigatorPositionItem1.AutoSize = false;
-            this.bindingNavigatorPositionItem1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem1.Name = "bindingNavigatorPositionItem1";
             this.bindingNavigatorPositionItem1.Size = new System.Drawing.Size(50, 23);
             this.bindingNavigatorPositionItem1.Text = "0";
@@ -2605,7 +2602,6 @@
             // 
             this.bindingNavigatorPositionItem6.AccessibleName = "Положение";
             this.bindingNavigatorPositionItem6.AutoSize = false;
-            this.bindingNavigatorPositionItem6.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem6.Name = "bindingNavigatorPositionItem6";
             this.bindingNavigatorPositionItem6.Size = new System.Drawing.Size(50, 23);
             this.bindingNavigatorPositionItem6.Text = "0";
@@ -2712,7 +2708,6 @@
             // 
             this.toolStripTextBox2.AccessibleName = "Положение";
             this.toolStripTextBox2.AutoSize = false;
-            this.toolStripTextBox2.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBox2.Name = "toolStripTextBox2";
             this.toolStripTextBox2.Size = new System.Drawing.Size(50, 23);
             this.toolStripTextBox2.Text = "0";
@@ -2941,11 +2936,11 @@
             // 
             // delDoc_DS
             // 
-            dataGridViewCellStyle66.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle66.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle66.NullValue = null;
-            dataGridViewCellStyle66.Padding = new System.Windows.Forms.Padding(3);
-            this.delDoc_DS.DefaultCellStyle = dataGridViewCellStyle66;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle11.NullValue = null;
+            dataGridViewCellStyle11.Padding = new System.Windows.Forms.Padding(3);
+            this.delDoc_DS.DefaultCellStyle = dataGridViewCellStyle11;
             this.delDoc_DS.HeaderText = "Удалить";
             this.delDoc_DS.Image = global::GW_Dogovor.Properties.Resources.Delete;
             this.delDoc_DS.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
@@ -3070,8 +3065,8 @@
             // name_ds
             // 
             this.name_ds.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle48.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.name_ds.DefaultCellStyle = dataGridViewCellStyle48;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.name_ds.DefaultCellStyle = dataGridViewCellStyle12;
             this.name_ds.HeaderText = "Название этапа";
             this.name_ds.Name = "name_ds";
             this.name_ds.ReadOnly = true;
@@ -3085,18 +3080,18 @@
             // 
             // nachalo_ds
             // 
-            dataGridViewCellStyle49.Format = "d";
-            dataGridViewCellStyle49.NullValue = null;
-            this.nachalo_ds.DefaultCellStyle = dataGridViewCellStyle49;
+            dataGridViewCellStyle13.Format = "d";
+            dataGridViewCellStyle13.NullValue = null;
+            this.nachalo_ds.DefaultCellStyle = dataGridViewCellStyle13;
             this.nachalo_ds.HeaderText = "Начало";
             this.nachalo_ds.Name = "nachalo_ds";
             this.nachalo_ds.ReadOnly = true;
             // 
             // konec_ds
             // 
-            dataGridViewCellStyle50.Format = "d";
-            dataGridViewCellStyle50.NullValue = null;
-            this.konec_ds.DefaultCellStyle = dataGridViewCellStyle50;
+            dataGridViewCellStyle14.Format = "d";
+            dataGridViewCellStyle14.NullValue = null;
+            this.konec_ds.DefaultCellStyle = dataGridViewCellStyle14;
             this.konec_ds.HeaderText = "Окончание";
             this.konec_ds.Name = "konec_ds";
             this.konec_ds.ReadOnly = true;
@@ -3104,10 +3099,10 @@
             // summ_ds
             // 
             this.summ_ds.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle51.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle51.Format = "N2";
-            dataGridViewCellStyle51.NullValue = null;
-            this.summ_ds.DefaultCellStyle = dataGridViewCellStyle51;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle15.Format = "N2";
+            dataGridViewCellStyle15.NullValue = null;
+            this.summ_ds.DefaultCellStyle = dataGridViewCellStyle15;
             this.summ_ds.HeaderText = "Сумма";
             this.summ_ds.Name = "summ_ds";
             this.summ_ds.ReadOnly = true;
@@ -3193,7 +3188,6 @@
             // 
             this.bindingNavigatorPositionItem2.AccessibleName = "Положение";
             this.bindingNavigatorPositionItem2.AutoSize = false;
-            this.bindingNavigatorPositionItem2.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem2.Name = "bindingNavigatorPositionItem2";
             this.bindingNavigatorPositionItem2.Size = new System.Drawing.Size(50, 23);
             this.bindingNavigatorPositionItem2.Text = "0";
@@ -3344,7 +3338,6 @@
             // 
             this.toolStripTextBox4.AccessibleName = "Положение";
             this.toolStripTextBox4.AutoSize = false;
-            this.toolStripTextBox4.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBox4.Name = "toolStripTextBox4";
             this.toolStripTextBox4.Size = new System.Drawing.Size(50, 23);
             this.toolStripTextBox4.Text = "0";
@@ -3670,9 +3663,9 @@
             // 
             // Mark_date_plan
             // 
-            dataGridViewCellStyle52.Format = "d";
-            dataGridViewCellStyle52.NullValue = null;
-            this.Mark_date_plan.DefaultCellStyle = dataGridViewCellStyle52;
+            dataGridViewCellStyle16.Format = "d";
+            dataGridViewCellStyle16.NullValue = null;
+            this.Mark_date_plan.DefaultCellStyle = dataGridViewCellStyle16;
             this.Mark_date_plan.HeaderText = "Дата по плану";
             this.Mark_date_plan.Name = "Mark_date_plan";
             this.Mark_date_plan.ReadOnly = true;
@@ -3688,9 +3681,9 @@
             // 
             // Mark_date_GIP
             // 
-            dataGridViewCellStyle53.Format = "d";
-            dataGridViewCellStyle53.NullValue = null;
-            this.Mark_date_GIP.DefaultCellStyle = dataGridViewCellStyle53;
+            dataGridViewCellStyle17.Format = "d";
+            dataGridViewCellStyle17.NullValue = null;
+            this.Mark_date_GIP.DefaultCellStyle = dataGridViewCellStyle17;
             this.Mark_date_GIP.HeaderText = "Дата подписи";
             this.Mark_date_GIP.Name = "Mark_date_GIP";
             this.Mark_date_GIP.ReadOnly = true;
@@ -3706,9 +3699,9 @@
             // 
             // Mark_data_fakt
             // 
-            dataGridViewCellStyle54.Format = "d";
-            dataGridViewCellStyle54.NullValue = null;
-            this.Mark_data_fakt.DefaultCellStyle = dataGridViewCellStyle54;
+            dataGridViewCellStyle18.Format = "d";
+            dataGridViewCellStyle18.NullValue = null;
+            this.Mark_data_fakt.DefaultCellStyle = dataGridViewCellStyle18;
             this.Mark_data_fakt.HeaderText = "Дата по факту";
             this.Mark_data_fakt.Name = "Mark_data_fakt";
             this.Mark_data_fakt.ReadOnly = true;
@@ -3788,7 +3781,6 @@
             // 
             this.bindingNavigatorPositionItem3.AccessibleName = "Положение";
             this.bindingNavigatorPositionItem3.AutoSize = false;
-            this.bindingNavigatorPositionItem3.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem3.Name = "bindingNavigatorPositionItem3";
             this.bindingNavigatorPositionItem3.Size = new System.Drawing.Size(50, 23);
             this.bindingNavigatorPositionItem3.Text = "0";
@@ -3941,18 +3933,18 @@
             // 
             // zadania_plan
             // 
-            dataGridViewCellStyle55.Format = "d";
-            dataGridViewCellStyle55.NullValue = null;
-            this.zadania_plan.DefaultCellStyle = dataGridViewCellStyle55;
+            dataGridViewCellStyle19.Format = "d";
+            dataGridViewCellStyle19.NullValue = null;
+            this.zadania_plan.DefaultCellStyle = dataGridViewCellStyle19;
             this.zadania_plan.HeaderText = "Дата по плану";
             this.zadania_plan.Name = "zadania_plan";
             this.zadania_plan.ReadOnly = true;
             // 
             // zadania_fakt
             // 
-            dataGridViewCellStyle56.Format = "d";
-            dataGridViewCellStyle56.NullValue = null;
-            this.zadania_fakt.DefaultCellStyle = dataGridViewCellStyle56;
+            dataGridViewCellStyle20.Format = "d";
+            dataGridViewCellStyle20.NullValue = null;
+            this.zadania_fakt.DefaultCellStyle = dataGridViewCellStyle20;
             this.zadania_fakt.HeaderText = "Дата по факту";
             this.zadania_fakt.Name = "zadania_fakt";
             this.zadania_fakt.ReadOnly = true;
@@ -4025,7 +4017,6 @@
             // 
             this.bindingNavigatorPositionItem4.AccessibleName = "Положение";
             this.bindingNavigatorPositionItem4.AutoSize = false;
-            this.bindingNavigatorPositionItem4.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem4.Name = "bindingNavigatorPositionItem4";
             this.bindingNavigatorPositionItem4.Size = new System.Drawing.Size(50, 23);
             this.bindingNavigatorPositionItem4.Text = "0";
@@ -4256,7 +4247,6 @@
             // 
             this.bindingNavigatorPositionItem5.AccessibleName = "Положение";
             this.bindingNavigatorPositionItem5.AutoSize = false;
-            this.bindingNavigatorPositionItem5.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem5.Name = "bindingNavigatorPositionItem5";
             this.bindingNavigatorPositionItem5.Size = new System.Drawing.Size(50, 23);
             this.bindingNavigatorPositionItem5.Text = "0";
@@ -4478,7 +4468,6 @@
             // 
             this.bindingNavigatorPositionItem7.AccessibleName = "Положение";
             this.bindingNavigatorPositionItem7.AutoSize = false;
-            this.bindingNavigatorPositionItem7.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem7.Name = "bindingNavigatorPositionItem7";
             this.bindingNavigatorPositionItem7.Size = new System.Drawing.Size(50, 23);
             this.bindingNavigatorPositionItem7.Text = "0";
@@ -4682,7 +4671,6 @@
             // 
             this.bindingNavigatorPositionItem8.AccessibleName = "Положение";
             this.bindingNavigatorPositionItem8.AutoSize = false;
-            this.bindingNavigatorPositionItem8.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem8.Name = "bindingNavigatorPositionItem8";
             this.bindingNavigatorPositionItem8.Size = new System.Drawing.Size(50, 23);
             this.bindingNavigatorPositionItem8.Text = "0";
@@ -4885,7 +4873,6 @@
             // 
             this.bindingNavigatorPositionItem9.AccessibleName = "Положение";
             this.bindingNavigatorPositionItem9.AutoSize = false;
-            this.bindingNavigatorPositionItem9.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem9.Name = "bindingNavigatorPositionItem9";
             this.bindingNavigatorPositionItem9.Size = new System.Drawing.Size(50, 23);
             this.bindingNavigatorPositionItem9.Text = "0";
@@ -4994,7 +4981,6 @@
             // 
             this.toolStripTextBox3.AccessibleName = "Положение";
             this.toolStripTextBox3.AutoSize = false;
-            this.toolStripTextBox3.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBox3.Name = "toolStripTextBox3";
             this.toolStripTextBox3.Size = new System.Drawing.Size(50, 23);
             this.toolStripTextBox3.Text = "0";
@@ -5118,8 +5104,8 @@
             this.grid_FileArh.AllowUserToDeleteRows = false;
             this.grid_FileArh.AllowUserToResizeColumns = false;
             this.grid_FileArh.AllowUserToResizeRows = false;
-            dataGridViewCellStyle67.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.grid_FileArh.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle67;
+            dataGridViewCellStyle21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.grid_FileArh.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle21;
             this.grid_FileArh.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grid_FileArh.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.FileName,
@@ -5484,11 +5470,11 @@
             // 
             // dataGridViewImageColumn2
             // 
-            dataGridViewCellStyle68.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle68.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle68.NullValue = null;
-            dataGridViewCellStyle68.Padding = new System.Windows.Forms.Padding(3);
-            this.dataGridViewImageColumn2.DefaultCellStyle = dataGridViewCellStyle68;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle22.NullValue = null;
+            dataGridViewCellStyle22.Padding = new System.Windows.Forms.Padding(3);
+            this.dataGridViewImageColumn2.DefaultCellStyle = dataGridViewCellStyle22;
             this.dataGridViewImageColumn2.HeaderText = "Удалить";
             this.dataGridViewImageColumn2.Image = global::GW_Dogovor.Properties.Resources.Delete;
             this.dataGridViewImageColumn2.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
@@ -5499,11 +5485,11 @@
             // 
             // dataGridViewImageColumn3
             // 
-            dataGridViewCellStyle69.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle69.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle69.NullValue = null;
-            dataGridViewCellStyle69.Padding = new System.Windows.Forms.Padding(3);
-            this.dataGridViewImageColumn3.DefaultCellStyle = dataGridViewCellStyle69;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle23.NullValue = null;
+            dataGridViewCellStyle23.Padding = new System.Windows.Forms.Padding(3);
+            this.dataGridViewImageColumn3.DefaultCellStyle = dataGridViewCellStyle23;
             this.dataGridViewImageColumn3.HeaderText = "Удалить";
             this.dataGridViewImageColumn3.Image = global::GW_Dogovor.Properties.Resources.Delete;
             this.dataGridViewImageColumn3.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;

@@ -4,12 +4,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.30104.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GW_Dogovor", "GW_Dogovor\GW_Dogovor.csproj", "{2AE28D11-CA68-4E07-BB61-3978E3685F12}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5A2A5695-9FE1-441E-9772-E666717A0771} = {5A2A5695-9FE1-441E-9772-E666717A0771}
+		{B35B80B3-556F-44CE-9187-EA247EF1508F} = {B35B80B3-556F-44CE-9187-EA247EF1508F}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBClass", "DBClass\DBClass.csproj", "{BD48B48A-F061-4885-9137-0D4B8430225C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocTYPELibrary", "DocTYPELibrary\DocTYPELibrary.csproj", "{29D2130F-4CA0-4B12-B71D-8025516FE00C}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NullableDateTimePicker", "NullableDateTimePicker\NullableDateTimePicker.csproj", "{69AC71AD-10C9-4D53-84D3-AF344AB2EDCC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CPlan", "CPlan\CPlan.csproj", "{0EAC70BE-B3D2-4239-A627-471BA03A1122}"
 EndProject
@@ -64,6 +66,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		ToDo.txt = ToDo.txt
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DateTimePickerNullable", "..\..\Nullable DateTimePicker\MyDatePicker\Test_DateTimePickerNulleable\DateTimePickerNulleable\DateTimePickerNullable.csproj", "{5A2A5695-9FE1-441E-9772-E666717A0771}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -96,14 +100,6 @@ Global
 		{29D2130F-4CA0-4B12-B71D-8025516FE00C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{29D2130F-4CA0-4B12-B71D-8025516FE00C}.Release|x86.ActiveCfg = Release|x86
 		{29D2130F-4CA0-4B12-B71D-8025516FE00C}.Release|x86.Build.0 = Release|x86
-		{69AC71AD-10C9-4D53-84D3-AF344AB2EDCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{69AC71AD-10C9-4D53-84D3-AF344AB2EDCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{69AC71AD-10C9-4D53-84D3-AF344AB2EDCC}.Debug|x86.ActiveCfg = Debug|x86
-		{69AC71AD-10C9-4D53-84D3-AF344AB2EDCC}.Debug|x86.Build.0 = Debug|x86
-		{69AC71AD-10C9-4D53-84D3-AF344AB2EDCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{69AC71AD-10C9-4D53-84D3-AF344AB2EDCC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{69AC71AD-10C9-4D53-84D3-AF344AB2EDCC}.Release|x86.ActiveCfg = Release|x86
-		{69AC71AD-10C9-4D53-84D3-AF344AB2EDCC}.Release|x86.Build.0 = Release|x86
 		{0EAC70BE-B3D2-4239-A627-471BA03A1122}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0EAC70BE-B3D2-4239-A627-471BA03A1122}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0EAC70BE-B3D2-4239-A627-471BA03A1122}.Debug|x86.ActiveCfg = Debug|x86
@@ -224,6 +220,14 @@ Global
 		{D26F909E-2BC4-4FCA-AB02-E078BD025D51}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D26F909E-2BC4-4FCA-AB02-E078BD025D51}.Release|x86.ActiveCfg = Release|x86
 		{D26F909E-2BC4-4FCA-AB02-E078BD025D51}.Release|x86.Build.0 = Release|x86
+		{5A2A5695-9FE1-441E-9772-E666717A0771}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A2A5695-9FE1-441E-9772-E666717A0771}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A2A5695-9FE1-441E-9772-E666717A0771}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5A2A5695-9FE1-441E-9772-E666717A0771}.Debug|x86.Build.0 = Debug|Any CPU
+		{5A2A5695-9FE1-441E-9772-E666717A0771}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A2A5695-9FE1-441E-9772-E666717A0771}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A2A5695-9FE1-441E-9772-E666717A0771}.Release|x86.ActiveCfg = Release|Any CPU
+		{5A2A5695-9FE1-441E-9772-E666717A0771}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

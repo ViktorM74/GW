@@ -1704,6 +1704,11 @@ namespace GW_Dogovor
                     MailObjectMenuItem.Enabled = false;
         }
 
+        private void CopyRowsGrid(DataGridView dgv)
+        {
+            
+        }
+
  
     }
 

@@ -1,6 +1,4 @@
-﻿using DateTimePickerNullable;
-
-namespace PRD
+﻿namespace PRD
 {
     partial class Form_PRD
     {
@@ -33,20 +31,20 @@ namespace PRD
             this.lb_Mark = new System.Windows.Forms.Label();
             this.tb_Mark = new System.Windows.Forms.TextBox();
             this.lb_Data_plan = new System.Windows.Forms.Label();
-            this.dtp_Data_plan = new System.Windows.Forms.DateTimePicker();
-            this.dtp_Data_fakt = new System.Windows.Forms.DateTimePicker();
             this.chb_GIP_viz = new System.Windows.Forms.CheckBox();
             this.chb_Arhiv = new System.Windows.Forms.CheckBox();
-            this.dtp_Data_GIP_viz = new System.Windows.Forms.DateTimePicker();
             this.lb_Notes = new System.Windows.Forms.Label();
             this.tb_Notes = new System.Windows.Forms.TextBox();
             this.btn_Save = new System.Windows.Forms.Button();
             this.btn_Cancel = new System.Windows.Forms.Button();
             this.group_Mark_project = new System.Windows.Forms.GroupBox();
             this.cb_blok = new System.Windows.Forms.ComboBox();
+            this.dtp_Data_plan = new DateTimePickerNullable.DatePickerNullable();
             this.lb_blok = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dtp_Data_fakt = new DateTimePickerNullable.DatePickerNullable();
+            this.dtp_Data_GIP_viz = new DateTimePickerNullable.DatePickerNullable();
             this.group_Mark_project.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -77,24 +75,6 @@ namespace PRD
             this.lb_Data_plan.TabIndex = 0;
             this.lb_Data_plan.Text = "Дата по плану";
             // 
-            // dtp_Data_plan
-            // 
-            this.dtp_Data_plan.Checked = false;
-            this.dtp_Data_plan.Location = new System.Drawing.Point(282, 38);
-            this.dtp_Data_plan.Name = "dtp_Data_plan";
-            this.dtp_Data_plan.Size = new System.Drawing.Size(151, 20);
-            this.dtp_Data_plan.TabIndex = 2;
-            this.dtp_Data_plan.ValueChanged += new System.EventHandler(this.dtp_Data_plan_ValueChanged);
-            // 
-            // dtp_Data_fakt
-            // 
-            this.dtp_Data_fakt.Location = new System.Drawing.Point(125, 59);
-            this.dtp_Data_fakt.Name = "dtp_Data_fakt";
-            this.dtp_Data_fakt.Size = new System.Drawing.Size(195, 20);
-            this.dtp_Data_fakt.TabIndex = 2;
-            this.dtp_Data_fakt.CloseUp += new System.EventHandler(this.dtp_Data_fakt_CloseUp);
-            this.dtp_Data_fakt.ValueChanged += new System.EventHandler(this.dtp_Data_fakt_ValueChanged);
-            // 
             // chb_GIP_viz
             // 
             this.chb_GIP_viz.AutoSize = true;
@@ -114,15 +94,6 @@ namespace PRD
             this.chb_Arhiv.TabIndex = 3;
             this.chb_Arhiv.Text = "сдано в архив";
             this.chb_Arhiv.UseVisualStyleBackColor = true;
-            // 
-            // dtp_Data_GIP_viz
-            // 
-            this.dtp_Data_GIP_viz.Location = new System.Drawing.Point(125, 23);
-            this.dtp_Data_GIP_viz.Name = "dtp_Data_GIP_viz";
-            this.dtp_Data_GIP_viz.Size = new System.Drawing.Size(195, 20);
-            this.dtp_Data_GIP_viz.TabIndex = 2;
-            this.dtp_Data_GIP_viz.CloseUp += new System.EventHandler(this.dtp_Data_GIP_viz_CloseUp);
-            this.dtp_Data_GIP_viz.ValueChanged += new System.EventHandler(this.dtp_Data_GIP_viz_ValueChanged);
             // 
             // lb_Notes
             // 
@@ -195,6 +166,20 @@ namespace PRD
             this.cb_blok.Size = new System.Drawing.Size(93, 21);
             this.cb_blok.TabIndex = 3;
             // 
+            // dtp_Data_plan
+            // 
+            this.dtp_Data_plan.Checked = false;
+            this.dtp_Data_plan.CustomFormat = "dd.MM.yyyy";
+            this.dtp_Data_plan.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtp_Data_plan.Location = new System.Drawing.Point(282, 38);
+            this.dtp_Data_plan.Name = "dtp_Data_plan";
+            this.dtp_Data_plan.NullableValue = new System.DateTime(2021, 6, 20, 19, 31, 4, 791);
+            this.dtp_Data_plan.OriginalValue = null;
+            this.dtp_Data_plan.Size = new System.Drawing.Size(136, 20);
+            this.dtp_Data_plan.TabIndex = 2;
+            this.dtp_Data_plan.Value = new System.DateTime(2021, 6, 20, 19, 31, 4, 791);
+            this.dtp_Data_plan.ValueChanged += new System.EventHandler(this.dtp_Data_plan_ValueChanged);
+            // 
             // lb_blok
             // 
             this.lb_blok.AutoSize = true;
@@ -234,6 +219,36 @@ namespace PRD
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Исполнение";
             // 
+            // dtp_Data_fakt
+            // 
+            this.dtp_Data_fakt.Checked = false;
+            this.dtp_Data_fakt.CustomFormat = "dd.MM.yyyy";
+            this.dtp_Data_fakt.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtp_Data_fakt.Location = new System.Drawing.Point(125, 59);
+            this.dtp_Data_fakt.Name = "dtp_Data_fakt";
+            this.dtp_Data_fakt.NullableValue = new System.DateTime(2021, 6, 20, 19, 31, 4, 832);
+            this.dtp_Data_fakt.OriginalValue = null;
+            this.dtp_Data_fakt.Size = new System.Drawing.Size(112, 20);
+            this.dtp_Data_fakt.TabIndex = 2;
+            this.dtp_Data_fakt.Value = new System.DateTime(2021, 6, 20, 19, 31, 4, 832);
+            this.dtp_Data_fakt.CloseUp += new System.EventHandler(this.dtp_Data_fakt_CloseUp);
+            this.dtp_Data_fakt.ValueChanged += new System.EventHandler(this.dtp_Data_fakt_ValueChanged);
+            // 
+            // dtp_Data_GIP_viz
+            // 
+            this.dtp_Data_GIP_viz.Checked = false;
+            this.dtp_Data_GIP_viz.CustomFormat = "dd.MM.yyyy";
+            this.dtp_Data_GIP_viz.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtp_Data_GIP_viz.Location = new System.Drawing.Point(125, 23);
+            this.dtp_Data_GIP_viz.Name = "dtp_Data_GIP_viz";
+            this.dtp_Data_GIP_viz.NullableValue = new System.DateTime(2021, 6, 20, 19, 31, 4, 838);
+            this.dtp_Data_GIP_viz.OriginalValue = null;
+            this.dtp_Data_GIP_viz.Size = new System.Drawing.Size(112, 20);
+            this.dtp_Data_GIP_viz.TabIndex = 2;
+            this.dtp_Data_GIP_viz.Value = new System.DateTime(2021, 6, 20, 19, 31, 4, 838);
+            this.dtp_Data_GIP_viz.CloseUp += new System.EventHandler(this.dtp_Data_GIP_viz_CloseUp);
+            this.dtp_Data_GIP_viz.ValueChanged += new System.EventHandler(this.dtp_Data_GIP_viz_ValueChanged);
+            // 
             // Form_PRD
             // 
             this.AcceptButton = this.btn_Save;
@@ -263,11 +278,11 @@ namespace PRD
         private System.Windows.Forms.Label lb_Mark;
         private System.Windows.Forms.TextBox tb_Mark;
         private System.Windows.Forms.Label lb_Data_plan;
-        private System.Windows.Forms.DateTimePicker dtp_Data_plan;
-        private System.Windows.Forms.DateTimePicker dtp_Data_fakt;
+        private DateTimePickerNullable.DatePickerNullable dtp_Data_plan;
+        private DateTimePickerNullable.DatePickerNullable dtp_Data_fakt;
         private System.Windows.Forms.CheckBox chb_GIP_viz;
         private System.Windows.Forms.CheckBox chb_Arhiv;
-        private System.Windows.Forms.DateTimePicker dtp_Data_GIP_viz;
+        private DateTimePickerNullable.DatePickerNullable dtp_Data_GIP_viz;
         private System.Windows.Forms.Label lb_Notes;
         private System.Windows.Forms.TextBox tb_Notes;
         private System.Windows.Forms.Button btn_Save;
