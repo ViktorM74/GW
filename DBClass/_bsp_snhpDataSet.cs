@@ -6,3 +6,10 @@
     {
     }
 }
+
+namespace DBClass._bsp_snhpDataSetTableAdapters {
+    
+    
+    public partial class CalendarPlanTableAdapter {
+    }
+}

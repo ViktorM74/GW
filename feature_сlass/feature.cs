@@ -37,7 +37,7 @@ namespace feature_сlass
             string result = "";
             if (nmr != "")
             {
-
+                
                 string[] l = nmr.Split('.');
                 foreach (string n in l)
                 {

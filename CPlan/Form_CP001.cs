@@ -96,5 +96,10 @@ namespace CPlan
         {
             DB_Cmd.CancelCalendarPlanDD();
         }
+
+        private void tb_num_Leave(object sender, EventArgs e)
+        {
+            tb_num.Text = tb_num.Text.Replace("/", ".").Replace(",", ".").Replace(" ", ".").Replace("-", ".");
+        }
     }
 }

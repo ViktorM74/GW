@@ -182,6 +182,11 @@
     <None Include="Resources\bindingNavigatorAddNewItem1.Image.png" />
     <None Include="Resources\bindingNavigatorDeleteItem1.Image.png" />
     <None Include="Resources\Refresh.png" />
+    <None Include="Resources\outExcel.png" />
+    <None Include="Resources\inExcel.png" />
+    <None Include="Resources\outExcel1.png" />
+    <None Include="Resources\icons8-move-selection-to-top-row-40.png" />
+    <None Include="Resources\icons8-move-selection-to-low-row-40.png" />
     <Content Include="Resources\return.png" />
     <None Include="Resources\return1.png" />
     <None Include="Resources\Save.bmp" />
@@ -192,6 +197,10 @@
     <ProjectReference Include="..\AddFilesToFolder\AddFilesToFolder.csproj">
       <Project>{c96ebd3e-48d3-4019-bfc9-1e53b1aa28f0}</Project>
       <Name>AddFilesToFolder</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CLib\CLib.csproj">
+      <Project>{6c10aba9-adf7-415e-8f6e-33d3a2f78230}</Project>
+      <Name>CLib</Name>
     </ProjectReference>
     <ProjectReference Include="..\CPlan\CPlan.csproj">
       <Project>{0eac70be-b3d2-4239-a627-471ba03a1122}</Project>
@@ -220,6 +229,10 @@
     <ProjectReference Include="..\DopSoglClass\DopSoglClass.csproj">
       <Project>{4aba2d23-e044-4331-ab38-762a2495f3ee}</Project>
       <Name>DopSoglClass</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ExcelActive\ExcelActive.csproj">
+      <Project>{27d581fb-c5d8-4b89-9b06-b6291f72e83c}</Project>
+      <Name>ExcelActive</Name>
     </ProjectReference>
     <ProjectReference Include="..\feature_сlass\feature_сlass.csproj">
       <Project>{59ee863f-eedc-4a06-bc08-729b92241c7d}</Project>

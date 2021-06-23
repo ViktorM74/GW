@@ -133,6 +133,26 @@ namespace GW_Dogovor.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_move_selection_to_low_row_40 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-move-selection-to-low-row-40", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_move_selection_to_top_row_40 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-move-selection-to-top-row-40", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_дерево_папок_128 {
             get {
                 object obj = ResourceManager.GetObject("icons8-дерево-папок-128", resourceCulture);
@@ -153,6 +173,16 @@ namespace GW_Dogovor.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap inExcel {
+            get {
+                object obj = ResourceManager.GetObject("inExcel", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Modify {
             get {
                 object obj = ResourceManager.GetObject("Modify", resourceCulture);
@@ -166,6 +196,16 @@ namespace GW_Dogovor.Properties {
         internal static System.Drawing.Bitmap Modify1 {
             get {
                 object obj = ResourceManager.GetObject("Modify1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap outExcel {
+            get {
+                object obj = ResourceManager.GetObject("outExcel", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

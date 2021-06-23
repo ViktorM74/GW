@@ -1641,5 +1641,11 @@ namespace DBClass
             }
             return lst;
         }
+
+        public static void RecordNewRows(DataTable dt_data, DataTable dt_link)
+        {
+
+        }
+
     }
 }

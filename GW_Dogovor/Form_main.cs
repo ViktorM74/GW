@@ -7,12 +7,14 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using AddFilesToFolder;
+using CLib;
 using CPlan;
 using DBClass;
 using DocTYPELibrary;
 using DocumentsClass;
 using DogovorClass;
 using DopSoglClass;
+using ExcelActive;
 using feature_сlass;
 using FileAction;
 using FolderManager;
@@ -634,6 +636,10 @@ namespace GW_Dogovor
         private void bndNavigator_KP_Dop_Paint(object sender, PaintEventArgs e)
         {
             TabControlCount(grid_CPlanDD, bndNavigator_KP_Dop);
+            if (ListUnit.Count != 0)
+                btn_PasteRow.Enabled = true;
+            else
+                btn_PasteRow.Enabled = false;
         }
 
         private void bndNavigatorDogovor_Paint(object sender, PaintEventArgs e)
@@ -1704,12 +1710,83 @@ namespace GW_Dogovor
                     MailObjectMenuItem.Enabled = false;
         }
 
+        private List<CPunit> ListUnit = new List<CPunit>();
+
         private void CopyRowsGrid(DataGridView dgv)
         {
-            
+            ListUnit.Clear();
+            #region Copy
+            if (dgv.SelectedRows.Count != 0)
+            {
+                foreach(DataGridViewRow rv in dgv.SelectedRows)
+                {
+                    CPunit unit = new CPunit();
+                    unit.Num_Etap = rv.Cells["num_ds"].Value.ToString();
+                    unit.Name_Etap = rv.Cells["name_ds"].Value.ToString();
+                    if (rv.Cells["day_ds"].Value != DBNull.Value)
+                        unit.Days = (int?)rv.Cells["day_ds"].Value;
+                    else
+                        unit.Days = null;
+                    if (rv.Cells["nachalo_ds"].Value != DBNull.Value)
+                        unit.Nachalo_Data = (DateTime?)rv.Cells["nachalo_ds"].Value;
+                    else
+                        unit.Nachalo_Data = null;
+                    if (rv.Cells["konec_ds"].Value != DBNull.Value)
+                        unit.Konec_Data = (DateTime?)rv.Cells["konec_ds"].Value;
+                    else
+                        unit.Konec_Data = null;
+                    if (rv.Cells["summ_ds"].Value != DBNull.Value)
+                        unit.Summ = Convert.ToDecimal( rv.Cells["summ_ds"].Value);
+                    else
+                        unit.Summ = null;
+                    unit.V = rv.Cells["valute_ds"].Value.ToString();
+
+                    ListUnit.Add(unit);
+                }
+            }
+            #endregion Copy
+
+            //MessageBox.Show(ListUnit.Count.ToString());
         }
 
- 
+        private void PasteRowGrid(List<CPunit> list)
+        {
+            #region Paste
+            int idDog = (int)DB_Cmd.GetCurrentValueField(DB_Cmd.bndDogovor, "DogID");
+            int idDS = (int)DB_Cmd.GetCurrentValueField(DB_Cmd.bndDopDogovor, "DS_ID");
+
+            if (list.Count != 0)
+                foreach (CPunit u in list)
+                {
+                    string num_sort = feature.NormalizeNumSort(u.Num_Etap);
+                    DB_Cmd.adpCPlan.InsertPasteRow(idDS, u.Num_Etap, u.Name_Etap,
+                                            u.Nachalo_Data, u.Konec_Data,
+                                            u.Days, u.Summ, u.V, idDog, num_sort);
+                }
+            DB_Cmd.tableManager.UpdateAll(DB_Cmd.dsDB);
+            DB_Cmd.adpCPlan.Fill(DB_Cmd.dsDB.CalendarPlan);
+            DB_Cmd.bndCalendarPlanDD.ResetBindings(true);
+            MessageBox.Show("Вставлено " + list.Count.ToString() + " строк.");
+            #endregion Paste
+
+            list.Clear();
+        }
+
+        private void btn_CopySelectRows_Click(object sender, EventArgs e)
+        {
+            CopyRowsGrid(grid_CPlanDD);
+        }
+
+        private void btn_PasteRow_Click(object sender, EventArgs e)
+        {
+            PasteRowGrid(ListUnit);
+        }
+
+        private void btn_ImportExcel_Click(object sender, EventArgs e)
+        {
+            FormActiveExcel frmEx = new FormActiveExcel();
+            frmEx.Show();
+        }
     }
 
 }

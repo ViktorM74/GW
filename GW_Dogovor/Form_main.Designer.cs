@@ -53,6 +53,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.lbl_BasePath = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
@@ -308,8 +309,11 @@
             this.btn_add_CP = new System.Windows.Forms.ToolStripButton();
             this.btn_delete_CP = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator21 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton9 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton10 = new System.Windows.Forms.ToolStripButton();
+            this.btn_ExportExcel = new System.Windows.Forms.ToolStripButton();
+            this.btn_ImportExcel = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator22 = new System.Windows.Forms.ToolStripSeparator();
+            this.btn_CopySelectRows = new System.Windows.Forms.ToolStripButton();
+            this.btn_PasteRow = new System.Windows.Forms.ToolStripButton();
             this.bndNavigatorDDog = new System.Windows.Forms.BindingNavigator(this.components);
             this.toolStripLabel4 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
@@ -532,11 +536,12 @@
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
             this.tmOpenLocalFolder = new System.Windows.Forms.ToolStripMenuItem();
             this.tmOpenServerFolder = new System.Windows.Forms.ToolStripMenuItem();
-            this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel5 = new System.Windows.Forms.Panel();
             this.tbNameProject = new System.Windows.Forms.TextBox();
             this.tb_num_dog = new System.Windows.Forms.TextBox();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
             this.statusStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
@@ -1471,6 +1476,7 @@
             // 
             this.bindingNavigatorPositionItem.AccessibleName = "Положение";
             this.bindingNavigatorPositionItem.AutoSize = false;
+            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
             this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
             this.bindingNavigatorPositionItem.Text = "0";
@@ -1911,6 +1917,7 @@
             // 
             this.toolStripTextBox1.AccessibleName = "Положение";
             this.toolStripTextBox1.AutoSize = false;
+            this.toolStripTextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBox1.Name = "toolStripTextBox1";
             this.toolStripTextBox1.Size = new System.Drawing.Size(50, 23);
             this.toolStripTextBox1.Text = "0";
@@ -2453,6 +2460,7 @@
             // 
             this.bindingNavigatorPositionItem1.AccessibleName = "Положение";
             this.bindingNavigatorPositionItem1.AutoSize = false;
+            this.bindingNavigatorPositionItem1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem1.Name = "bindingNavigatorPositionItem1";
             this.bindingNavigatorPositionItem1.Size = new System.Drawing.Size(50, 23);
             this.bindingNavigatorPositionItem1.Text = "0";
@@ -2602,6 +2610,7 @@
             // 
             this.bindingNavigatorPositionItem6.AccessibleName = "Положение";
             this.bindingNavigatorPositionItem6.AutoSize = false;
+            this.bindingNavigatorPositionItem6.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem6.Name = "bindingNavigatorPositionItem6";
             this.bindingNavigatorPositionItem6.Size = new System.Drawing.Size(50, 23);
             this.bindingNavigatorPositionItem6.Text = "0";
@@ -2708,6 +2717,7 @@
             // 
             this.toolStripTextBox2.AccessibleName = "Положение";
             this.toolStripTextBox2.AutoSize = false;
+            this.toolStripTextBox2.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBox2.Name = "toolStripTextBox2";
             this.toolStripTextBox2.Size = new System.Drawing.Size(50, 23);
             this.toolStripTextBox2.Text = "0";
@@ -3140,8 +3150,11 @@
             this.btn_add_CP,
             this.btn_delete_CP,
             this.toolStripSeparator21,
-            this.toolStripButton9,
-            this.toolStripButton10});
+            this.btn_ExportExcel,
+            this.btn_ImportExcel,
+            this.toolStripSeparator22,
+            this.btn_CopySelectRows,
+            this.btn_PasteRow});
             this.bndNavigator_KP_Dop.Location = new System.Drawing.Point(3, 16);
             this.bndNavigator_KP_Dop.MoveFirstItem = this.bindingNavigatorMoveFirstItem2;
             this.bndNavigator_KP_Dop.MoveLastItem = this.bindingNavigatorMoveLastItem2;
@@ -3188,6 +3201,7 @@
             // 
             this.bindingNavigatorPositionItem2.AccessibleName = "Положение";
             this.bindingNavigatorPositionItem2.AutoSize = false;
+            this.bindingNavigatorPositionItem2.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem2.Name = "bindingNavigatorPositionItem2";
             this.bindingNavigatorPositionItem2.Size = new System.Drawing.Size(50, 23);
             this.bindingNavigatorPositionItem2.Text = "0";
@@ -3256,23 +3270,53 @@
             this.toolStripSeparator21.Name = "toolStripSeparator21";
             this.toolStripSeparator21.Size = new System.Drawing.Size(6, 25);
             // 
-            // toolStripButton9
+            // btn_ExportExcel
             // 
-            this.toolStripButton9.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton9.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton9.Image")));
-            this.toolStripButton9.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton9.Name = "toolStripButton9";
-            this.toolStripButton9.Size = new System.Drawing.Size(47, 22);
-            this.toolStripButton9.Text = "в Excel";
+            this.btn_ExportExcel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btn_ExportExcel.Image = ((System.Drawing.Image)(resources.GetObject("btn_ExportExcel.Image")));
+            this.btn_ExportExcel.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btn_ExportExcel.Name = "btn_ExportExcel";
+            this.btn_ExportExcel.Size = new System.Drawing.Size(23, 22);
+            this.btn_ExportExcel.Text = "в Excel";
+            this.btn_ExportExcel.ToolTipText = "Экспорт в Excel";
             // 
-            // toolStripButton10
+            // btn_ImportExcel
             // 
-            this.toolStripButton10.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton10.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton10.Image")));
-            this.toolStripButton10.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton10.Name = "toolStripButton10";
-            this.toolStripButton10.Size = new System.Drawing.Size(53, 22);
-            this.toolStripButton10.Text = "из Excel";
+            this.btn_ImportExcel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btn_ImportExcel.Image = global::GW_Dogovor.Properties.Resources.inExcel;
+            this.btn_ImportExcel.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btn_ImportExcel.Name = "btn_ImportExcel";
+            this.btn_ImportExcel.Size = new System.Drawing.Size(23, 22);
+            this.btn_ImportExcel.Text = "из Excel";
+            this.btn_ImportExcel.ToolTipText = "Импорт из Excel";
+            this.btn_ImportExcel.Click += new System.EventHandler(this.btn_ImportExcel_Click);
+            // 
+            // toolStripSeparator22
+            // 
+            this.toolStripSeparator22.Name = "toolStripSeparator22";
+            this.toolStripSeparator22.Size = new System.Drawing.Size(6, 25);
+            // 
+            // btn_CopySelectRows
+            // 
+            this.btn_CopySelectRows.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btn_CopySelectRows.Image = global::GW_Dogovor.Properties.Resources.icons8_move_selection_to_top_row_40;
+            this.btn_CopySelectRows.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btn_CopySelectRows.Name = "btn_CopySelectRows";
+            this.btn_CopySelectRows.Size = new System.Drawing.Size(23, 22);
+            this.btn_CopySelectRows.Text = "CopySelectRows";
+            this.btn_CopySelectRows.ToolTipText = "Копировать выделенные строки";
+            this.btn_CopySelectRows.Click += new System.EventHandler(this.btn_CopySelectRows_Click);
+            // 
+            // btn_PasteRow
+            // 
+            this.btn_PasteRow.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btn_PasteRow.Image = global::GW_Dogovor.Properties.Resources.icons8_move_selection_to_low_row_40;
+            this.btn_PasteRow.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btn_PasteRow.Name = "btn_PasteRow";
+            this.btn_PasteRow.Size = new System.Drawing.Size(23, 22);
+            this.btn_PasteRow.Text = "PasteRow";
+            this.btn_PasteRow.ToolTipText = "Вставить строки";
+            this.btn_PasteRow.Click += new System.EventHandler(this.btn_PasteRow_Click);
             // 
             // bndNavigatorDDog
             // 
@@ -3338,6 +3382,7 @@
             // 
             this.toolStripTextBox4.AccessibleName = "Положение";
             this.toolStripTextBox4.AutoSize = false;
+            this.toolStripTextBox4.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBox4.Name = "toolStripTextBox4";
             this.toolStripTextBox4.Size = new System.Drawing.Size(50, 23);
             this.toolStripTextBox4.Text = "0";
@@ -3781,6 +3826,7 @@
             // 
             this.bindingNavigatorPositionItem3.AccessibleName = "Положение";
             this.bindingNavigatorPositionItem3.AutoSize = false;
+            this.bindingNavigatorPositionItem3.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem3.Name = "bindingNavigatorPositionItem3";
             this.bindingNavigatorPositionItem3.Size = new System.Drawing.Size(50, 23);
             this.bindingNavigatorPositionItem3.Text = "0";
@@ -4017,6 +4063,7 @@
             // 
             this.bindingNavigatorPositionItem4.AccessibleName = "Положение";
             this.bindingNavigatorPositionItem4.AutoSize = false;
+            this.bindingNavigatorPositionItem4.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem4.Name = "bindingNavigatorPositionItem4";
             this.bindingNavigatorPositionItem4.Size = new System.Drawing.Size(50, 23);
             this.bindingNavigatorPositionItem4.Text = "0";
@@ -4247,6 +4294,7 @@
             // 
             this.bindingNavigatorPositionItem5.AccessibleName = "Положение";
             this.bindingNavigatorPositionItem5.AutoSize = false;
+            this.bindingNavigatorPositionItem5.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem5.Name = "bindingNavigatorPositionItem5";
             this.bindingNavigatorPositionItem5.Size = new System.Drawing.Size(50, 23);
             this.bindingNavigatorPositionItem5.Text = "0";
@@ -4468,6 +4516,7 @@
             // 
             this.bindingNavigatorPositionItem7.AccessibleName = "Положение";
             this.bindingNavigatorPositionItem7.AutoSize = false;
+            this.bindingNavigatorPositionItem7.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem7.Name = "bindingNavigatorPositionItem7";
             this.bindingNavigatorPositionItem7.Size = new System.Drawing.Size(50, 23);
             this.bindingNavigatorPositionItem7.Text = "0";
@@ -4671,6 +4720,7 @@
             // 
             this.bindingNavigatorPositionItem8.AccessibleName = "Положение";
             this.bindingNavigatorPositionItem8.AutoSize = false;
+            this.bindingNavigatorPositionItem8.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem8.Name = "bindingNavigatorPositionItem8";
             this.bindingNavigatorPositionItem8.Size = new System.Drawing.Size(50, 23);
             this.bindingNavigatorPositionItem8.Text = "0";
@@ -4873,6 +4923,7 @@
             // 
             this.bindingNavigatorPositionItem9.AccessibleName = "Положение";
             this.bindingNavigatorPositionItem9.AutoSize = false;
+            this.bindingNavigatorPositionItem9.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem9.Name = "bindingNavigatorPositionItem9";
             this.bindingNavigatorPositionItem9.Size = new System.Drawing.Size(50, 23);
             this.bindingNavigatorPositionItem9.Text = "0";
@@ -4981,6 +5032,7 @@
             // 
             this.toolStripTextBox3.AccessibleName = "Положение";
             this.toolStripTextBox3.AutoSize = false;
+            this.toolStripTextBox3.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBox3.Name = "toolStripTextBox3";
             this.toolStripTextBox3.Size = new System.Drawing.Size(50, 23);
             this.toolStripTextBox3.Text = "0";
@@ -5468,37 +5520,6 @@
             this.tmOpenServerFolder.Size = new System.Drawing.Size(221, 22);
             this.tmOpenServerFolder.Text = "Открыть серверную папку";
             // 
-            // dataGridViewImageColumn2
-            // 
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle22.NullValue = null;
-            dataGridViewCellStyle22.Padding = new System.Windows.Forms.Padding(3);
-            this.dataGridViewImageColumn2.DefaultCellStyle = dataGridViewCellStyle22;
-            this.dataGridViewImageColumn2.HeaderText = "Удалить";
-            this.dataGridViewImageColumn2.Image = global::GW_Dogovor.Properties.Resources.Delete;
-            this.dataGridViewImageColumn2.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
-            this.dataGridViewImageColumn2.ReadOnly = true;
-            this.dataGridViewImageColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewImageColumn2.Width = 30;
-            // 
-            // dataGridViewImageColumn3
-            // 
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle23.NullValue = null;
-            dataGridViewCellStyle23.Padding = new System.Windows.Forms.Padding(3);
-            this.dataGridViewImageColumn3.DefaultCellStyle = dataGridViewCellStyle23;
-            this.dataGridViewImageColumn3.HeaderText = "Удалить";
-            this.dataGridViewImageColumn3.Image = global::GW_Dogovor.Properties.Resources.Delete;
-            this.dataGridViewImageColumn3.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.dataGridViewImageColumn3.Name = "dataGridViewImageColumn3";
-            this.dataGridViewImageColumn3.ReadOnly = true;
-            this.dataGridViewImageColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewImageColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.dataGridViewImageColumn3.Width = 30;
-            // 
             // panel5
             // 
             this.panel5.Controls.Add(this.tbNameProject);
@@ -5543,6 +5564,53 @@
             this.tb_num_dog.TabIndex = 6;
             this.tb_num_dog.Text = "NUM DOGOVOR";
             this.tb_num_dog.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // dataGridViewImageColumn1
+            // 
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle22.NullValue = null;
+            dataGridViewCellStyle22.Padding = new System.Windows.Forms.Padding(3);
+            this.dataGridViewImageColumn1.DefaultCellStyle = dataGridViewCellStyle22;
+            this.dataGridViewImageColumn1.HeaderText = "Удалить";
+            this.dataGridViewImageColumn1.Image = global::GW_Dogovor.Properties.Resources.Delete;
+            this.dataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            this.dataGridViewImageColumn1.ReadOnly = true;
+            this.dataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewImageColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dataGridViewImageColumn1.Width = 30;
+            // 
+            // dataGridViewImageColumn2
+            // 
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle23.NullValue = null;
+            dataGridViewCellStyle23.Padding = new System.Windows.Forms.Padding(3);
+            this.dataGridViewImageColumn2.DefaultCellStyle = dataGridViewCellStyle23;
+            this.dataGridViewImageColumn2.HeaderText = "Удалить";
+            this.dataGridViewImageColumn2.Image = global::GW_Dogovor.Properties.Resources.Delete;
+            this.dataGridViewImageColumn2.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
+            this.dataGridViewImageColumn2.ReadOnly = true;
+            this.dataGridViewImageColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewImageColumn2.Width = 30;
+            // 
+            // dataGridViewImageColumn3
+            // 
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle24.NullValue = null;
+            dataGridViewCellStyle24.Padding = new System.Windows.Forms.Padding(3);
+            this.dataGridViewImageColumn3.DefaultCellStyle = dataGridViewCellStyle24;
+            this.dataGridViewImageColumn3.HeaderText = "Удалить";
+            this.dataGridViewImageColumn3.Image = global::GW_Dogovor.Properties.Resources.Delete;
+            this.dataGridViewImageColumn3.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dataGridViewImageColumn3.Name = "dataGridViewImageColumn3";
+            this.dataGridViewImageColumn3.ReadOnly = true;
+            this.dataGridViewImageColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewImageColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dataGridViewImageColumn3.Width = 30;
             // 
             // Form_main
             // 
@@ -6027,8 +6095,8 @@
         private System.Windows.Forms.TabPage tabPageRKD;
         private System.Windows.Forms.TabPage tabPageIz;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator21;
-        private System.Windows.Forms.ToolStripButton toolStripButton9;
-        private System.Windows.Forms.ToolStripButton toolStripButton10;
+        private System.Windows.Forms.ToolStripButton btn_ExportExcel;
+        private System.Windows.Forms.ToolStripButton btn_ImportExcel;
         private System.Windows.Forms.TabPage tabPageKMD;
         private System.Windows.Forms.DataGridViewTextBoxColumn Obj_name;
         private System.Windows.Forms.DataGridViewTextBoxColumn NameDoc;
@@ -6202,6 +6270,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Summ;
         private System.Windows.Forms.DataGridViewTextBoxColumn Valute;
         private System.Windows.Forms.DataGridViewTextBoxColumn StatusCPlan;
+        private System.Windows.Forms.ToolStripButton btn_CopySelectRows;
+        private System.Windows.Forms.ToolStripButton btn_PasteRow;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator22;
     }
 }
 

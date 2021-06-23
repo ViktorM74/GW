@@ -68,6 +68,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DateTimePickerNullable", "..\..\Nullable DateTimePicker\MyDatePicker\Test_DateTimePickerNulleable\DateTimePickerNulleable\DateTimePickerNullable.csproj", "{5A2A5695-9FE1-441E-9772-E666717A0771}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelActive", "ExcelActive\ExcelActive.csproj", "{27D581FB-C5D8-4B89-9B06-B6291F72E83C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CLib", "CLib\CLib.csproj", "{6C10ABA9-ADF7-415E-8F6E-33D3A2F78230}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -228,6 +232,22 @@ Global
 		{5A2A5695-9FE1-441E-9772-E666717A0771}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5A2A5695-9FE1-441E-9772-E666717A0771}.Release|x86.ActiveCfg = Release|Any CPU
 		{5A2A5695-9FE1-441E-9772-E666717A0771}.Release|x86.Build.0 = Release|Any CPU
+		{27D581FB-C5D8-4B89-9B06-B6291F72E83C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27D581FB-C5D8-4B89-9B06-B6291F72E83C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27D581FB-C5D8-4B89-9B06-B6291F72E83C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{27D581FB-C5D8-4B89-9B06-B6291F72E83C}.Debug|x86.Build.0 = Debug|Any CPU
+		{27D581FB-C5D8-4B89-9B06-B6291F72E83C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27D581FB-C5D8-4B89-9B06-B6291F72E83C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27D581FB-C5D8-4B89-9B06-B6291F72E83C}.Release|x86.ActiveCfg = Release|Any CPU
+		{27D581FB-C5D8-4B89-9B06-B6291F72E83C}.Release|x86.Build.0 = Release|Any CPU
+		{6C10ABA9-ADF7-415E-8F6E-33D3A2F78230}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C10ABA9-ADF7-415E-8F6E-33D3A2F78230}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C10ABA9-ADF7-415E-8F6E-33D3A2F78230}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6C10ABA9-ADF7-415E-8F6E-33D3A2F78230}.Debug|x86.Build.0 = Debug|Any CPU
+		{6C10ABA9-ADF7-415E-8F6E-33D3A2F78230}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C10ABA9-ADF7-415E-8F6E-33D3A2F78230}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C10ABA9-ADF7-415E-8F6E-33D3A2F78230}.Release|x86.ActiveCfg = Release|Any CPU
+		{6C10ABA9-ADF7-415E-8F6E-33D3A2F78230}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

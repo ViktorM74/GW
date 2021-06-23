@@ -105,6 +105,7 @@ namespace CPlan
             this.tb_num.Name = "tb_num";
             this.tb_num.Size = new System.Drawing.Size(100, 20);
             this.tb_num.TabIndex = 5;
+            this.tb_num.Leave += new System.EventHandler(this.tb_num_Leave);
             // 
             // lb_Num
             // 
