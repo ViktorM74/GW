@@ -67,6 +67,9 @@ namespace DocumentsClass
 
         private void btn_Save_Click(object sender, System.EventArgs e)
         {
+            DB_Cmd.SetCuurentValueField(DB_Cmd.bndDocument, "Project_id",
+                DB_Cmd.GetCurrentValueField(DB_Cmd.bndProject, "ID_project"));
+
             if (String.IsNullOrEmpty(cb_object.Text))
                     ((DataRowView)DB_Cmd.bndDocument.Current).Row["Object_id"] = DBNull.Value;
             else

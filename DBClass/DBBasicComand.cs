@@ -5,7 +5,9 @@ using System.Data.OleDb;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CLib;
 using DBClass._bsp_snhpDataSetTableAdapters;
+using feature_сlass;
 using FileAction;
 
 namespace DBClass
@@ -520,7 +522,7 @@ namespace DBClass
             try
             {
                 Index = GetIndex(bndDocument, "ID_Doc");
-
+               
                 bndDocument.EndEdit();
                 tableManager.UpdateAll(dsDB);
 
@@ -549,7 +551,12 @@ namespace DBClass
 
         public static object AddDoc()
         {
+            //object obj = bndDocument.AddNew();
+            //object idPrj = GetCurrentValueField(bndProject, "ID_project");
+            //SetCuurentValueField(bndDocument, "Project_id", idPrj);
+
             return bndDocument.AddNew();
+
         }
 
         public static bool DeleteDoc()
@@ -1639,12 +1646,99 @@ namespace DBClass
                 if (!lst.Contains(s))
                     lst.Add(s);
             }
+            lst.Add("пусто");
             return lst;
         }
 
         public static void RecordNewRows(DataTable dt_data, DataTable dt_link)
         {
+            List<CPunit> lunit = new List<CPunit>();
+            dt_data.AcceptChanges();
 
+            for (int i = 0; i < dt_data.Rows.Count-1; i++)
+            {
+                CPunit unit = new CPunit();
+                for (int j = 0; j < dt_data.Columns.Count -1; j++)
+                {
+                    string name_link = dt_link.Rows[0][j].ToString();
+                    string data_link = dt_data.Rows[i][j].ToString();
+                    switch (name_link)
+                    {
+                        case "Номер":
+                            unit.num_etap = data_link;
+                            break;
+                        case "Название":
+                            unit.name_etap = data_link;
+                            break;
+                        case "Дни":
+                            if(!string.IsNullOrEmpty(data_link))
+                                  unit.days = Convert.ToInt32(data_link);
+                            break;
+                        case "Начало":
+                            if (!string.IsNullOrEmpty(data_link))
+                                unit.nachalo_data = Convert.ToDateTime(data_link);
+                            break;
+                        case "Окончание":
+                            if (!string.IsNullOrEmpty(data_link))
+                                  unit.konec_data = Convert.ToDateTime(data_link);
+                            break;
+                        case "Сумма":
+                            if (!string.IsNullOrEmpty(data_link))
+                                    unit.summ = Convert.ToDecimal(data_link);
+                            break;
+                        case "Валюта":
+                            unit.valute = data_link;
+                            break;
+                    }
+                }
+                lunit.Add(unit);
+            }
+
+            PasteRowGrid(lunit);
+
+        }
+
+        public static void CopyRowsGrid(DataGridView dgv, List<CPunit> listunt)
+        {
+            #region Copy
+            if (dgv.SelectedRows.Count != 0)
+            {
+                foreach (DataGridViewRow rv in dgv.SelectedRows)
+                {
+                      CPunit unit = new CPunit(rv.Cells["num_ds"].Value,
+                                               rv.Cells["name_ds"].Value,
+                                               rv.Cells["nachalo_ds"].Value,
+                                               rv.Cells["konec_ds"].Value,
+                                               rv.Cells["day_ds"].Value,
+                                               rv.Cells["summ_ds"].Value,
+                                               rv.Cells["valute_ds"].Value);
+                      listunt.Add(unit);
+                }
+            }
+            #endregion Copy
+        }
+
+        public static void PasteRowGrid(List<CPunit> list)
+        {
+            #region Paste
+            // текущий договор
+            int idDog = (int)GetCurrentValueField(bndDogovor, "DogID");
+            // текущее ДС
+            int idDS = (int)GetCurrentValueField(bndDopDogovor, "DS_ID");
+
+            if (list.Count != 0)
+                foreach (CPunit u in list)
+                {
+                    adpCPlan.InsertPasteRow(idDS, u.num_etap, u.name_etap,
+                                            u.nachalo_data, u.konec_data,
+                                            u.days, u.summ, u.valute, 
+                                            idDog, u.num_sort);
+                }
+            tableManager.UpdateAll(dsDB);
+            adpCPlan.Fill(dsDB.CalendarPlan);
+            bndCalendarPlanDD.ResetBindings(true);
+            MessageBox.Show("Вставлено " + list.Count.ToString() + " строк.");
+            #endregion Paste
         }
 
     }

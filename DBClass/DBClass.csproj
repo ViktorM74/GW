@@ -63,16 +63,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppSetting.cs" />
-    <Compile Include="ContactManager.cs" />
+    <Compile Include="ContactManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ContactManager.Designer.cs">
       <DependentUpon>ContactManager.cs</DependentUpon>
     </Compile>
     <Compile Include="DBBasicComand.cs" />
-    <Compile Include="FormEditText.cs" />
+    <Compile Include="FormEditText.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FormEditText.Designer.cs">
       <DependentUpon>FormEditText.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormSelectList.cs" />
+    <Compile Include="FormSelectList.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FormSelectList.Designer.cs">
       <DependentUpon>FormSelectList.cs</DependentUpon>
     </Compile>
@@ -143,9 +149,9 @@
     <None Include="Resources\dropper.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CPlan\CPlan.csproj">
-      <Project>{0eac70be-b3d2-4239-a627-471ba03a1122}</Project>
-      <Name>CPlan</Name>
+    <ProjectReference Include="..\CLib\CLib.csproj">
+      <Project>{6c10aba9-adf7-415e-8f6e-33d3a2f78230}</Project>
+      <Name>CLib</Name>
     </ProjectReference>
     <ProjectReference Include="..\feature_сlass\feature_сlass.csproj">
       <Project>{59ee863f-eedc-4a06-bc08-729b92241c7d}</Project>

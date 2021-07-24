@@ -133,6 +133,16 @@ namespace GW_Dogovor.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap funnel {
+            get {
+                object obj = ResourceManager.GetObject("funnel", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_move_selection_to_low_row_40 {
             get {
                 object obj = ResourceManager.GetObject("icons8-move-selection-to-low-row-40", resourceCulture);
@@ -196,6 +206,16 @@ namespace GW_Dogovor.Properties {
         internal static System.Drawing.Bitmap Modify1 {
             get {
                 object obj = ResourceManager.GetObject("Modify1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap OldFilter {
+            get {
+                object obj = ResourceManager.GetObject("OldFilter", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

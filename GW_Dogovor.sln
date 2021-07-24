@@ -63,6 +63,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{386D59D0-0EC8-46D2-8B8E-2394B0E6F0D1}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		OldFilter.ico = OldFilter.ico
 		ToDo.txt = ToDo.txt
 	EndProjectSection
 EndProject

@@ -65,6 +65,7 @@ namespace ExcelActive
                 cmb.Items.Add("Начало");
                 cmb.Items.Add("Окончание");
                 cmb.Items.Add("Сумма");
+                cmb.Items.Add("Валюта");
                 dataGridView2.Columns.Add(cmb);
                 dataGridView2.Columns[i].Width = column.Width;
                 i++;

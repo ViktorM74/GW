@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -32,6 +33,7 @@ namespace GW_Dogovor
     {
         string tPathDB;
         bool R = false;
+        string oldFilterDocument = null;
 
 
         public Form_main()
@@ -54,7 +56,7 @@ namespace GW_Dogovor
                 }
                 else
                 {
-                    using (ContactManager cmForm = new ContactManager()) 
+                    using (ContactManager cmForm = new ContactManager())
                     {
                         if (cmForm.ShowDialog() == DialogResult.OK)
                         {
@@ -65,11 +67,11 @@ namespace GW_Dogovor
                         }
                     }
                 }
-                
+
             }
             else
             {
-                using (ContactManager cmForm = new ContactManager()) 
+                using (ContactManager cmForm = new ContactManager())
                 {
                     if (cmForm.ShowDialog() == DialogResult.OK)
                     {
@@ -78,7 +80,7 @@ namespace GW_Dogovor
                         Application.Restart();
                     }
                 }
-                
+
             }
 
             void SetView()
@@ -95,15 +97,13 @@ namespace GW_Dogovor
             }
 
         }
-     
-        // Все простые события Клик
-        private void Clk() 
-        {
-            menuItem_PropertyConnect.Click += (s, a) => 
-            { using (ContactManager cmForm = new ContactManager()) { cmForm.ShowDialog(); Application.Restart(); } };
 
-            menuItem_TypeDoc.Click += (s, a) => 
-            { using (Lib_doc_type libDocForm = new Lib_doc_type()) { libDocForm.ShowDialog(); } };
+        // Все простые события Клик
+        private void Clk()
+        {
+            menuItem_PropertyConnect.Click += (s, a) => { using (ContactManager cmForm = new ContactManager()) { cmForm.ShowDialog(); Application.Restart(); } };
+
+            menuItem_TypeDoc.Click += (s, a) => { using (Lib_doc_type libDocForm = new Lib_doc_type()) { libDocForm.ShowDialog(); } };
 
             tbtn_ViewProject.Click += ProjectPanelsVisable;
 
@@ -111,7 +111,7 @@ namespace GW_Dogovor
                 using (Form_FolderManager ff = new Form_FolderManager(link_LocalFld.Text, link_ServetFld.Text, false))
                 { ff.ShowDialog(); }
             };
-            
+
             #region DoubleClikGRID
             gridDocument.DoubleClick += (s, a) => { EditDoc(); };
             grid_MailControl.DoubleClick += (s, a) => { EditDoc(); };
@@ -185,11 +185,11 @@ namespace GW_Dogovor
             grid_ProjectCode.AutoGenerateColumns = false;
             grid_ProjectCode.DataSource = DB_Cmd.bndProject;
             grid_ProjectCode.Columns["Code_object"].DataPropertyName = "Code_object";
-           
+
         }
         private void SetViewDataDocument()
         {
-           
+
             gridDocument.AutoGenerateColumns = false;
             gridDocument.DataSource = DB_Cmd.bndDocument;
             gridDocument.Columns["Obj_name"].DataPropertyName = "Object";
@@ -198,7 +198,7 @@ namespace GW_Dogovor
             gridDocument.Columns["DataDoc"].DataPropertyName = "DataDoc";
             gridDocument.Columns["Status"].DataPropertyName = "Status";
             gridDocument.Columns["PathDoc"].DataPropertyName = "PathDoc";
-        
+
             bndNvg_Doc.BindingSource = DB_Cmd.bndDocument;
 
             grid_MailControl.AutoGenerateColumns = false;
@@ -209,7 +209,7 @@ namespace GW_Dogovor
             grid_MailControl.Columns["mail_date"].DataPropertyName = "DataDoc";
             grid_MailControl.Columns["mail_stat"].DataPropertyName = "Status";
             grid_MailControl.Columns["mail_path"].DataPropertyName = "PathDoc";
-          
+
             bndNvg_Doc.BindingSource = DB_Cmd.bndDocument;
 
             grid_Zadania.AutoGenerateColumns = false;
@@ -220,7 +220,7 @@ namespace GW_Dogovor
             grid_Zadania.Columns["Zdate"].DataPropertyName = "DataDoc";
             grid_Zadania.Columns["Zstat"].DataPropertyName = "Status";
             grid_Zadania.Columns["Zpath"].DataPropertyName = "PathDoc";
-          
+
             bndNvg_Doc.BindingSource = DB_Cmd.bndDocument;
 
         }
@@ -242,13 +242,13 @@ namespace GW_Dogovor
             grid_TenderDoc.Columns["NameTDoc"].DataPropertyName = "NameDoc";
             grid_TenderDoc.Columns["StatudTDoc"].DataPropertyName = "Status";
             grid_TenderDoc.Columns["PathTDoc"].DataPropertyName = "PathDoc";
-          
+
         }
         private void SetViewDogovor()
         {
             bndNavigatorDogovor.BindingSource = DB_Cmd.bndDogovor;
             bndNavigator_KP_Dog.BindingSource = DB_Cmd.bndCalendarPlan;
-           
+
 
             tb_NumDog.DataBindings.Add("Text", DB_Cmd.bndDogovor, "Nambe_Dog");
             dtp_DateDog.DataBindings.Add("Text", DB_Cmd.bndDogovor, "DataOt");
@@ -283,11 +283,14 @@ namespace GW_Dogovor
             grid_CPlan.Columns["Valute"].DataPropertyName = "V";
             grid_CPlan.Columns["StatusCPlan"].DataPropertyName = "Status";
             grid_CPlan.Columns["id_DDog"].DataPropertyName = "NumDD";
-         
+            grid_CPlan.Columns["visabl_cpD"].DataPropertyName = "ViewCPDog";
+
 
             grid_CPlan.Columns["Name_Etap"].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             grid_CPlan.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
             grid_CPlan.Columns["Name_Etap"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+            grid_CPlan.Columns["visabl_cpD"].Visible = false;
 
         }
         private void SetViewDDog()
@@ -302,7 +305,7 @@ namespace GW_Dogovor
             grid_DD.AutoGenerateColumns = false;
             grid_DD.DataSource = DB_Cmd.bndDopDogovor;
             grid_DD.Columns["NumDD"].DataPropertyName = "Nambe_DS";
-          
+
 
             grid_CPlanDD.AutoGenerateColumns = false;
             grid_CPlanDD.DataSource = DB_Cmd.bndCalendarPlanDD;
@@ -315,6 +318,8 @@ namespace GW_Dogovor
             grid_CPlanDD.Columns["valute_ds"].DataPropertyName = "V";
             grid_CPlanDD.Columns["status_ds"].DataPropertyName = "Status";
             grid_CPlanDD.Columns["num_sort_ds"].DataPropertyName = "Num_sort";
+            grid_CPlanDD.Columns["visabl"].DataPropertyName = "ViewCPDog";
+
 
             grid_CPlanDD.Columns["name_ds"].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             grid_CPlanDD.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
@@ -328,7 +333,7 @@ namespace GW_Dogovor
 
             bndNavigatorDDog.BindingSource = DB_Cmd.bndDopDogovor;
             bndNavigator_KP_Dop.BindingSource = DB_Cmd.bndCalendarPlanDD;
-           
+
 
         }
         private void SetViewObject()
@@ -337,7 +342,7 @@ namespace GW_Dogovor
             tb_NameObject.DataBindings.Add("Text", DB_Cmd.bndObject, "Name_object");
             tb_CodeObject.DataBindings.Add("Text", DB_Cmd.bndObject, "Nambe_Object");
             tb_TitleObject.DataBindings.Add("Text", DB_Cmd.bndObject, "Titul");
-         
+
             tb_Obj_std.DataBindings.Add("Text", DB_Cmd.bndObject, "Stady");
 
             //GIP
@@ -346,7 +351,7 @@ namespace GW_Dogovor
             grid_Object.AutoGenerateColumns = false;
             grid_Object.DataSource = DB_Cmd.bndObject;
             grid_Object.Columns["CodeObj"].DataPropertyName = "CodeOBJ";
-          
+
 
             //Mark
             grid_GrafMark.AutoGenerateColumns = false;
@@ -431,14 +436,14 @@ namespace GW_Dogovor
             }
 
             if (DB_Cmd.bndDocument.IsSorted && DB_Cmd.bndDocument.SupportsSorting)
-                    DB_Cmd.bndDocument.RemoveSort();
-                DB_Cmd.bndDocument.RemoveFilter();
-                DB_Cmd.bndDocument.DataMember = null;
-                DB_Cmd.bndDocument.DataSource = null;
-               
-           
+                DB_Cmd.bndDocument.RemoveSort();
+            DB_Cmd.bndDocument.RemoveFilter();
+            DB_Cmd.bndDocument.DataMember = null;
+            DB_Cmd.bndDocument.DataSource = null;
+
+
             void DocumentTabFilter()
-            {               
+            {
                 DB_Cmd.bndDocument.DataSource = DB_Cmd.bndProject;
                 DB_Cmd.bndDocument.DataMember = "ProjectDocuments";
                 DB_Cmd.bndDocument.Sort = "Object_id, Doc_Type, DataDoc";
@@ -466,8 +471,8 @@ namespace GW_Dogovor
                         break;
 
                 }
-            } 
-            
+            }
+
             void ObjectTabFilter()
             {
                 DB_Cmd.bndDocument.DataSource = DB_Cmd.bndObject;
@@ -551,7 +556,7 @@ namespace GW_Dogovor
                     DB_Cmd.bndDocument.RemoveFilter();
                     break;
             }
-         
+            oldFilterDocument = DB_Cmd.bndDocument.Filter;
         }
 
         private void tabControlGrafics_SelectedIndexChanged(object sender, EventArgs e)
@@ -562,19 +567,20 @@ namespace GW_Dogovor
         private void tabDocuments_SelectedIndexChanged(object sender, EventArgs e)
         {
             SetFilterTabGrid();
+            btn_OldFilter_Click(sender, e);
         }
 
         private void tabControlMain_SelectedIndexChanged(object sender, EventArgs e)
         {
-           if (tabControlMain.SelectedIndex == 0 ||
-                tabControlMain.SelectedIndex == 1 ||
-                tabControlMain.SelectedIndex == 2 ||
-                tabControlMain.SelectedIndex == 3 ||
-                tabControlMain.SelectedIndex == 4 )
-            SetFilterTabGrid();
+            if (tabControlMain.SelectedIndex == 0 ||
+                 tabControlMain.SelectedIndex == 1 ||
+                 tabControlMain.SelectedIndex == 2 ||
+                 tabControlMain.SelectedIndex == 3 ||
+                 tabControlMain.SelectedIndex == 4)
+                SetFilterTabGrid();
         }
 
- 
+
         #endregion FilterGrid
 
         #region View
@@ -607,7 +613,7 @@ namespace GW_Dogovor
         {
             TabControlCount(grid_GrafZ, bndNavigator_Graph_Z);
         }
-       
+
         private void bndNavigator_Zadania_file_Paint(object sender, PaintEventArgs e)
         {
             TabControlCount(grid_Z, bndNavigator_Zadania_file);
@@ -651,7 +657,7 @@ namespace GW_Dogovor
         {
             //TabControlCount(grid_CPlan, bndNavigator_KP_Dog);
         }
-      
+
         private void bndNav_Act_Paint(object sender, PaintEventArgs e)
         {
             TabControlCount(grid_Act, bndNav_Act);
@@ -740,9 +746,7 @@ namespace GW_Dogovor
 
         private void ProjectPanelsVisable(object sender, EventArgs e)
         {
-            Settings.Default.PanelsProjectView = !Settings.Default.PanelsProjectView;
-            Settings.Default.Save();
-            SetViewForm();
+
         } // Установка видимости панели Проект
         private void SetViewForm()
         {
@@ -779,7 +783,7 @@ namespace GW_Dogovor
                 this.splitContainer1.SplitterDistance = Settings.Default.Splitter_position;
             }
             tabControlMain.SelectTab(Settings.Default.TabPage);
-            
+
             splitContainerTender.SplitterDistance = 450;
 
             SetViewForm();
@@ -916,7 +920,7 @@ namespace GW_Dogovor
             {
                 fed.ShowDialog();
             }
-                
+
         }
 
         #region DoubleClik_EditProject
@@ -941,7 +945,7 @@ namespace GW_Dogovor
             {
                 fe.ShowDialog();
             }
-               
+
 
         }
 
@@ -966,7 +970,7 @@ namespace GW_Dogovor
             {
                 fе.ShowDialog();
             }
-            
+
         }
 
         #endregion DopDogovor
@@ -974,9 +978,9 @@ namespace GW_Dogovor
         #region Document
         private void EditDoc()
         {
-            using (Form_Document fed = new Form_Document()) 
+            using (Form_Document fed = new Form_Document())
             {
-               fed.ShowDialog(); 
+                fed.ShowDialog();
             }
         }
 
@@ -986,7 +990,7 @@ namespace GW_Dogovor
             string pth = DB_Cmd.GetCurrentValueField(DB_Cmd.bndDocument, "PathDoc").ToString();
 
             bool delFile = DB_Cmd.DeleteDoc();
-            
+
             if (delFile)
             {
                 DB_Cmd.SaveDoc();
@@ -995,7 +999,7 @@ namespace GW_Dogovor
                 string lp = link_LocalFld.Text;
                 string Sp = link_ServetFld.Text;
 
-               
+
                 if (pth.Contains(lp))
                     p = pth.Remove(0, lp.Length + 1);
                 else
@@ -1043,7 +1047,7 @@ namespace GW_Dogovor
                     DB_Cmd.Cancel_BndDB(bnd);
                 }
             }
-            
+
         }
         #endregion EditText
 
@@ -1054,7 +1058,7 @@ namespace GW_Dogovor
             {
                 fеd.ShowDialog();
             }
-            
+
         }
 
         #endregion Zadania
@@ -1066,7 +1070,7 @@ namespace GW_Dogovor
             {
                 fеd.ShowDialog();
             }
-            
+
         }
         #endregion Mark
 
@@ -1249,7 +1253,7 @@ namespace GW_Dogovor
                     DB_Cmd.SetCuurentValueField(DB_Cmd.bndDocument, "Doc_Type", 34);
                 }
             }
-                
+
             EditDoc();
 
             DragDropCopyFiles(e, Narp, Name);
@@ -1268,7 +1272,7 @@ namespace GW_Dogovor
         {
             string nameDog = DB_Cmd.GetCurrentValueField(DB_Cmd.bndDogovor, "Nambe_Dog").ToString();
             string nameDS = DB_Cmd.GetCurrentValueField(DB_Cmd.bndDopDogovor, "Nambe_DS").ToString();
-            DragDropDoc(sender, e, 0, "Договор\\" + nameDog  + "\\ДС\\" + nameDS);
+            DragDropDoc(sender, e, 0, "Договор\\" + nameDog + "\\ДС\\" + nameDS);
         }
 
         private void grid_Z_DragDrop(object sender, DragEventArgs e)
@@ -1652,11 +1656,6 @@ namespace GW_Dogovor
             DB_Cmd.DBLoad();
         }
 
-        private void gridDocument_Paint(object sender, PaintEventArgs e)
-        {
-            MessageBox.Show("DF");
-        }
-
         private void bndNvg_Doc_RefreshItems(object sender, EventArgs e)
         {
 
@@ -1712,80 +1711,149 @@ namespace GW_Dogovor
 
         private List<CPunit> ListUnit = new List<CPunit>();
 
-        private void CopyRowsGrid(DataGridView dgv)
+        private void CopyRowsGridmain(DataGridView dgv)
         {
             ListUnit.Clear();
-            #region Copy
-            if (dgv.SelectedRows.Count != 0)
-            {
-                foreach(DataGridViewRow rv in dgv.SelectedRows)
-                {
-                    CPunit unit = new CPunit();
-                    unit.Num_Etap = rv.Cells["num_ds"].Value.ToString();
-                    unit.Name_Etap = rv.Cells["name_ds"].Value.ToString();
-                    if (rv.Cells["day_ds"].Value != DBNull.Value)
-                        unit.Days = (int?)rv.Cells["day_ds"].Value;
-                    else
-                        unit.Days = null;
-                    if (rv.Cells["nachalo_ds"].Value != DBNull.Value)
-                        unit.Nachalo_Data = (DateTime?)rv.Cells["nachalo_ds"].Value;
-                    else
-                        unit.Nachalo_Data = null;
-                    if (rv.Cells["konec_ds"].Value != DBNull.Value)
-                        unit.Konec_Data = (DateTime?)rv.Cells["konec_ds"].Value;
-                    else
-                        unit.Konec_Data = null;
-                    if (rv.Cells["summ_ds"].Value != DBNull.Value)
-                        unit.Summ = Convert.ToDecimal( rv.Cells["summ_ds"].Value);
-                    else
-                        unit.Summ = null;
-                    unit.V = rv.Cells["valute_ds"].Value.ToString();
-
-                    ListUnit.Add(unit);
-                }
-            }
-            #endregion Copy
-
-            //MessageBox.Show(ListUnit.Count.ToString());
+            DB_Cmd.CopyRowsGrid(dgv, ListUnit);
         }
 
-        private void PasteRowGrid(List<CPunit> list)
+        private void PasteRowGridmain()
         {
-            #region Paste
-            int idDog = (int)DB_Cmd.GetCurrentValueField(DB_Cmd.bndDogovor, "DogID");
-            int idDS = (int)DB_Cmd.GetCurrentValueField(DB_Cmd.bndDopDogovor, "DS_ID");
-
-            if (list.Count != 0)
-                foreach (CPunit u in list)
-                {
-                    string num_sort = feature.NormalizeNumSort(u.Num_Etap);
-                    DB_Cmd.adpCPlan.InsertPasteRow(idDS, u.Num_Etap, u.Name_Etap,
-                                            u.Nachalo_Data, u.Konec_Data,
-                                            u.Days, u.Summ, u.V, idDog, num_sort);
-                }
-            DB_Cmd.tableManager.UpdateAll(DB_Cmd.dsDB);
-            DB_Cmd.adpCPlan.Fill(DB_Cmd.dsDB.CalendarPlan);
-            DB_Cmd.bndCalendarPlanDD.ResetBindings(true);
-            MessageBox.Show("Вставлено " + list.Count.ToString() + " строк.");
-            #endregion Paste
-
-            list.Clear();
+            DB_Cmd.PasteRowGrid(ListUnit);
+            ListUnit.Clear();
         }
 
         private void btn_CopySelectRows_Click(object sender, EventArgs e)
         {
-            CopyRowsGrid(grid_CPlanDD);
+            CopyRowsGridmain(grid_CPlanDD);
         }
 
         private void btn_PasteRow_Click(object sender, EventArgs e)
         {
-            PasteRowGrid(ListUnit);
+            PasteRowGridmain();
         }
 
         private void btn_ImportExcel_Click(object sender, EventArgs e)
         {
-            FormActiveExcel frmEx = new FormActiveExcel();
-            frmEx.Show();
+            using (FormActiveExcel frmEx = new FormActiveExcel())
+            {
+                frmEx.Show();
+            }
+                
+        }
+
+        private void grid_CPlanDD_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            CPColoredNotActiveRow(grid_CPlanDD, e);
+        }
+
+        private void CPColoredNotActiveRow(DataGridView dgv, DataGridViewRowPostPaintEventArgs e)
+        {
+            // красим
+            // не активные
+            if (Convert.ToBoolean(dgv.Rows[e.RowIndex].Cells[0].Value) == false)
+            {
+                dgv.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Beige;
+                dgv.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.DimGray;
+            }
+        }
+
+        private void убратьВидимостьУВыделенныхСтрокToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (tabControlMain.SelectedIndex == 3)
+                CPGridVisableRow(grid_CPlanDD, DB_Cmd.bndCalendarPlanDD, false);
+            if (tabControlMain.SelectedIndex == 2)
+                CPGridVisableRow(grid_CPlan, DB_Cmd.bndCalendarPlan, false);
+        }
+
+        private void включитьВидимостьВКПДляВыделенныхСтрокToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (tabControlMain.SelectedIndex == 3)
+                CPGridVisableRow(grid_CPlanDD, DB_Cmd.bndCalendarPlanDD, true);
+            if (tabControlMain.SelectedIndex == 2)
+                CPGridVisableRow(grid_CPlan, DB_Cmd.bndCalendarPlan, true);
+        }
+
+        private void CPGridVisableRow(DataGridView dgv, BindingSource bnd, bool visable)
+        {
+            if (!visable)
+            {
+                foreach (DataGridViewRow rw in dgv.SelectedRows)
+                {
+                    rw.Cells[0].Value = visable;
+                }
+            }
+            if (visable)
+            {
+                foreach (DataGridViewRow rw in dgv.SelectedRows)
+                {
+                    rw.Cells[0].Value = true;
+                }
+            }
+
+            bnd.ResetBindings(false);
+            dgv.Refresh();
+        }
+
+
+
+        private void удалитьВыделенныеСтрокиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //foreach (DataGridViewRow rw in grid_CPlanDD.SelectedRows)
+            //{
+            //}
+        }
+        
+        private static void DocumentSearch(string search, string obj, string oldFilter)
+        {
+            if (!String.IsNullOrEmpty(search) || !String.IsNullOrEmpty(obj))
+            {
+                DB_Cmd.bndDocument.RemoveFilter();
+                if (obj == "пусто" || String.IsNullOrEmpty(obj))
+                {
+                    
+                    DB_Cmd.bndDocument.Filter = oldFilter + " AND (([NameDoc] LIKE '%" + search + "%')" +
+                                                " OR ([Nambe_Doc] LIKE '%" + search + "%')" +
+                                                " OR ([Notes]  LIKE '%" + search + "%'))";
+                }
+                else
+                {
+                    
+                    DB_Cmd.bndDocument.Filter = oldFilter + " AND ([Object] = '" + obj + "')" +
+                                                " AND (([NameDoc] LIKE '%" + search + "%')" +
+                                                " OR ([Nambe_Doc] LIKE '%" + search + "%')" +
+                                                " OR ([Notes]  LIKE '%" + search + "%'))";
+
+                }
+                //MessageBox.Show(DB_Cmd.bndDocument.Filter.ToString());
+            }
+            else
+            {
+                DB_Cmd.bndDocument.RemoveFilter();
+                DB_Cmd.bndDocument.Filter = oldFilter;
+            }
+        }
+
+   
+        private void btn_FilterApp_Click(object sender, EventArgs e)
+        {
+            string search = tb_Search.Text;
+            string objname = cb_ObjetFilter.Text;
+
+            DocumentSearch(search, objname, oldFilterDocument);
+        }
+
+        private void btn_OldFilter_Click(object sender, EventArgs e)
+        {
+            DocumentSearch(null, null, oldFilterDocument);
+            cb_ObjetFilter.Text = "пусто";
+            tb_Search.Text = "";
+
+        }
+
+        private void grid_CPlan_Validated(object sender, EventArgs e)
+        {
+            grid_CPlan.Columns["visabl_cpD"].Visible = false;
         }
     }
 
