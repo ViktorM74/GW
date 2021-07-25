@@ -459,6 +459,7 @@ namespace AddFilesToFolder
             List<string> fileList = new List<string>();
             List<string> listFolders = new List<string>();
             List<string> listFileDBPath = new List<string>();
+            string link_source = null;
 
             GetPathFolders(listFolders, listFileDBPath);
 
@@ -469,7 +470,7 @@ namespace AddFilesToFolder
 
                 foreach (string fl in listBoxFiles.Items)
                 {
-                    fileList.Add(fl);
+                   fileList.Add(fl);
                 }
 
                 FileA.CopyListFiles(fileList, listFolders);
@@ -487,9 +488,10 @@ namespace AddFilesToFolder
 
         private static void AddDocToDB(List<string> fileList, List<string> listFileDBPath)
         {
-            if (fileList.Count == 1)
+           if (fileList.Count == 1)
             {
                 FileInfo namefile = new FileInfo(fileList[0].ToString());
+               
                 DirectoryInfo dir = new DirectoryInfo(listFileDBPath[0].ToString());
                 List<string> s = new List<string>();
                 s.Add(Path.Combine(dir.FullName, namefile.Name));

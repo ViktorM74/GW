@@ -36,7 +36,12 @@ namespace DocumentsClass
 
             tb_NameDoc.DataBindings.Add("Text", DB_Cmd.bndDocument, "NameDoc");
             tb_NumbeDoc.DataBindings.Add("Text", DB_Cmd.bndDocument, "Nambe_Doc");
-            dtp_DateDoc.DataBindings.Add("Text", DB_Cmd.bndDocument, "DataDoc");
+            
+            dtp_DateDoc_Null.DataBindings.Add("NullableValue", DB_Cmd.bndDocument, "DataDoc", true, DataSourceUpdateMode.OnPropertyChanged, DBNull.Value);
+            dtp_DateDoc_Null.Format = DateTimePickerFormat.Custom;
+            dtp_DateDoc_Null.NullableValue = null;
+            dtp_DateDoc_Null.OriginalValue = null;
+
             cb_Status.DataBindings.Add("Text", DB_Cmd.bndDocument, "Status");
             rtb_Notes.DataBindings.Add("Text", DB_Cmd.bndDocument, "Notes");
             tb_PathDoc.DataBindings.Add("Text", DB_Cmd.bndDocument, "PathDoc");
@@ -117,6 +122,11 @@ namespace DocumentsClass
             this.Validate();
             DB_Cmd.CancelDoc();
             Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FileAction.FileA.RunPath(((DataRowView)DB_Cmd.bndDocument.Current).Row["path_server"].ToString());
         }
     }
 }

@@ -45,10 +45,20 @@ namespace DocumentsClass
             this.btn_PathDoc = new System.Windows.Forms.Button();
             this.btn_Save = new System.Windows.Forms.Button();
             this.bt_Cancel = new System.Windows.Forms.Button();
-            this.dtp_DateDoc = new System.Windows.Forms.DateTimePicker();
             this.lb_object = new System.Windows.Forms.Label();
             this.cb_object = new System.Windows.Forms.ComboBox();
             this.chb_control = new System.Windows.Forms.CheckBox();
+            this.panel_btn = new System.Windows.Forms.Panel();
+            this.panel_save_cancel = new System.Windows.Forms.Panel();
+            this.Group_LinkMail = new System.Windows.Forms.GroupBox();
+            this.btn_link_pred = new System.Windows.Forms.Button();
+            this.btn_link_follower = new System.Windows.Forms.Button();
+            this.btn_show_links = new System.Windows.Forms.Button();
+            this.dtp_DateDoc_Null = new DateTimePickerNullable.DatePickerNullable();
+            this.button1 = new System.Windows.Forms.Button();
+            this.panel_btn.SuspendLayout();
+            this.panel_save_cancel.SuspendLayout();
+            this.Group_LinkMail.SuspendLayout();
             this.SuspendLayout();
             // 
             // lb_NameDoc
@@ -108,7 +118,7 @@ namespace DocumentsClass
             // lb_PathDoc
             // 
             this.lb_PathDoc.AutoSize = true;
-            this.lb_PathDoc.Location = new System.Drawing.Point(12, 415);
+            this.lb_PathDoc.Location = new System.Drawing.Point(12, 360);
             this.lb_PathDoc.Name = "lb_PathDoc";
             this.lb_PathDoc.Size = new System.Drawing.Size(96, 13);
             this.lb_PathDoc.TabIndex = 6;
@@ -155,20 +165,20 @@ namespace DocumentsClass
             // 
             this.rtb_Notes.Location = new System.Drawing.Point(12, 232);
             this.rtb_Notes.Name = "rtb_Notes";
-            this.rtb_Notes.Size = new System.Drawing.Size(433, 180);
+            this.rtb_Notes.Size = new System.Drawing.Size(433, 122);
             this.rtb_Notes.TabIndex = 12;
             this.rtb_Notes.Text = "";
             // 
             // tb_PathDoc
             // 
-            this.tb_PathDoc.Location = new System.Drawing.Point(12, 432);
+            this.tb_PathDoc.Location = new System.Drawing.Point(12, 377);
             this.tb_PathDoc.Name = "tb_PathDoc";
             this.tb_PathDoc.Size = new System.Drawing.Size(400, 20);
             this.tb_PathDoc.TabIndex = 13;
             // 
             // btn_PathDoc
             // 
-            this.btn_PathDoc.Location = new System.Drawing.Point(419, 432);
+            this.btn_PathDoc.Location = new System.Drawing.Point(419, 377);
             this.btn_PathDoc.Name = "btn_PathDoc";
             this.btn_PathDoc.Size = new System.Drawing.Size(26, 20);
             this.btn_PathDoc.TabIndex = 14;
@@ -180,9 +190,9 @@ namespace DocumentsClass
             // 
             this.btn_Save.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_Save.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_Save.Location = new System.Drawing.Point(472, 23);
+            this.btn_Save.Location = new System.Drawing.Point(4, 8);
             this.btn_Save.Name = "btn_Save";
-            this.btn_Save.Size = new System.Drawing.Size(89, 29);
+            this.btn_Save.Size = new System.Drawing.Size(112, 36);
             this.btn_Save.TabIndex = 15;
             this.btn_Save.Text = "Сохранить";
             this.btn_Save.UseVisualStyleBackColor = true;
@@ -191,22 +201,13 @@ namespace DocumentsClass
             // bt_Cancel
             // 
             this.bt_Cancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.bt_Cancel.Location = new System.Drawing.Point(472, 58);
+            this.bt_Cancel.Location = new System.Drawing.Point(4, 50);
             this.bt_Cancel.Name = "bt_Cancel";
-            this.bt_Cancel.Size = new System.Drawing.Size(89, 29);
+            this.bt_Cancel.Size = new System.Drawing.Size(112, 36);
             this.bt_Cancel.TabIndex = 15;
             this.bt_Cancel.Text = "Закрыть";
             this.bt_Cancel.UseVisualStyleBackColor = true;
             this.bt_Cancel.Click += new System.EventHandler(this.bt_Cancel_Click);
-            // 
-            // dtp_DateDoc
-            // 
-            this.dtp_DateDoc.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtp_DateDoc.Location = new System.Drawing.Point(127, 130);
-            this.dtp_DateDoc.Name = "dtp_DateDoc";
-            this.dtp_DateDoc.Size = new System.Drawing.Size(100, 20);
-            this.dtp_DateDoc.TabIndex = 16;
-            this.dtp_DateDoc.Value = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             // 
             // lb_object
             // 
@@ -230,22 +231,109 @@ namespace DocumentsClass
             this.chb_control.AutoSize = true;
             this.chb_control.Location = new System.Drawing.Point(243, 179);
             this.chb_control.Name = "chb_control";
-            this.chb_control.Size = new System.Drawing.Size(174, 17);
+            this.chb_control.Size = new System.Drawing.Size(74, 17);
             this.chb_control.TabIndex = 19;
-            this.chb_control.Text = "Контроль (только для писем)";
+            this.chb_control.Text = "Контроль";
             this.chb_control.UseVisualStyleBackColor = true;
+            // 
+            // panel_btn
+            // 
+            this.panel_btn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_btn.Controls.Add(this.button1);
+            this.panel_btn.Controls.Add(this.panel_save_cancel);
+            this.panel_btn.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel_btn.Location = new System.Drawing.Point(450, 0);
+            this.panel_btn.Name = "panel_btn";
+            this.panel_btn.Padding = new System.Windows.Forms.Padding(3);
+            this.panel_btn.Size = new System.Drawing.Size(126, 479);
+            this.panel_btn.TabIndex = 20;
+            // 
+            // panel_save_cancel
+            // 
+            this.panel_save_cancel.Controls.Add(this.bt_Cancel);
+            this.panel_save_cancel.Controls.Add(this.btn_Save);
+            this.panel_save_cancel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel_save_cancel.Location = new System.Drawing.Point(3, 3);
+            this.panel_save_cancel.Name = "panel_save_cancel";
+            this.panel_save_cancel.Size = new System.Drawing.Size(118, 111);
+            this.panel_save_cancel.TabIndex = 0;
+            // 
+            // Group_LinkMail
+            // 
+            this.Group_LinkMail.Controls.Add(this.btn_show_links);
+            this.Group_LinkMail.Controls.Add(this.btn_link_follower);
+            this.Group_LinkMail.Controls.Add(this.btn_link_pred);
+            this.Group_LinkMail.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.Group_LinkMail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Group_LinkMail.Location = new System.Drawing.Point(0, 404);
+            this.Group_LinkMail.Name = "Group_LinkMail";
+            this.Group_LinkMail.Size = new System.Drawing.Size(450, 75);
+            this.Group_LinkMail.TabIndex = 21;
+            this.Group_LinkMail.TabStop = false;
+            this.Group_LinkMail.Text = "Связать с другим документом";
+            // 
+            // btn_link_pred
+            // 
+            this.btn_link_pred.Location = new System.Drawing.Point(13, 23);
+            this.btn_link_pred.Name = "btn_link_pred";
+            this.btn_link_pred.Size = new System.Drawing.Size(128, 38);
+            this.btn_link_pred.TabIndex = 0;
+            this.btn_link_pred.Text = "как предшественник";
+            this.btn_link_pred.UseVisualStyleBackColor = true;
+            // 
+            // btn_link_follower
+            // 
+            this.btn_link_follower.Location = new System.Drawing.Point(147, 23);
+            this.btn_link_follower.Name = "btn_link_follower";
+            this.btn_link_follower.Size = new System.Drawing.Size(128, 38);
+            this.btn_link_follower.TabIndex = 0;
+            this.btn_link_follower.Text = "как последователь";
+            this.btn_link_follower.UseVisualStyleBackColor = true;
+            // 
+            // btn_show_links
+            // 
+            this.btn_show_links.Location = new System.Drawing.Point(281, 23);
+            this.btn_show_links.Name = "btn_show_links";
+            this.btn_show_links.Size = new System.Drawing.Size(128, 38);
+            this.btn_show_links.TabIndex = 0;
+            this.btn_show_links.Text = "Показать связи";
+            this.btn_show_links.UseVisualStyleBackColor = true;
+            // 
+            // dtp_DateDoc_Null
+            // 
+            this.dtp_DateDoc_Null.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtp_DateDoc_Null.Location = new System.Drawing.Point(127, 129);
+            this.dtp_DateDoc_Null.Name = "dtp_DateDoc_Null";
+            this.dtp_DateDoc_Null.NullableValue = null;
+            this.dtp_DateDoc_Null.OriginalValue = null;
+            this.dtp_DateDoc_Null.Size = new System.Drawing.Size(100, 20);
+            this.dtp_DateDoc_Null.TabIndex = 22;
+            // 
+            // button1
+            // 
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button1.ForeColor = System.Drawing.Color.DarkGray;
+            this.button1.Location = new System.Drawing.Point(7, 426);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(112, 36);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Открыть из источника";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form_Document
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(577, 478);
+            this.ClientSize = new System.Drawing.Size(576, 479);
+            this.Controls.Add(this.dtp_DateDoc_Null);
+            this.Controls.Add(this.Group_LinkMail);
+            this.Controls.Add(this.panel_btn);
             this.Controls.Add(this.chb_control);
             this.Controls.Add(this.cb_object);
             this.Controls.Add(this.lb_object);
-            this.Controls.Add(this.dtp_DateDoc);
-            this.Controls.Add(this.bt_Cancel);
-            this.Controls.Add(this.btn_Save);
             this.Controls.Add(this.btn_PathDoc);
             this.Controls.Add(this.tb_PathDoc);
             this.Controls.Add(this.rtb_Notes);
@@ -266,6 +354,9 @@ namespace DocumentsClass
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Редактор данных документа";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_Document_FormClosing);
+            this.panel_btn.ResumeLayout(false);
+            this.panel_save_cancel.ResumeLayout(false);
+            this.Group_LinkMail.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -289,9 +380,16 @@ namespace DocumentsClass
         private System.Windows.Forms.Button btn_PathDoc;
         private System.Windows.Forms.Button btn_Save;
         private System.Windows.Forms.Button bt_Cancel;
-        private System.Windows.Forms.DateTimePicker dtp_DateDoc;
         private System.Windows.Forms.Label lb_object;
         private System.Windows.Forms.ComboBox cb_object;
         private System.Windows.Forms.CheckBox chb_control;
+        private System.Windows.Forms.Panel panel_btn;
+        private System.Windows.Forms.Panel panel_save_cancel;
+        private System.Windows.Forms.GroupBox Group_LinkMail;
+        private System.Windows.Forms.Button btn_link_follower;
+        private System.Windows.Forms.Button btn_link_pred;
+        private System.Windows.Forms.Button btn_show_links;
+        private DateTimePickerNullable.DatePickerNullable dtp_DateDoc_Null;
+        private System.Windows.Forms.Button button1;
     }
 }

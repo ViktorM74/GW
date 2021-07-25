@@ -198,6 +198,7 @@ namespace GW_Dogovor
             gridDocument.Columns["DataDoc"].DataPropertyName = "DataDoc";
             gridDocument.Columns["Status"].DataPropertyName = "Status";
             gridDocument.Columns["PathDoc"].DataPropertyName = "PathDoc";
+            gridDocument.Columns["Doc_Notes"].DataPropertyName = "Notes";
 
             bndNvg_Doc.BindingSource = DB_Cmd.bndDocument;
 
@@ -209,6 +210,7 @@ namespace GW_Dogovor
             grid_MailControl.Columns["mail_date"].DataPropertyName = "DataDoc";
             grid_MailControl.Columns["mail_stat"].DataPropertyName = "Status";
             grid_MailControl.Columns["mail_path"].DataPropertyName = "PathDoc";
+            grid_MailControl.Columns["Mail_Notes"].DataPropertyName = "Notes";
 
             bndNvg_Doc.BindingSource = DB_Cmd.bndDocument;
 
@@ -220,6 +222,7 @@ namespace GW_Dogovor
             grid_Zadania.Columns["Zdate"].DataPropertyName = "DataDoc";
             grid_Zadania.Columns["Zstat"].DataPropertyName = "Status";
             grid_Zadania.Columns["Zpath"].DataPropertyName = "PathDoc";
+            grid_Zadania.Columns["Z_Notes"].DataPropertyName = "Notes";
 
             bndNvg_Doc.BindingSource = DB_Cmd.bndDocument;
 
@@ -242,6 +245,7 @@ namespace GW_Dogovor
             grid_TenderDoc.Columns["NameTDoc"].DataPropertyName = "NameDoc";
             grid_TenderDoc.Columns["StatudTDoc"].DataPropertyName = "Status";
             grid_TenderDoc.Columns["PathTDoc"].DataPropertyName = "PathDoc";
+            grid_TenderDoc.Columns["T_notes"].DataPropertyName = "Notes";
 
         }
         private void SetViewDogovor()
@@ -269,6 +273,7 @@ namespace GW_Dogovor
             grid_DogovorDoc.AutoGenerateColumns = false;
             grid_DogovorDoc.DataSource = DB_Cmd.bndDocument;
             grid_DogovorDoc.Columns["dogNameDoc"].DataPropertyName = "NameDoc";
+            grid_DogovorDoc.Columns["D_notes"].DataPropertyName = "Notes";
             //grid_DogovorDoc.Columns["dRunDoc"].DataPropertyName = "PathDoc";
 
             // grid CPlan
@@ -329,6 +334,7 @@ namespace GW_Dogovor
             grid_DocumentDD.AutoGenerateColumns = false;
             grid_DocumentDD.DataSource = DB_Cmd.bndDocument;
             grid_DocumentDD.Columns["nameDoc_DS"].DataPropertyName = "NameDoc";
+            grid_DocumentDD.Columns["DD_notes"].DataPropertyName = "Notes";
 
 
             bndNavigatorDDog.BindingSource = DB_Cmd.bndDopDogovor;
@@ -394,24 +400,28 @@ namespace GW_Dogovor
             grid_Z.Columns["date_Zmail"].DataPropertyName = "DataDoc";
             grid_Z.Columns["stat_Zmail"].DataPropertyName = "Status";
             grid_Z.Columns["path_Zmail"].DataPropertyName = "PathDoc";
+            grid_Z.Columns["oZ_notes"].DataPropertyName = "Notes";
 
             grid_RKD.Columns["name_RKD"].DataPropertyName = "NameDoc";
             grid_RKD.Columns["num_RKD"].DataPropertyName = "Nambe_Doc";
             grid_RKD.Columns["date_RKD"].DataPropertyName = "DataDoc";
             grid_RKD.Columns["stat_RKD"].DataPropertyName = "Status";
             grid_RKD.Columns["path_RKD"].DataPropertyName = "PathDoc";
+            grid_RKD.Columns["RKD_notes"].DataPropertyName = "Notes";
 
             grid_Izysk.Columns["name_Iz"].DataPropertyName = "NameDoc";
             grid_Izysk.Columns["num_Iz"].DataPropertyName = "Nambe_Doc";
             grid_Izysk.Columns["date_Iz"].DataPropertyName = "DataDoc";
             grid_Izysk.Columns["stat_Iz"].DataPropertyName = "Status";
             grid_Izysk.Columns["path_Iz"].DataPropertyName = "PathDoc";
+            grid_Izysk.Columns["Iz_notes"].DataPropertyName = "Notes";
 
             grid_KMD.Columns["name_KMD"].DataPropertyName = "NameDoc";
             grid_KMD.Columns["num_KMD"].DataPropertyName = "Nambe_Doc";
             grid_KMD.Columns["date_KMD"].DataPropertyName = "DataDoc";
             grid_KMD.Columns["stat_KMD"].DataPropertyName = "Status";
             grid_KMD.Columns["path_KMD"].DataPropertyName = "PathDoc";
+            grid_KMD.Columns["KMD_notes"].DataPropertyName = "Notes";
 
 
         }
@@ -453,12 +463,13 @@ namespace GW_Dogovor
                 {
                     case 0: // Исходные документы
                         DB_Cmd.bndDocument.RemoveFilter();
-                        DB_Cmd.bndDocument.Filter = "(Project_id Not Is Null) AND (Control = false) AND (Zadania = false)";
+                        DB_Cmd.bndDocument.Filter = "(Project_id Not Is Null) AND (Control = false) AND (Zadania = false) " +
+                                                    "AND (Dogovor_id Is Null) AND (DD_id Is Null)";
                         gridDocument.DataSource = DB_Cmd.bndDocument;
                         break;
                     case 1: // На контроле
                         DB_Cmd.bndDocument.RemoveFilter();
-                        DB_Cmd.bndDocument.Filter = "(Project_id Not Is Null) AND (Control = true) AND (Zadania = false)";
+                        DB_Cmd.bndDocument.Filter = "(Project_id Not Is Null) AND (Control = true)";
                         grid_MailControl.DataSource = DB_Cmd.bndDocument;
                         break;
                     case 2: // Задания
@@ -687,6 +698,11 @@ namespace GW_Dogovor
 
         #endregion View Buttons BindingNavigators
 
+        private void grid_CPlan_Validated(object sender, EventArgs e)
+        {
+            grid_CPlan.Columns["visabl_cpD"].Visible = false;
+        }
+
         private void SetViewBindNavigators()
         {
             if (DB_Cmd.bndProject.Count != 0)
@@ -882,7 +898,74 @@ namespace GW_Dogovor
         }
         #endregion View
 
+        #region GridViewToolTipsText
 
+        private void SetGridToolTipsText(DataGridView dgv, string f1, string f2, DataGridViewCellEventArgs e)
+        {
+            /// добавляем описание в всплывающие подсказки
+            /// 
+            if (e.ColumnIndex < 0 || e.RowIndex < 0) //исключаем заголовки
+                return;
+
+            if ((e.ColumnIndex == dgv.Columns[f1].Index))
+            {
+                DataGridViewCell cell =
+                    dgv.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                cell.ToolTipText = dgv.Rows[e.RowIndex].Cells[f2].Value.ToString();
+
+            }
+        }
+
+        private void grid_TenderDoc_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            SetGridToolTipsText(grid_TenderDoc, "NameTDoc", "T_notes", e);
+        }
+
+        private void grid_DogovorDoc_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            SetGridToolTipsText(grid_DogovorDoc, "dogNameDoc", "D_notes", e);
+        }
+
+        private void grid_DocumentDD_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            SetGridToolTipsText(grid_DocumentDD, "nameDoc_DS", "DD_notes", e);
+        }
+
+        private void grid_Z_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            SetGridToolTipsText(grid_Z, "name_Zmail", "oZ_notes", e);
+        }
+
+        private void grid_RKD_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            SetGridToolTipsText(grid_RKD, "name_RKD", "RKD_notes", e);
+        }
+
+        private void grid_Izysk_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            SetGridToolTipsText(grid_Izysk, "name_Iz", "Iz_notes", e);
+        }
+
+        private void grid_KMD_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            SetGridToolTipsText(grid_KMD, "name_KMD", "KMD_notes", e);
+        }
+
+        private void gridDocument_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            SetGridToolTipsText(gridDocument, "NameDoc", "Doc_Notes", e);
+        }
+
+        private void grid_MailControl_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            SetGridToolTipsText(grid_MailControl, "Mail_name", "Mail_Notes", e);
+        }
+
+        private void grid_Zadania_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            SetGridToolTipsText(grid_Zadania, "Zname", "Z_Notes", e);
+        }
+        #endregion GridViewToolTipsText
 
         private void cb_ObjetFilter_MouseDown(object sender, MouseEventArgs e)
         {
@@ -1167,6 +1250,17 @@ namespace GW_Dogovor
 
         private void DragDropCopyFiles(DragEventArgs e, int Narp, string Name)
         {
+           void SetDB_pathSource()
+            {
+                string pth_server = null;
+                foreach (string f in (string[])e.Data.GetData(DataFormats.FileDrop))
+                {
+                    pth_server = Path.GetDirectoryName(f);
+                }
+                if (!String.IsNullOrEmpty(pth_server))
+                    ((DataRowView)DB_Cmd.bndDocument.Current).Row["path_server"] = pth_server;
+            }
+            
             if (MessageBox.Show("Вы хотите копировать выбранные файлы в рабочие папки?", "Выбор действия", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
             {
                 try
@@ -1194,7 +1288,13 @@ namespace GW_Dogovor
                 }
                 finally
                 {
+                    SetDB_pathSource();
+
                 }
+            }
+            else
+            {
+                SetDB_pathSource();
             }
         }
 
@@ -1231,6 +1331,7 @@ namespace GW_Dogovor
             _DragDropDocument(sender, e, 1, "Объекты");
         }
         #endregion DRAG Documents
+
         private void DragDropDoc(object sender, DragEventArgs e, int Narp, string Name)
         {
             DB_Cmd.AddDoc();
@@ -1851,10 +1952,7 @@ namespace GW_Dogovor
 
         }
 
-        private void grid_CPlan_Validated(object sender, EventArgs e)
-        {
-            grid_CPlan.Columns["visabl_cpD"].Visible = false;
-        }
+      
     }
 
 }

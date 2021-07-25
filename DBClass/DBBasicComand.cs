@@ -1409,7 +1409,7 @@ namespace DBClass
         public static void DeleteZadania()
         {
             DataRowView rw = bndZadania.Current as DataRowView;
-            string NameDelete = rw.Row["Коментарий"].ToString();
+            string NameDelete = rw.Row["Coments"].ToString();
             if (MessageBox.Show("Вы действитель хотите удалить " + NameDelete + "? \r \n ДЕЙСТВИЕ НЕВОЗМОЖНО ОТМЕНИТЬ!", "Удаление записи", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 try
@@ -1617,6 +1617,7 @@ namespace DBClass
                 finally { }
                               
                 ((DataRowView)bndDocument.Current).Row["PathDoc"] = path;
+                
             }
 
             SaveDoc();
