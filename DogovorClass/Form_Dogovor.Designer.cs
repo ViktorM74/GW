@@ -52,19 +52,21 @@ namespace DogovorClass
             this.cb_Valute = new System.Windows.Forms.ComboBox();
             this.panelNotes = new System.Windows.Forms.Panel();
             this.tb_CommentDog = new System.Windows.Forms.RichTextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cb_customer = new System.Windows.Forms.ComboBox();
             this.panelNotes.SuspendLayout();
             this.SuspendLayout();
             // 
             // tb_NumDog
             // 
-            this.tb_NumDog.Location = new System.Drawing.Point(9, 20);
+            this.tb_NumDog.Location = new System.Drawing.Point(9, 61);
             this.tb_NumDog.Name = "tb_NumDog";
             this.tb_NumDog.Size = new System.Drawing.Size(100, 20);
             this.tb_NumDog.TabIndex = 7;
             // 
             // tb_NameDog
             // 
-            this.tb_NameDog.Location = new System.Drawing.Point(9, 56);
+            this.tb_NameDog.Location = new System.Drawing.Point(9, 97);
             this.tb_NameDog.Multiline = true;
             this.tb_NameDog.Name = "tb_NameDog";
             this.tb_NameDog.Size = new System.Drawing.Size(525, 70);
@@ -73,7 +75,7 @@ namespace DogovorClass
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(417, 6);
+            this.label13.Location = new System.Drawing.Point(417, 47);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(76, 13);
             this.label13.TabIndex = 16;
@@ -82,7 +84,7 @@ namespace DogovorClass
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(251, 6);
+            this.label12.Location = new System.Drawing.Point(251, 47);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(41, 13);
             this.label12.TabIndex = 17;
@@ -91,7 +93,7 @@ namespace DogovorClass
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(115, 6);
+            this.label11.Location = new System.Drawing.Point(115, 47);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(18, 13);
             this.label11.TabIndex = 18;
@@ -100,7 +102,7 @@ namespace DogovorClass
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(9, 6);
+            this.label10.Location = new System.Drawing.Point(9, 47);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(41, 13);
             this.label10.TabIndex = 22;
@@ -109,7 +111,7 @@ namespace DogovorClass
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(9, 254);
+            this.label20.Location = new System.Drawing.Point(9, 295);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(77, 13);
             this.label20.TabIndex = 14;
@@ -118,7 +120,7 @@ namespace DogovorClass
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 40);
+            this.label4.Location = new System.Drawing.Point(9, 81);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(107, 13);
             this.label4.TabIndex = 15;
@@ -126,7 +128,7 @@ namespace DogovorClass
             // 
             // tb_SostavDog
             // 
-            this.tb_SostavDog.Location = new System.Drawing.Point(9, 192);
+            this.tb_SostavDog.Location = new System.Drawing.Point(9, 233);
             this.tb_SostavDog.Multiline = true;
             this.tb_SostavDog.Name = "tb_SostavDog";
             this.tb_SostavDog.Size = new System.Drawing.Size(525, 59);
@@ -135,7 +137,7 @@ namespace DogovorClass
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 175);
+            this.label3.Location = new System.Drawing.Point(9, 216);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(87, 13);
             this.label3.TabIndex = 23;
@@ -144,7 +146,7 @@ namespace DogovorClass
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(207, 133);
+            this.label8.Location = new System.Drawing.Point(207, 174);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(29, 13);
             this.label8.TabIndex = 24;
@@ -153,7 +155,7 @@ namespace DogovorClass
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(9, 133);
+            this.label5.Location = new System.Drawing.Point(9, 174);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(129, 13);
             this.label5.TabIndex = 25;
@@ -169,7 +171,7 @@ namespace DogovorClass
             "остановлен",
             "финансово закрыт",
             "закрыт"});
-            this.cb_StatusDog.Location = new System.Drawing.Point(249, 20);
+            this.cb_StatusDog.Location = new System.Drawing.Point(249, 61);
             this.cb_StatusDog.Name = "cb_StatusDog";
             this.cb_StatusDog.Size = new System.Drawing.Size(147, 21);
             this.cb_StatusDog.TabIndex = 29;
@@ -177,7 +179,7 @@ namespace DogovorClass
             // cb_StadiaDog
             // 
             this.cb_StadiaDog.FormattingEnabled = true;
-            this.cb_StadiaDog.Location = new System.Drawing.Point(9, 149);
+            this.cb_StadiaDog.Location = new System.Drawing.Point(9, 190);
             this.cb_StadiaDog.Name = "cb_StadiaDog";
             this.cb_StadiaDog.Size = new System.Drawing.Size(184, 21);
             this.cb_StadiaDog.TabIndex = 30;
@@ -185,7 +187,7 @@ namespace DogovorClass
             // cb_GIPDog
             // 
             this.cb_GIPDog.FormattingEnabled = true;
-            this.cb_GIPDog.Location = new System.Drawing.Point(210, 149);
+            this.cb_GIPDog.Location = new System.Drawing.Point(210, 190);
             this.cb_GIPDog.Name = "cb_GIPDog";
             this.cb_GIPDog.Size = new System.Drawing.Size(186, 21);
             this.cb_GIPDog.TabIndex = 29;
@@ -215,14 +217,14 @@ namespace DogovorClass
             // 
             // dtp_DateDog
             // 
-            this.dtp_DateDog.Location = new System.Drawing.Point(118, 20);
+            this.dtp_DateDog.Location = new System.Drawing.Point(118, 61);
             this.dtp_DateDog.Name = "dtp_DateDog";
             this.dtp_DateDog.Size = new System.Drawing.Size(125, 20);
             this.dtp_DateDog.TabIndex = 32;
             // 
             // dtp_ToDateDog
             // 
-            this.dtp_ToDateDog.Location = new System.Drawing.Point(406, 20);
+            this.dtp_ToDateDog.Location = new System.Drawing.Point(406, 61);
             this.dtp_ToDateDog.Name = "dtp_ToDateDog";
             this.dtp_ToDateDog.Size = new System.Drawing.Size(128, 20);
             this.dtp_ToDateDog.TabIndex = 33;
@@ -230,7 +232,7 @@ namespace DogovorClass
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(403, 133);
+            this.label1.Location = new System.Drawing.Point(403, 174);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(45, 13);
             this.label1.TabIndex = 24;
@@ -245,7 +247,7 @@ namespace DogovorClass
             "RUB",
             "USD",
             "EUR"});
-            this.cb_Valute.Location = new System.Drawing.Point(406, 149);
+            this.cb_Valute.Location = new System.Drawing.Point(406, 190);
             this.cb_Valute.Name = "cb_Valute";
             this.cb_Valute.Size = new System.Drawing.Size(128, 21);
             this.cb_Valute.TabIndex = 29;
@@ -254,7 +256,7 @@ namespace DogovorClass
             // 
             this.panelNotes.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelNotes.Controls.Add(this.tb_CommentDog);
-            this.panelNotes.Location = new System.Drawing.Point(12, 270);
+            this.panelNotes.Location = new System.Drawing.Point(12, 311);
             this.panelNotes.Name = "panelNotes";
             this.panelNotes.Size = new System.Drawing.Size(525, 95);
             this.panelNotes.TabIndex = 34;
@@ -269,12 +271,36 @@ namespace DogovorClass
             this.tb_CommentDog.TabIndex = 0;
             this.tb_CommentDog.Text = "";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 23);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(55, 13);
+            this.label2.TabIndex = 17;
+            this.label2.Text = "Заказчик";
+            // 
+            // cb_customer
+            // 
+            this.cb_customer.FormattingEnabled = true;
+            this.cb_customer.Items.AddRange(new object[] {
+            "подписан",
+            "на согласовании руководства",
+            "на согласовании Заказчика",
+            "остановлен",
+            "финансово закрыт",
+            "закрыт"});
+            this.cb_customer.Location = new System.Drawing.Point(73, 20);
+            this.cb_customer.Name = "cb_customer";
+            this.cb_customer.Size = new System.Drawing.Size(461, 21);
+            this.cb_customer.TabIndex = 29;
+            // 
             // Form_Dogovor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(677, 377);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(677, 419);
             this.Controls.Add(this.panelNotes);
             this.Controls.Add(this.dtp_ToDateDog);
             this.Controls.Add(this.dtp_DateDog);
@@ -282,6 +308,7 @@ namespace DogovorClass
             this.Controls.Add(this.btn_SaveDogovor);
             this.Controls.Add(this.cb_Valute);
             this.Controls.Add(this.cb_GIPDog);
+            this.Controls.Add(this.cb_customer);
             this.Controls.Add(this.cb_StatusDog);
             this.Controls.Add(this.cb_StadiaDog);
             this.Controls.Add(this.tb_SostavDog);
@@ -291,6 +318,7 @@ namespace DogovorClass
             this.Controls.Add(this.label5);
             this.Controls.Add(this.tb_NumDog);
             this.Controls.Add(this.tb_NameDog);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
@@ -330,5 +358,7 @@ namespace DogovorClass
         private System.Windows.Forms.ComboBox cb_Valute;
         private System.Windows.Forms.Panel panelNotes;
         private System.Windows.Forms.RichTextBox tb_CommentDog;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cb_customer;
     }
 }

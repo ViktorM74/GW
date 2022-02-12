@@ -294,11 +294,13 @@ namespace DBClass
             //Object
             bndObject.DataSource = bndDogovor;
             bndObject.DataMember = "DogovorOBJECTS";
-            bndObject.Sort = "Nambe_Object";
+            bndObject.Sort = "CodeObj";
+            
 
             //SostavObj
             bndSostavObj.DataSource = bndObject;
             bndSostavObj.DataMember = "OBJECTSSostavDoc";
+           
 
             //Zadania
             bndZadania.DataSource = bndObject;
@@ -1610,9 +1612,9 @@ namespace DBClass
                 try
                 {
                     if (String.IsNullOrEmpty(((DataRowView)bndDocument.Current).Row["NameDoc"].ToString()))
-                        ((DataRowView)bndDocument.Current).Row["NameDoc"] = name;
+                          ((DataRowView)bndDocument.Current).Row["NameDoc"] = name;
                     if (String.IsNullOrEmpty(((DataRowView)bndDocument.Current).Row["DataDoc"].ToString()))
-                        ((DataRowView)bndDocument.Current).Row["DataDoc"] = date;
+                          ((DataRowView)bndDocument.Current).Row["DataDoc"] = date;
                 }
                 finally { }
                               

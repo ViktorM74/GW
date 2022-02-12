@@ -763,7 +763,7 @@ namespace DBClass {
             base.Tables.Add(this.tableAct);
             this.tableCalendarPlan = new CalendarPlanDataTable(false);
             base.Tables.Add(this.tableCalendarPlan);
-            this.tableDogovor = new DogovorDataTable();
+            this.tableDogovor = new DogovorDataTable(false);
             base.Tables.Add(this.tableDogovor);
             this.tableDopSoglashenia = new DopSoglasheniaDataTable(false);
             base.Tables.Add(this.tableDopSoglashenia);
@@ -1104,6 +1104,7 @@ namespace DBClass {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitExpressions() {
             this.CalendarPlan.NumDDColumn.Expression = "Parent([DopSoglasheniaCalendarPlan]).[Nambe_DS]";
+            this.Dogovor.CustomerColumn.Expression = "Parent([CustomersDogovor]).[NameCust]";
             this.DopSoglashenia.NumDogColumn.Expression = "Parent([DogovorDopSoglashenia]).[Nambe_Dog]";
             this.Project.AreaStroyColumn.Expression = "Parent([CustomersProject]).[NameCust]";
             this.Documents.TYPEColumn.Expression = "Parent([Documets_typeDocuments]).[Name_doc]";
@@ -2217,12 +2218,23 @@ namespace DBClass {
             
             private global::System.Data.DataColumn columnStatus;
             
+            private global::System.Data.DataColumn columnCustomer;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DogovorDataTable() {
+            public DogovorDataTable() : 
+                    this(false) {
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public DogovorDataTable(bool initExpressions) {
                 this.TableName = "Dogovor";
                 this.BeginInit();
                 this.InitClass();
+                if ((initExpressions == true)) {
+                    this.InitExpressions();
+                }
                 this.EndInit();
             }
             
@@ -2420,6 +2432,14 @@ namespace DBClass {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn CustomerColumn {
+                get {
+                    return this.columnCustomer;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2475,6 +2495,74 @@ namespace DBClass {
                         int StatGlob, 
                         bool Stop, 
                         TenderRow parentTenderRowByTenderDogovor, 
+                        string Status, 
+                        string Customer) {
+                DogovorRow rowDogovorRow = ((DogovorRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        null,
+                        null,
+                        IDZavod,
+                        Nambe_Dog,
+                        Name_Dog,
+                        null,
+                        Sostav,
+                        VidStroy,
+                        DataOt,
+                        DataBeg,
+                        Data_Konec,
+                        Comments,
+                        StatPod,
+                        null,
+                        V,
+                        path,
+                        StatGlob,
+                        Stop,
+                        null,
+                        Status,
+                        Customer};
+                if ((parentProjectRowByProjectDogovor != null)) {
+                    columnValuesArray[1] = parentProjectRowByProjectDogovor[0];
+                }
+                if ((parentCustomersRowByCustomersDogovor != null)) {
+                    columnValuesArray[2] = parentCustomersRowByCustomersDogovor[0];
+                }
+                if ((parentStady_projectRowByStady_projectDogovor != null)) {
+                    columnValuesArray[6] = parentStady_projectRowByStady_projectDogovor[0];
+                }
+                if ((parentUsers_GIPRowByUsers_GIP_Dogovor != null)) {
+                    columnValuesArray[14] = parentUsers_GIPRowByUsers_GIP_Dogovor[1];
+                }
+                if ((parentTenderRowByTenderDogovor != null)) {
+                    columnValuesArray[19] = parentTenderRowByTenderDogovor[0];
+                }
+                rowDogovorRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowDogovorRow);
+                return rowDogovorRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public DogovorRow AddDogovorRow(
+                        ProjectRow parentProjectRowByProjectDogovor, 
+                        CustomersRow parentCustomersRowByCustomersDogovor, 
+                        int IDZavod, 
+                        string Nambe_Dog, 
+                        string Name_Dog, 
+                        Stady_projectRow parentStady_projectRowByStady_projectDogovor, 
+                        string Sostav, 
+                        string VidStroy, 
+                        System.DateTime DataOt, 
+                        System.DateTime DataBeg, 
+                        System.DateTime Data_Konec, 
+                        string Comments, 
+                        bool StatPod, 
+                        Users_GIPRow parentUsers_GIPRowByUsers_GIP_Dogovor, 
+                        string V, 
+                        string path, 
+                        int StatGlob, 
+                        bool Stop, 
+                        TenderRow parentTenderRowByTenderDogovor, 
                         string Status) {
                 DogovorRow rowDogovorRow = ((DogovorRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
@@ -2498,7 +2586,8 @@ namespace DBClass {
                         StatGlob,
                         Stop,
                         null,
-                        Status};
+                        Status,
+                        null};
                 if ((parentProjectRowByProjectDogovor != null)) {
                     columnValuesArray[1] = parentProjectRowByProjectDogovor[0];
                 }
@@ -2564,6 +2653,7 @@ namespace DBClass {
                 this.columnStop = base.Columns["Stop"];
                 this.columnid_Tender = base.Columns["id_Tender"];
                 this.columnStatus = base.Columns["Status"];
+                this.columnCustomer = base.Columns["Customer"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2611,6 +2701,8 @@ namespace DBClass {
                 base.Columns.Add(this.columnid_Tender);
                 this.columnStatus = new global::System.Data.DataColumn("Status", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnStatus);
+                this.columnCustomer = new global::System.Data.DataColumn("Customer", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCustomer);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnDogID}, true));
                 this.columnDogID.AutoIncrement = true;
@@ -2625,6 +2717,7 @@ namespace DBClass {
                 this.columnV.MaxLength = 255;
                 this.columnpath.MaxLength = 536870910;
                 this.columnStatus.MaxLength = 255;
+                this.columnCustomer.ReadOnly = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2643,6 +2736,12 @@ namespace DBClass {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Type GetRowType() {
                 return typeof(DogovorRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            private void InitExpressions() {
+                this.CustomerColumn.Expression = "Parent([CustomersDogovor]).[NameCust]";
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10728,6 +10827,22 @@ namespace DBClass {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Customer {
+                get {
+                    try {
+                        return ((string)(this[this.tableDogovor.CustomerColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Customer\' в таблице \'Dogovor\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDogovor.CustomerColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public ProjectRow ProjectRow {
                 get {
                     return ((ProjectRow)(this.GetParentRow(this.Table.ParentRelations["ProjectDogovor"])));
@@ -11019,6 +11134,18 @@ namespace DBClass {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetStatusNull() {
                 this[this.tableDogovor.StatusColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsCustomerNull() {
+                return this.IsNull(this.tableDogovor.CustomerColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetCustomerNull() {
+                this[this.tableDogovor.CustomerColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -18085,7 +18212,7 @@ namespace DBClass._bsp_snhpDataSetTableAdapters {
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual _bsp_snhpDataSet.DogovorDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            _bsp_snhpDataSet.DogovorDataTable dataTable = new _bsp_snhpDataSet.DogovorDataTable();
+            _bsp_snhpDataSet.DogovorDataTable dataTable = new _bsp_snhpDataSet.DogovorDataTable(true);
             this.Adapter.Fill(dataTable);
             return dataTable;
         }

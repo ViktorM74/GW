@@ -30,6 +30,12 @@ namespace DogovorClass
             dtp_ToDateDog.DataBindings.Add("Text", DB_Cmd.bndDogovor, "Data_Konec");
             tb_NameDog.DataBindings.Add("Text", DB_Cmd.bndDogovor, "Name_Dog");
 
+            //cb_Customer
+            cb_customer.DataSource = DB_Cmd.bndAreaStroy;
+            cb_customer.DisplayMember = "NameCust";
+            cb_customer.ValueMember = "IDCustomer";
+            cb_customer.DataBindings.Add("SelectedValue", DB_Cmd.bndDogovor, "IDCust");
+
             // cb_StadiaDog
             cb_StadiaDog.DataSource = DB_Cmd.bndStadia;
             cb_StadiaDog.DisplayMember = "Обозначение";

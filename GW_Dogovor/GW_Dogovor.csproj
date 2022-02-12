@@ -232,6 +232,10 @@
       <Project>{4aba2d23-e044-4331-ab38-762a2495f3ee}</Project>
       <Name>DopSoglClass</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Event_Form\Events_Forms.csproj">
+      <Project>{e11bb5bb-f3b1-4433-b12a-45cd93871a13}</Project>
+      <Name>Events_Forms</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ExcelActive\ExcelActive.csproj">
       <Project>{27d581fb-c5d8-4b89-9b06-b6291f72e83c}</Project>
       <Name>ExcelActive</Name>
@@ -247,6 +251,10 @@
     <ProjectReference Include="..\FolderManager\FolderManager.csproj">
       <Project>{efce0d9b-0faf-4cec-b1a4-db3f36f54733}</Project>
       <Name>FolderManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mail_Form\Mails_Forms.csproj">
+      <Project>{d553686a-5957-4de8-a699-2ffee9d82cff}</Project>
+      <Name>Mails_Forms</Name>
     </ProjectReference>
     <ProjectReference Include="..\ObjectClass\ObjectClass.csproj">
       <Project>{d4fff505-5d3f-4f57-8b28-1df3746b2280}</Project>

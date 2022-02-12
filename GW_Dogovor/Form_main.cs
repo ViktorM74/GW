@@ -25,6 +25,7 @@ using PRD;
 using ProjectClass;
 using TenderClass;
 using Zadania;
+using Events_Forms;
 #endregion Using
 
 namespace GW_Dogovor
@@ -173,6 +174,12 @@ namespace GW_Dogovor
         {
             tbNameProject.DataBindings.Add("Text", DB_Cmd.bndProject, "Name");
             tb_num_dog.DataBindings.Add("Text", DB_Cmd.bndDogovor, "Nambe_Dog");
+            cb_num_dog.DataSource = DB_Cmd.bndDogovor;
+            cb_num_dog.DisplayMember = "Nambe_Dog";
+            cb_num_dog.ValueMember = "DogID";
+            cb_num_dog.DataBindings.Add("SelectedValue", DB_Cmd.bndDogovor, "DogID");
+
+
 
             tb_Code_object.DataBindings.Add("Text", DB_Cmd.bndProject, "Code_object");
             tb_pName.DataBindings.Add("Text", DB_Cmd.bndProject, "Name");
@@ -198,7 +205,8 @@ namespace GW_Dogovor
             gridDocument.Columns["DataDoc"].DataPropertyName = "DataDoc";
             gridDocument.Columns["Status"].DataPropertyName = "Status";
             gridDocument.Columns["PathDoc"].DataPropertyName = "PathDoc";
-            gridDocument.Columns["Doc_Notes"].DataPropertyName = "Notes";
+            gridDocument.Columns["Doc_Notes"].DataPropertyName = "Notes"; // visable false
+            gridDocument.Columns["Type_doc"].DataPropertyName = "TYPE";
 
             bndNvg_Doc.BindingSource = DB_Cmd.bndDocument;
 
@@ -253,7 +261,7 @@ namespace GW_Dogovor
             bndNavigatorDogovor.BindingSource = DB_Cmd.bndDogovor;
             bndNavigator_KP_Dog.BindingSource = DB_Cmd.bndCalendarPlan;
 
-
+            tb_customer.DataBindings.Add("Text", DB_Cmd.bndDogovor, "Customer");
             tb_NumDog.DataBindings.Add("Text", DB_Cmd.bndDogovor, "Nambe_Dog");
             dtp_DateDog.DataBindings.Add("Text", DB_Cmd.bndDogovor, "DataOt");
             tb_StatusDog.DataBindings.Add("Text", DB_Cmd.bndDogovor, "Status");
@@ -357,6 +365,7 @@ namespace GW_Dogovor
             grid_Object.AutoGenerateColumns = false;
             grid_Object.DataSource = DB_Cmd.bndObject;
             grid_Object.Columns["CodeObj"].DataPropertyName = "CodeOBJ";
+            grid_Object.Sort(grid_Object.Columns["CodeObj"], System.ComponentModel.ListSortDirection.Ascending);
 
 
             //Mark
@@ -442,7 +451,7 @@ namespace GW_Dogovor
             if (((BindingSource)DB_Cmd.bndDocument.DataSource).Count == 0)
             {
                 //Психанул 
-                DB_Cmd.RebuildBndDocuments();
+                DB_Cmd.RebuildBndDocuments(); // пересоздаю объект bndDocument
             }
 
             if (DB_Cmd.bndDocument.IsSorted && DB_Cmd.bndDocument.SupportsSorting)
@@ -461,10 +470,10 @@ namespace GW_Dogovor
 
                 switch (tabDocuments.SelectedIndex)
                 {
-                    case 0: // Исходные документы
+                    case 0: // Документы
                         DB_Cmd.bndDocument.RemoveFilter();
-                        DB_Cmd.bndDocument.Filter = "(Project_id Not Is Null) AND (Control = false) AND (Zadania = false) " +
-                                                    "AND (Dogovor_id Is Null) AND (DD_id Is Null)";
+                        DB_Cmd.bndDocument.Filter = "(Project_id Not Is Null) " +
+                                                    "AND (Dogovor_id Is Null) AND (DD_id Is Null) AND (Tender_id Is Null)";
                         gridDocument.DataSource = DB_Cmd.bndDocument;
                         break;
                     case 1: // На контроле
@@ -578,7 +587,19 @@ namespace GW_Dogovor
         private void tabDocuments_SelectedIndexChanged(object sender, EventArgs e)
         {
             SetFilterTabGrid();
-            btn_OldFilter_Click(sender, e);
+            int index = tabDocuments.SelectedIndex;
+            if (index == 0 || index == 1 || index == 2)
+            {
+                bndNvg_Doc.BindingSource = DB_Cmd.bndDocument;
+                btn_FilterApp_Click(sender, e);
+            }
+            if (index == 3)
+            {
+                bndNvg_Doc.BindingSource = DB_Cmd.bndEvents;
+                btn_OldFilter_Click(sender, e); // сброс фильтра
+            }
+
+
         }
 
         private void tabControlMain_SelectedIndexChanged(object sender, EventArgs e)
@@ -762,8 +783,11 @@ namespace GW_Dogovor
 
         private void ProjectPanelsVisable(object sender, EventArgs e)
         {
-
+            Settings.Default.PanelsProjectView = !Settings.Default.PanelsProjectView;
+            Settings.Default.Save();
+            SetViewForm();
         } // Установка видимости панели Проект
+
         private void SetViewForm()
         {
             if (Settings.Default.PanelsProjectView)
@@ -1157,6 +1181,16 @@ namespace GW_Dogovor
         }
         #endregion Mark
 
+        #region Event
+        private void EditEvent()
+        {
+            using (Event_Form fe = new Event_Form())
+            {
+                fe.ShowDialog();
+            }
+        }
+        #endregion Event
+
         #endregion Edit DB
 
         #region CellContentClick
@@ -1178,7 +1212,7 @@ namespace GW_Dogovor
 
         private void gridDocument_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            DocumentCellClickRun(e, 6);
+            DocumentCellClickRun(e, 7);
         }
 
         private void grid_MailControl_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -1253,12 +1287,17 @@ namespace GW_Dogovor
            void SetDB_pathSource()
             {
                 string pth_server = null;
+                string pth_doc = DB_Cmd.GetCurrentValueField(DB_Cmd.bndDocument, "PathDoc").ToString();
                 foreach (string f in (string[])e.Data.GetData(DataFormats.FileDrop))
                 {
                     pth_server = Path.GetDirectoryName(f);
                 }
                 if (!String.IsNullOrEmpty(pth_server))
+                {
                     ((DataRowView)DB_Cmd.bndDocument.Current).Row["path_server"] = pth_server;
+                    if (String.IsNullOrEmpty(pth_doc))
+                        ((DataRowView)DB_Cmd.bndDocument.Current).Row["PathDoc"] = pth_server;
+                }
             }
             
             if (MessageBox.Show("Вы хотите копировать выбранные файлы в рабочие папки?", "Выбор действия", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
@@ -1289,7 +1328,6 @@ namespace GW_Dogovor
                 finally
                 {
                     SetDB_pathSource();
-
                 }
             }
             else
@@ -1320,11 +1358,11 @@ namespace GW_Dogovor
 
         private void gridDocument_DragDrop(object sender, DragEventArgs e)
         {
-            _DragDropDocument(sender, e, 2, "Основные положения");
+            _DragDropDocument(sender, e, 2, "");
         }
         private void grid_MailControl_DragDrop(object sender, DragEventArgs e)
         {
-            _DragDropDocument(sender, e, 0, "Письма");
+            _DragDropDocument(sender, e, 0, "");
         }
         private void grid_Zadania_DragDrop(object sender, DragEventArgs e)
         {
@@ -1701,23 +1739,48 @@ namespace GW_Dogovor
 
         #endregion Zadania
 
-        #region Document
+        #region Document_Event
         private void bndNav_EditDoc_Click(object sender, EventArgs e)
         {
-            EditDoc();
+            if (tabDocuments.SelectedIndex == 3)
+            {
+                EditEvent();
+            }
+            else
+            {
+                EditDoc();
+            }
+            
         }
 
         private void bndNav_AddDoc_Click(object sender, EventArgs e)
         {
-            DB_Cmd.AddDoc();
-            EditDoc();
+            if (tabDocuments.SelectedIndex == 3)
+            {
+                DB_Cmd.AddEvents();
+                EditEvent();
+            }
+            else
+            {
+                DB_Cmd.AddDoc();
+                EditDoc();
+            }
+            
         }
 
         private void bndNav_DeleteDoc_Click(object sender, EventArgs e)
         {
-            DeleteDoc();
+            if (tabDocuments.SelectedIndex == 3)
+            {
+                DB_Cmd.DeleteEvents();
+            }
+            else
+            {
+                DeleteDoc();
+            }
+           
         }
-        #endregion Document
+        #endregion Document_Event
 
         #region DopSogl
         private void tbtn_EditDDog_Click(object sender, EventArgs e)
@@ -1952,7 +2015,22 @@ namespace GW_Dogovor
 
         }
 
-      
+        private void btn_outMail_Click(object sender, EventArgs e)
+        {
+            string path = link_LocalFld.Text;
+           
+            string a_path = "Исх";
+            path = Path.Combine(path, a_path);
+           
+            if (!File.Exists(path))
+                FileA.CreateFolder(path);
+            FileA.RunPath(path);
+        }
+
+        private void btn_outMail2_Click(object sender, EventArgs e)
+        {
+            LocalOutMailMenuItem_Click(sender, e);
+        }
     }
 
 }
